@@ -1,0 +1,244 @@
+@font-face {
+  font-family: Lora;
+  src: url("fonts/lora-regular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: Manrope;
+  src: url("fonts/manrope-regular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: Manrope;
+  src: url("fonts/manrope-bold.ttf");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --accent: #4b533b;
+  --border: #d7d4c9;
+  --bs-body-bg: #f5f1e9;
+  --bs-body-color: #282b24;
+  --bs-body-font-family: Manrope, Arial, sans-serif;
+  --bs-border-color: var(--border);
+  --bs-link-color: var(--accent);
+  --bs-link-hover-color: #303725;
+}
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+[hidden] {
+  display: none !important;
+}
+a {
+  text-underline-offset: 4px;
+}
+h1, h2, .brand {
+  font-family: Lora, Georgia, serif;
+}
+h1 {
+  font-size: 52px;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 22px;
+}
+.container {
+  max-width: 1440px;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+.page-shell {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.page-heading, .page-intro {
+  margin-bottom: 48px;
+}
+.eyebrow, .card-meta, .small-copy {
+  font-size: 14px;
+}
+.eyebrow, .booking-price {
+  color: var(--accent);
+}
+.muted, .card-meta {
+  color: #62675a;
+}
+.site-nav {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  font-size: 28px;
+  color: inherit;
+  text-decoration: none;
+}
+.navbar-nav {
+  align-items: center;
+}
+#site-footer {
+  border-top: 1px solid var(--border);
+}
+.btn {
+  border-radius: 0;
+  padding: 12px 20px;
+  font-size: 14px;
+}
+.btn-primary {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-bg: #303725;
+  --bs-btn-hover-border-color: #303725;
+  --bs-btn-active-bg: #303725;
+  --bs-btn-active-border-color: #303725;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+}
+.form-label {
+  font-size: 14px;
+}
+.form-control, .form-select {
+  min-height: 48px;
+  border-radius: 0;
+  border-color: var(--border);
+  background-color: transparent;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px #4b533b26;
+}
+.card, .panel, .empty-state {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+}
+.card-body {
+  padding: 24px;
+}
+.card-img-top {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 0;
+}
+.table-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.table-card .btn {
+  margin-top: auto;
+}
+.restaurant-card .card {
+  height: 100%;
+}
+.section-heading, .restaurant-heading, .menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.section-heading {
+  margin: 48px 0 24px;
+  flex-wrap: wrap;
+}
+.section-heading h2, .section-heading p {
+  margin: 0;
+}
+.restaurant-heading {
+  margin: 24px 0 32px;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.gallery img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.gallery-side {
+  display: grid;
+  gap: 24px;
+}
+.gallery-side img {
+  height: 188px;
+}
+.tab-content {
+  padding-top: 32px;
+}
+.menu-item, .review {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.menu-item p {
+  margin-bottom: 0;
+}
+.empty-state {
+  padding: 32px;
+  margin-top: 24px;
+}
+.back-link {
+  margin-bottom: 16px;
+}
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  z-index: 1100;
+  background: white;
+  padding: 12px;
+}
+@media (max-width: 767px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .page-shell {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  .navbar-nav {
+    align-items: stretch;
+    padding-top: 24px;
+  }
+  .restaurant-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .gallery img {
+    height: 240px;
+  }
+  .gallery-side {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gallery-side img {
+    height: 140px;
+  }
+}

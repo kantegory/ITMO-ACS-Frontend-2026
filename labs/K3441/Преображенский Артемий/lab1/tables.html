@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Выбор столика - Тихий двор</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="tables">
+    <a class="visually-hidden-focusable" href="#main">К содержимому</a>
+    <header id="site-header"></header>
+    <main id="main" class="container page-shell">
+      <div class="page-heading">
+        <p class="eyebrow">Бронирование столика</p>
+        <h1>Ваш столик. Ваш спокойный вечер.</h1>
+        <p>Выберите место и время для встречи.</p>
+      </div>
+      <form id="table-search" class="row g-4 align-items-end">
+        <div class="col-12 col-lg-4">
+          <label for="visit-date" class="form-label">Дата посещения</label>
+          <input id="visit-date" name="date" class="form-control" type="date" required />
+        </div>
+        <div class="col-6 col-lg-2">
+          <label for="start" class="form-label">Начало</label>
+          <input id="start" name="start" class="form-control" type="time" min="12:00" max="22:00" required />
+        </div>
+        <div class="col-6 col-lg-2">
+          <label for="end" class="form-label">Окончание</label>
+          <input id="end" name="end" class="form-control" type="time" min="12:30" max="23:00" required />
+        </div>
+        <div class="col-6 col-lg-2">
+          <label for="guests" class="form-label">Гости</label>
+          <select id="guests" name="guests" class="form-select" required>
+            <option value="">Гости</option>
+            <option value="1">1 человек</option>
+            <option value="2">2 человека</option>
+            <option value="3">3 человека</option>
+            <option value="4">4 человека</option>
+            <option value="5">5 человек</option>
+          </select>
+        </div>
+        <div class="col-6 col-lg-2">
+          <button class="btn btn-primary w-100" type="submit">Найти столик</button>
+        </div>
+      </form>
+      <section class="mt-5" aria-labelledby="tables-heading">
+        <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
+          <h2 id="tables-heading" class="mb-0">Доступные столы</h2>
+          <p id="table-count" class="small mb-0" role="status"></p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-table-card data-seats="2">
+            <article class="card table-card h-100">
+              <img src="images/window.png" class="card-img-top" alt="Столик у окна" />
+              <div class="card-body">
+                <h3>Столик у окна</h3>
+                <p>Мягкий свет и вид во двор. Для вечера вдвоем.</p>
+                <p class="small mb-1">До двух гостей</p>
+                <p class="small booking-price">Бронирование - 0 ₽</p>
+                <button class="btn btn-primary" type="button" data-table="1">Забронировать</button>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4" data-table-card data-seats="4">
+            <article class="card table-card h-100">
+              <img src="images/hall.png" class="card-img-top" alt="Столик в основном зале" />
+              <div class="card-body">
+                <h3>Столик в зале</h3>
+                <p>В центре ресторана - для встреч и разговоров с друзьями.</p>
+                <p class="small mb-1">До четырех гостей</p>
+                <p class="small booking-price">Бронирование - 0 ₽</p>
+                <button class="btn btn-primary" type="button" data-table="2">Забронировать</button>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4" data-table-card data-seats="4">
+            <article class="card table-card h-100">
+              <img src="images/alcove.png" class="card-img-top" alt="Столик в тихой нише" />
+              <div class="card-body">
+                <h3>Тихая ниша</h3>
+                <p>Мягкая скамья и немного уединения для небольшой компании.</p>
+                <p class="small mb-1">До четырех гостей</p>
+                <p class="small booking-price">Бронирование - 0 ₽</p>
+                <button class="btn btn-primary" type="button" data-table="3">Забронировать</button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <p id="no-tables" class="panel p-4" hidden>Для такого количества гостей нет подходящих столиков.</p>
+      </section>
+      <p class="small mt-5 mb-0">Не нашли нужное время? Попробуйте другой час или меньшее количество гостей.</p>
+    </main>
+    <footer id="site-footer"></footer>
+  </body>
+</html>

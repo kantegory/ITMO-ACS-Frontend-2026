@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>О ресторане - Тихий двор</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="restaurant">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header id="site-header"></header>
+    <main id="main" class="container page-shell">
+      <a class="small-copy back-link d-inline-block" href="index.html">← Все рестораны</a>
+      <div class="restaurant-heading">
+        <div>
+          <p class="eyebrow">
+            <span data-restaurant-field="city">Санкт-Петербург</span> ·
+            <span data-restaurant-field="cuisine">Европейская</span> ·
+            <span data-restaurant-field="price">₽₽</span>
+          </p>
+          <h1 data-restaurant-field="name">Тихий двор</h1>
+          <p class="lead-copy mb-0" data-restaurant-field="description">
+            Мягкий свет, натуральное дерево и тихий двор за окном.
+            Здесь удобно встретиться за ужином и никуда не торопиться.
+          </p>
+          <p class="small-copy muted mt-3 mb-0" data-restaurant-field="address">Литейный проспект, 28</p>
+        </div>
+        <a id="reserve-table" class="btn btn-primary flex-shrink-0" href="tables.html?restaurant=quiet-yard">Выбрать столик</a>
+      </div>
+      <div class="gallery" aria-label="Фотографии ресторана">
+        <img data-restaurant-field="photo" src="images/window.png" alt="Интерьер ресторана" width="1536" height="1024" />
+        <div class="gallery-side">
+          <img src="images/hall.png" alt="Столики в основном зале" width="1536" height="1024" />
+          <img src="images/alcove.png" alt="Столик в тихой нише" width="1536" height="1024" />
+        </div>
+      </div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="menu-tab" data-bs-toggle="tab" data-bs-target="#menu"
+                  type="button" role="tab" aria-controls="menu" aria-selected="true">Меню</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                  type="button" role="tab" aria-controls="reviews" aria-selected="false">Отзывы</button>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <section class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab" tabindex="0">
+          <h2 class="mb-4">Учебное меню</h2>
+          <article class="menu-item">
+            <div>
+              <h3>Салат с печеной свеклой</h3>
+              <p>Мягкий сыр, зелень и ореховая заправка</p>
+            </div>
+            <strong>520 ₽</strong>
+          </article>
+          <article class="menu-item">
+            <div>
+              <h3>Курица с овощами</h3>
+              <p>Запеченная курица, сезонные овощи и сливочный соус</p>
+            </div>
+            <strong>790 ₽</strong>
+          </article>
+          <article class="menu-item">
+            <div>
+              <h3>Яблочный пирог</h3>
+              <p>Теплый пирог с ванильным мороженым</p>
+            </div>
+            <strong>390 ₽</strong>
+          </article>
+        </section>
+        <section class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
+          <h2 class="mb-4">Примеры отзывов</h2>
+          <article class="review">
+            <div class="d-flex justify-content-between mb-3">
+              <strong>Мария</strong>
+              <span class="rating" aria-label="Оценка 5 из 5">5 / 5</span>
+            </div>
+            <p class="mb-0">Выбрали столик у окна. Тихо, светло и удобно разговаривать.</p>
+          </article>
+          <article class="review">
+            <div class="d-flex justify-content-between mb-3">
+              <strong>Дмитрий</strong>
+              <span class="rating" aria-label="Оценка 4 из 5">4 / 5</span>
+            </div>
+            <p class="mb-0">Приятная обстановка и хороший выбор блюд. Вернемся еще.</p>
+          </article>
+        </section>
+      </div>
+    </main>
+    <footer id="site-footer"></footer>
+  </body>
+</html>
