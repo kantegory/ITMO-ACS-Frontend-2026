@@ -2,50 +2,50 @@
 
 // Общая навигация повторяется на всех восьми страницах.
 document.querySelector("#site-header").innerHTML = `
-  <nav class="navbar navbar-expand-md site-nav">
+  <nav class="navbar navbar-expand-md site-nav" data-bs-theme="dark">
     <div class="container">
-      <a class="brand" href="index.html">Тихий двор</a>
+      <a class="brand" href="index.html"><span class="brand-line"><img src="images/bat.svg" alt="" />BaT</span><span class="brand-caption">Book a Table</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
         aria-label="Открыть меню"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <div class="navbar-nav gap-3">
-          <a class="nav-link" href="index.html">Рестораны</a>
+          <a class="nav-link" href="restaurant.html">О ресторане</a>
+          <a class="nav-link" href="restaurant.html#menu">Меню</a>
           <a class="nav-link" href="tables.html">Бронирование</a>
-          <a class="nav-link" href="profile.html">Профиль</a>
-          <a class="btn btn-outline-primary" href="bookings.html">Мои брони</a>
+          <a class="btn btn-outline-primary" href="bookings.html">Моя бронь</a>
         </div>
       </div>
     </div>
   </nav>`;
 document.querySelector("#site-footer").innerHTML = `
   <div class="container d-flex justify-content-between gap-3 flex-wrap py-4 small">
-    <span>Тихий двор - место для неспешных встреч</span>
+    <span>BaT - место для неспешных встреч</span>
     <span>Каждый день · 12:00-23:00</span>
   </div>`;
 
 // Три учебных ресторана. Это данные для показа, запросов к серверу здесь нет.
 const restaurants = {
   "quiet-yard": {
-    name: "Тихий двор", city: "Санкт-Петербург", address: "Литейный проспект, 28",
-    cuisine: "Европейская кухня", price: "₽₽", photo: "images/window.png",
+    name: "BaT", city: "Санкт-Петербург", address: "Литейный проспект, 28",
+    cuisine: "Европейская кухня", price: "₽₽", photo: "images/window.jpg",
     description: "Мягкий свет и тихий двор за окном. Здесь удобно встретиться за ужином.",
   },
   "yard-petrograd": {
-    name: "Двор на Петроградской", city: "Санкт-Петербург", address: "Большой проспект П.С., 42",
-    cuisine: "Итальянская кухня", price: "₽₽₽", photo: "images/hall.png",
+    name: "BaT на Петроградской", city: "Санкт-Петербург", address: "Большой проспект П.С., 42",
+    cuisine: "Итальянская кухня", price: "₽₽₽", photo: "images/hall.jpg",
     description: "Итальянская кухня и большой стол для друзей в центре города.",
   },
   "yard-moscow": {
-    name: "Московский двор", city: "Москва", address: "Покровка, 18",
-    cuisine: "Грузинская кухня", price: "₽", photo: "images/alcove.png",
+    name: "BaT в Москве", city: "Москва", address: "Покровка, 18",
+    cuisine: "Грузинская кухня", price: "₽", photo: "images/alcove.jpg",
     description: "Небольшой зал, грузинская кухня и неспешные разговоры за общим столом.",
   },
 };
 const tables = {
-  1: { name: "Столик у окна", photo: "images/window.png", seats: 2 },
-  2: { name: "Столик в зале", photo: "images/hall.png", seats: 4 },
-  3: { name: "Тихая ниша", photo: "images/alcove.png", seats: 4 },
+  1: { name: "У витрины", photo: "images/window.jpg", seats: 2 },
+  2: { name: "В основном зале", photo: "images/hall.jpg", seats: 4 },
+  3: { name: "Отдельный уголок", photo: "images/alcove.jpg", seats: 4 },
 };
 const params = new URLSearchParams(location.search);
 // Неизвестный id в адресе заменяем первым рестораном.
@@ -93,6 +93,7 @@ if (reserveLink) reserveLink.href = `tables.html?restaurant=${restaurantId}`;
 
 const tableSearch = document.querySelector("#table-search");
 if (tableSearch) {
+  tableSearch.elements.restaurant.value = restaurantId;
   const date = tableSearch.elements.date;
   const now = new Date();
   const year = now.getFullYear();
@@ -115,20 +116,18 @@ if (tableSearch) {
     document.querySelector("#no-tables").hidden = count > 0;
   }
   tableSearch.addEventListener("input", () => tableSearch.elements.end.setCustomValidity(""));
+  // Поиск остается на странице, а кнопка столика отправляет обычную GET-форму.
   tableSearch.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (validVisit()) filterTables();
+    if (!validVisit()) {
+      event.preventDefault();
+      return;
+    }
+    if (!event.submitter || event.submitter.name !== "table") {
+      event.preventDefault();
+      filterTables();
+    }
   });
   tableSearch.elements.guests.addEventListener("change", filterTables);
-  document.querySelectorAll("[data-table]").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!validVisit()) return;
-      const query = new URLSearchParams(new FormData(tableSearch));
-      query.set("table", button.dataset.table);
-      query.set("restaurant", restaurantId);
-      location.href = `booking.html?${query}`;
-    });
-  });
   filterTables();
 }
 
@@ -149,7 +148,6 @@ if (bookingForm) {
       document.querySelector(`[data-summary="${key}"]`).textContent = params.get(key);
     });
     bookingForm.elements.guests.value = params.get("guests");
-
   }
   const modal = new bootstrap.Modal(document.querySelector("#booking-success"));
   bookingForm.addEventListener("submit", (event) => {
