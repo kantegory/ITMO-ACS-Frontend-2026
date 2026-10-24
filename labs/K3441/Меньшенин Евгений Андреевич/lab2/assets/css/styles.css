@@ -122,8 +122,46 @@ a { color: inherit; }
 .auth-card { width: min(100%, 540px); padding: clamp(1.5rem, 4vw, 3rem); }
 .auth-art { min-height: 680px; background: linear-gradient(160deg, rgba(47,75,62,.15), rgba(216,109,75,.25)), url("../img/hero-food.webp") center/cover; border-radius: 1.5rem; }
 
-.profile-cover { height: 240px; background: linear-gradient(120deg, #365746, #8fad7a 55%, #e8ad69); }
-.avatar { width: 128px; height: 128px; display: grid; place-items: center; margin-top: -70px; color: white; background: var(--terracotta); border: 7px solid var(--paper); border-radius: 50%; font: 700 2.4rem "Lora", serif; }
+.profile-page { min-height: calc(100vh - 72px); }
+.profile-cover {
+  height: clamp(180px, 22vw, 260px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #365746, #8fad7a 55%, #e8ad69);
+}
+.profile-cover::before,
+.profile-cover::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 50%;
+}
+.profile-cover::before { width: 280px; height: 280px; top: -155px; right: 12%; }
+.profile-cover::after { width: 190px; height: 190px; bottom: -125px; left: 9%; }
+.profile-layout { position: relative; z-index: 1; margin-top: -48px; }
+.profile-card {
+  height: auto;
+  position: relative;
+  overflow: visible;
+  padding-top: 5rem !important;
+}
+.avatar {
+  width: 128px;
+  height: 128px;
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  color: white;
+  background: var(--terracotta);
+  border: 7px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(54, 67, 60, .18);
+  font: 700 2.4rem "Lora", serif;
+}
+.profile-content { padding-top: 3rem; }
 .stat { padding: 1rem; text-align: center; background: #f7f2e8; border-radius: 1rem; }
 .stat strong { display: block; font: 700 1.45rem "Lora", serif; }
 
@@ -132,6 +170,7 @@ a { color: inherit; }
 .step-number { flex: 0 0 auto; width: 2.3rem; height: 2.3rem; display: grid; place-items: center; color: white; background: var(--terracotta); border-radius: 50%; font-weight: 900; }
 
 .author-avatar { width: 54px; height: 54px; display: grid; place-items: center; color: white; background: var(--sage); border-radius: 50%; font-weight: 900; }
+.community-page .paper-card { height: auto; }
 .empty-state { display: none; padding: 4rem 1rem; text-align: center; }
 footer { color: #d9e1dc; background: var(--sage-dark); }
 footer a { color: #fff; text-decoration: none; }
@@ -160,10 +199,16 @@ footer a { color: #fff; text-decoration: none; }
   .hero-copy { padding: 5rem 0; }
   .filter-panel { position: static; }
   .auth-art { min-height: 360px; }
+  .profile-layout { margin-top: -36px; }
+  .profile-content { padding-top: 0; }
 }
 
 @media (max-width: 575.98px) {
   .section-pad { padding: 4rem 0; }
   .page-hero { padding: 3.5rem 0 2.5rem; }
   .display-title { font-size: 3rem; }
+  .profile-cover { height: 160px; }
+  .profile-layout { margin-top: -28px; }
+  .profile-card { padding-top: 4.5rem !important; }
+  .avatar { width: 112px; height: 112px; font-size: 2rem; }
 }

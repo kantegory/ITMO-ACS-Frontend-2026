@@ -45,12 +45,12 @@
         </div>
       </div>
     </nav>
-    <main>
-      <div class="profile-cover"></div>
-      <section class="container pb-5">
-        <div class="row g-4">
+    <main class="profile-page">
+      <div class="profile-cover" aria-hidden="true"></div>
+      <section class="container profile-layout pb-5">
+        <div class="row g-4 align-items-start">
           <div class="col-lg-4">
-            <div class="paper-card p-4">
+            <div class="paper-card profile-card p-4">
               <div class="avatar">МП</div>
               <h1 class="h2 mt-3 mb-1">Мария Петрова</h1>
               <div class="text-muted mb-3">@maria.cooks · Санкт-Петербург</div>
@@ -84,7 +84,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-8 profile-content">
             <div
               class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4"
             >
@@ -96,7 +96,7 @@
                 <i class="bi bi-plus-lg me-2"></i>Новый рецепт
               </button>
             </div>
-            <ul class="nav nav-pills mb-4" role="tablist">
+            <ul class="nav nav-pills profile-tabs mb-4" role="tablist">
               <li class="nav-item">
                 <button
                   class="nav-link active"
