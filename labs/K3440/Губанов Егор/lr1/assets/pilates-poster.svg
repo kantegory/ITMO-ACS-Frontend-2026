@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560">
+    <rect width="1000" height="560" fill="#f4f0e7"/>
+    <rect x="0" y="400" width="1000" height="160" fill="#a8b6a0"/>
+    <rect x="90" y="420" width="820" height="28" fill="#302a35"/>
+    <circle cx="680" cy="165" r="48" fill="#302a35"/>
+    <path d="M645 208
+           C585 250 510 290 420 320
+           L270 320
+           M420 320 L350 420
+           M420 320 L520 420
+           M270 320 L180 270
+           M270 320 L210 405"
+          fill="none" stroke="#302a35" stroke-width="32"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M505 286 L585 205" fill="none" stroke="#d98669"
+          stroke-width="24" stroke-linecap="round"/>
+    <rect x="70" y="70" width="250" height="80" fill="#c9b5d5"
+          stroke="#302a35" stroke-width="8"/>
+    <text x="95" y="122" fill="#302a35" font-size="34"
+          font-family="Arial, sans-serif" font-weight="700">ПИЛАТЕС</text>
+    <circle cx="500" cy="280" r="54" fill="#fffdf8"
+            stroke="#302a35" stroke-width="8"/>
+    <path d="M488 250 L488 310 L535 280 Z" fill="#302a35"/>
+</svg>
