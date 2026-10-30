@@ -13,6 +13,25 @@
         }
       ],
       "id": 1
+    },
+    {
+      "email": "egor@egor.com",
+      "password": "$2a$10$KUMdC99jGwwQ2WQOLGzqKu/gdlIiJTbSvkMkYhDe//0xrgzCc2.6m",
+      "name": "egor",
+      "goal": "pilates",
+      "plan": [
+        {
+          "day": "monday",
+          "trainingId": "pilates",
+          "completed": true
+        },
+        {
+          "day": "wednesday",
+          "trainingId": "yoga",
+          "completed": false
+        }
+      ],
+      "id": 2
     }
   ],
   "trainings": [
