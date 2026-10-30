@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Комната занятия — Вместе</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/theme.css" rel="stylesheet">
+</head>
+<body data-page="session">
+
+<a class="skip-link" href="#content">К содержимому</a>
+
+<header class="site-header">
+  <div class="container-xl py-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <a class="brand" href="index.html">ВМЕСТЕ</a>
+    <nav id="siteNav" class="site-nav" aria-label="Основная навигация"></nav>
+  </div>
+</header>
+
+<noscript>
+  <p class="container status">Для работы сайта включи JavaScript.</p>
+</noscript>
+
+<main id="content" class="container-xl py-5" tabindex="-1">
+  <p
+          id="pageStatus"
+          class="status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+  >
+    Загружаем комнату…
+  </p>
+
+  <div id="sessionContent" hidden>
+    <p class="eyebrow">Комната занятия</p>
+
+    <h1 id="sessionTitle" class="display-title mb-4"></h1>
+
+    <p class="lead-copy">
+      Демонстрационная комната: таймер работает у тебя в браузере.
+      Состав группы ниже приведён для примера.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+        <section
+                class="brutal-card p-4 text-center mb-4"
+                aria-label="Таймер занятия"
+        >
+          <p class="eyebrow">Осталось в текущем этапе</p>
+
+          <div
+                  id="timer"
+                  class="timer-display"
+                  role="timer"
+                  aria-label="Оставшееся время"
+          >
+            00:00
+          </div>
+
+          <p
+                  id="currentMove"
+                  class="h3 my-3"
+                  aria-live="polite"
+          ></p>
+
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <button
+                    id="timerToggle"
+                    class="btn btn-brutal btn-sage"
+                    type="button"
+            >
+              Начать
+            </button>
+
+            <button
+                    id="nextMove"
+                    class="btn btn-brutal btn-lilac"
+                    type="button"
+            >
+              Следующий этап
+            </button>
+          </div>
+
+          <button
+                  id="saveResult"
+                  class="btn btn-brutal btn-clay mt-4"
+                  type="button"
+                  hidden
+          >
+            Засчитать занятие в план
+          </button>
+
+          <p
+                  id="resultStatus"
+                  class="status"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  tabindex="-1"
+          ></p>
+        </section>
+
+        <section class="brutal-card p-4">
+          <h2 class="h3">Этапы занятия</h2>
+          <ol
+                  id="sessionSteps"
+                  class="instruction-list mb-0"
+          ></ol>
+        </section>
+
+        <p class="small mt-3">
+          Чтобы засчитать результат, открывай комнату кнопкой
+          «Начать» из личного плана.
+          Таймер не управляет видеозаписью.
+        </p>
+      </div>
+
+      <aside class="col-12 col-lg-4">
+        <section class="brutal-card p-4">
+          <h2 class="h3">Пример группы</h2>
+
+          <ul
+                  id="participants"
+                  class="participant-list"
+          ></ul>
+
+          <a
+                  id="sessionDetails"
+                  class="btn btn-brutal btn-lilac w-100 mt-4"
+                  href="training.html"
+          >
+            Описание и видео
+          </a>
+
+          <a
+                  class="btn btn-brutal btn-clay w-100 mt-3"
+                  href="profile.html"
+          >
+            Мой план
+          </a>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
