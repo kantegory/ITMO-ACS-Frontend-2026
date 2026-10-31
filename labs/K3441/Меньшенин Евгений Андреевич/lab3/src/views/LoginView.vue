@@ -8,7 +8,10 @@ const emit = defineEmits(["notify"]),
   { login } = useAuth();
 async function submit(form) {
   try {
-    await login({ email: form.email, password: form.password });
+    await login(
+      { email: form.email, password: form.password },
+      form.remember,
+    );
     emit("notify", "Вы успешно вошли");
     router.push(route.query.redirect || "/profile");
   } catch (e) {
@@ -24,8 +27,8 @@ async function submit(form) {
 <template>
   <section class="auth-page">
     <div class="container auth-layout">
-      <AuthForm mode="login" @submit="submit" />
       <div class="auth-art" aria-hidden="true"></div>
+      <AuthForm mode="login" @submit="submit" @notify="$emit('notify', $event)" />
     </div>
   </section>
 </template>

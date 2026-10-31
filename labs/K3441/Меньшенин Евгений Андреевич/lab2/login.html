@@ -41,7 +41,8 @@
               <span class="eyebrow">С возвращением</span>
               <h1 class="section-title mt-2 mb-3">Войдите на кухню</h1>
               <p class="text-muted mb-4">
-                Тестовый аккаунт: maria@example.com / recipe123
+                Продолжите собирать любимые рецепты и следить за новыми
+                публикациями авторов.
               </p>
               <form class="needs-validation" novalidate data-login-form>
                 <div class="mb-3">
@@ -51,28 +52,51 @@
                     id="email"
                     name="email"
                     type="email"
-                    value="maria@example.com"
+                    placeholder="name@example.com"
                     required
                   />
                   <div class="invalid-feedback">Введите корректный адрес.</div>
                 </div>
-                <div class="mb-4">
-                  <label class="form-label" for="password">Пароль</label
-                  ><input
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Пароль</label>
+                    <a href="#" class="small" data-coming-soon>
+                      Забыли пароль?
+                    </a>
+                  </div>
+                  <input
                     class="form-control"
                     id="password"
                     name="password"
                     type="password"
-                    value="recipe123"
                     minlength="6"
                     required
                   />
                   <div class="invalid-feedback">Не менее 6 символов.</div>
                 </div>
+                <div class="form-check mb-4">
+                  <input
+                    class="form-check-input"
+                    id="remember"
+                    name="remember"
+                    type="checkbox"
+                  />
+                  <label class="form-check-label" for="remember">
+                    Запомнить меня
+                  </label>
+                </div>
                 <button class="btn btn-primary w-100" type="submit">
                   Войти
                 </button>
               </form>
+              <div class="text-center text-muted my-4">или</div>
+              <button
+                class="btn btn-outline-dark w-100"
+                type="button"
+                data-coming-soon
+              >
+                <i class="bi bi-google me-2"></i>Продолжить с Google
+              </button>
               <p class="text-center mt-4 mb-0">
                 Впервые здесь?
                 <a href="register.html" class="fw-bold">Зарегистрироваться</a>

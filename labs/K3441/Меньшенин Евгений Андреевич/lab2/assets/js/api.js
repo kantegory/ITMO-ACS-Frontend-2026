@@ -1,18 +1,33 @@
 const API_URL = 'http://localhost:3000';
+const TOKEN_KEY = 'lozhka_token';
+const USER_KEY = 'lozhka_user';
 
 const session = {
-  get token() { return localStorage.getItem('lozhka_token'); },
+  get token() {
+    return localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY);
+  },
   get user() {
-    try { return JSON.parse(localStorage.getItem('lozhka_user')); }
+    try {
+      const value = localStorage.getItem(USER_KEY) || sessionStorage.getItem(USER_KEY);
+      return value ? JSON.parse(value) : null;
+    }
     catch { return null; }
   },
-  save(data) {
-    localStorage.setItem('lozhka_token', data.accessToken);
-    localStorage.setItem('lozhka_user', JSON.stringify(data.user));
+  save(data, persistent = true) {
+    this.clear();
+    const storage = persistent ? localStorage : sessionStorage;
+    storage.setItem(TOKEN_KEY, data.accessToken);
+    storage.setItem(USER_KEY, JSON.stringify(data.user));
+  },
+  updateUser(user) {
+    const storage = localStorage.getItem(TOKEN_KEY) ? localStorage : sessionStorage;
+    storage.setItem(USER_KEY, JSON.stringify(user));
   },
   clear() {
-    localStorage.removeItem('lozhka_token');
-    localStorage.removeItem('lozhka_user');
+    [localStorage, sessionStorage].forEach((storage) => {
+      storage.removeItem(TOKEN_KEY);
+      storage.removeItem(USER_KEY);
+    });
   }
 };
 
@@ -25,11 +40,11 @@ async function api(path, options = {}) {
   try {
     response = await fetch(`${API_URL}${path}`, { ...options, headers });
   } catch {
-    throw new Error('Не удалось связаться с API. Запустите npm start и попробуйте снова.');
+    throw new Error('Не удалось связаться с сервисом. Попробуйте снова позже.');
   }
 
   if (!response.ok) {
-    let message = `Ошибка API: ${response.status}`;
+    let message = `Ошибка сервера: ${response.status}`;
     try { message = (await response.json()).message || message; } catch { /* empty body */ }
     throw new Error(message);
   }

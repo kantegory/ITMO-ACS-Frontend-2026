@@ -5,7 +5,9 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("lozhka_token");
+  const token =
+    localStorage.getItem("lozhka_token") ||
+    sessionStorage.getItem("lozhka_token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
@@ -15,10 +17,10 @@ api.interceptors.response.use(
   (error) => {
     if (!error.response)
       error.userMessage =
-        "Не удалось связаться с API. Убедитесь, что сервер запущен.";
+        "Не удалось связаться с сервисом. Попробуйте снова позже.";
     else
       error.userMessage =
-        error.response.data?.message || `Ошибка API: ${error.response.status}`;
+        error.response.data?.message || `Ошибка сервера: ${error.response.status}`;
     return Promise.reject(error);
   },
 );

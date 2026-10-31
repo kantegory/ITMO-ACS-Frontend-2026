@@ -25,10 +25,23 @@ function signOut() {
     <AppHeader :authenticated="isAuthenticated" @logout="signOut" />
     <main><RouterView @notify="notify" /></main>
     <footer>
-      <div class="container footer-row">
-        <strong class="brand">Ложка</strong
-        ><span>Рецепты, которые хочется повторить</span><span>ЛР3 · Vue 3</span>
+      <div class="container footer-grid">
+        <div>
+          <strong class="brand footer-brand">Ложка</strong>
+          <p>Вкусные истории начинаются на вашей кухне.</p>
+        </div>
+        <div>
+          <strong>Разделы</strong>
+          <RouterLink to="/recipes">Рецепты</RouterLink>
+          <RouterLink to="/community">Авторы</RouterLink>
+        </div>
+        <div>
+          <strong>Аккаунт</strong>
+          <RouterLink to="/login">Войти</RouterLink>
+          <RouterLink to="/register">Регистрация</RouterLink>
+        </div>
       </div>
+      <div class="container footer-bottom">© 2026 Ложка</div>
     </footer>
     <Transition name="toast"
       ><div v-if="toast" class="toast" role="status">

@@ -50,7 +50,7 @@
         <span class="eyebrow">Люди и истории</span>
         <h1 class="display-title mt-3">Готовить вместе вкуснее</h1>
         <p class="lead mx-auto mt-3" style="max-width: 700px">
-          Подписки сохраняются в JSON Server и доступны после входа.
+          Подписывайтесь на любимых авторов и находите новые идеи каждый день.
         </p>
       </div>
     </header>
@@ -58,7 +58,15 @@
       <div class="container">
         <div class="row g-4">
           <div class="col-lg-8">
-            <h2 class="section-title mb-4">Лента сообщества</h2>
+            <div class="d-flex justify-content-between align-items-end mb-4">
+              <div>
+                <span class="eyebrow">Свежие публикации</span>
+                <h2 class="section-title mt-2">Лента сообщества</h2>
+              </div>
+              <button class="btn btn-primary" data-new-publication>
+                <i class="bi bi-plus-lg me-1"></i>Публикация
+              </button>
+            </div>
             <article class="paper-card p-4 mb-4">
               <div class="d-flex align-items-center gap-3">
                 <div class="author-avatar">АК</div>
@@ -75,10 +83,22 @@
                 </button>
               </div>
               <p class="my-3">
-                Поймала последние летние томаты и собрала яркий обед.
+                Поймала последние летние томаты и собрала яркий обед. Секрет —
+                щепотка копчёной паприки в заправке.
               </p>
               <div class="recipe-visual visual-1 rounded-4">
                 <span class="food-emoji">🥗</span>
+              </div>
+              <div class="d-flex flex-wrap gap-4 mt-3">
+                <button class="btn p-0 border-0" data-post-like>
+                  <i class="bi bi-heart me-1"></i><span>248</span>
+                </button>
+                <button class="btn p-0 border-0" data-post-comment>
+                  <i class="bi bi-chat me-1"></i>31
+                </button>
+                <button class="btn p-0 border-0" data-post-save>
+                  <i class="bi bi-bookmark me-1"></i><span>Сохранить</span>
+                </button>
               </div>
             </article>
             <article class="paper-card p-4">
@@ -98,30 +118,140 @@
               </div>
               <p class="my-3">
                 Проверил три способа сделать хрустящую корочку у домашнего
-                хлеба.
+                хлеба. Победил пар в первые 15 минут выпечки.
               </p>
               <div class="recipe-visual visual-4 rounded-4">
                 <span class="food-emoji">🥖</span>
               </div>
+              <div class="d-flex flex-wrap gap-4 mt-3">
+                <button class="btn p-0 border-0" data-post-like>
+                  <i class="bi bi-heart me-1"></i><span>184</span>
+                </button>
+                <button class="btn p-0 border-0" data-post-comment>
+                  <i class="bi bi-chat me-1"></i>22
+                </button>
+                <button class="btn p-0 border-0" data-post-save>
+                  <i class="bi bi-bookmark me-1"></i><span>Сохранить</span>
+                </button>
+              </div>
             </article>
           </div>
           <aside class="col-lg-4">
+            <div class="paper-card p-4 mb-4">
+              <h2 class="h4">Авторы недели</h2>
+              <div class="d-grid gap-4 mt-4">
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="author-avatar">ЕС</div>
+                  <div class="flex-grow-1">
+                    <strong>Елена Соколова</strong>
+                    <div class="small text-muted">Выпечка · 42k</div>
+                  </div>
+                  <button
+                    class="btn btn-outline-primary btn-sm author-follow-short"
+                    data-follow
+                    data-author-id="4"
+                    aria-label="Подписаться на Елену Соколову"
+                  >
+                    +
+                  </button>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="author-avatar" style="background: #d86d4b">ДР</div>
+                  <div class="flex-grow-1">
+                    <strong>Денис Романов</strong>
+                    <div class="small text-muted">Азия · 31k</div>
+                  </div>
+                  <button
+                    class="btn btn-outline-primary btn-sm author-follow-short"
+                    data-follow
+                    data-author-id="5"
+                    aria-label="Подписаться на Дениса Романова"
+                  >
+                    +
+                  </button>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="author-avatar" style="background: #70824d">ИВ</div>
+                  <div class="flex-grow-1">
+                    <strong>Ирина Волкова</strong>
+                    <div class="small text-muted">Веган · 28k</div>
+                  </div>
+                  <button
+                    class="btn btn-outline-primary btn-sm author-follow-short"
+                    data-follow
+                    data-author-id="6"
+                    aria-label="Подписаться на Ирину Волкову"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
             <div class="paper-card p-4">
-              <h2 class="h4">Что работает через API</h2>
-              <ul class="mt-3 mb-0">
-                <li>авторизация;</li>
-                <li>рецепты и комментарии;</li>
-                <li>избранное;</li>
-                <li>подписки.</li>
-              </ul>
+              <h2 class="h4">Популярные темы</h2>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <a class="tag-pill text-decoration-none" href="search.html?q=сезонное">
+                  #сезонное
+                </a>
+                <a class="tag-pill text-decoration-none" href="search.html?time=30">
+                  #ужинза30минут
+                </a>
+                <a class="tag-pill text-decoration-none" href="search.html?q=выпечка">
+                  #выпечка
+                </a>
+                <a class="tag-pill text-decoration-none" href="search.html?type=breakfast">
+                  #завтраки
+                </a>
+                <a class="tag-pill text-decoration-none" href="search.html?q=без сахара">
+                  #безсахара
+                </a>
+              </div>
             </div>
           </aside>
         </div>
       </div>
     </main>
+    <div class="modal fade" id="publicationModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form data-publication-form>
+            <div class="modal-header">
+              <h2 class="modal-title h4">Новая публикация</h2>
+              <button
+                class="btn-close"
+                data-bs-dismiss="modal"
+                type="button"
+                aria-label="Закрыть"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <label class="form-label" for="publicationText">
+                Поделитесь кулинарной находкой
+              </label>
+              <textarea
+                class="form-control"
+                id="publicationText"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+                type="button"
+              >
+                Отмена
+              </button>
+              <button class="btn btn-primary" type="submit">Опубликовать</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <footer class="py-4">
       <div class="container d-flex justify-content-between">
-        <span>© 2026 Ложка · ЛР2</span><a href="index.html">На главную</a>
+        <span>© 2026 Ложка</span><a href="index.html">На главную</a>
       </div>
     </footer>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">

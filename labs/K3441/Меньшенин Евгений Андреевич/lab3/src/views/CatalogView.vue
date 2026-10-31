@@ -12,9 +12,9 @@ const route = useRoute();
 const recipes = ref([]);
 const filters = reactive({
   q: route.query.q || "",
-  type: "",
+  type: route.query.type || "",
   difficulty: "",
-  time: "",
+  time: route.query.time || "",
 });
 const { loading, error, run } = useApiState();
 const { load: loadFavorites, toggle, isFavorite } = useFavorites();
@@ -60,7 +60,7 @@ onMounted(load);
 <template>
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Каталог</span>
+      <span class="eyebrow">Каталог рецептов</span>
       <h1 class="section-title">Найдите свой новый любимый рецепт</h1>
       <p class="lead">
         Ищите по названию и ингредиентам, выбирайте тип блюда, сложность и

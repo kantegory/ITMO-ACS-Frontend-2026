@@ -162,15 +162,47 @@ a { color: inherit; }
   font: 700 2.4rem "Lora", serif;
 }
 .profile-content { padding-top: 3rem; }
-.stat { padding: 1rem; text-align: center; background: #f7f2e8; border-radius: 1rem; }
-.stat strong { display: block; font: 700 1.45rem "Lora", serif; }
+.profile-tabs { gap: .35rem; }
+.profile-tabs .nav-link { border-radius: 999px; padding: .65rem 1rem; }
+.profile-tabs .nav-link.active,
+.profile-tabs .show > .nav-link {
+  color: white;
+  background: var(--terracotta);
+}
+.stat {
+  min-height: 92px;
+  display: grid;
+  place-content: center;
+  padding: .8rem .35rem;
+  text-align: center;
+  background: #f7f2e8;
+  border-radius: 1rem;
+}
+.stat strong { display: block; font: 700 1.35rem "Lora", serif; }
+.stat small { color: var(--muted); font-size: .72rem; }
 
 .recipe-photo { min-height: 520px; background: url("../img/hero-food.webp") center/cover; border-radius: 1.6rem; }
 .ingredient-list li, .step-list li { padding: .75rem 0; border-bottom: 1px solid var(--line); }
-.step-number { flex: 0 0 auto; width: 2.3rem; height: 2.3rem; display: grid; place-items: center; color: white; background: var(--terracotta); border-radius: 50%; font-weight: 900; }
+.step-list { counter-reset: recipe-step; }
+.step-list li { counter-increment: recipe-step; }
+.step-list li::before {
+  content: counter(recipe-step);
+  flex: 0 0 auto;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--terracotta);
+  border-radius: 50%;
+  font-weight: 900;
+}
 
 .author-avatar { width: 54px; height: 54px; display: grid; place-items: center; color: white; background: var(--sage); border-radius: 50%; font-weight: 900; }
+.author-follow-short { width: 2.5rem; min-width: 2.5rem; padding-inline: 0; }
 .community-page .paper-card { height: auto; }
+.community-page [data-post-like].active,
+.community-page [data-post-save].active { color: var(--terracotta); }
 .empty-state { display: none; padding: 4rem 1rem; text-align: center; }
 footer { color: #d9e1dc; background: var(--sage-dark); }
 footer a { color: #fff; text-decoration: none; }
@@ -201,6 +233,7 @@ footer a { color: #fff; text-decoration: none; }
   .auth-art { min-height: 360px; }
   .profile-layout { margin-top: -36px; }
   .profile-content { padding-top: 0; }
+  .profile-tabs .nav-link { padding: .55rem .8rem; }
 }
 
 @media (max-width: 575.98px) {

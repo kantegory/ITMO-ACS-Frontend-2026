@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Ложка — рецепты из внешнего API и кулинарное сообщество"
+      content="Ложка — проверенные рецепты и кулинарное сообщество"
     />
     <title>Ложка — готовьте с удовольствием</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,8 +71,8 @@
               >
             </h1>
             <p class="lead mb-4">
-              Проверенные рецепты загружаются из API, а любимые идеи сохраняются
-              в вашей личной коллекции.
+              Проверенные рецепты на каждый день, а любимые идеи всегда под
+              рукой в вашей личной коллекции.
             </p>
             <form class="search-shell d-flex gap-2" action="search.html">
               <label class="visually-hidden" for="hero-search"
@@ -108,28 +108,72 @@
       <section class="section-pad soft-section">
         <div class="container">
           <div class="row align-items-center g-5">
-            <div class="col-lg-7">
-              <span class="eyebrow">Лабораторная работа №2</span>
-              <h2 class="section-title mt-2">Интерфейс связан с моковым API</h2>
+            <div class="col-lg-6">
+              <span class="eyebrow">Ваши люди уже здесь</span>
+              <h2 class="section-title mt-2">Не просто сборник рецептов</h2>
               <p class="lead">
-                Рецепты, комментарии, избранное и аккаунты хранятся в JSON
-                Server. Все запросы выполняются через Fetch API.
+                Публикуйте открытия, сохраняйте идеи, общайтесь с авторами и
+                собирайте собственную кулинарную книгу.
               </p>
+              <a class="btn btn-primary" href="community.html">
+                Войти в сообщество
+              </a>
             </div>
-            <div class="col-lg-5">
-              <div class="paper-card p-4">
-                <strong>Тестовый аккаунт</strong>
-                <div class="mt-2">maria@example.com</div>
-                <div>recipe123</div>
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div class="col-6">
+                  <div class="paper-card p-4">
+                    <div class="h2 mb-1">48 тыс.</div>
+                    <div class="text-muted">домашних кулинаров</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="paper-card p-4">
+                    <div class="h2 mb-1">1,2 млн</div>
+                    <div class="text-muted">сохранений</div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="paper-card p-4 d-flex gap-3 align-items-center">
+                    <div class="author-avatar">АК</div>
+                    <div>
+                      <strong>«Здесь я наконец перестала бояться теста»</strong>
+                      <div class="text-muted small">
+                        Анна Котова · автор недели
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <footer class="py-4">
-      <div class="container d-flex justify-content-between">
-        <span>© 2026 Ложка · ЛР2</span><a href="search.html">Каталог</a>
+    <footer class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="brand h4 text-white">Ложка</div>
+            <p class="mb-0">Вкусные истории начинаются на вашей кухне.</p>
+          </div>
+          <div class="col-6 col-md-3">
+            <strong class="text-white">Разделы</strong>
+            <div class="d-grid gap-2 mt-3">
+              <a href="search.html">Рецепты</a>
+              <a href="community.html">Авторы</a>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <strong class="text-white">Аккаунт</strong>
+            <div class="d-grid gap-2 mt-3">
+              <a href="login.html">Войти</a>
+              <a href="register.html">Регистрация</a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <small>© 2026 Ложка</small>
       </div>
     </footer>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">

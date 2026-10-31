@@ -37,11 +37,13 @@ onMounted(load);
 <template>
   <section class="hero">
     <div class="container hero-copy">
-      <span class="eyebrow">Готовьте. Делитесь. Вдохновляйтесь.</span>
-      <h1 class="display-title">Рецепты с душой</h1>
+      <span class="eyebrow">✦ Вкус начинается здесь</span>
+      <h1 class="display-title">
+        Готовьте.<br />Делитесь.<br /><em>Вдохновляйте.</em>
+      </h1>
       <p class="lead">
-        Домашние блюда, понятные шаги и сообщество людей, которые любят
-        готовить.
+        Проверенные рецепты на каждый день, а любимые идеи всегда под рукой в
+        вашей личной коллекции.
       </p>
       <form
         class="search-shell"
@@ -53,7 +55,7 @@ onMounted(load);
           name="q"
           aria-label="Поиск рецептов"
           placeholder="Что приготовить сегодня?"
-        /><button class="button primary">Найти рецепт</button>
+        /><button class="button dark">Найти</button>
       </form>
     </div>
   </section>
@@ -62,9 +64,9 @@ onMounted(load);
       <div class="section-heading">
         <div>
           <span class="eyebrow">Выбор редакции</span>
-          <h2 class="section-title">Популярные рецепты</h2>
+          <h2 class="section-title">Попробуйте сегодня</h2>
         </div>
-        <RouterLink class="text-link" to="/recipes">Смотреть все →</RouterLink>
+        <RouterLink class="button outline" to="/recipes">Все рецепты →</RouterLink>
       </div>
       <ApiState v-if="loading" message="Загружаем рецепты…" /><ApiState
         v-else-if="error"
@@ -77,6 +79,36 @@ onMounted(load);
         :is-favorite="isFavorite"
         @toggle-favorite="toggleFavorite"
       />
+    </div>
+  </section>
+  <section class="section-pad soft-section">
+    <div class="container community-promo">
+      <div>
+        <span class="eyebrow">Ваши люди уже здесь</span>
+        <h2 class="section-title">Не просто сборник рецептов</h2>
+        <p class="lead">
+          Публикуйте открытия, сохраняйте идеи, общайтесь с авторами и
+          собирайте собственную кулинарную книгу.
+        </p>
+        <RouterLink class="button primary" to="/community">
+          Войти в сообщество
+        </RouterLink>
+      </div>
+      <div class="promo-stats">
+        <div class="paper-card promo-stat">
+          <strong>48 тыс.</strong><span class="muted">домашних кулинаров</span>
+        </div>
+        <div class="paper-card promo-stat">
+          <strong>1,2 млн</strong><span class="muted">сохранений</span>
+        </div>
+        <div class="paper-card promo-quote">
+          <div class="avatar">АК</div>
+          <div>
+            <strong>«Здесь я наконец перестала бояться теста»</strong>
+            <small class="muted">Анна Котова · автор недели</small>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>

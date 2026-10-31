@@ -25,16 +25,16 @@ const open = ref(false);
         <RouterLink to="/community" @click="open = false"
           >Сообщество</RouterLink
         >
-        <RouterLink v-if="authenticated" to="/profile" @click="open = false"
-          >Профиль</RouterLink
+        <RouterLink to="/profile" @click="open = false">Моя кухня</RouterLink>
+        <RouterLink v-if="!authenticated" to="/login" @click="open = false"
+          >Войти</RouterLink
         >
-        <RouterLink v-else to="/login" @click="open = false">Войти</RouterLink>
         <RouterLink
           v-if="!authenticated"
           class="button primary small"
           to="/register"
           @click="open = false"
-          >Регистрация</RouterLink
+          >Начать</RouterLink
         >
         <button
           v-else

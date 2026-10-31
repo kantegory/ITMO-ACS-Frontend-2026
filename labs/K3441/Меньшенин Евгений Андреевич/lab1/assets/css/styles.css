@@ -174,7 +174,20 @@ a { color: inherit; }
 
 .recipe-photo { min-height: 520px; background: url("../img/hero-food.webp") center/cover; border-radius: 1.6rem; }
 .ingredient-list li, .step-list li { padding: .75rem 0; border-bottom: 1px solid var(--line); }
-.step-number { flex: 0 0 auto; width: 2.3rem; height: 2.3rem; display: grid; place-items: center; color: white; background: var(--terracotta); border-radius: 50%; font-weight: 900; }
+.step-list { counter-reset: recipe-step; }
+.step-list li { counter-increment: recipe-step; }
+.step-list li::before {
+  content: counter(recipe-step);
+  flex: 0 0 auto;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--terracotta);
+  border-radius: 50%;
+  font-weight: 900;
+}
 
 .author-avatar { width: 54px; height: 54px; display: grid; place-items: center; color: white; background: var(--sage); border-radius: 50%; font-weight: 900; }
 .community-page .paper-card { height: auto; }

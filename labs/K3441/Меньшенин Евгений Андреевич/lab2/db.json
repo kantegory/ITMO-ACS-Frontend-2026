@@ -8,7 +8,7 @@
       "password": "$2a$10$UxO1VAtQV7n0UBj1fMLsv.iT0X4WQwzEoEMzUMoG9uzFh20I7uqcy",
       "username": "maria.cooks",
       "city": "Санкт-Петербург",
-      "bio": "Готовлю простую сезонную еду и верю, что хороший ужин способен исправить любой день."
+      "bio": "Готовлю простую сезонную еду и верю, что хороший ужин способен исправить любой123"
     }
   ],
   "recipes": [
@@ -245,14 +245,19 @@
   ],
   "favorites": [
     {
-      "id": "1",
-      "userId": "1",
-      "recipeId": "2"
-    },
-    {
       "id": "2",
       "userId": "1",
       "recipeId": "3"
+    },
+    {
+      "userId": "1",
+      "recipeId": "2",
+      "id": "3fxHKjp"
+    },
+    {
+      "userId": "1",
+      "recipeId": "1",
+      "id": "-Jci1H2"
     }
   ],
   "follows": [

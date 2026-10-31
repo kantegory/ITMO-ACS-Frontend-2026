@@ -8,7 +8,10 @@ const emit = defineEmits(["notify"]),
 async function submit(form) {
   try {
     await register({
-      ...form,
+      name: form.name,
+      surname: form.surname,
+      email: form.email,
+      password: form.password,
       username: form.email.split("@")[0],
       city: "",
       bio: "",

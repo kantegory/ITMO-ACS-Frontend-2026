@@ -655,3 +655,471 @@ footer {
     min-height: 360px;
   }
 }
+
+/* Синхронизация интерфейса с ЛР2 */
+.display-title em {
+  color: var(--terracotta);
+  font-style: normal;
+}
+.soft-section {
+  background: #f2ebdf;
+}
+.community-promo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.promo-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.promo-stat,
+.promo-quote {
+  padding: 1.5rem;
+}
+.promo-stat strong {
+  display: block;
+  font: 700 2rem Lora, Georgia, serif;
+}
+.promo-quote {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.promo-quote small,
+.post-author small,
+.author-copy small {
+  display: block;
+  margin-top: 0.2rem;
+}
+.button.social {
+  color: var(--ink);
+  background: transparent;
+  border-color: var(--ink);
+}
+.auth-copy {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.link-button {
+  padding: 0;
+  color: var(--terracotta-dark);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+}
+.auth-card .check-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 400;
+}
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+.check-row input {
+  width: auto;
+}
+.auth-divider {
+  margin: 1.25rem 0;
+  color: var(--muted);
+  text-align: center;
+}
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  color: var(--muted);
+}
+.breadcrumbs a {
+  color: var(--ink);
+}
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.recipe-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.author-copy {
+  flex: 1;
+  min-width: 0;
+}
+.steps {
+  counter-reset: recipe-step;
+}
+.steps li {
+  counter-increment: recipe-step;
+  align-items: flex-start;
+}
+.steps li::before {
+  content: counter(recipe-step);
+  flex: 0 0 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--terracotta);
+  border-radius: 50%;
+  font-weight: 900;
+}
+.comment strong + small {
+  margin-left: 0.5rem;
+}
+.profile-cover {
+  height: clamp(180px, 22vw, 260px);
+  position: relative;
+  overflow: hidden;
+}
+.profile-cover::before,
+.profile-cover::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+.profile-cover::before {
+  width: 280px;
+  height: 280px;
+  top: -155px;
+  right: 12%;
+}
+.profile-cover::after {
+  width: 190px;
+  height: 190px;
+  bottom: -125px;
+  left: 9%;
+}
+.profile-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: -48px;
+  padding-bottom: 5rem;
+}
+.profile-card {
+  position: relative;
+  padding: 5rem 1.5rem 1.5rem;
+}
+.profile-card .avatar.large {
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  margin: 0;
+  transform: translateY(-50%);
+}
+.profile-card h1 {
+  margin: 0.7rem 0 0.3rem;
+  font-size: 2rem;
+}
+.profile-meta {
+  margin-top: 0;
+}
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.profile-stats div {
+  min-width: 0;
+  min-height: 92px;
+  display: grid;
+  place-content: center;
+  padding: 0.7rem 0.25rem;
+  text-align: center;
+  background: #f7f2e8;
+  border-radius: 1rem;
+}
+.profile-stats strong,
+.profile-stats span {
+  display: block;
+}
+.profile-stats strong {
+  font: 700 1.35rem Lora, Georgia, serif;
+}
+.profile-stats span {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.profile-content {
+  padding-top: 3rem;
+}
+.profile-content .profile-heading {
+  margin-top: 0;
+}
+.profile-content .recipe-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+.profile-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+.profile-tabs button {
+  padding: 0.65rem 1rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font: 800 0.92rem Manrope, sans-serif;
+}
+.profile-tabs button.active {
+  color: #fff;
+  background: var(--terracotta);
+}
+.empty-panel {
+  padding: 3rem;
+  text-align: center;
+}
+.hero-centered {
+  max-width: 760px;
+  text-align: center;
+}
+.community-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+.post-card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.post-author,
+.weekly-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.post-card > p {
+  line-height: 1.65;
+}
+.post-visual {
+  min-height: 320px;
+  border-radius: 1rem;
+}
+.post-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.post-actions button {
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: 700 0.9rem Manrope, sans-serif;
+}
+.post-actions button.active {
+  color: var(--terracotta);
+}
+.aside-card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.aside-card h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+.weekly-authors {
+  display: grid;
+  gap: 1.25rem;
+}
+.short-follow {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--terracotta);
+  background: transparent;
+  border: 1px solid var(--terracotta);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.short-follow.active {
+  color: #fff;
+  background: var(--terracotta);
+}
+.topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.topic-list a {
+  padding: 0.35rem 0.65rem;
+  color: var(--sage-dark);
+  background: #e8eee8;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(38, 53, 47, 0.55);
+  overflow: auto;
+}
+.modal-card {
+  width: min(100%, 560px);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding: 1.5rem;
+  background: var(--paper);
+  border-radius: 1.35rem;
+  box-shadow: var(--shadow);
+}
+.modal-wide {
+  width: min(100%, 820px);
+}
+.modal-card > label,
+.modal-card .form-grid label {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+.modal-header,
+.modal-actions,
+.copy-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.modal-header {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.modal-actions {
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+.close-button {
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.copy-row input {
+  min-width: 0;
+}
+footer {
+  padding: 3rem 0 1.5rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2rem;
+}
+.footer-grid > div:not(:first-child) {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+}
+.footer-grid a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-brand {
+  color: #fff;
+  font-size: 1.4rem;
+}
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 900px) {
+  .community-promo,
+  .profile-layout,
+  .community-layout {
+    grid-template-columns: 1fr;
+  }
+  .profile-content {
+    padding-top: 0;
+  }
+  .profile-content .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .promo-stats,
+  .profile-content .recipe-grid,
+  .form-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-layout {
+    margin-top: -28px;
+  }
+  .profile-card {
+    padding-top: 4.5rem;
+  }
+  .profile-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .profile-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .profile-tabs button {
+    white-space: nowrap;
+  }
+  .post-author {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .post-author .button {
+    margin-left: 70px;
+  }
+  .copy-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
