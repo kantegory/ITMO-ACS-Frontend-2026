@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Поиск недвижимости — RentSpace</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column">
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    <header class="rs-header">
+      <div class="rs-container">
+        <a class="rs-brand" href="search.html">
+          <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+          RentSpace
+        </a>
+        <nav class="nav rs-nav" aria-label="Основная навигация">
+          <a class="nav-link active" aria-current="page" href="search.html">Найти жильё</a>
+          <a class="nav-link" href="profile.html">Мои объекты</a>
+          <a class="nav-link" href="activity.html">Сообщения и сделки</a>
+        </nav>
+        <div class="dropdown">
+          <button class="rs-account dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Открыть меню пользователя">
+            <span class="rs-avatar" data-current-user-avatar>АС</span>
+            <span data-current-user-name>Алексей</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="profile.html">Личный кабинет</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item text-danger" href="index.html" data-logout>Выйти</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="rs-main" id="main-content" tabindex="-1">
+      <div class="rs-container">
+        <h1 class="rs-page-title">Найдите подходящее жильё</h1>
+        <p class="rs-page-subtitle">Выберите способ аренды, расположение и подходящую стоимость</p>
+        <form class="rs-card search-filters" id="searchForm">
+          <div class="row g-3 align-items-end">
+            <fieldset class="col-3 border-0 m-0">
+              <legend class="form-label">Способ аренды</legend>
+              <div class="rent-mode" role="group" aria-label="Способ аренды">
+                <button class="active" type="button" data-rent-mode="DAILY" aria-pressed="true">Посуточно</button>
+                <button type="button" data-rent-mode="MONTHLY" aria-pressed="false">Помесячно</button>
+              </div>
+            </fieldset>
+            <div class="col form-field">
+              <label class="form-label" for="location">Расположение</label>
+              <input class="form-control" id="location" name="location" autocomplete="address-level2" value="Санкт-Петербург" />
+            </div>
+            <div class="col-3">
+              <label class="form-label" for="houseType">Тип недвижимости</label>
+              <select class="form-select" id="houseType" name="houseType">
+                <option value="">Любой тип</option>
+                <option value="Квартира">Квартира</option>
+                <option value="Дом">Дом</option>
+                <option value="Комната">Комната</option>
+                <option value="Студия">Студия</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-primary px-4" type="submit"><span aria-hidden="true">⌕</span> &nbsp; Найти</button>
+            </div>
+          </div>
+          <div class="row g-3 align-items-end mt-1">
+            <div class="col-2">
+              <label class="form-label" for="priceMin">Цена от</label>
+              <input class="form-control" id="priceMin" name="priceMin" type="number" inputmode="numeric" min="0" placeholder="0 ₽" />
+            </div>
+            <div class="col-2">
+              <label class="form-label" for="priceMax">Цена до</label>
+              <input class="form-control" id="priceMax" name="priceMax" type="number" inputmode="numeric" min="0" placeholder="Любая" />
+            </div>
+            <div class="col-auto">
+              <button
+                class="btn btn-outline-primary px-4"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#extraFilters"
+                aria-expanded="false"
+                aria-controls="extraFilters"
+              >
+                <span aria-hidden="true">☷</span> &nbsp; Дополнительные фильтры
+              </button>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-link text-decoration-none" id="resetFilters" type="button">Сбросить</button>
+            </div>
+          </div>
+          <div class="collapse mt-3" id="extraFilters">
+            <div class="p-3 rounded-3 bg-light rs-muted">Дополнительные фильтры появятся поже</div>
+          </div>
+        </form>
+        <div class="results-toolbar">
+          <h2 class="fs-5 fw-semibold m-0" id="resultsCount" role="status" aria-live="polite">Загрузка объектов...</h2>
+          <div class="d-flex gap-3">
+            <select class="form-select" id="sortOrder" name="sortOrder" style="width: 240px" aria-label="Порядок отображения">
+              <option value="recommended">Сначала рекомендуемые</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+            </select>
+            <div class="view-switch" role="group" aria-label="Вид результатов">
+              <button class="btn active" type="button" aria-pressed="true">Карточки</button>
+              <button class="btn" type="button" aria-pressed="false" disabled>Карта</button>
+            </div>
+          </div>
+        </div>
+        <div class="listing-grid" id="listingGrid" aria-labelledby="resultsCount" aria-busy="true"></div>
+
+        <template id="listingCardTemplate">
+          <article class="card rs-card property-card">
+            <div class="property-cover">
+              <img class="property-image" src="" alt="" />
+              <span class="rs-badge badge-blue property-mode"></span>
+            </div>
+
+            <div class="card-body property-body">
+              <div class="property-type"></div>
+
+              <h3 class="property-title"></h3>
+
+              <div class="property-address">
+                <img src="assets/map-pin.svg" alt="" />
+                <span class="property-address-text"></span>
+              </div>
+
+              <div class="property-price"></div>
+
+              <p class="property-description"></p>
+
+              <a class="btn btn-outline-primary w-100 property-link">
+                Подробнее
+              </a>
+            </div>
+          </article>
+        </template>
+
+        <div class="rs-card empty-state mt-4" id="emptyResults" hidden>
+          <h2 class="fs-4">По заданным параметрам ничего не найдено</h2>
+          <p class="rs-muted">
+            Попробуйте изменить расположение, тип недвижимости или диапазон цены.
+          </p>
+          <button
+                  class="btn btn-primary"
+                  id="emptyResetFilters"
+                  type="button"
+          >
+            Сбросить фильтры
+          </button>
+        </div>
+        <nav class="d-flex justify-content-center gap-2 mt-4" aria-label="Пагинация">
+          <button class="btn btn-outline-primary" type="button" aria-label="Предыдущая страница"><span aria-hidden="true">‹</span></button>
+          <button class="btn btn-primary" type="button" aria-label="Страница 1" aria-current="page">1</button>
+          <button class="btn btn-outline-primary" type="button" aria-label="Страница 2">2</button>
+          <button class="btn btn-outline-primary" type="button" aria-label="Страница 3">3</button>
+          <button class="btn btn-outline-primary" type="button" aria-label="Страница 4">4</button>
+          <button class="btn btn-outline-primary" type="button" aria-label="Следующая страница"><span aria-hidden="true">›</span></button>
+        </nav>
+      </div>
+    </main>
+    <footer class="rs-footer">
+      <div class="rs-container rs-footer-row">
+        <div class="rs-footer-brand">
+          <a class="rs-brand" href="search.html">
+            <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+            RentSpace
+          </a>
+          <span class="rs-muted rs-small">Сервис аренды недвижимости</span>
+        </div>
+        <div class="rs-footer-links">
+          <span>О сервисе</span>
+          <span>Поддержка</span>
+          <span>2026 RentSpace</span>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/search.js"></script>
+  </body>
+</html>

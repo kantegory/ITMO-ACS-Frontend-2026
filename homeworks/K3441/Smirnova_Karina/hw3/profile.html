@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Личный кабинет — RentSpace</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column">
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    <header class="rs-header">
+      <div class="rs-container">
+        <a class="rs-brand" href="search.html">
+          <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+          RentSpace
+        </a>
+        <nav class="nav rs-nav" aria-label="Основная навигация">
+          <a class="nav-link" href="search.html">Найти жильё</a>
+          <a class="nav-link active" aria-current="page" href="profile.html">Мои объекты</a>
+          <a class="nav-link" href="activity.html">Сообщения и сделки</a>
+        </nav>
+        <div class="dropdown">
+          <button class="rs-account dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Открыть меню пользователя">
+            <span class="rs-avatar" data-current-user-avatar>АС</span>
+            <span data-current-user-name>Алексей</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="profile.html">Личный кабинет</a>
+            </li>
+            <li>
+              <a class="dropdown-item text-danger" href="index.html" data-logout>Выйти</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="rs-main" id="main-content" tabindex="-1">
+      <div class="rs-container">
+        <h1 class="rs-page-title">Личный кабинет</h1>
+        <p class="rs-page-subtitle">Профиль, аренда и ваши объявления — в одном месте</p>
+        <section class="rs-card profile-card" aria-labelledby="profileName">
+          <div class="profile-row">
+            <div class="rs-avatar" data-current-user-avatar>АС</div>
+            <div class="profile-info">
+              <h2 id="profileName">Алексей Соколов</h2>
+              <div class="rs-muted mb-1" id="profileContacts">alexey@example.ru &nbsp; · &nbsp; +7 (921) 123-45-67</div>
+              <div class="rs-muted rs-small mb-2">На RentSpace с 1 сентября 2026</div>
+              <span class="rs-badge badge-green">Почта подтверждена</span>
+            </div>
+            <button class="btn btn-outline-primary px-4" type="button" data-bs-toggle="modal" data-bs-target="#profileModal">
+              <img src="assets/pencil.svg" width="18" alt="" />
+              &nbsp; Редактировать профиль
+            </button>
+          </div>
+        </section>
+        <section class="stats-grid" aria-labelledby="statsTitle">
+          <h2 class="visually-hidden" id="statsTitle">Статистика профиля</h2>
+          <div class="rs-card stat-card">
+            <div class="stat-value">
+              <span id="ownedListingsCount">0</span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 11.5 12 4l9 7.5"></path>
+                  <path d="M5.5 10v9.5h13V10"></path>
+                  <path d="M9.5 19.5v-6h5v6"></path>
+                </svg>
+              </span>
+            </div>
+            <div class="rs-muted">Мои объекты</div>
+          </div>
+          <div class="rs-card stat-card">
+            <div class="stat-value">
+              <span id="activeRentalsCount">0</span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="8" cy="12" r="4"></circle>
+                  <path d="M12 12h9M18 12v3M15 12v2"></path>
+                </svg>
+              </span>
+            </div>
+            <div class="rs-muted">Активные аренды</div>
+          </div>
+          <div class="rs-card stat-card">
+            <div class="stat-value">
+              <span id="pendingBookingsCount">0</span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="8.5"></circle>
+                  <path d="M12 7.5V12l3 2"></path>
+                </svg>
+              </span>
+            </div>
+            <div class="rs-muted">Ожидают решения</div>
+          </div>
+        </section>
+        <ul class="nav rs-tabs" role="tablist" aria-label="Разделы личного кабинета">
+          <li class="nav-item">
+            <button class="nav-link active" id="rentingTab" data-bs-toggle="tab" data-bs-target="#renting" type="button" role="tab" aria-controls="renting" aria-selected="true">
+              Я арендую
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="ownedTab" data-bs-toggle="tab" data-bs-target="#owned" type="button" role="tab" aria-controls="owned" aria-selected="false" tabindex="-1">Мои объявления</button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <section class="tab-pane fade show active" id="renting" role="tabpanel" aria-labelledby="rentingTab" tabindex="0">
+            <p class="rs-muted mt-3" id="rentingSummary" role="status" aria-live="polite">Загрузка аренд...</p>
+            <div class="rental-list" id="rentalList" aria-busy="true">
+              <article class="rs-card rental-card">
+                <img src="assets/flat-centre.png" alt="Современная квартира в центре" />
+                <div>
+                  <span class="rs-badge badge-orange">Ожидает подтверждения</span>
+                  <h3>Современная квартира в центре</h3>
+                  <div class="rs-muted rs-small">Санкт-Петербург, ул. Рубинштейна, 15</div>
+                  <div class="mt-2">22–25 октября 2026 · 3 ночи</div>
+                  <strong class="d-block fs-5 mt-1">13 500 ₽</strong>
+                </div>
+                <div class="rental-actions">
+                  <a class="btn btn-outline-primary" href="listing.html?id=1" aria-label="Подробнее о современной квартире в центре">Подробнее</a>
+                  <a class="btn btn-link text-decoration-none" href="activity.html">
+                    <img src="assets/message.svg" width="18" alt="" />
+                    &nbsp; Написать владельцу
+                  </a>
+                </div>
+              </article>
+              <article class="rs-card rental-card">
+                <img src="assets/flat-garden.png" alt="Квартира у Таврического сада" />
+                <div>
+                  <span class="rs-badge badge-green">Подтверждено</span>
+                  <h3>Квартира у Таврического сада</h3>
+                  <div class="rs-muted rs-small">Санкт-Петербург, Кирочная ул., 38</div>
+                  <div class="mt-2">28–30 октября 2026 · 2 ночи</div>
+                  <strong class="d-block fs-5 mt-1">12 000 ₽</strong>
+                </div>
+                <div class="rental-actions">
+                  <a class="btn btn-outline-primary" href="listing.html?id=6" aria-label="Подробнее о квартире у Таврического сада">Подробнее</a>
+                  <a class="btn btn-link text-decoration-none" href="activity.html">
+                    <img src="assets/message.svg" width="18" alt="" />
+                    &nbsp; Написать владельцу
+                  </a>
+                </div>
+              </article>
+              <article class="rs-card rental-card">
+                <img src="assets/room.png" alt="Комната на Васильевском" />
+                <div>
+                  <span class="rs-badge badge-red">Отменено</span>
+                  <h3>Комната на Васильевском</h3>
+                  <div class="rs-muted rs-small">Санкт-Петербург, 7-я линия В.О., 22</div>
+                  <div class="mt-2">10–12 октября 2026 · 2 ночи</div>
+                  <strong class="d-block fs-5 mt-1">4 400 ₽</strong>
+                </div>
+                <div class="rental-actions">
+                  <a class="btn btn-outline-primary" href="listing.html?id=5" aria-label="Подробнее о комнате на Васильевском">Подробнее</a>
+                  <a class="btn btn-link text-decoration-none" href="activity.html">
+                    <img src="assets/message.svg" width="18" alt="" />
+                    &nbsp; Написать владельцу
+                  </a>
+                </div>
+              </article>
+              <article class="rs-card rental-card">
+                <img src="assets/flat-centre.png" alt="Современная квартира в центре" />
+                <div>
+                  <span class="rs-badge badge-gray">Завершено</span>
+                  <h3>Современная квартира в центре</h3>
+                  <div class="rs-muted rs-small">Санкт-Петербург, ул. Рубинштейна, 15</div>
+                  <div class="mt-2">12–15 сентября 2026 · 3 ночи</div>
+                  <strong class="d-block fs-5 mt-1">13 500 ₽</strong>
+                </div>
+                <div class="rental-actions">
+                  <a class="btn btn-outline-primary" href="listing.html?id=1" aria-label="Подробнее о современной квартире в центре">Подробнее</a>
+                  <a class="btn btn-link text-decoration-none" href="activity.html">
+                    <img src="assets/message.svg" width="18" alt="" />
+                    &nbsp; Написать владельцу
+                  </a>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="tab-pane fade" id="owned" role="tabpanel" aria-labelledby="ownedTab" tabindex="0">
+            <div class="d-flex justify-content-between align-items-center my-4">
+              <h2 class="fs-5 fw-semibold m-0" id="ownedListingsTitle">Мои объявления</h2>
+              <button class="btn btn-primary" type="button"><span aria-hidden="true">＋</span> &nbsp; Добавить объект</button>
+            </div>
+            <div class="owner-grid" id="ownerListings" aria-busy="true">
+              <article class="rs-card owner-card">
+                <img src="assets/studio.png" alt="Студия на Петроградской" />
+                <div class="owner-body">
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-green status-badge">Активно</span>
+                    <span class="rs-badge badge-blue">Посуточно</span>
+                  </div>
+                  <h3 class="fs-5 mt-3">Студия на Петроградской</h3>
+                  <p class="rs-muted">Санкт-Петербург, Большой пр. П.С., 48</p>
+                  <div class="fs-4 fw-bold mb-2">4 200 ₽ / ночь</div>
+                  <div class="rs-muted rs-small mb-3">Входящих заявок: 0</div>
+                  <div class="d-flex gap-2">
+                    <a class="btn btn-outline-primary flex-fill" href="listing.html?id=3">Посмотреть</a>
+                    <button class="btn btn-outline-primary flex-fill" type="button" aria-label="Редактировать студию на Петроградской">Редактировать</button>
+                  </div>
+                  <button class="btn btn-link w-100 mt-2 text-decoration-none" type="button" data-hide-listing>
+                    Скрыть объявление
+                  </button>
+                </div>
+              </article>
+              <article class="rs-card owner-card">
+                <img src="assets/house.png" alt="Дом в тихом пригороде" />
+                <div class="owner-body">
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-green status-badge">Активно</span>
+                    <span class="rs-badge badge-blue">Помесячно</span>
+                  </div>
+                  <h3 class="fs-5 mt-3">Дом в тихом пригороде</h3>
+                  <p class="rs-muted">Санкт-Петербург, Сестрорецк, ул. Лесная, 8</p>
+                  <div class="fs-4 fw-bold mb-2">90 000 ₽ / месяц</div>
+                  <div class="rs-muted rs-small mb-3">Входящих заявок: 1</div>
+                  <div class="d-flex gap-2">
+                    <a class="btn btn-outline-primary flex-fill" href="listing.html?id=4">Посмотреть</a>
+                    <button class="btn btn-outline-primary flex-fill" type="button" aria-label="Редактировать дом в тихом пригороде">Редактировать</button>
+                  </div>
+                  <button class="btn btn-link w-100 mt-2 text-decoration-none" type="button" data-hide-listing>
+                    Скрыть объявление
+                  </button>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="rs-footer">
+      <div class="rs-container rs-footer-row">
+        <div class="rs-footer-brand">
+          <a class="rs-brand" href="search.html">
+            <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+            RentSpace
+          </a>
+          <span class="rs-muted rs-small">Сервис аренды недвижимости</span>
+        </div>
+        <div class="rs-footer-links">
+          <span>О сервисе</span>
+          <span>Поддержка</span>
+          <span>© 2026 RentSpace</span>
+        </div>
+      </div>
+    </footer>
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" id="profileForm">
+          <div class="modal-header">
+            <h2 class="modal-title fs-4" id="profileModalTitle">Редактировать профиль</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть окно редактирования профиля"></button>
+          </div>
+          <div class="modal-body form-field">
+            <label class="form-label" for="profileNameInput">Имя пользователя</label>
+            <input class="form-control mb-3" id="profileNameInput" name="name" autocomplete="name" value="Алексей Соколов" required />
+            <label class="form-label" for="profileEmail">Электронная почта</label>
+            <input class="form-control mb-3" id="profileEmail" name="email" type="email" autocomplete="email" value="alexey@example.ru" required />
+            <label class="form-label" for="profilePhone">Телефон</label>
+            <input class="form-control" id="profilePhone" name="phone" type="tel" autocomplete="tel" value="+7 (921) 123-45-67" required />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-primary" type="submit">Сохранить изменения</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-4">
+      <div class="toast" id="appToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">Готово</div>
+      </div>
+    </div>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+  </body>
+</html>

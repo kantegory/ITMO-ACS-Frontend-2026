@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Вход — RentSpace</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    <main class="auth-page" id="main-content" tabindex="-1">
+      <section class="auth-hero" aria-labelledby="welcomeTitle" style="background-image: url('assets/login-hero.png')">
+        <div class="auth-hero-copy">
+          <h1 id="welcomeTitle">Найдите место, которое станет вашим домом</h1>
+          <p>Посуточная и долгосрочная аренда недвижимости в одном сервисе</p>
+        </div>
+      </section>
+      <section class="auth-panel">
+        <form id="loginForm" class="auth-form needs-validation" novalidate>
+          <a class="rs-brand" href="index.html">
+            <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+            RentSpace
+          </a>
+          <h2>Вход</h2>
+          <p class="intro">Войдите, чтобы управлять арендой и сообщениями</p>
+          <div class="visually-hidden" id="loginFormStatus" role="alert" aria-live="assertive"></div>
+          <div class="form-field mb-4">
+            <label class="form-label" for="loginEmail">Электронная почта</label>
+            <input class="form-control" id="loginEmail" name="email" type="email" autocomplete="email" placeholder="name@example.ru" aria-describedby="loginEmailFeedback" required />
+            <div class="invalid-feedback" id="loginEmailFeedback" role="alert">Введите корректную электронную почту.</div>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label" for="loginPassword">Пароль</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                id="loginPassword"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="8"
+                placeholder="Введите пароль"
+                aria-describedby="loginPasswordFeedback"
+                required
+              />
+              <button
+                class="btn password-toggle"
+                type="button"
+                data-password-toggle="loginPassword"
+                aria-label="Показать пароль"
+              >
+                <span aria-hidden="true">◉</span>
+              </button>
+              <div class="invalid-feedback" id="loginPasswordFeedback" role="alert">
+                Пароль должен содержать минимум 8 символов.
+              </div>
+            </div>
+          </div>
+          <div class="form-check mb-4">
+            <input class="form-check-input" id="remember" name="remember" type="checkbox" />
+            <label class="form-check-label" for="remember">Запомнить меня</label>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Войти</button>
+          <p class="text-center mt-4 mb-0 rs-muted">
+            Нет аккаунта?
+            <a class="text-primary fw-semibold" href="register.html">Зарегистрироваться</a>
+          </p>
+        </form>
+        <footer class="auth-footer">2026 RentSpace</footer>
+      </section>
+    </main>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

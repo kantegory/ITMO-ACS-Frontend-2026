@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Современная квартира в центре — RentSpace</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column" data-listing-page>
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    <header class="rs-header">
+      <div class="rs-container">
+        <a class="rs-brand" href="search.html">
+          <span class="rs-brand-mark">
+            <img src="assets/house.svg" alt="" />
+          </span>
+          RentSpace
+        </a>
+        <nav class="nav rs-nav" aria-label="Основная навигация">
+          <a class="nav-link active" aria-current="page" href="search.html">Найти жильё</a>
+          <a class="nav-link" href="profile.html">Мои объекты</a>
+          <a class="nav-link" href="activity.html">Сообщения и сделки</a>
+        </nav>
+        <div class="dropdown">
+          <button class="rs-account dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Открыть меню пользователя">
+            <span class="rs-avatar" data-current-user-avatar>АС</span>
+            <span data-current-user-name>Алексей</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="profile.html">Личный кабинет</a>
+            </li>
+            <li>
+              <a class="dropdown-item text-danger" href="index.html" data-logout>Выйти</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="rs-main" id="main-content" tabindex="-1">
+      <div class="rs-container">
+        <nav class="breadcrumb-line" aria-label="Хлебные крошки">
+          <ol class="breadcrumb-list">
+            <li><a href="search.html">Поиск</a></li>
+            <li><a href="search.html?location=Санкт-Петербург">Санкт-Петербург</a></li>
+            <li aria-current="page" data-listing-title>Современная квартира в центре</li>
+          </ol>
+        </nav>
+        <section class="listing-heading" aria-labelledby="listingTitle">
+          <h1 class="rs-page-title" id="listingTitle" data-listing-title>Современная квартира в центре</h1>
+          <div class="address">
+            <img src="assets/map-pin.svg" alt="" />
+            <span data-listing-address>Санкт-Петербург, ул. Рубинштейна, 15</span>
+          </div>
+          <div class="d-flex gap-2">
+            <span class="rs-badge badge-blue" data-daily>Посуточно</span>
+            <span class="rs-badge badge-blue" data-monthly>Помесячно</span>
+            <span class="rs-badge badge-gray" data-listing-type>Квартира</span>
+          </div>
+        </section>
+        <section class="gallery-grid" aria-labelledby="galleryTitle">
+          <h2 class="visually-hidden" id="galleryTitle">Фотографии объекта</h2>
+          <button class="gallery-image-button main-photo-button" type="button" data-gallery-index="0" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию гостиной">
+            <img class="main-photo" src="assets/flat-centre.png" data-listing-main alt="Гостиная" />
+          </button>
+          <div class="gallery-small">
+            <button class="gallery-image-button" type="button" data-gallery-index="1" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию кухни"><img src="assets/gallery-kitchen.png" alt="Кухня" /></button>
+            <button class="gallery-image-button" type="button" data-gallery-index="2" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию спальни"><img src="assets/gallery-bedroom.png" alt="Спальня" /></button>
+            <button class="gallery-image-button" type="button" data-gallery-index="3" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию ванной"><img src="assets/gallery-bath.png" alt="Ванная" /></button>
+            <button class="gallery-image-button" type="button" data-gallery-index="4" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию холла"><img src="assets/gallery-hall.png" alt="Холл" /></button>
+          </div>
+          <button
+            class="btn btn-outline-primary gallery-open"
+            type="button"
+            data-gallery-index="0"
+            data-bs-toggle="modal"
+            data-bs-target="#galleryModal"
+          >
+            <img src="assets/images.svg" width="18" alt="" />
+            &nbsp; Показать все фото
+          </button>
+        </section>
+        <div class="listing-layout">
+          <div class="details-stack">
+            <article class="rs-card details-card">
+              <h2 class="rs-section-title mb-3">Об объекте</h2>
+              <p data-listing-description>Загрузка описания объекта...</p>
+              <hr />
+              <div class="detail-row">
+                <span class="label">Тип недвижимости</span>
+                <strong data-listing-type>Квартира</strong>
+              </div>
+              <div class="detail-row">
+                <span class="label">Формат аренды</span>
+                <strong data-daily>Посуточно</strong>
+                <strong data-monthly>Помесячно</strong>
+              </div>
+              <div class="detail-row">
+                <span class="label">Владелец</span>
+                <strong>Анна Смирнова</strong>
+              </div>
+              <div class="detail-row">
+                <span class="label">Опубликовано</span>
+                <strong data-daily>1 сентября 2026</strong>
+                <strong data-monthly>10 октября 2026</strong>
+              </div>
+              <div class="mt-3">
+                <span class="rs-badge badge-green">Объявление активно</span>
+              </div>
+            </article>
+            <article class="rs-card details-card">
+              <h2 class="rs-section-title mb-3">Условия аренды</h2>
+              <div data-daily>
+                <div class="detail-row">
+                  <span class="label">Стоимость за ночь</span>
+                  <strong data-listing-price>4 500 ₽ / ночь</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Минимум ночей</span>
+                  <strong>2</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Максимум ночей</span>
+                  <strong>30</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Заселение</span>
+                  <strong>с 14:00</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Выселение</span>
+                  <strong>до 12:00</strong>
+                </div>
+              </div>
+              <div data-monthly>
+                <div class="detail-row">
+                  <span class="label">Стоимость за месяц</span>
+                  <strong data-listing-price>65 000 ₽ / месяц</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Залог</span>
+                  <strong>65 000 ₽</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Минимальный срок</span>
+                  <strong>6 месяцев</strong>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Коммунальные платежи</span>
+                  <strong>Не включены</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+          <aside class="rs-card booking-card" aria-labelledby="bookingTitle">
+            <h2 class="visually-hidden" id="bookingTitle">Бронирование и связь с владельцем</h2>
+            <div data-daily>
+              <div class="booking-price" data-listing-price>4 500 ₽ / ночь</div>
+              <hr />
+              <label class="form-label mt-2" for="startDate">Дата заезда</label>
+              <input class="form-control mb-3" id="startDate" name="startDate" type="date" value="2026-10-22" aria-describedby="bookingDateError" required />
+              <label class="form-label" for="endDate">Дата выезда</label>
+              <input class="form-control mb-3" id="endDate" name="endDate" type="date" value="2026-10-25" aria-describedby="bookingDateError" required />
+              <p class="invalid-feedback d-block" id="bookingDateError" role="alert" hidden>Дата выезда должна быть позже даты заезда.</p>
+              <div class="detail-row">
+                <span class="label">
+                  4 500 ₽ ×
+                  <span data-night-count>3</span>
+                  ночи
+                </span>
+                <strong data-booking-total>13 500 ₽</strong>
+              </div>
+              <hr />
+              <div class="detail-row pt-0 mb-3">
+                <span class="label">Итого</span>
+                <strong data-booking-total>13 500 ₽</strong>
+              </div>
+              <button class="btn btn-primary w-100 mb-2" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                Отправить заявку на бронирование
+              </button>
+              <a class="btn btn-outline-primary w-100" href="activity.html">Написать владельцу</a>
+              <p class="rs-muted rs-small text-center mt-3 mb-0">Владелец подтвердит доступность выбранных дат.</p>
+            </div>
+            <div data-monthly>
+              <div class="booking-price" data-listing-price>65 000 ₽ / месяц</div>
+              <hr />
+              <div class="detail-row">
+                <span class="label">Залог</span>
+                <strong>65 000 ₽</strong>
+              </div>
+              <div class="detail-row mb-3">
+                <span class="label">Срок аренды</span>
+                <strong>от 6 месяцев</strong>
+              </div>
+              <fieldset class="border-0 p-0 m-0">
+                <legend class="form-label">Способ связи</legend>
+                <div class="rent-mode mb-3">
+                <label class="flex-fill text-center py-2 bg-white rounded">
+                  <input class="visually-hidden" id="communicationChat" type="radio" name="communication" value="chat" checked />
+                  Чат
+                </label>
+                <label class="flex-fill text-center py-2">
+                  <input class="visually-hidden" id="communicationPhone" type="radio" name="communication" value="phone" />
+                  Телефон
+                </label>
+                </div>
+              </fieldset>
+              <button class="btn btn-primary w-100" id="contactOwner" type="button">Связаться с владельцем</button>
+              <p class="rs-muted rs-small mt-3">
+                Новое обращение по объекту «Квартира у набережной». Переписка будет связана с этим объявлением.
+              </p>
+              <span class="rs-badge badge-orange">Новое обращение</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer class="rs-footer">
+      <div class="rs-container rs-footer-row">
+        <div class="rs-footer-brand">
+          <a class="rs-brand" href="search.html">
+            <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+            RentSpace
+          </a>
+          <span class="rs-muted rs-small">Сервис аренды недвижимости</span>
+        </div>
+        <div class="rs-footer-links">
+          <span>О сервисе</span>
+          <span>Поддержка</span>
+          <span>© 2026 RentSpace</span>
+        </div>
+      </div>
+    </footer>
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content bg-dark">
+          <div class="modal-header border-0">
+            <h2 class="modal-title fs-5 text-white" id="galleryModalTitle">Фотографии объекта</h2>
+            <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Закрыть галерею"></button>
+          </div>
+          <div class="modal-body pt-0">
+            <p class="visually-hidden" id="galleryInstructions">
+              Используйте стрелки влево и вправо для переключения фотографий. Клавиши Home и End открывают первую и последнюю фотографии.
+            </p>
+            <div
+              class="carousel slide"
+              id="galleryCarousel"
+              tabindex="0"
+              role="region"
+              aria-roledescription="карусель"
+              aria-label="Фотографии объекта"
+              aria-describedby="galleryInstructions galleryPosition"
+            >
+              <p class="visually-hidden" id="galleryPosition" role="status" aria-live="polite" aria-atomic="true">
+                Фото 1 из 5: гостиная
+              </p>
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#galleryCarousel"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Фото 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#galleryCarousel"
+                  data-bs-slide-to="1"
+                  aria-label="Фото 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#galleryCarousel"
+                  data-bs-slide-to="2"
+                  aria-label="Фото 3"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#galleryCarousel"
+                  data-bs-slide-to="3"
+                  aria-label="Фото 4"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#galleryCarousel"
+                  data-bs-slide-to="4"
+                  aria-label="Фото 5"
+                ></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="gallery-modal-img" id="galleryFirstImage" src="assets/flat-centre.png" alt="Гостиная" />
+                </div>
+                <div class="carousel-item">
+                  <img class="gallery-modal-img" src="assets/gallery-kitchen.png" alt="Кухня" />
+                </div>
+                <div class="carousel-item">
+                  <img class="gallery-modal-img" src="assets/gallery-bedroom.png" alt="Спальня" />
+                </div>
+                <div class="carousel-item">
+                  <img class="gallery-modal-img" src="assets/gallery-bath.png" alt="Ванная" />
+                </div>
+                <div class="carousel-item">
+                  <img class="gallery-modal-img" src="assets/gallery-hall.png" alt="Холл" />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#galleryCarousel"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущее фото</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#galleryCarousel"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующее фото</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-4" id="bookingModalTitle">Подтвердите бронирование</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть окно подтверждения"></button>
+          </div>
+          <div class="modal-body">
+            <p data-booking-title>Современная квартира в центре</p>
+            <div class="detail-row">
+              <span class="label">Период</span>
+              <strong data-booking-period>2026-10-22 — 2026-10-25</strong>
+            </div>
+            <div class="detail-row">
+              <span class="label">Итого</span>
+              <strong data-booking-total>13 500 ₽</strong>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-primary" type="button" id="confirmBooking">Отправить заявку</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-4">
+      <div class="toast" id="appToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">Готово</div>
+      </div>
+    </div>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/listing.js"></script>
+  </body>
+</html>

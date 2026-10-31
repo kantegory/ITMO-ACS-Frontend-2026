@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Сообщения и сделки — RentSpace</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column">
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    <header class="rs-header">
+      <div class="rs-container">
+        <a class="rs-brand" href="search.html">
+          <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+          RentSpace
+        </a>
+        <nav class="nav rs-nav" aria-label="Основная навигация">
+          <a class="nav-link" href="search.html">Найти жильё</a>
+          <a class="nav-link" href="profile.html">Мои объекты</a>
+          <a class="nav-link active" aria-current="page" href="activity.html">Сообщения и сделки</a>
+        </nav>
+        <div class="dropdown">
+          <button class="rs-account dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Открыть меню пользователя">
+            <span class="rs-avatar" data-current-user-avatar>АС</span>
+            <span data-current-user-name>Алексей</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="profile.html">Личный кабинет</a>
+            </li>
+            <li>
+              <a class="dropdown-item text-danger" href="index.html" data-logout>Выйти</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="rs-main" id="main-content" tabindex="-1">
+      <div class="rs-container">
+        <h1 class="rs-page-title">Сообщения и сделки</h1>
+        <p class="rs-page-subtitle">Обсуждайте аренду и следите за статусами заявок</p>
+        <ul class="nav rs-tabs" role="tablist" aria-label="Сообщения и сделки">
+          <li class="nav-item">
+            <button class="nav-link active" id="messagesTab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="true">
+              Сообщения
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="dealsTab" data-bs-toggle="tab" data-bs-target="#deals" type="button" role="tab" aria-controls="deals" aria-selected="false" tabindex="-1">Сделки</button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <section class="tab-pane fade show active" id="messages" role="tabpanel" aria-labelledby="messagesTab" tabindex="0">
+            <div class="rs-card messages-shell">
+              <div class="messages-grid">
+                <aside class="chat-list" id="chatList" aria-labelledby="chatListTitle" aria-busy="true">
+                  <h2 class="visually-hidden" id="chatListTitle">Список чатов</h2>
+                  <div class="chat-search form-field">
+                    <label class="visually-hidden" for="chatSearch">Поиск по чатам</label>
+                    <input class="form-control" id="chatSearch" name="chatSearch" type="search" autocomplete="off" placeholder="Поиск по чатам" />
+                  </div>
+                  <button
+                    class="chat-item active"
+                    type="button"
+                    data-chat-id="centre"
+                    data-listing-id="1"
+                    data-person="Анна Смирнова"
+                    data-property="Современная квартира в центре"
+                  >
+                    <img src="assets/flat-centre.png" alt="" />
+                    <span class="chat-item-content">
+                      <span class="chat-item-meta">
+                        <strong>Анна Смирнова</strong>
+                        <small>15:43</small>
+                      </span>
+                      <span class="chat-property d-block">Современная квартира в центре</span>
+                      <span class="chat-preview d-block">Вы: Спасибо! Заявку уже отправил.</span>
+                    </span>
+                  </button>
+                  <button
+                    class="chat-item"
+                    type="button"
+                    data-chat-id="river"
+                    data-listing-id="2"
+                    data-person="Анна Смирнова"
+                    data-property="Квартира у набережной"
+                  >
+                    <img src="assets/flat-river.png" alt="" />
+                    <span class="chat-item-content">
+                      <span class="chat-item-meta">
+                        <strong>Анна Смирнова</strong>
+                        <small>14:10</small>
+                      </span>
+                      <span class="chat-property d-block">Квартира у набережной</span>
+                      <span class="chat-preview d-block">Да, можно договориться о просмотре.</span>
+                      <span class="rs-badge badge-blue mt-2">1</span>
+                    </span>
+                  </button>
+                  <button
+                    class="chat-item"
+                    type="button"
+                    data-chat-id="house"
+                    data-listing-id="4"
+                    data-person="Иван Петров"
+                    data-property="Дом в тихом пригороде"
+                  >
+                    <img src="assets/house.png" alt="" />
+                    <span class="chat-item-content">
+                      <span class="chat-item-meta">
+                        <strong>Иван Петров</strong>
+                        <small>12:30</small>
+                      </span>
+                      <span class="chat-property d-block">Дом в тихом пригороде</span>
+                      <span class="chat-preview d-block">Здравствуйте! Интересует аренда дома.</span>
+                      <span class="rs-badge badge-blue mt-2">1</span>
+                    </span>
+                  </button>
+                  <button
+                    class="chat-item"
+                    type="button"
+                    data-chat-id="garden"
+                    data-listing-id="6"
+                    data-person="Ольга Белова"
+                    data-property="Квартира у Таврического сада"
+                  >
+                    <img src="assets/flat-garden.png" alt="" />
+                    <span class="chat-item-content">
+                      <span class="chat-item-meta">
+                        <strong>Ольга Белова</strong>
+                        <small>Вчера</small>
+                      </span>
+                      <span class="chat-property d-block">Квартира у Таврического сада</span>
+                      <span class="chat-preview d-block">Буду ждать вас 28 октября.</span>
+                    </span>
+                  </button>
+                  <p class="p-3 rs-muted rs-small">Переписки с одним человеком разделены по объявлениям.</p>
+                </aside>
+                <section class="chat-pane" aria-labelledby="chatPerson">
+                  <div class="chat-head">
+                    <img id="chatImage" src="assets/flat-centre.png" alt="" />
+                    <div>
+                      <h2 class="d-block fs-6 mb-0" id="chatPerson">Анна Смирнова</h2>
+                      <span class="rs-muted rs-small d-block" id="chatProperty">Современная квартира в центре</span>
+                      <a class="text-primary rs-small" id="chatListingLink" href="listing.html?id=1">
+                        Перейти к объявлению
+                      </a>
+                    </div>
+                  </div>
+                  <div class="chat-history" id="chatHistory" role="log" aria-live="polite" aria-relevant="additions text" aria-labelledby="chatPerson" aria-busy="true">
+                    <div class="text-center rs-muted rs-small">18 октября 2026</div>
+                    <div class="message out">
+                      Здравствуйте! Хочу забронировать квартиру с 22 по 25 октября. Подскажите, эти даты свободны?
+                      <div class="message-time">15:35 ✓✓</div>
+                    </div>
+                    <div class="message in">
+                      Здравствуйте, Алексей! Спасибо за интерес к квартире. Проверю даты и скоро отвечу вам.
+                      <div class="message-time">15:42</div>
+                    </div>
+                    <div class="message out">
+                      Спасибо! Заявку на 3 ночи уже отправил.
+                      <div class="message-time">15:43 ✓✓</div>
+                    </div>
+                    <div class="text-center rs-muted rs-small">
+                      Заявка на 22–25 октября · 13 500 ₽ · Ожидает подтверждения
+                    </div>
+                  </div>
+                  <form class="chat-compose form-field" id="messageForm">
+                    <label class="visually-hidden" for="messageInput">Сообщение владельцу</label>
+                    <textarea class="form-control" id="messageInput" name="message" placeholder="Введите сообщение" aria-describedby="messageHint" required></textarea>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                      <span class="rs-muted rs-small" id="messageHint">Сообщение владельцу</span>
+                      <button class="btn btn-primary px-4" type="submit">
+                        <img src="assets/send.svg" width="18" alt="" />
+                        &nbsp; Отправить
+                      </button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </section>
+          <section class="tab-pane fade" id="deals" role="tabpanel" aria-labelledby="dealsTab" tabindex="0">
+            <div class="d-flex gap-2 mt-3" role="group" aria-label="Фильтр сделок">
+              <button class="btn btn-primary active" type="button" data-deal-filter="all" aria-pressed="true">Все</button>
+              <button class="btn btn-outline-primary" type="button" data-deal-filter="pending" aria-pressed="false">Ожидают</button>
+              <button class="btn btn-outline-primary" type="button" data-deal-filter="active" aria-pressed="false">Активные</button>
+              <button class="btn btn-outline-primary" type="button" data-deal-filter="completed" aria-pressed="false">Завершённые</button>
+              <button class="btn btn-outline-primary" type="button" data-deal-filter="canceled" aria-pressed="false">Отменённые</button>
+            </div>
+            <p class="rs-muted rs-small mt-3" id="dealsCount" role="status" aria-live="polite">Загрузка сделок...</p>
+            <div class="deals-list" id="dealsList" aria-busy="true">
+              <article class="rs-card deal-card" data-status="pending" data-deal-id="centre-booking">
+                <img src="assets/flat-centre.png" alt="" />
+                <div>
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-gray">Арендатор</span>
+                    <span class="rs-small rs-muted">Посуточное бронирование</span>
+                  </div>
+                  <h3>Современная квартира в центре</h3>
+                  <div>22–25 октября 2026 · 3 ночи</div>
+                  <strong class="fs-5 d-block mt-2">13 500 ₽</strong>
+                  <div class="rs-muted rs-small">Оплата: Банковская карта · Создано 18 октября 2026</div>
+                </div>
+                <div class="deal-actions">
+                  <span class="rs-badge badge-orange">Ожидает подтверждения</span>
+                  <span class="rs-badge badge-orange">Ожидает оплаты</span>
+                  <a class="btn btn-outline-primary" href="listing.html?id=1">Открыть объект</a>
+                  <a class="btn btn-link text-decoration-none" href="#messages">Перейти в чат</a>
+                  <button class="btn btn-outline-danger" type="button" data-cancel-deal>Отменить</button>
+                </div>
+              </article>
+              <article class="rs-card deal-card" data-status="active">
+                <img src="assets/flat-garden.png" alt="" />
+                <div>
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-gray">Арендатор</span>
+                    <span class="rs-small rs-muted">Посуточное бронирование</span>
+                  </div>
+                  <h3>Квартира у Таврического сада</h3>
+                  <div>28–30 октября 2026 · 2 ночи</div>
+                  <strong class="fs-5 d-block mt-2">12 000 ₽</strong>
+                  <div class="rs-muted rs-small">Оплата: СБП · Создано 16 октября 2026</div>
+                </div>
+                <div class="deal-actions">
+                  <span class="rs-badge badge-green">Подтверждено</span>
+                  <span class="rs-badge badge-green">Оплачено</span>
+                  <a class="btn btn-outline-primary" href="listing.html?id=6">Открыть объект</a>
+                  <a class="btn btn-link text-decoration-none" href="#messages">Перейти в чат</a>
+                </div>
+              </article>
+              <article class="rs-card deal-card" data-status="pending" data-deal-id="house-request">
+                <img src="assets/house.png" alt="" />
+                <div>
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-gray">Владелец</span>
+                    <span class="rs-small rs-muted">Помесячная аренда</span>
+                  </div>
+                  <h3>Дом в тихом пригороде</h3>
+                  <div>С 1 ноября 2026 · 6 месяцев</div>
+                  <strong class="fs-5 d-block mt-2">90 000 ₽ / месяц</strong>
+                  <div class="rs-muted rs-small">Связь: Телефон · Создано 18 октября 2026</div>
+                </div>
+                <div class="deal-actions">
+                  <span class="rs-badge badge-orange">Новое обращение</span>
+                  <a class="btn btn-outline-primary" href="listing.html?id=4">Открыть объект</a>
+                  <a class="btn btn-link text-decoration-none" href="#messages">Перейти в чат</a>
+                  <button class="btn btn-outline-danger" type="button" data-cancel-deal>Отменить</button>
+                </div>
+              </article>
+              <article class="rs-card deal-card" data-status="active">
+                <img src="assets/flat-river.png" alt="" />
+                <div>
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-gray">Арендатор</span>
+                    <span class="rs-small rs-muted">Помесячная аренда</span>
+                  </div>
+                  <h3>Квартира у набережной</h3>
+                  <div>1 ноября 2026 — 30 апреля 2027 · 6 месяцев</div>
+                  <strong class="fs-5 d-block mt-2">65 000 ₽ / месяц</strong>
+                  <div class="rs-muted rs-small">Связь: Чат · Создано 17 октября 2026</div>
+                </div>
+                <div class="deal-actions">
+                  <span class="rs-badge badge-blue">В работе</span>
+                  <a class="btn btn-outline-primary" href="listing.html?id=2">Открыть объект</a>
+                  <a class="btn btn-link text-decoration-none" href="#messages">Перейти в чат</a>
+                </div>
+              </article>
+              <article class="rs-card deal-card" data-status="canceled">
+                <img src="assets/room.png" alt="" />
+                <div>
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-gray">Арендатор</span>
+                    <span class="rs-small rs-muted">Посуточное бронирование</span>
+                  </div>
+                  <h3>Комната на Васильевском</h3>
+                  <div>10–12 октября 2026 · 2 ночи</div>
+                  <strong class="fs-5 d-block mt-2">4 400 ₽</strong>
+                  <div class="rs-muted rs-small">Оплата: Банковская карта · Создано 5 октября 2026</div>
+                </div>
+                <div class="deal-actions">
+                  <span class="rs-badge badge-red">Отменено</span>
+                  <span class="rs-badge badge-red">Платёж отменён</span>
+                  <a class="btn btn-outline-primary" href="listing.html?id=5">Открыть объект</a>
+                </div>
+              </article>
+              <article class="rs-card deal-card" data-status="completed">
+                <img src="assets/flat-centre.png" alt="" />
+                <div>
+                  <div class="d-flex gap-2">
+                    <span class="rs-badge badge-gray">Арендатор</span>
+                    <span class="rs-small rs-muted">Посуточное бронирование</span>
+                  </div>
+                  <h3>Современная квартира в центре</h3>
+                  <div>12–15 сентября 2026 · 3 ночи</div>
+                  <strong class="fs-5 d-block mt-2">13 500 ₽</strong>
+                  <div class="rs-muted rs-small">Оплата: СБП · Создано 10 сентября 2026</div>
+                </div>
+                <div class="deal-actions">
+                  <span class="rs-badge badge-gray">Завершено</span>
+                  <span class="rs-badge badge-green">Оплачено</span>
+                  <a class="btn btn-outline-primary" href="listing.html?id=1">Открыть объект</a>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="rs-footer">
+      <div class="rs-container rs-footer-row">
+        <div class="rs-footer-brand">
+          <a class="rs-brand" href="search.html">
+            <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+            RentSpace
+          </a>
+          <span class="rs-muted rs-small">Сервис аренды недвижимости</span>
+        </div>
+        <div class="rs-footer-links">
+          <span>О сервисе</span>
+          <span>Поддержка</span>
+          <span>© 2026 RentSpace</span>
+        </div>
+      </div>
+    </footer>
+    <div class="toast-container position-fixed bottom-0 end-0 p-4">
+      <div class="toast" id="appToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">Готово</div>
+      </div>
+    </div>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/activity.js"></script>
+  </body>
+</html>

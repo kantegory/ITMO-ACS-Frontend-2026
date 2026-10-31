@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Регистрация — RentSpace</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    <main class="auth-page" id="main-content" tabindex="-1">
+      <section class="auth-hero" aria-labelledby="welcomeTitle" style="background-image: url('assets/register-hero.png')">
+        <div class="auth-hero-copy">
+          <h1 id="welcomeTitle">Найдите место, которое станет вашим домом</h1>
+          <p>Посуточная и долгосрочная аренда недвижимости в одном сервисе</p>
+        </div>
+      </section>
+      <section class="auth-panel">
+        <form id="registerForm" class="auth-form needs-validation" novalidate>
+          <a class="rs-brand" href="index.html">
+            <span class="rs-brand-mark"><img src="assets/house.svg" alt="" /></span>
+            RentSpace
+          </a>
+          <h2>Регистрация</h2>
+          <p class="intro">Создайте аккаунт, чтобы найти жильё и общаться с владельцами</p>
+          <div class="visually-hidden" id="registerFormStatus" role="alert" aria-live="assertive"></div>
+          <div class="form-field mb-3">
+            <label class="form-label" for="username">Имя пользователя</label>
+            <input class="form-control" id="username" name="name" autocomplete="name" maxlength="50" placeholder="Как к вам обращаться" aria-describedby="usernameHelp" required />
+            <div class="form-text" id="usernameHelp">Не более 50 символов</div>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label" for="registerEmail">Электронная почта</label>
+            <input class="form-control" id="registerEmail" name="email" type="email" autocomplete="email" placeholder="name@example.ru" aria-describedby="registerEmailHelp" required />
+            <div class="form-text" id="registerEmailHelp">Укажите email в формате name@example.ru</div>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label" for="phone">Телефон</label>
+            <input
+              class="form-control"
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="numeric"
+              minlength="11"
+              maxlength="11"
+              pattern="8[0-9]{10}"
+              placeholder="89134123432"
+              aria-describedby="phoneHelp"
+              required
+            />
+            <div class="form-text" id="phoneHelp">Номер в формате 89134123432</div>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label" for="registerPassword">Пароль</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                id="registerPassword"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                placeholder="Введите пароль"
+                aria-describedby="registerPasswordHelp"
+                required
+              />
+              <button class="btn password-toggle" type="button" data-password-toggle="registerPassword" aria-label="Показать пароль"><span aria-hidden="true">◉</span></button>
+            </div>
+            <div class="form-text" id="registerPasswordHelp">Минимум 8 символов</div>
+          </div>
+          <div class="form-field mb-3">
+            <label class="form-label" for="repeatPassword">Повторите пароль</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                id="repeatPassword"
+                name="passwordConfirmation"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                placeholder="Введите пароль ещё раз"
+                aria-describedby="repeatPasswordHelp"
+                required
+              />
+              <button class="btn password-toggle" type="button" data-password-toggle="repeatPassword" aria-label="Показать повтор пароля"><span aria-hidden="true">◉</span></button>
+            </div>
+            <div class="form-text" id="repeatPasswordHelp">Пароли должны совпадать</div>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" id="terms" name="terms" type="checkbox" required />
+            <label class="form-check-label" for="terms">Я принимаю условия использования сервиса</label>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Создать аккаунт</button>
+          <p class="text-center mt-3 mb-0 rs-muted">
+            Уже есть аккаунт?
+            <a class="text-primary fw-semibold" href="index.html">Войти</a>
+          </p>
+        </form>
+        <footer class="auth-footer">© 2026 RentSpace</footer>
+      </section>
+    </main>
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-4" id="successModalTitle">Аккаунт создан</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть окно"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-0">Теперь вы можете перейти на страницу входа.</p>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-primary px-4" href="index.html">Перейти ко входу</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>
