@@ -1,0 +1,23 @@
+bin/
+.env
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.out
+coverage.html
+go.work
+go.work.sum
+vendor/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+.worktrees/
+
+# Local Python tooling caches
+__pycache__/
+*.py[cod]

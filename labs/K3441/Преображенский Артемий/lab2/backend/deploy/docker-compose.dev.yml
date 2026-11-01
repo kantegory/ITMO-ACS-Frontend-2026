@@ -1,0 +1,223 @@
+services:
+  auth-db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: ${POSTGRES_DB_AUTH:?required}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT_AUTH:?required}:5432"
+    volumes:
+      - auth-dbdata:/var/lib/postgresql/data
+    networks: [restaurant-booking]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  catalog-db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: ${POSTGRES_DB_CATALOG:?required}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT_CATALOG:?required}:5432"
+    volumes:
+      - catalog-dbdata:/var/lib/postgresql/data
+    networks: [restaurant-booking]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  booking-db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: ${POSTGRES_DB_BOOKING:?required}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT_BOOKING:?required}:5432"
+    volumes:
+      - booking-dbdata:/var/lib/postgresql/data
+    networks: [restaurant-booking]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  rabbitmq:
+    image: rabbitmq:4.3.1-management@sha256:8734b9e9cd03d12b2e1d973415fc4c5c941c5eca351b4bd63f721782b1bf7c8b
+    hostname: rabbitmq
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:?required}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?required}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+    networks: [restaurant-booking]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "127.0.0.1:${RABBITMQ_PORT_AMQP:?required}:5672"
+      - "127.0.0.1:${RABBITMQ_PORT_MANAGEMENT:?required}:15672"
+  rabbitmq-bootstrap:
+    image: python:3.13-alpine
+    restart: "no"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    command: ["python", "/bootstrap/rabbitmq-topology.py"]
+    environment:
+      RABBITMQ_MANAGEMENT_URL: http://rabbitmq:15672
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME:?required}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD:?required}
+    volumes:
+      - ./scripts/rabbitmq-topology.py:/bootstrap/rabbitmq-topology.py:ro
+    networks: [restaurant-booking]
+  auth-migrations:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.dev
+      args:
+        SERVICE: auth-service
+        REVISION: ${REVISION:-dev}
+    restart: "no"
+    command: ["sh", "-c", "/app/migrate -path /app/auth-service/migrations -database \"$$AUTH_DB_DSN\" up"]
+    depends_on:
+      auth-db:
+        condition: service_healthy
+    environment:
+      AUTH_DB_DSN: ${AUTH_DB_DSN:?required}
+    networks: [restaurant-booking]
+  auth-service:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.dev
+      args:
+        SERVICE: auth-service
+        REVISION: ${REVISION:-dev}
+    restart: always
+    ports:
+      - "127.0.0.1:${AUTH_SERVICE_PUBLISHED_PORT:?required}:8081"
+    depends_on:
+      auth-migrations:
+        condition: service_completed_successfully
+      rabbitmq-bootstrap:
+        condition: service_completed_successfully
+    environment:
+      AUTH_DB_DSN: ${AUTH_DB_DSN:?required}
+      AUTH_HTTP_ADDR: ":8081"
+      JWT_SECRET: ${JWT_SECRET:?required}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-frontend-lab2}
+      JWT_EXPIRES: ${JWT_EXPIRES:-24h}
+      RABBITMQ_URL: ${RABBITMQ_URL:?required}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8081/ready"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 15s
+    networks: [restaurant-booking]
+  catalog-migrations:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.dev
+      args:
+        SERVICE: catalog-service
+        REVISION: ${REVISION:-dev}
+    restart: "no"
+    command: ["sh", "-c", "/app/migrate -path /app/catalog-service/migrations -database \"$$CATALOG_DB_DSN\" up"]
+    depends_on:
+      catalog-db:
+        condition: service_healthy
+    environment:
+      CATALOG_DB_DSN: ${CATALOG_DB_DSN:?required}
+    networks: [restaurant-booking]
+  catalog-service:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.dev
+      args:
+        SERVICE: catalog-service
+        REVISION: ${REVISION:-dev}
+    restart: always
+    ports:
+      - "127.0.0.1:${CATALOG_SERVICE_PUBLISHED_PORT:?required}:8082"
+    depends_on:
+      catalog-migrations:
+        condition: service_completed_successfully
+      rabbitmq-bootstrap:
+        condition: service_completed_successfully
+    environment:
+      CATALOG_DB_DSN: ${CATALOG_DB_DSN:?required}
+      CATALOG_HTTP_ADDR: ":8082"
+      JWT_SECRET: ${JWT_SECRET:?required}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-frontend-lab2}
+      RABBITMQ_URL: ${RABBITMQ_URL:?required}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8082/ready"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 15s
+    networks: [restaurant-booking]
+  booking-migrations:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.dev
+      args:
+        SERVICE: booking-service
+        REVISION: ${REVISION:-dev}
+    restart: "no"
+    command: ["sh", "-c", "/app/migrate -path /app/booking-service/migrations -database \"$$BOOKING_DB_DSN\" up"]
+    depends_on:
+      booking-db:
+        condition: service_healthy
+    environment:
+      BOOKING_DB_DSN: ${BOOKING_DB_DSN:?required}
+    networks: [restaurant-booking]
+  booking-service:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.dev
+      args:
+        SERVICE: booking-service
+        REVISION: ${REVISION:-dev}
+    restart: always
+    ports:
+      - "127.0.0.1:${BOOKING_SERVICE_PUBLISHED_PORT:?required}:8083"
+    depends_on:
+      booking-migrations:
+        condition: service_completed_successfully
+      catalog-service:
+        condition: service_healthy
+    environment:
+      BOOKING_DB_DSN: ${BOOKING_DB_DSN:?required}
+      BOOKING_HTTP_ADDR: ":8083"
+      JWT_SECRET: ${JWT_SECRET:?required}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-frontend-lab2}
+      CATALOG_SERVICE_URL: http://catalog-service:8082
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8083/ready"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 15s
+    networks: [restaurant-booking]
+volumes:
+  auth-dbdata:
+  catalog-dbdata:
+  booking-dbdata:
+  rabbitmq-data:
+networks:
+  restaurant-booking:
+    driver: bridge
