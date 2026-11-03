@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Описание тренировки, план занятия и запись в историю пользователя." />
+    <title>Тренировка - Fitness Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/details.css" />
+    <link rel="stylesheet" href="css/accessibility.css" />
+  </head>
+  <body>
+    <!-- Навигация страницы -->
+    <div data-site-header="main"></div>
+
+    <!-- Основное содержимое -->
+
+    <main class="container">
+  <div class="article-back-wrap">
+    <a class="article-back" href="workouts.html">Назад</a>
+  </div>
+  <div class="inner-hero">
+    <span class="eyebrow">ТРЕНИРОВКА</span>
+  </div>
+  <p class="workout-loading-message" data-workout-loading role="status">Загрузка тренировки...</p>
+  <div class="row g-4" data-workout-content hidden>
+    <div class="col-lg-8">
+      <div class="workout-detail-art">
+        <img class="workout-cover" data-workout-image alt="" hidden />
+      </div>
+      <p class="workout-video-link-wrap" data-workout-video-wrap hidden>
+        <a class="workout-video-link" data-workout-video target="_blank" rel="noopener noreferrer">Смотреть видео на YouTube</a>
+      </p>
+      <button class="btn btn-outline-dark" type="button" data-start-workout data-auth-only="true">Отметить тренировку выполненной</button>
+      <div class="detail-copy" data-workout-detail>
+        <span class="eyebrow"></span>
+        <h1></h1>
+        <div>
+          <span class="detail-pill"></span>
+          <span class="detail-pill"></span>
+        </div>
+        <p data-workout-description></p>
+        <h2><strong>План тренировки</strong></h2>
+        <p class="workout-plan" data-workout-plan></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+    <!-- Подключение библиотек и логики страницы -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.21.0/dist/axios.min.js"></script>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
+
+
+
+
+

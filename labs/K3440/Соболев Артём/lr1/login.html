@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Вход в личный кабинет Fitness Platform." />
+    <title>Вход - Fitness Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/accessibility.css" />
+  </head>
+  <body>
+    <!-- Навигация страницы -->
+    <div data-site-header="minimal"></div>
+    <!-- Основное содержимое -->
+    <main class="auth-wrap">
+      <!-- Форма входа -->
+      <div class="auth-form-side">
+        <form class="auth-form" data-demo-form="login" aria-labelledby="auth-title">
+          <h1 id="auth-title">Войти в Fitness Platform</h1>
+          <div class="auth-field"><label class="form-label" for="email">Электронная почта</label><input class="form-control" id="email" type="email" autocomplete="email" placeholder="name@example.com" required />
+          </div>
+          <div class="auth-field"><label class="form-label" for="password">Пароль</label>
+            <div class="password-field">
+              <input class="form-control" id="password" type="password" autocomplete="current-password" minlength="8" required /><button class="password-toggle" type="button" data-password-toggle="password" aria-label="Показать пароль">
+                <svg aria-hidden="true" focusable="false">
+                  <use href="assets/icons.svg#eye"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <label class="small"><input type="checkbox" class="form-check-input me-1" /> Запомнить
+              меня</label><a class="small forgot-password-link" href="#" onclick="return false;">Забыли пароль?</a>
+          </div>
+          <button class="btn btn-dark w-100" type="submit">Войти</button>
+          <div class="form-note">
+            Ещё нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+          </div>
+          <div class="form-note home-return">
+            <a href="index.html">На главную</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Подключение библиотек и логики страницы -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.21.0/dist/axios.min.js"></script>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
+
+
+
+
