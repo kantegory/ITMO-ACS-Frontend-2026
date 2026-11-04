@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Мой профиль - BaT</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/bootstrap.bundle.min.js" defer></script>
+    <script src="api.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="account.js" defer></script>
+  </head>
+  <body data-page="profile">
+    <a class="visually-hidden-focusable" href="#main">К содержимому</a>
+    <header id="site-header"></header>
+    <main id="main" class="container py-5">
+      <div class="page-heading mb-4">
+        <p class="eyebrow">Личный кабинет</p>
+        <h1>Мой профиль</h1>
+        <p class="text-muted">Ваши данные и планы на ближайший вечер.</p>
+      </div>
+      <p id="account-loading" class="text-muted" role="status" hidden>Загружаем профиль...</p>
+      <p id="account-message" class="text-danger" role="alert" hidden></p>
+      <button id="account-retry" class="btn btn-outline-primary mb-4" type="button" hidden>Повторить загрузку</button>
+      <div id="profile-content" class="row g-4" hidden>
+        <section class="col-lg-8" aria-labelledby="profile-title">
+          <div class="panel p-4 h-100">
+            <h2 id="profile-title">Личные данные</h2>
+            <dl class="row gy-3 my-4">
+              <dt class="col-sm-4">Имя и фамилия</dt>
+              <dd id="profile-name" class="col-sm-8 text-break"></dd>
+              <dt class="col-sm-4">Электронная почта</dt>
+              <dd id="profile-email" class="col-sm-8 text-break"></dd>
+              <dt class="col-sm-4">Телефон</dt>
+              <dd id="profile-phone" class="col-sm-8 text-break"></dd>
+            </dl>
+            <p class="small text-muted">Контакты из профиля используются при бронировании.</p>
+            <button id="logout-button" class="btn btn-outline-primary" type="button">Выйти из аккаунта</button>
+          </div>
+        </section>
+        <section class="col-lg-4" aria-labelledby="profile-bookings-title">
+          <div class="panel p-4 h-100">
+            <p class="eyebrow">Хороший вечер начинается здесь</p>
+            <h2 id="profile-bookings-title">Все брони в одном месте</h2>
+            <p class="text-muted">Проверьте дату, время и столик в истории бронирований.</p>
+            <a class="btn btn-primary" href="bookings.html">Мои бронирования</a>
+          </div>
+        </section>
+      </div>
+      <section id="profile-guest" class="panel p-4 text-center" aria-labelledby="profile-guest-title" hidden>
+        <h2 id="profile-guest-title">Здесь будет ваш профиль</h2>
+        <p class="text-muted">Войдите или создайте аккаунт, чтобы посмотреть свои данные.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a class="btn btn-primary" href="login.html?returnTo=profile.html">Войти</a>
+          <a class="btn btn-outline-primary" href="register.html?returnTo=profile.html">Создать аккаунт</a>
+        </div>
+      </section>
+      <noscript><p>Чтобы посмотреть профиль, включите JavaScript в браузере.</p></noscript>
+    </main>
+    <footer id="site-footer"></footer>
+  </body>
+</html>

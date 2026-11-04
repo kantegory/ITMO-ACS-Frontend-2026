@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Рестораны - BaT</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/bootstrap.bundle.min.js" defer></script>
+    <script src="api.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="visually-hidden-focusable" href="#main">К содержимому</a>
+    <header id="site-header"></header>
+    <main id="main" class="container page-shell">
+      <p id="page-message" class="my-4" role="status" hidden></p>
+      <button id="page-retry" class="btn btn-outline-primary mb-4" type="button" hidden>Повторить</button>
+      <div class="page-intro row align-items-end g-4">
+        <div class="col-lg-7">
+          <p class="eyebrow">РЕСТОРАНЫ ДЛЯ НЕСПЕШНЫХ ВСТРЕЧ</p>
+          <h1>Хороший вечер<br />начинается с места.</h1>
+        </div>
+        <div class="col-lg-5">
+          <p class="lead-copy">
+            Ужин вдвоем, встреча с друзьями или небольшой праздник. Найдите
+            ресторан, в котором захочется остаться.
+          </p>
+        </div>
+      </div>
+      <form id="restaurant-search" role="search">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-6 col-lg-3">
+            <label for="city" class="form-label">Город</label>
+            <select id="city" name="city" class="form-select">
+              <option value="">Любой город</option>
+              <option>Санкт-Петербург</option>
+              <option>Москва</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <label for="cuisine" class="form-label">Кухня</label>
+            <select id="cuisine" name="cuisine_type" class="form-select">
+              <option value="">Любая кухня</option>
+              <option value="european">Европейская</option>
+              <option value="italian">Итальянская</option>
+              <option value="georgian">Грузинская</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <label for="price" class="form-label">Ценовая категория</label>
+            <select id="price" name="price_category" class="form-select">
+              <option value="">Любая цена</option>
+              <option value="low">₽ - невысокая</option>
+              <option value="medium">₽₽ - средняя</option>
+              <option value="high">₽₽₽ - высокая</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <button class="btn btn-primary" type="submit">
+              Найти ресторан
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="section-heading">
+        <h2>Места для вашего вечера</h2>
+        <div class="d-flex gap-3 align-items-center">
+          <p id="restaurant-count" role="status">Загружаем рестораны...</p>
+          <button class="btn btn-link p-0" type="reset" form="restaurant-search">
+            Сбросить
+          </button>
+        </div>
+      </div>
+      <div id="restaurant-results" class="row g-4"></div>
+      <template id="restaurant-card">
+        <div class="col-md-6 col-xl-4 restaurant-card">
+          <article class="card">
+            <img class="card-img-top" alt="Интерьер ресторана" />
+            <div class="card-body">
+              <p class="card-meta"></p>
+              <h3></h3>
+              <p class="description"></p>
+              <p class="small-copy"></p>
+              <a class="btn btn-primary">О ресторане</a>
+            </div>
+          </article>
+        </div>
+      </template>
+      <div id="no-restaurants" class="empty-state" hidden>
+        <h3>Пока ничего не нашлось</h3>
+        <p>Попробуйте другую кухню, город или ценовую категорию.</p>
+        <button
+          class="btn btn-outline-primary"
+          type="reset"
+          form="restaurant-search"
+        >
+          Сбросить фильтры
+        </button>
+      </div>
+    </main>
+    <footer id="site-footer"></footer>
+  </body>
+</html>
