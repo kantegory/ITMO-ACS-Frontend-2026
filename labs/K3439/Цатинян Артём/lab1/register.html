@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Регистрация — tablely</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">tablely<span>.</span></a
+        ><a class="link-dark" href="login.html">Уже есть аккаунт? Войти</a>
+      </div>
+    </nav>
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <section
+          class="col-md-7 col-lg-5 bg-white rounded-4 p-4 p-md-5 shadow-sm"
+        >
+          <p class="eyebrow">Первый шаг</p>
+          <h1 class="mb-4">Создать аккаунт</h1>
+          <form id="register-form">
+            <input
+              class="form-control border rounded p-2 mb-3"
+              name="name"
+              required
+              placeholder="Имя"
+            /><input
+              class="form-control border rounded p-2 mb-3"
+              name="email"
+              type="email"
+              required
+              placeholder="Почта"
+            /><input
+              class="form-control border rounded p-2 mb-4"
+              id="register-password"
+              type="password"
+              required
+              minlength="6"
+              placeholder="Пароль"
+            /><button
+              type="button"
+              class="btn btn-link p-0 mb-3"
+              data-toggle-password="register-password"
+            >
+              Показать</button
+            ><button class="btn btn-accent w-100 py-2">
+              Зарегистрироваться
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Вход — tablely</title>
+    <script src="js/theme-init.js"></script>
+    <link href="/bootstrap.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content"
+      >Перейти к основному содержимому</a
+    >
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">tablely<span>.</span></a
+        ><a class="link-dark" href="register.html"
+          >Нет аккаунта? Зарегистрироваться</a
+        >
+      </div>
+    </nav>
+    <main class="container py-5" id="main-content" tabindex="-1">
+      <div class="row justify-content-center">
+        <section
+          class="col-md-7 col-lg-5 bg-white rounded-4 p-4 p-md-5 shadow-sm"
+        >
+          <p class="eyebrow">С возвращением</p>
+          <h1 class="mb-4">Войти в аккаунт</h1>
+          <form id="login-form">
+            <label class="form-label" for="login-email">Почта</label
+            ><input
+              class="form-control border rounded p-2 mb-3"
+              type="email"
+              id="login-email"
+              autocomplete="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+            /><label class="form-label" for="login-password">Пароль</label
+            ><input
+              class="form-control border rounded p-2 mb-4"
+              id="login-password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="6"
+              placeholder="••••••••"
+            /><button
+              type="button"
+              class="btn btn-link p-0 mb-3"
+              data-toggle-password="login-password"
+              aria-controls="login-password"
+              aria-pressed="false"
+            >
+              Показать</button
+            ><button class="btn btn-accent w-100 py-2">Войти</button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
