@@ -1,13 +1,4 @@
-import {
-    api,
-    getSession,
-    clearSession,
-    ApiError
-} from './api.js';
-
-export const $ = selector => {
-    return document.querySelector(selector);
-};
+import { getSession, clearSession } from './api.js';
 
 export const TYPES = {
     pilates: 'Пилатес',
@@ -50,7 +41,7 @@ export function status(
     error = false,
     selector = '#pageStatus'
 ) {
-    const element = $(selector);
+    const element = document.querySelector(selector);
 
     if (!element) {
         return;
@@ -107,7 +98,7 @@ export function renderHeader() {
         ['blog', 'blog.html', 'Блог']
     ];
 
-    $('#siteNav').innerHTML = links.map(
+    document.querySelector('#siteNav').innerHTML = links.map(
         ([key, href, title]) => {
             return `
         <a
@@ -137,37 +128,9 @@ export function renderHeader() {
       `
     );
 
-    $('#logout')?.addEventListener('click', () => {
+    document.querySelector('#logout')?.addEventListener('click', () => {
         clearSession();
         location.href = 'login.html';
-    });
-}
-
-export async function requireUser() {
-    const session = getSession();
-
-    if (!session) {
-        throw new ApiError(
-            'Сначала войди в аккаунт.',
-            401
-        );
-    }
-
-    return api(
-        `/users/${encodeURIComponent(session.userId)}`,
-        { auth: true }
-    );
-}
-
-export async function changePlan(update) {
-    const user = await requireUser();
-
-    return api(`/users/${user.id}`, {
-        method: 'PATCH',
-        auth: true,
-        body: {
-            plan: update(user.plan || [])
-        }
     });
 }
 
@@ -214,12 +177,6 @@ export function trainingCard(item) {
   `;
 }
 
-export async function loadTraining() {
-    const id = new URLSearchParams(
-        location.search
-    ).get('id') || 'pilates';
-
-    return api(
-        `/trainings/${encodeURIComponent(id)}`
-    );
+export function getTrainingId() {
+    return new URLSearchParams(location.search).get('id') || 'pilates';
 }

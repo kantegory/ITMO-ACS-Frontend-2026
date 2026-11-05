@@ -1,18 +1,17 @@
+import { api } from './api.js';
+
 import {
-    $,
     DAYS,
     esc,
     status,
     showError,
-    requireUser,
-    loadTraining,
-    changePlan
+    getTrainingId
 } from './ui.js';
 
 export async function initSession() {
     const [user, training] = await Promise.all([
-        requireUser(),
-        loadTraining()
+        api.getCurrentUser(),
+        api.getTraining(getTrainingId())
     ]);
 
     const steps = training.steps;
@@ -34,18 +33,18 @@ export async function initSession() {
     let deadline = 0;
     let finished = false;
 
-    $('#sessionTitle').textContent =
+    document.querySelector('#sessionTitle').textContent =
         training.title;
 
-    $('#sessionDetails').href =
+    document.querySelector('#sessionDetails').href =
         `training.html?id=${encodeURIComponent(training.id)}`;
 
-    $('#sessionSteps').innerHTML =
+    document.querySelector('#sessionSteps').innerHTML =
         steps.map(step => {
             return `<li>${esc(step.title)}</li>`;
         }).join('');
 
-    $('#participants').innerHTML = [
+    document.querySelector('#participants').innerHTML = [
         `${user.name} (ты)`,
         ...training.participants
     ].map(name => {
@@ -73,18 +72,18 @@ export async function initSession() {
             remaining % 60
         ).padStart(2, '0');
 
-        $('#timer').textContent =
+        document.querySelector('#timer').textContent =
             `${minutes}:${seconds}`;
     }
 
     function render() {
         time();
 
-        $('#currentMove').textContent = finished
+        document.querySelector('#currentMove').textContent = finished
             ? 'Занятие завершено!'
             : steps[index].title;
 
-        $('#sessionSteps')
+        document.querySelector('#sessionSteps')
             .querySelectorAll('li')
             .forEach((item, position) => {
                 const current =
@@ -102,9 +101,9 @@ export async function initSession() {
                 }
             });
 
-        $('#nextMove').disabled = finished;
+        document.querySelector('#nextMove').disabled = finished;
 
-        $('#nextMove').textContent =
+        document.querySelector('#nextMove').textContent =
             index === steps.length - 1
                 ? 'Завершить'
                 : 'Следующий этап';
@@ -119,15 +118,16 @@ export async function initSession() {
             finished = true;
             remaining = 0;
 
-            $('#timerToggle').textContent =
+            document.querySelector('#timerToggle').textContent =
                 'Начать заново';
 
-            $('#saveResult').hidden = !canSave;
+            document.querySelector('#saveResult').hidden = !canSave;
         } else {
             index += 1;
             remaining = steps[index].seconds;
 
-            $('#timerToggle').textContent = 'Начать';
+            document.querySelector('#timerToggle').textContent =
+                'Начать';
         }
 
         render();
@@ -140,7 +140,7 @@ export async function initSession() {
     function start() {
         deadline = Date.now() + remaining * 1000;
 
-        $('#timerToggle').textContent = 'Пауза';
+        document.querySelector('#timerToggle').textContent = 'Пауза';
 
         interval = setInterval(() => {
             remaining = Math.max(
@@ -156,7 +156,7 @@ export async function initSession() {
         }, 250);
     }
 
-    $('#timerToggle').addEventListener(
+    document.querySelector('#timerToggle').addEventListener(
         'click',
         () => {
             if (interval !== null) {
@@ -168,7 +168,7 @@ export async function initSession() {
                 stop();
                 time();
 
-                $('#timerToggle').textContent =
+                document.querySelector('#timerToggle').textContent =
                     'Продолжить';
 
                 return;
@@ -179,8 +179,8 @@ export async function initSession() {
                 remaining = steps[0].seconds;
                 finished = false;
 
-                $('#saveResult').hidden = true;
-                $('#saveResult').disabled = false;
+                document.querySelector('#saveResult').hidden = true;
+                document.querySelector('#saveResult').disabled = false;
 
                 status('', false, '#resultStatus');
                 render();
@@ -190,12 +190,12 @@ export async function initSession() {
         }
     );
 
-    $('#nextMove').addEventListener(
+    document.querySelector('#nextMove').addEventListener(
         'click',
         next
     );
 
-    $('#saveResult').addEventListener(
+    document.querySelector('#saveResult').addEventListener(
         'click',
         async event => {
             const button = event.currentTarget;
@@ -203,7 +203,7 @@ export async function initSession() {
             button.disabled = true;
 
             try {
-                await changePlan(plan => {
+                await api.updatePlan(plan => {
                     if (!plan.some(item =>
                         item.day === day &&
                         item.trainingId === training.id
@@ -236,6 +236,6 @@ export async function initSession() {
 
     render();
 
-    $('#sessionContent').hidden = false;
+    document.querySelector('#sessionContent').hidden = false;
     status();
 }

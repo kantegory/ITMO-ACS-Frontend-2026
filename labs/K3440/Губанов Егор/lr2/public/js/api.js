@@ -1,13 +1,29 @@
+import axios from 'https://cdn.jsdelivr.net/npm/axios@1.21.0/dist/esm/axios.min.js';
+
 const STORAGE_KEY = 'vmeste-lr2-session';
+
+const client = axios.create({
+    baseURL: '/api',
+    timeout: 10000,
+    responseType: 'json',
+    headers: { Accept: 'application/json' }
+});
+
+export class ApiError extends Error {
+    constructor(message, status = 0) {
+        super(message);
+        this.name = 'ApiError';
+        this.status = status;
+    }
+}
 
 export function getSession() {
     try {
-        const value = JSON.parse(
-            localStorage.getItem(STORAGE_KEY)
-        );
+        const value = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
         return value &&
         typeof value.accessToken === 'string' &&
+        value.accessToken &&
         value.userId
             ? value
             : null;
@@ -17,13 +33,10 @@ export function getSession() {
 }
 
 export function saveSession({ accessToken, user }) {
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({
-            accessToken,
-            userId: user.id
-        })
-    );
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        accessToken,
+        userId: user.id
+    }));
 }
 
 export function clearSession() {
@@ -33,104 +46,163 @@ export function clearSession() {
     }
 }
 
-export class ApiError extends Error {
-    constructor(message, status = 0) {
-        super(message);
-        this.status = status;
-    }
-}
-
 const translations = {
-    'Email already exists':
-        'Эта почта уже зарегистрирована.',
-    'Cannot find user':
-        'Неверная почта или пароль.',
-    'Incorrect password':
-        'Неверная почта или пароль.',
-    'Email format is invalid':
-        'Проверь адрес почты.',
-    'Password is too short':
-        'Пароль должен содержать минимум 6 символов.',
-    'Email and password are required':
-        'Укажи почту и пароль.'
+    'Email already exists': 'Эта почта уже зарегистрирована.',
+    'Cannot find user': 'Неверная почта или пароль.',
+    'Incorrect password': 'Неверная почта или пароль.',
+    'Email format is invalid': 'Проверь адрес почты.',
+    'Password is too short': 'Пароль должен содержать минимум 6 символов.',
+    'Email and password are required': 'Укажи почту и пароль.'
 };
 
-export async function api(
-    path,
-    {
-        method = 'GET',
-        body,
-        auth = false,
-        signal
-    } = {}
-) {
-    const headers = {
-        Accept: 'application/json'
-    };
+async function request(url, {
+    method = 'GET', query = {}, body, auth = false, signal
+} = {}) {
+    const params = Object.fromEntries(
+        Object.entries(query).filter(([, value]) =>
+            value !== undefined && value !== null && value !== ''
+        )
+    );
 
-    if (body !== undefined) {
-        headers['Content-Type'] = 'application/json';
-    }
+    const headers = {};
 
     if (auth) {
         const session = getSession();
 
         if (!session) {
+            throw new ApiError('Сначала войди в аккаунт.', 401);
+        }
+
+        headers.Authorization = `Bearer ${session.accessToken}`;
+    }
+
+    try {
+        const response = await client.request({
+            url,
+            method,
+            params,
+            data: body,
+            headers,
+            signal
+        });
+
+        if (typeof response.data === 'string' && response.data !== '') {
             throw new ApiError(
-                'Сначала войди в аккаунт.',
-                401
+                'Сервер вернул некорректный JSON.',
+                response.status
             );
         }
 
-        headers.Authorization =
-            `Bearer ${session.accessToken}`;
-    }
-
-    let response;
-
-    try {
-        response = await fetch(`/api${path}`, {
-            method,
-            headers,
-            signal,
-            cache: 'no-store',
-            body: body === undefined
-                ? undefined
-                : JSON.stringify(body)
-        });
+        return response.data === '' ? null : response.data;
     } catch (error) {
-        if (error.name === 'AbortError') {
+        if (error instanceof ApiError) {
             throw error;
         }
 
-        throw new ApiError(
-            'Не удалось связаться с сервером. Проверь, запущен ли npm start.'
-        );
-    }
+        if (axios.isCancel(error)) {
+            throw new DOMException('Запрос отменён.', 'AbortError');
+        }
 
-    const data = await response.json().catch(() => null);
+        if (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT') {
+            throw new ApiError(
+                'Сервер долго не отвечает. Попробуй ещё раз.'
+            );
+        }
 
-    if (!response.ok) {
-        if (response.status === 401 && auth) {
+        if (!error.response) {
+            throw new ApiError(
+                'Не удалось связаться с сервером. Проверь, запущен ли npm start.'
+            );
+        }
+
+        const { status, data } = error.response;
+
+        if (status === 401 && auth) {
             clearSession();
         }
 
-        const raw = typeof data === 'string'
-            ? data
+        const message = typeof data === 'string'
+            ? data.trim()
             : data?.message;
 
-        const fallback = response.status === 404
-            ? 'Данные не найдены.'
-            : response.status === 403
-                ? 'Нет доступа к этим данным.'
-                : 'Не удалось выполнить запрос.';
+        const fallback = {
+            401: 'Сначала войди в аккаунт.',
+            403: 'Нет доступа к этим данным.',
+            404: 'Данные не найдены.'
+        }[status] || 'Не удалось выполнить запрос.';
 
         throw new ApiError(
-            translations[raw] ||
-            (data?.message ? raw : fallback),
-            response.status
+            translations[message] ||
+            (typeof data?.message === 'string' ? data.message : fallback),
+            status
         );
     }
-
-    return data;
 }
+
+async function getCurrentUser() {
+    const session = getSession();
+
+    if (!session) {
+        throw new ApiError('Сначала войди в аккаунт.', 401);
+    }
+
+    return request(
+        `/users/${encodeURIComponent(session.userId)}`,
+        { auth: true }
+    );
+}
+
+async function updatePlan(update) {
+    const user = await getCurrentUser();
+
+    return request(`/users/${encodeURIComponent(user.id)}`, {
+        method: 'PATCH',
+        auth: true,
+        body: { plan: update(user.plan || []) }
+    });
+}
+
+export const api = {
+    login(body) {
+        return request('/login', {
+            method: 'POST',
+            body
+        });
+    },
+
+    register(body) {
+        return request('/register', {
+            method: 'POST',
+            body
+        });
+    },
+
+    getTrainings(filters = {}, { signal } = {}) {
+        return request('/trainings', {
+            query: {
+                type: filters.type,
+                level: filters.level,
+                minutes_lte: filters.maxMinutes,
+                q: filters.search?.trim()
+            },
+            signal
+        });
+    },
+
+    getTraining(id) {
+        return request(`/trainings/${encodeURIComponent(id)}`);
+    },
+
+    getArticles(category = '') {
+        return request('/articles', {
+            query: { category }
+        });
+    },
+
+    getArticle(id) {
+        return request(`/articles/${encodeURIComponent(id)}`);
+    },
+
+    getCurrentUser,
+    updatePlan
+};

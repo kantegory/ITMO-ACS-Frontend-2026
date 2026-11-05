@@ -32,6 +32,25 @@
         }
       ],
       "id": 2
+    },
+    {
+      "email": "testuser@test.com",
+      "password": "$2a$10$GSEmQ3O.kRR4HkO0eQPqn.P2lHQbVOcqZlr7UXQ3b07eOm..p0Z9u",
+      "name": "testuser",
+      "goal": "stretch",
+      "plan": [
+        {
+          "day": "friday",
+          "trainingId": "yoga",
+          "completed": false
+        },
+        {
+          "day": "monday",
+          "trainingId": "strength",
+          "completed": true
+        }
+      ],
+      "id": 3
     }
   ],
   "trainings": [

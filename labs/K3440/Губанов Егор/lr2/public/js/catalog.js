@@ -1,7 +1,6 @@
 import { api } from './api.js';
 
 import {
-    $,
     TYPES,
     LEVELS,
     DAYS,
@@ -9,68 +8,40 @@ import {
     status,
     showError,
     trainingCard,
-    loadTraining,
-    changePlan
+    getTrainingId
 } from './ui.js';
 
 export async function initCatalog() {
-    const form = $('#filters');
+    const form = document.querySelector('#filters');
 
     let version = 0;
     let debounce;
 
     async function load() {
         const current = ++version;
-        const query = new URLSearchParams();
-
-        if (form.elements.type.value) {
-            query.set(
-                'type',
-                form.elements.type.value
-            );
-        }
-
-        if (form.elements.level.value) {
-            query.set(
-                'level',
-                form.elements.level.value
-            );
-        }
-
-        if (form.elements.duration.value) {
-            query.set(
-                'minutes_lte',
-                form.elements.duration.value
-            );
-        }
-
-        if (form.elements.search.value.trim()) {
-            query.set(
-                'q',
-                form.elements.search.value.trim()
-            );
-        }
-
         status('Загружаем занятия…');
 
-        $('#trainingList').setAttribute(
+        document.querySelector('#trainingList').setAttribute(
             'aria-busy',
             'true'
         );
 
         try {
-            const items = await api(
-                `/trainings?${query}`
-            );
+            const items = await api.getTrainings({
+                type: form.elements.type.value,
+                level: form.elements.level.value,
+                maxMinutes: form.elements.duration.value,
+                search: form.elements.search.value
+            });
 
             if (current !== version) {
                 return;
             }
 
-            $('#trainingList').innerHTML =
+            document.querySelector('#trainingList').innerHTML =
                 items.map(trainingCard).join('');
 
-            $('#resultsCount').textContent =
+            document.querySelector('#resultsCount').textContent =
                 `Найдено занятий: ${items.length}`;
 
             status(
@@ -84,7 +55,7 @@ export async function initCatalog() {
             }
         } finally {
             if (current === version) {
-                $('#trainingList').setAttribute(
+                document.querySelector('#trainingList').setAttribute(
                     'aria-busy',
                     'false'
                 );
@@ -111,23 +82,23 @@ export async function initCatalog() {
 }
 
 export async function initTraining() {
-    const training = await loadTraining();
+    const training = await api.getTraining(getTrainingId());
 
     document.title =
         `${training.title} — Вместе`;
 
-    $('#trainingTitle').textContent =
+    document.querySelector('#trainingTitle').textContent =
         training.title;
 
-    $('#trainingMeta').textContent =
+    document.querySelector('#trainingMeta').textContent =
         `${TYPES[training.type]} · ` +
         `${LEVELS[training.level]} уровень · ` +
         `${training.minutes} мин`;
 
-    $('#trainingDescription').textContent =
+    document.querySelector('#trainingDescription').textContent =
         training.description;
 
-    $('#trainingSteps').innerHTML =
+    document.querySelector('#trainingSteps').innerHTML =
         training.steps.map(step => {
             return `
         <li>
@@ -137,31 +108,31 @@ export async function initTraining() {
       `;
         }).join('');
 
-    $('#equipment').innerHTML =
+    document.querySelector('#equipment').innerHTML =
         training.equipment.map(item => {
             return `<li>${esc(item)}</li>`;
         }).join('');
 
     if (/^[\w-]{11}$/.test(training.videoId)) {
-        $('#trainingVideo').src =
+        document.querySelector('#trainingVideo').src =
             'https://www.youtube-nocookie.com/embed/' +
             training.videoId;
 
-        $('#trainingVideo').title =
+        document.querySelector('#trainingVideo').title =
             `${training.title}: видео тренировки`;
 
-        $('#videoLink').href =
+        document.querySelector('#videoLink').href =
             'https://www.youtube.com/watch?v=' +
             training.videoId;
     }
 
-    $('#videoAuthor').textContent =
+    document.querySelector('#videoAuthor').textContent =
         `Автор видео: ${training.videoAuthor}`;
 
-    $('#openSession').href =
+    document.querySelector('#openSession').href =
         `session.html?id=${encodeURIComponent(training.id)}`;
 
-    $('#planDay').innerHTML =
+    document.querySelector('#planDay').innerHTML =
         Object.entries(DAYS).map(([key, name]) => {
             return `
         <option value="${key}">
@@ -170,10 +141,10 @@ export async function initTraining() {
       `;
         }).join('');
 
-    $('#trainingContent').hidden = false;
+    document.querySelector('#trainingContent').hidden = false;
     status();
 
-    $('#planForm').addEventListener(
+    document.querySelector('#planForm').addEventListener(
         'submit',
         async event => {
             event.preventDefault();
@@ -181,12 +152,12 @@ export async function initTraining() {
             const button =
                 event.currentTarget.querySelector('button');
 
-            const day = $('#planDay').value;
+            const day = document.querySelector('#planDay').value;
 
             button.disabled = true;
 
             try {
-                await changePlan(plan => {
+                await api.updatePlan(plan => {
                     const previous = plan.find(item =>
                         item.day === day &&
                         item.trainingId === training.id

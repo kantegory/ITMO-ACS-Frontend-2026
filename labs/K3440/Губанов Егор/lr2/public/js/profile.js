@@ -1,27 +1,24 @@
 import { api } from './api.js';
 
 import {
-    $,
     DAYS,
     TYPES,
     esc,
     status,
-    showError,
-    requireUser,
-    changePlan
+    showError
 } from './ui.js';
 
 export async function initProfile() {
     let [user, trainings] = await Promise.all([
-        requireUser(),
-        api('/trainings')
+        api.getCurrentUser(),
+        api.getTrainings()
     ]);
 
     const byId = new Map(
         trainings.map(item => [item.id, item])
     );
 
-    const list = $('#planList');
+    const list = document.querySelector('#planList');
     let saving = false;
 
     function render() {
@@ -40,24 +37,25 @@ export async function initProfile() {
             ? Math.round(done / plan.length * 100)
             : 0;
 
-        $('#profileName').textContent =
+        document.querySelector('#profileName').textContent =
             `Привет, ${user.name}!`;
 
-        $('#profileMeta').textContent =
+        document.querySelector('#profileMeta').textContent =
             `${user.email} · Направление: ${TYPES[user.goal]}`;
 
-        $('#progressLabel').textContent =
+        document.querySelector('#progressLabel').textContent =
             `Выполнено ${done} из ${plan.length}`;
 
-        $('#planProgress').style.width =
+        document.querySelector('#planProgress').style.width =
             `${percent}%`;
 
-        $('#progressTrack').setAttribute(
+        document.querySelector('#progressTrack').setAttribute(
             'aria-valuenow',
             String(percent)
         );
 
-        $('#emptyPlan').hidden = plan.length !== 0;
+        document.querySelector('#emptyPlan').hidden =
+            plan.length !== 0;
 
         list.innerHTML = plan.map(item => {
             const training = byId.get(item.trainingId);
@@ -126,7 +124,7 @@ export async function initProfile() {
         status('Сохраняем план…');
 
         try {
-            user = await changePlan(update);
+            user = await api.updatePlan(update);
             status('План сохранён.');
         } catch (error) {
             showError(error);
@@ -173,6 +171,6 @@ export async function initProfile() {
 
     render();
 
-    $('#profileContent').hidden = false;
+    document.querySelector('#profileContent').hidden = false;
     status();
 }

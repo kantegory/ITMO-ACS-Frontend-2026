@@ -1,7 +1,6 @@
 import { api } from './api.js';
 
 import {
-    $,
     esc,
     status,
     showError
@@ -23,19 +22,13 @@ export async function initBlog() {
         status('Загружаем статьи…');
 
         try {
-            const query = new URLSearchParams(
-                category ? { category } : {}
-            );
-
-            const articles = await api(
-                `/articles?${query}`
-            );
+            const articles = await api.getArticles(category);
 
             if (current !== version) {
                 return;
             }
 
-            $('#articleList').innerHTML =
+            document.querySelector('#articleList').innerHTML =
                 articles.map(article => {
                     return `
             <div class="col-12 col-md-6 col-xl-4">
@@ -74,7 +67,7 @@ export async function initBlog() {
         }
     }
 
-    $('#blogFilters').addEventListener(
+    document.querySelector('#blogFilters').addEventListener(
         'click',
         event => {
             const button = event.target.closest(
@@ -85,7 +78,7 @@ export async function initBlog() {
                 return;
             }
 
-            $('#blogFilters')
+            document.querySelector('#blogFilters')
                 .querySelectorAll('button')
                 .forEach(item => {
                     item.classList.toggle(
@@ -103,14 +96,14 @@ export async function initBlog() {
         }
     );
 
-    $('#articleModal').addEventListener(
+    document.querySelector('#articleModal').addEventListener(
         'hidden.bs.modal',
         () => {
             articleVersion += 1;
         }
     );
 
-    $('#articleList').addEventListener(
+    document.querySelector('#articleList').addEventListener(
         'click',
         async event => {
             const button = event.target.closest(
@@ -123,10 +116,10 @@ export async function initBlog() {
 
             const current = ++articleVersion;
 
-            $('#articleTitle').textContent =
+            document.querySelector('#articleTitle').textContent =
                 'Загружаем статью…';
 
-            $('#articleBody').textContent = '';
+            document.querySelector('#articleBody').textContent = '';
 
             try {
                 if (!globalThis.bootstrap) {
@@ -136,21 +129,23 @@ export async function initBlog() {
                 }
 
                 bootstrap.Modal
-                    .getOrCreateInstance($('#articleModal'))
+                    .getOrCreateInstance(
+                        document.querySelector('#articleModal')
+                    )
                     .show();
 
-                const article = await api(
-                    `/articles/${encodeURIComponent(button.dataset.article)}`
+                const article = await api.getArticle(
+                    button.dataset.article
                 );
 
                 if (current !== articleVersion) {
                     return;
                 }
 
-                $('#articleTitle').textContent =
+                document.querySelector('#articleTitle').textContent =
                     article.title;
 
-                $('#articleBody').innerHTML =
+                document.querySelector('#articleBody').innerHTML =
                     article.sections.map(section => {
                         return `
               <h3 class="h5">
@@ -161,10 +156,10 @@ export async function initBlog() {
                     }).join('');
             } catch (error) {
                 if (current === articleVersion) {
-                    $('#articleTitle').textContent =
+                    document.querySelector('#articleTitle').textContent =
                         'Не удалось открыть статью';
 
-                    $('#articleBody').textContent =
+                    document.querySelector('#articleBody').textContent =
                         error.message;
 
                     showError(error);

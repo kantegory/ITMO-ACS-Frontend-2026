@@ -4,21 +4,20 @@ import {
 } from './api.js';
 
 import {
-    $,
     status,
     showError,
     returnPath
 } from './ui.js';
 
 export function initAuth() {
-    const form = $('#authForm');
+    const form = document.querySelector('#authForm');
 
     const register =
         document.body.dataset.page === 'register';
 
     const next = returnPath();
 
-    $('#otherAuth').href =
+    document.querySelector('#otherAuth').href =
         `${register ? 'login' : 'register'}.html` +
         `?next=${encodeURIComponent(next)}`;
 
@@ -78,13 +77,9 @@ export function initAuth() {
                 });
             }
 
-            const result = await api(
-                register ? '/register' : '/login',
-                {
-                    method: 'POST',
-                    body
-                }
-            );
+            const result = register
+                ? await api.register(body)
+                : await api.login(body);
 
             try {
                 saveSession(result);
