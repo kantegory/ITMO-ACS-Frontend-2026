@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поиск вакансий — JobHub</title>
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">Как это работает</a></li>
+        </ul>
+        <div class="d-flex flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
+          <a href="login.html" class="btn btn-outline-primary">
+            <i class="bi bi-box-arrow-in-right me-1"></i>Вход
+          </a>
+          <a href="register.html" class="btn btn-primary">
+            <i class="bi bi-person-plus me-1"></i>Регистрация
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="flex-grow-1 py-4">
+  <div class="container">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Вакансии</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4">
+      <aside class="col-lg-3">
+        <div class="card filters-panel border-0 shadow-sm">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+            <h2 class="h6 mb-0"><i class="bi bi-funnel me-1"></i>Фильтры</h2>
+            <button type="button" class="btn btn-sm btn-link p-0" id="resetFilters">Сбросить</button>
+          </div>
+          <form class="card-body" id="filtersForm">
+            <div class="mb-3">
+              <label for="filterQuery" class="form-label small fw-semibold">Ключевое слово</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                <input type="search" class="form-control" id="filterQuery" name="q" placeholder="Профессия, компания">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="filterIndustry" class="form-label small fw-semibold">Отрасль</label>
+              <select class="form-select" id="filterIndustry" name="industry">
+                <option value="">Все отрасли</option>
+                <option value="IT">IT и телеком</option>
+                <option value="finance">Финансы и банки</option>
+                <option value="education">Образование</option>
+                <option value="medicine">Медицина</option>
+                <option value="trade">Торговля</option>
+                <option value="marketing">Маркетинг и реклама</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="filterSalary" class="form-label small fw-semibold">Зарплата от</label>
+              <select class="form-select" id="filterSalary" name="salary">
+                <option value="">Не важно</option>
+                <option value="50000">50 000 ₽</option>
+                <option value="100000">100 000 ₽</option>
+                <option value="150000">150 000 ₽</option>
+                <option value="200000">200 000 ₽</option>
+                <option value="250000">250 000 ₽</option>
+              </select>
+            </div>
+
+            <fieldset class="mb-3">
+              <legend class="form-label small fw-semibold">Опыт работы</legend>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="none" id="expNone" name="experience">
+                <label class="form-check-label" for="expNone">Без опыта</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1-3" id="exp13" name="experience">
+                <label class="form-check-label" for="exp13">1–3 года</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="3-6" id="exp36" name="experience">
+                <label class="form-check-label" for="exp36">3–6 лет</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="6+" id="exp6" name="experience">
+                <label class="form-check-label" for="exp6">Более 6 лет</label>
+              </div>
+            </fieldset>
+
+            <div class="form-check form-switch mb-4">
+              <input class="form-check-input" type="checkbox" role="switch" id="filterRemote" name="remote">
+              <label class="form-check-label" for="filterRemote">Только удалённо</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 d-lg-none">
+              <i class="bi bi-funnel me-1"></i>Применить
+            </button>
+          </form>
+        </div>
+
+
+      </aside>
+
+      <section class="col-lg-9">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+          <div>
+            <h1 class="h4 mb-1">Вакансии</h1>
+            <p class="text-muted small mb-0">Найдено: <span id="resultsCount" class="fw-semibold">9</span></p>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <label for="sortSelect" class="small text-muted text-nowrap mb-0">Сортировка:</label>
+            <select class="form-select form-select-sm" id="sortSelect">
+              <option value="relevant">По релевантности</option>
+              <option value="salary">По зарплате</option>
+              <option value="date">По дате</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="vacancyList" class="d-flex flex-column gap-3">
+
+          <article class="vacancy-item card border-0" data-title="Senior Frontend-разработчик"
+                   data-company="Яндекс" data-industry="IT" data-salary="280000"
+                   data-experience="3-6" data-remote="true" data-date="20261105">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-primary-subtle text-primary">Я</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">Senior Frontend-разработчик</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">Яндекс</a> · <span class="text-muted">IT и телеком</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">от 280 000 ₽</div>
+                      <span class="badge text-bg-success-subtle text-success-emphasis">Новая</span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Москва</span>
+                    <span class="badge meta-badge"><i class="bi bi-laptop me-1"></i>Удалённо</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>3–6 лет</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Разработка интерфейсов сервисов поиска. React, TypeScript, архитектура фронтенда.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="Финансовый аналитик"
+                   data-company="СберБанк" data-industry="finance" data-salary="180000"
+                   data-experience="1-3" data-remote="false" data-date="20261104">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-success-subtle text-success">С</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">Финансовый аналитик</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">СберБанк</a> · <span class="text-muted">Финансы и банки</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">180 000 – 240 000 ₽</div>
+                      <span class="badge text-bg-success-subtle text-success-emphasis">Новая</span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Москва</span>
+                    <span class="badge meta-badge"><i class="bi bi-building me-1"></i>Офис</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>1–3 года</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Финансовое моделирование, бюджетирование, анализ эффективности продуктов.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="UX/UI-дизайнер продукта"
+                   data-company="МТС Digital" data-industry="IT" data-salary="150000"
+                   data-experience="none" data-remote="false" data-date="20261103">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-danger-subtle text-danger">М</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">UX/UI-дизайнер продукта</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">МТС Digital</a> · <span class="text-muted">IT и телеком</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">до 210 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Санкт-Петербург</span>
+                    <span class="badge meta-badge"><i class="bi bi-house me-1"></i>Гибрид</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>Без опыта</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Стажировка</span>
+                  </div>
+                  <p class="small text-muted mb-0">Проектирование интерфейсов мобильных приложений, прототипы в Figma, дизайн-система.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="Врач-терапевт"
+                   data-company="Медгородок" data-industry="medicine" data-salary="150000"
+                   data-experience="1-3" data-remote="false" data-date="20261102">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-warning-subtle text-warning-emphasis">М</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">Врач-терапевт</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">Медгородок</a> · <span class="text-muted">Медицина</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">от 150 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Казань</span>
+                    <span class="badge meta-badge"><i class="bi bi-building me-1"></i>Офис</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>1–3 года</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Амбулаторный приём, ведение пациентов, работа в команде врачей клиники.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="Backend-разработчик Python"
+                   data-company="Ozon" data-industry="IT" data-salary="220000"
+                   data-experience="1-3" data-remote="true" data-date="20261101">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-info-subtle text-info-emphasis">O</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">Backend-разработчик Python</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">Ozon</a> · <span class="text-muted">IT и телеком</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">220 000 – 300 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Москва</span>
+                    <span class="badge meta-badge"><i class="bi bi-laptop me-1"></i>Удалённо</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>1–3 года</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Разработка высоконагруженных сервисов маркетплейса на Python и PostgreSQL.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="Преподаватель программирования"
+                   data-company="SkillBox" data-industry="education" data-salary="70000"
+                   data-experience="none" data-remote="true" data-date="20261030">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-secondary-subtle text-secondary-emphasis">S</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">Преподаватель программирования</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">SkillBox</a> · <span class="text-muted">Образование</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">от 70 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Онлайн</span>
+                    <span class="badge meta-badge"><i class="bi bi-laptop me-1"></i>Удалённо</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>Без опыта</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Частичная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Проведение вебинаров по основам Python, проверка домашних заданий студентов.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="Менеджер по продажам"
+                   data-company="Леруа Мерлен" data-industry="trade" data-salary="90000"
+                   data-experience="1-3" data-remote="false" data-date="20261029">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-primary-subtle text-primary">Л</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">Менеджер по продажам</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">Леруа Мерлен</a> · <span class="text-muted">Торговля</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">90 000 – 130 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Санкт-Петербург</span>
+                    <span class="badge meta-badge"><i class="bi bi-building me-1"></i>Офис</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>1–3 года</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Работа с корпоративными клиентами, презентации, сопровождение сделок.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="SMM-специалист"
+                   data-company="ВКонтакте" data-industry="marketing" data-salary="80000"
+                   data-experience="none" data-remote="false" data-date="20261028">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-info-subtle text-info-emphasis">VK</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">SMM-специалист</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">ВКонтакте</a> · <span class="text-muted">Маркетинг и реклама</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">от 80 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Санкт-Петербург</span>
+                    <span class="badge meta-badge"><i class="bi bi-house me-1"></i>Гибрид</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>Без опыта</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Ведение сообществ, контент-план, работа с отзывами и рекламными кампаниями.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="vacancy-item card border-0" data-title="CTO / Технический директор"
+                   data-company="Тинькофф" data-industry="IT" data-salary="400000"
+                   data-experience="6+" data-remote="false" data-date="20261027">
+            <div class="card-body">
+              <div class="d-flex gap-3">
+                <span class="company-logo bg-warning-subtle text-warning-emphasis">Т</span>
+                <div class="flex-grow-1">
+                  <div class="d-flex flex-wrap justify-content-between gap-2">
+                    <div>
+                      <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html">CTO / Технический директор</a></h2>
+                      <div class="small"><a href="companies.html" class="link-secondary">Тинькофф</a> · <span class="text-muted">IT и телеком</span></div>
+                    </div>
+                    <div class="text-end">
+                      <div class="fw-bold salary">от 400 000 ₽</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 my-3">
+                    <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Москва</span>
+                    <span class="badge meta-badge"><i class="bi bi-building me-1"></i>Офис</span>
+                    <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>Более 6 лет</span>
+                    <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>Полная занятость</span>
+                  </div>
+                  <p class="small text-muted mb-0">Управление инженерной командой, техническая стратегия, найм и развитие разработчиков.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div id="emptyState" class="card border-0 shadow-sm d-none">
+          <div class="card-body text-center py-5">
+            <i class="bi bi-search display-4 text-muted"></i>
+            <h2 class="h5 mt-3">Вакансии не найдены</h2>
+            <p class="text-muted">Попробуйте изменить параметры фильтрации.</p>
+            <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('resetFilters').click()">Сбросить фильтры</button>
+          </div>
+        </div>
+
+        <nav class="mt-4" aria-label="Навигация по страницам">
+          <ul class="pagination justify-content-center mb-0">
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Назад</a></li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Вперёд</a></li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="loginModalLabel">Вход в аккаунт</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="loginEmail2" class="form-label">Email</label>
+            <input type="email" class="form-control" id="loginEmail2" placeholder="you@example.com" required>
+            <div class="invalid-feedback">Введите корректный email.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword2" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="loginPassword2" minlength="6" required>
+            <div class="invalid-feedback">Не менее 6 символов.</div>
+          </div>
+          <div class="d-grid gap-2 mt-3">
+            <a href="account.html" class="btn btn-outline-secondary"><i class="bi bi-person me-1"></i>Войти как соискатель</a>
+            <a href="employer.html" class="btn btn-outline-secondary"><i class="bi bi-building me-1"></i>Войти как работодатель</a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="registerModalLabel">Регистрация</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="regName2" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="regName2" required>
+            <div class="invalid-feedback">Укажите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="regEmail2" class="form-label">Email</label>
+            <input type="email" class="form-control" id="regEmail2" required>
+            <div class="invalid-feedback">Введите корректный email.</div>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="regEmployer2">
+            <label class="form-check-label" for="regEmployer2">Я работодатель</label>
+          </div>
+          <a href="#" class="small">Полная форма регистрации на главной</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
