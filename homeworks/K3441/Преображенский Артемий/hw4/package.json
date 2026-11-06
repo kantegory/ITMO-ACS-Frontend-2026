@@ -1,0 +1,12 @@
+{
+  "name": "bat-hw4",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ДЗ4: SVG-спрайт сайта BaT с Go API restaurant-booking",
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
