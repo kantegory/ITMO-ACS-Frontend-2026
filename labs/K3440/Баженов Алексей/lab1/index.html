@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Рестораны — Столик</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar navbar-expand-sm bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Столик</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Открыть меню"><span class="navbar-toggler-icon"></span></button>
+    <nav class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Рестораны</a></li>
+        <li class="nav-item"><a class="nav-link" href="bookings.html">Бронирования</a></li>
+        <li class="nav-item"><a class="nav-link" href="profile.html">Кабинет</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Войти</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container py-4">
+<h1 class="h3 mb-4">Поиск ресторанов</h1>
+<div class="row g-4">
+  <aside class="col-lg-3">
+    <form id="filterForm" class="card card-body">
+      <div class="mb-3"><label for="q" class="form-label">Название</label>
+        <input type="search" id="q" name="q" class="form-control"></div>
+      <div class="mb-3"><label for="cuisine" class="form-label">Кухня</label>
+        <select id="cuisine" name="cuisine" class="form-select"><option value="">Любая</option>
+          <option value="italian">Итальянская</option><option value="japanese">Японская</option>
+          <option value="georgian">Грузинская</option><option value="french">Французская</option></select></div>
+      <div class="mb-3"><label for="district" class="form-label">Расположение</label>
+        <select id="district" name="district" class="form-select"><option value="">Любое</option>
+          <option value="center">Центр</option><option value="north">Север</option><option value="south">Юг</option></select></div>
+      <div class="mb-3"><label for="price" class="form-label">Цена (до)</label>
+        <select id="price" name="price" class="form-select"><option value="">Любая</option>
+          <option value="1">₽</option><option value="2">₽₽</option><option value="3">₽₽₽</option></select></div>
+      <button type="reset" class="btn btn-outline-secondary">Сбросить</button>
+    </form>
+  </aside>
+  <section class="col-lg-9">
+    <div class="row g-4">
+      <div class="col-sm-6 col-xl-4" data-name="La Trattoria" data-cuisine="italian" data-district="center" data-price="2">
+        <a href="restaurant.html" class="card h-100">
+          <div class="ph ph-1" role="img" aria-label="Фото ресторана La Trattoria"></div>
+          <div class="card-body">
+            <h2 class="h5">La Trattoria</h2>
+            <p class="mb-1"><span class="rating">★</span> 4.7 · ₽₽</p>
+            <p class="text-muted small mb-0">Итальянская кухня · Центр</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-xl-4" data-name="Токио Тэй" data-cuisine="japanese" data-district="north" data-price="3">
+        <a href="restaurant.html" class="card h-100">
+          <div class="ph ph-2" role="img" aria-label="Фото ресторана Токио Тэй"></div>
+          <div class="card-body">
+            <h2 class="h5">Токио Тэй</h2>
+            <p class="mb-1"><span class="rating">★</span> 4.8 · ₽₽₽</p>
+            <p class="text-muted small mb-0">Японская кухня · Север</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-xl-4" data-name="Хинкальная №1" data-cuisine="georgian" data-district="center" data-price="1">
+        <a href="restaurant.html" class="card h-100">
+          <div class="ph ph-3" role="img" aria-label="Фото ресторана Хинкальная №1"></div>
+          <div class="card-body">
+            <h2 class="h5">Хинкальная №1</h2>
+            <p class="mb-1"><span class="rating">★</span> 4.5 · ₽</p>
+            <p class="text-muted small mb-0">Грузинская кухня · Центр</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-xl-4" data-name="Le Petit Paris" data-cuisine="french" data-district="south" data-price="3">
+        <a href="restaurant.html" class="card h-100">
+          <div class="ph ph-1" role="img" aria-label="Фото ресторана Le Petit Paris"></div>
+          <div class="card-body">
+            <h2 class="h5">Le Petit Paris</h2>
+            <p class="mb-1"><span class="rating">★</span> 4.6 · ₽₽₽</p>
+            <p class="text-muted small mb-0">Французская кухня · Юг</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-xl-4" data-name="Sakura Garden" data-cuisine="japanese" data-district="center" data-price="2">
+        <a href="restaurant.html" class="card h-100">
+          <div class="ph ph-2" role="img" aria-label="Фото ресторана Sakura Garden"></div>
+          <div class="card-body">
+            <h2 class="h5">Sakura Garden</h2>
+            <p class="mb-1"><span class="rating">★</span> 4.4 · ₽₽</p>
+            <p class="text-muted small mb-0">Японская кухня · Центр</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-xl-4" data-name="Тбилисо" data-cuisine="georgian" data-district="north" data-price="2">
+        <a href="restaurant.html" class="card h-100">
+          <div class="ph ph-3" role="img" aria-label="Фото ресторана Тбилисо"></div>
+          <div class="card-body">
+            <h2 class="h5">Тбилисо</h2>
+            <p class="mb-1"><span class="rating">★</span> 4.9 · ₽₽</p>
+            <p class="text-muted small mb-0">Грузинская кухня · Север</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <p id="empty" class="text-muted" hidden>Ничего не найдено.</p>
+  </section>
+</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
