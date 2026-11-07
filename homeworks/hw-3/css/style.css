@@ -1,0 +1,145 @@
+:root {
+  --brand: #c0392b;
+  --brand-dark: #922b21;
+  --bg-soft: #f1f2f4;
+}
+
+[data-bs-theme="dark"] {
+  --brand: #e2574a;
+  --brand-dark: #c0392b;
+  --bg-soft: #15181c;
+}
+
+body {
+  background-color: var(--bg-soft);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #fff !important;
+}
+
+.navbar-dark .nav-link,
+.navbar-dark .nav-link.active,
+.navbar-dark .dropdown-toggle {
+  color: #fff !important;
+}
+
+.btn-brand {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.btn-brand:hover {
+  background-color: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: #fff;
+  padding: 4rem 0;
+}
+
+.restaurant-card {
+  display: block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.restaurant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.restaurant-card:focus-visible {
+  outline: 3px solid var(--brand-dark);
+  outline-offset: 2px;
+}
+
+.restaurant-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.rating-stars {
+  color: #f1a208;
+}
+
+.filter-sidebar {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+}
+[data-bs-theme="dark"] .filter-sidebar {
+  background: #1f2328;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.auth-card {
+  max-width: 420px;
+  margin: 3rem auto;
+}
+
+.booking-history-item {
+  background-color: #f6e2dc;
+}
+.booking-history-item .text-muted {
+  color: #55504f !important;
+}
+[data-bs-theme="dark"] .booking-history-item {
+  background-color: #3a241f;
+}
+[data-bs-theme="dark"] .booking-history-item .text-muted {
+  color: #d8c9c4 !important;
+}
+
+.cancel-btn {
+  color: #fff;
+  background-color: #a41e2d;
+  border-color: #a41e2d;
+}
+.cancel-btn:hover,
+.cancel-btn:focus {
+  color: #fff;
+  background-color: #7e1620;
+  border-color: #7e1620;
+}
+
+.status-badge-confirmed { background-color: #2e7d32; }
+.status-badge-pending { background-color: #b06a00; }
+.status-badge-cancelled { background-color: #757575; }
+
+.menu-photo {
+  height: 140px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+footer {
+  background-color: #2b2b2b;
+  color: #ccc;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: #ccc;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 0.5rem;
+}
+[data-bs-theme="dark"] .review-card {
+  background: #1f2328;
+}
+
+.price-tag {
+  font-weight: 600;
+}
+
+.toast-container {
+  z-index: 1080;
+}
