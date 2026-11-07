@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "email": "den@den.com",
+      "password": "$2a$10$03tVfxaa2S2EezlgWG/hr.ADsW4.dZkF/UMrqlcEXdiGlQ6T0jV/O",
+      "name": "den",
+      "id": 1
+    },
+    {
+      "email": "y@ex.com",
+      "password": "$2a$10$jfa7A/aEjxjMH9nEDehVzOWqsHX3sMdNuWh8Lspa/TtuZNxs2dYGm",
+      "name": "yriy",
+      "id": 2
+    }
+  ],
+  "properties": [
+    {
+      "id": 1,
+      "title": "Светлая квартира у парка",
+      "type": "Квартира",
+      "location": "Приморский",
+      "price": 65000,
+      "image": "img/room1.jpg",
+      "meta": "2 комнаты · 54 м² · 8 этаж",
+      "description": "Тихая квартира рядом с парком и метро. Есть мебель, техника и закрытый двор."
+    },
+    {
+      "id": 2,
+      "title": "Загородный дом с террасой",
+      "type": "Дом",
+      "location": "Всеволожский",
+      "price": 120000,
+      "image": "img/room2.jpg",
+      "meta": "4 комнаты · 120 м² · терраса",
+      "description": "Уютный загородный дом с просторной террасой и участком."
+    },
+    {
+      "id": 3,
+      "title": "Студия в центре города",
+      "type": "Студия",
+      "location": "Центральный",
+      "price": 48000,
+      "image": "img/room3.jpg",
+      "meta": "Студия · 32 м² · 5 этаж",
+      "description": "Компактная студия в центре Санкт-Петербурга рядом с метро и кафе."
+    }
+  ],
+  "messages": [
+    {
+      "recipient": "Алексей Смирнов",
+      "text": "уау",
+      "date": "06.11.2026",
+      "userId": 1,
+      "propertyId": 1,
+      "own": true,
+      "id": 1
+    },
+    {
+      "recipient": "Алексей Смирнов",
+      "text": "фцвфцв",
+      "date": "06.11.2026",
+      "userId": 1,
+      "propertyId": 1,
+      "own": true,
+      "id": 2
+    },
+    {
+      "recipient": "Алексей Смирнов",
+      "text": "ыа",
+      "date": "06.11.2026",
+      "userId": 2,
+      "propertyId": 1,
+      "own": true,
+      "id": 3
+    }
+  ],
+  "requests": [],
+  "_auth": {
+    "users": 600,
+    "properties": 664,
+    "messages": 640,
+    "requests": 640
+  }
+}
