@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="cloth" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#f6e7d6"/>
+      <rect width="20" height="20" fill="#ecc9b2"/>
+      <rect x="20" y="20" width="20" height="20" fill="#ecc9b2"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="250" fill="url(#cloth)"/>
+  <circle cx="200" cy="128" r="104" fill="#000" opacity=".08"/>
+  <circle cx="200" cy="125" r="100" fill="#d9a35b"/>
+  <circle cx="200" cy="125" r="86" fill="#c8402a"/>
+  <g fill="#f6d47a">
+    <circle cx="165" cy="95" r="24"/><circle cx="230" cy="90" r="20"/><circle cx="245" cy="140" r="26"/>
+    <circle cx="190" cy="160" r="22"/><circle cx="150" cy="140" r="18"/><circle cx="205" cy="122" r="16"/>
+  </g>
+  <g fill="#8f2318">
+    <circle cx="180" cy="75" r="11"/><circle cx="255" cy="110" r="11"/><circle cx="140" cy="115" r="11"/>
+    <circle cx="225" cy="170" r="11"/><circle cx="170" cy="180" r="10"/><circle cx="215" cy="140" r="9"/>
+  </g>
+  <g fill="#4f7a32">
+    <ellipse cx="205" cy="80" rx="9" ry="5" transform="rotate(-30 205 80)"/>
+    <ellipse cx="160" cy="160" rx="9" ry="5" transform="rotate(40 160 160)"/>
+    <ellipse cx="260" cy="160" rx="9" ry="5" transform="rotate(-10 260 160)"/>
+  </g>
+  <g stroke="#a8742f" stroke-width="2" opacity=".55">
+    <line x1="200" y1="25" x2="200" y2="225"/><line x1="113" y1="75" x2="287" y2="175"/><line x1="113" y1="175" x2="287" y2="75"/>
+  </g>
+</svg>

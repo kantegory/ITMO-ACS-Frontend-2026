@@ -1,0 +1,11 @@
+{
+  "/users*": "/600/users$1",
+  "/bookings*": "/600/bookings$1",
+  "/favorites*": "/600/favorites$1",
+  "/reviews*": "/644/reviews$1",
+  "/restaurants*": "/444/restaurants$1",
+  "/menu*": "/444/menu$1",
+  "/cuisines*": "/444/cuisines$1",
+  "/districts*": "/444/districts$1",
+  "/features*": "/444/features$1"
+}

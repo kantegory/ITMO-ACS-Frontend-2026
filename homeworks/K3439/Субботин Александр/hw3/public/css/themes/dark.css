@@ -1,0 +1,99 @@
+/* =========================================================
+   Тёмная тема «Столика»: тёплый тёмно-коричневый вместо чёрного.
+   Подключается с media="(prefers-color-scheme: dark)" — то есть
+   по настройке системы; переключатель в шапке меняет этот media.
+   Все пары «текст — фон» проверены на контраст не ниже 4.5:1.
+   ========================================================= */
+
+:root {
+  /* Основа */
+  --bg: #17120e;
+  --surface: #221b16;
+  --text: #f3eae0;            /* 15.6:1 к фону */
+  --muted: #b9a898;           /* 8.1:1 */
+  --border: #3d3129;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(23, 18, 14, 0.9);
+
+  /* Кирпичный #b4441f на тёмном фоне — всего 3.3:1, поэтому для текста и ссылок берём светлый оттенок.
+     Заливку кнопок оставляем фирменной: белый текст на ней — 5.5:1 */
+  --brand: #b4441f;
+  --brand-rgb: 180, 68, 31;
+  --brand-dark: #8f3416;
+  --brand-gradient-end: #b94f24;
+  --brand-text: #f08d63;      /* 7.7:1 */
+  --brand-text-rgb: 240, 141, 99;
+  --brand-text-hover: #f6b28f;
+  --brand-text-hover-rgb: 246, 178, 143;
+  --brand-soft: #3b2419;
+  --brand-soft-text: #f6b28f; /* 8:1 на плашке */
+  --on-brand: #ffffff;
+
+  /* Фокус */
+  --focus-ring: #f6b28f;      /* 10:1 */
+  --focus-shadow: rgba(240, 141, 99, 0.45);
+
+  /* Ошибки и успех: заливка остаётся тёмно-красной (под белый текст), а красный текст — светлый */
+  --danger: #c03543;
+  --danger-rgb: 192, 53, 67;
+  --danger-hover: #a12a37;
+  --danger-text: #ff8f99;     /* 8.5:1 */
+  --valid: #6fcf97;           /* 9.8:1 */
+
+  /* Рейтинг */
+  --rating-bg: #3a2d12;
+  --rating-text: #f5c75a;     /* 8.4:1 на плашке */
+  --star: #e8b02a;
+  --star-off: #4a3d33;
+  --progress-bg: #33281f;
+  --price-dim: #9d8c7d;         /* 5.2:1 */
+
+  /* Мелочи */
+  --badge-cuisine-bg: rgba(23, 18, 14, 0.85);
+  --pill-badge-bg: rgba(255, 255, 255, 0.9);
+  --photo-overlay: rgba(0, 0, 0, 0.65);
+  --photo-caption-bg: rgba(0, 0, 0, 0.6);
+  --on-photo: #ffffff;
+  --dots: #4a3d33;
+  --map-bg: #1f2a1d;
+  --map-road: rgba(255, 255, 255, 0.12);
+  --map-water: #23384a;
+
+  /* Подвал темнее фона страницы, чтобы не сливался */
+  --footer-bg: #0e0a08;
+  --footer-text: #cdbfb2;
+  --footer-link: #f1e6da;
+  --footer-link-hover: #ffffff;
+  --footer-brand: #f6b28f;
+  --footer-border: rgba(255, 255, 255, 0.1);
+
+  /* Bootstrap (в тёмной теме у него свои значения через data-bs-theme="dark" — наши важнее) */
+  --bs-body-bg: var(--bg);
+  --bs-body-bg-rgb: 23, 18, 14;
+  --bs-body-color: var(--text);
+  --bs-body-color-rgb: 243, 234, 224;
+  --bs-secondary-color: var(--muted);
+  --bs-secondary-bg: var(--surface);
+  --bs-tertiary-bg: #2c231d;
+  --bs-emphasis-color: #ffffff;
+  --bs-border-color: var(--border);
+  --bs-primary: var(--brand);
+  --bs-primary-rgb: var(--brand-rgb);
+  --bs-link-color: var(--brand-text);
+  --bs-link-color-rgb: var(--brand-text-rgb);
+  --bs-link-hover-color: var(--brand-text-hover);
+  --bs-link-hover-color-rgb: var(--brand-text-hover-rgb);
+  --bs-danger: var(--danger);
+  --bs-danger-rgb: var(--danger-rgb);
+  --bs-danger-text-emphasis: var(--danger-text);
+  --bs-form-invalid-color: var(--danger-text);
+  --bs-form-invalid-border-color: var(--danger-text);
+  --bs-form-valid-color: var(--valid);
+  --bs-form-valid-border-color: var(--valid);
+}
+
+/* Иллюстрации нарисованы под светлый фон — слегка приглушаем, чтобы не «светили» */
+img {
+  filter: brightness(0.88) saturate(0.95);
+}
