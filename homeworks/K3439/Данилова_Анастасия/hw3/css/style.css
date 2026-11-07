@@ -14,7 +14,6 @@
 }
 
 
-/* тёмная тема: по настройкам системы, если пользователь сам не выбрал светлую */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #16181d;
@@ -32,7 +31,6 @@
   }
 }
 
-/* тёмная тема, выбранная вручную */
 :root[data-theme="dark"] {
   --bg: #16181d;
   --surface: #22252b;
@@ -58,7 +56,6 @@ body {
   color: var(--text);
 }
 
-/* видимый фокус для навигации с клавиатуры */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -110,7 +107,6 @@ fieldset legend {
   object-fit: cover;
 }
 
-/* чат */
 .chat {
   height: 420px;
 }
@@ -137,12 +133,10 @@ fieldset legend {
   color: var(--msg-other-text);
 }
 
-/* на сером фоне стандартный синий не проходил по контрасту */
 .back-link {
   color: var(--link);
 }
 
-/* у бутстрапа outline-кнопки в тёмной теме слишком тёмные */
 [data-theme="dark"] .btn-outline-primary {
   --bs-btn-color: var(--link);
   --bs-btn-border-color: var(--link);

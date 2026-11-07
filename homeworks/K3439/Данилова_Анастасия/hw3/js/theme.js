@@ -1,4 +1,3 @@
-// подключается в <head>, чтобы страница не мигала белым при загрузке
 const darkMedia = window.matchMedia('(prefers-color-scheme: dark)')
 
 function getTheme() {
@@ -7,7 +6,6 @@ function getTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme)
-  // bootstrap тоже умеет тёмную тему для своих компонентов (формы, модалки, таблицы)
   document.documentElement.setAttribute('data-bs-theme', theme)
 
   const btn = document.getElementById('theme-toggle')
@@ -19,7 +17,6 @@ function applyTheme(theme) {
 
 applyTheme(getTheme())
 
-// если пользователь ничего не выбирал — следим за системой
 darkMedia.addEventListener('change', () => {
   if (!localStorage.getItem('theme')) applyTheme(getTheme())
 })

@@ -27,7 +27,6 @@ function statusBadge(status) {
   return `<span class="badge text-bg-${color}">${text}</span>`
 }
 
-// чтобы пользователи не могли вставить html в объявление
 function escapeHtml(str) {
   const div = document.createElement('div')
   div.textContent = str

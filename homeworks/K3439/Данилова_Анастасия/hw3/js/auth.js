@@ -18,7 +18,6 @@ function logout() {
   window.location.href = 'login.html'
 }
 
-// для страниц, куда без входа нельзя
 function requireAuth() {
   if (!isLoggedIn()) {
     window.location.href = 'login.html'
@@ -41,7 +40,6 @@ async function register(user) {
   saveAuth(data)
 }
 
-// в шапке показываем либо "Войти", либо имя и "Выйти"
 function renderNav() {
   const el = document.getElementById('nav-auth')
   if (!el) return

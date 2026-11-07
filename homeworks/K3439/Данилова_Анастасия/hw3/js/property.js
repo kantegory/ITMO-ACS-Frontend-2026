@@ -87,7 +87,6 @@ async function loadProperty() {
   }
 }
 
-// ищем чат с владельцем по этому объекту, если нет — создаём
 async function openChat() {
   if (!isLoggedIn()) return (window.location.href = 'login.html')
   const user = getUser()
@@ -109,7 +108,6 @@ async function openChat() {
   window.location.href = 'messages.html?chat=' + chat.id
 }
 
-// --- бронирование ---
 const bookForm = document.getElementById('book-form')
 
 function calcTotal() {
