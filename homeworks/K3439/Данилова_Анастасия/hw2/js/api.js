@@ -1,6 +1,5 @@
 const API_URL = 'http://localhost:3000'
 
-// обёртка над fetch: подставляет токен и разбирает ошибки
 async function api(path, options = {}) {
   const headers = { 'Content-Type': 'application/json' }
   const token = localStorage.getItem('token')
@@ -10,7 +9,6 @@ async function api(path, options = {}) {
 
   const res = await fetch(API_URL + path, { ...options, headers })
 
-  // токен протух (json-server-auth выдаёт его на 1 час)
   if (res.status === 401 && token) {
     logout()
     return

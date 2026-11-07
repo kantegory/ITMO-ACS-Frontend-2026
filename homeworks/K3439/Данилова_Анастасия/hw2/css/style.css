@@ -2,7 +2,6 @@ body {
   background: #f5f6f8;
 }
 
-/* видимый фокус для навигации с клавиатуры */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -54,7 +53,6 @@ fieldset legend {
   object-fit: cover;
 }
 
-/* чат */
 .chat {
   height: 420px;
 }
@@ -81,7 +79,6 @@ fieldset legend {
   color: #000;
 }
 
-/* на сером фоне стандартный синий не проходил по контрасту */
 .back-link {
   color: #0a58ca;
 }

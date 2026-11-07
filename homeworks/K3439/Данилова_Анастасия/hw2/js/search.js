@@ -19,7 +19,6 @@ function propertyCard(p) {
 }
 
 async function loadProperties() {
-  // фильтры собираем в query для json-server
   const params = new URLSearchParams()
   if (filtersForm.type.value) params.append('type', filtersForm.type.value)
   if (filtersForm.city.value.trim()) params.append('city_like', filtersForm.city.value.trim())
