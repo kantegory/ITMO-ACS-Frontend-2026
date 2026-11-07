@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сообщения и сделки — Аренда жилья</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Аренда жилья</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Поиск</a></li>
+          <li class="nav-item"><a class="nav-link active" href="messages.html">Сообщения</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Личный кабинет</a></li>
+        </ul>
+        <div id="guestActions" hidden>
+          <a class="btn btn-outline-primary me-2" href="login.html">Вход</a>
+          <a class="btn btn-primary" href="register.html">Регистрация</a>
+        </div>
+        <div id="userActions" hidden>
+          <span class="navbar-text me-3" id="userName"></span>
+          <button class="btn btn-outline-secondary" type="button" id="logout">Выйти</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h1 class="h2 mb-4">Сообщения</h1>
+    <p id="error" hidden></p>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="list-group" id="conversations"></div>
+        <p class="text-muted" id="noConversations" hidden>Диалогов пока нет. Напишите владельцу со страницы объекта.</p>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card" id="chatCard" hidden>
+          <div class="card-header bg-white fw-bold" id="chatName"></div>
+          <div class="card-body chat d-flex flex-column gap-2" id="chat"></div>
+          <div class="card-footer bg-white">
+            <form class="d-flex gap-2" id="messageForm">
+              <input type="text" class="form-control" id="messageText" name="text" placeholder="Введите сообщение" required>
+              <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="h3 mb-3">История сделок</h2>
+    <div class="table-responsive">
+      <table class="table table-striped bg-white">
+        <thead>
+          <tr>
+            <th scope="col">Дата</th>
+            <th scope="col">Объект</th>
+            <th scope="col">Роль</th>
+            <th scope="col">Сумма в месяц</th>
+            <th scope="col">Статус</th>
+          </tr>
+        </thead>
+        <tbody id="deals"></tbody>
+      </table>
+    </div>
+    <p class="text-muted" id="noDeals" hidden>Сделок пока нет.</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/messages.js"></script>
+</body>
+</html>

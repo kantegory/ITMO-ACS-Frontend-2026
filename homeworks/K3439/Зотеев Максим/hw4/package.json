@@ -1,0 +1,15 @@
+{
+  "name": "rental-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сервис для аренды недвижимости: сайт и моковое API",
+  "scripts": {
+    "start": "json-server db.json -m ./node_modules/json-server-auth -r routes.json --port 3000",
+    "site": "http-server . -p 8000 -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}

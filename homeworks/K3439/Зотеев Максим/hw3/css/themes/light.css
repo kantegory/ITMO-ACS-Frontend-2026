@@ -1,0 +1,18 @@
+/* Светлая тема */
+:root {
+  color-scheme: light;
+
+  --color-bg: #f8f9fa;
+  --color-surface: #fff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-surface-alt: #eef1f4;
+  --color-text: #212529;
+  --color-text-rgb: 33, 37, 41;
+  --color-text-muted: #5c636a;
+  --color-border: #dee2e6;
+  --color-accent: #0a58ca;
+  --color-accent-rgb: 10, 88, 202;
+  --color-accent-hover: #084298;
+  --color-accent-hover-rgb: 8, 66, 152;
+  --color-on-accent: #fff;
+}
