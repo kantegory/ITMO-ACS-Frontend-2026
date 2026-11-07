@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход — Столик</title>
+  <meta name="description" content="Войдите, чтобы управлять бронированиями столиков.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand brand-logo" href="index.html">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 11V8M10 8h4"/></svg>
+          Столик
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="search.html">Рестораны</a></li>
+            <li class="nav-item"><a class="nav-link" href="bookings.html">Мои брони</a></li>
+          </ul>
+          <div class="d-flex gap-2" data-guest>
+            <a class="btn btn-outline-primary" href="login.html">Войти</a>
+            <a class="btn btn-primary" href="register.html">Регистрация</a>
+          </div>
+          <div class="dropdown d-none" data-auth>
+            <button class="btn user-menu dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="avatar avatar-sm" data-user-initials></span>
+              <span data-user-name></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html">Личный кабинет</a></li>
+              <li><a class="dropdown-item" href="bookings.html">История бронирований</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item" type="button" data-logout>Выйти</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow-1 auth-page">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10">
+          <div class="auth-card row g-0">
+            <aside class="col-lg-5 auth-aside d-none d-lg-flex">
+              <h2 class="h3">С возвращением!</h2>
+              <p class="mb-4">Ваши брони, избранные рестораны и отзывы ждут в личном кабинете.</p>
+              <img class="auth-image" src="img/hero.svg" alt="" width="480" height="420">
+            </aside>
+
+            <div class="col-lg-7 auth-form">
+              <h1 class="h2 mb-1">Вход</h1>
+              <p class="text-muted-warm mb-4">Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
+
+              <form id="loginForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label class="form-label" for="loginEmail">Электронная почта</label>
+                  <input class="form-control form-control-lg" id="loginEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+                  <div class="invalid-feedback">Введите корректный адрес почты.</div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="loginPassword">Пароль</label>
+                    <a class="small" href="#resetModal" data-bs-toggle="modal">Забыли пароль?</a>
+                  </div>
+                  <div class="input-group has-validation">
+                    <input class="form-control form-control-lg" id="loginPassword" name="password" type="password" autocomplete="current-password" minlength="6" required>
+                    <button class="btn btn-outline-secondary password-toggle" type="button" data-toggle-password="#loginPassword" aria-label="Показать пароль" aria-pressed="false">
+                      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                    <div class="invalid-feedback">Пароль — не короче 6 символов.</div>
+                  </div>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" id="loginRemember" name="remember" type="checkbox" checked>
+                  <label class="form-check-label" for="loginRemember">Запомнить меня</label>
+                </div>
+
+                <div class="alert alert-danger d-none mb-3" role="alert" data-form-error></div>
+                <button class="btn btn-primary btn-lg w-100" type="submit">Войти</button>
+                <p class="small text-muted-warm mt-3 mb-0">Демо-аккаунт: <code>demo@stolik.ru</code> / <code>stolik2026</code></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="resetModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <form id="resetForm" class="modal-content needs-validation" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="resetModalTitle">Восстановление пароля</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-muted-warm">Укажите почту, на которую зарегистрирован аккаунт, — пришлём ссылку для сброса пароля.</p>
+            <label class="form-label" for="resetEmail">Электронная почта</label>
+            <input class="form-control" id="resetEmail" name="email" type="email" autocomplete="email" required>
+            <div class="invalid-feedback">Введите корректный адрес почты.</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-primary">Отправить ссылку</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <a class="brand-logo mb-2" href="index.html">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 11V8M10 8h4"/></svg>
+            Столик
+          </a>
+          <p class="small mb-0">Бронирование столиков в ресторанах Санкт-Петербурга.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="h6 text-white">Сервис</h2>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a href="search.html">Рестораны</a></li>
+            <li class="mb-1"><a href="bookings.html">Мои брони</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2 class="h6 text-white">Аккаунт</h2>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a href="login.html">Вход</a></li>
+            <li class="mb-1"><a href="register.html">Регистрация</a></li>
+            <li class="mb-1"><a href="profile.html">Личный кабинет</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+        <span>© <span data-year>2026</span> Столик</span>
+        <span>Учебный проект, ИТМО</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
