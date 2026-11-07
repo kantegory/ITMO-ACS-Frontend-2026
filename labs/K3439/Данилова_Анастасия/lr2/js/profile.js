@@ -46,7 +46,6 @@ async function loadMyProperties() {
     </a>`).join('')
 }
 
-// заявки от арендаторов, владелец может одобрить или отклонить
 async function loadRequests() {
   const rentals = await api(`/rentals?landlordId=${user.id}&_expand=property&_sort=createdAt&_order=desc`)
   const el = document.getElementById('requests')
@@ -82,13 +81,12 @@ document.getElementById('requests').addEventListener('click', async (e) => {
   loadRequests()
 })
 
-// добавление объекта
 const addForm = document.getElementById('add-form')
 
 addForm.addEventListener('submit', async (e) => {
   e.preventDefault()
   const price = Number(addForm.price.value)
-  const seed = Date.now() // картинки пока случайные
+  const seed = Date.now()
 
   await api('/properties', {
     method: 'POST',

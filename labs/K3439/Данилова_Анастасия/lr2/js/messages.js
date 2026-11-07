@@ -76,7 +76,6 @@ sendForm.addEventListener('submit', async (e) => {
   loadMessages()
 })
 
-// история сделок: где я арендатор и где владелец
 async function loadDeals() {
   const mine = await api(`/rentals?userId=${me.id}&_expand=property`)
   const toMe = await api(`/rentals?landlordId=${me.id}&_expand=property`)
