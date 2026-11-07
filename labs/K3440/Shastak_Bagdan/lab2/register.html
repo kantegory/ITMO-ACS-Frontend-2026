@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Регистрация — JobHub</title>
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">Как это работает</a></li>
+        </ul>
+        <div class="d-flex gap-2 mt-3 mt-lg-0">
+          <a href="login.html" class="btn btn-outline-primary">
+            <i class="bi bi-box-arrow-in-right me-1"></i>Вход
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="flex-grow-1 py-5 d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-9 col-lg-7">
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Регистрация</li>
+          </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <span class="brand-mark mx-auto mb-2" style="width:44px;height:44px;font-size:1.3rem;">
+                <i class="bi bi-briefcase-fill"></i>
+              </span>
+              <h1 class="h4 fw-bold">Создайте аккаунт на JobHub</h1>
+              <p class="text-muted small">Выберите тип профиля и заполните базовые данные</p>
+            </div>
+
+            <form novalidate id="registerPageForm">
+              <div class="mb-4">
+                <label class="form-label small fw-semibold text-muted text-uppercase d-block text-center">Кем вы регистрируетесь?</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <input type="radio" class="btn-check" name="pageAccountType" id="regTypeSeeker" value="seeker" checked>
+                    <label class="btn btn-outline-primary w-100 p-3 h-100 d-flex flex-column align-items-center justify-content-center text-center" for="regTypeSeeker">
+                      <i class="bi bi-person-workspace fs-3 mb-1"></i>
+                      <span class="fw-semibold">Соискатель</span>
+                      <small class="text-muted d-block mt-1">Ищу работу и создаю резюме</small>
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <input type="radio" class="btn-check" name="pageAccountType" id="regTypeEmployer" value="employer">
+                    <label class="btn btn-outline-primary w-100 p-3 h-100 d-flex flex-column align-items-center justify-content-center text-center" for="regTypeEmployer">
+                      <i class="bi bi-buildings fs-3 mb-1"></i>
+                      <span class="fw-semibold">Работодатель</span>
+                      <small class="text-muted d-block mt-1">Публикую вакансии и ищу людей</small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6" id="fieldFirstName">
+                  <label for="pageRegFirstName" class="form-label">Имя</label>
+                  <input type="text" class="form-control" id="pageRegFirstName" placeholder="Иван" required>
+                  <div class="invalid-feedback">Укажите имя.</div>
+                </div>
+                <div class="col-md-6" id="fieldLastName">
+                  <label for="pageRegLastName" class="form-label">Фамилия</label>
+                  <input type="text" class="form-control" id="pageRegLastName" placeholder="Иванов" required>
+                  <div class="invalid-feedback">Укажите фамилию.</div>
+                </div>
+
+                <div class="col-12 d-none" id="fieldCompany">
+                  <label for="pageRegCompany" class="form-label">Название компании</label>
+                  <input type="text" class="form-control" id="pageRegCompany" placeholder="ООО «Технологии будущего»">
+                  <div class="invalid-feedback">Укажите компанию.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="pageRegEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="pageRegEmail" placeholder="you@example.com" required>
+                  <div class="invalid-feedback">Введите корректный email.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="pageRegPhone" class="form-label">Телефон</label>
+                  <input type="tel" class="form-control" id="pageRegPhone" placeholder="+7 (999) 000-00-00">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="pageRegPassword" class="form-label">Пароль</label>
+                  <input type="password" class="form-control" id="pageRegPassword" placeholder="Минимум 6 символов" minlength="6" required>
+                  <div class="invalid-feedback">Пароль должен содержать от 6 символов.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="pageRegPasswordRepeat" class="form-label">Повторите пароль</label>
+                  <input type="password" class="form-control" id="pageRegPasswordRepeat" placeholder="Повторите пароль" minlength="6" required>
+                  <div class="invalid-feedback" id="pagePwMatchFeedback">Пароли должны совпадать.</div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pageRegTerms" required>
+                    <label class="form-check-label small" for="pageRegTerms">
+                      Я согласен с <a href="#">правилами сервиса</a> и <a href="#">обработкой персональных данных</a>
+                    </label>
+                    <div class="invalid-feedback">Для регистрации необходимо согласие с правилами.</div>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary w-100 py-2">
+                    <i class="bi bi-person-check me-1"></i>Зарегистрироваться
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer bg-white border-0 text-center pb-4 pt-0">
+            <span class="text-muted small">Уже зарегистрированы?</span>
+            <a href="login.html" class="small fw-semibold ms-1">Войти в аккаунт</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const typeSeeker = document.getElementById('regTypeSeeker');
+  const typeEmployer = document.getElementById('regTypeEmployer');
+  const fieldCompany = document.getElementById('fieldCompany');
+  const companyInput = document.getElementById('pageRegCompany');
+
+  function toggleRole() {
+    const isEmployer = typeEmployer.checked;
+    fieldCompany.classList.toggle('d-none', !isEmployer);
+    // у работодателя имя и фамилия не нужны (компания указывается отдельно)
+    ['fieldFirstName', 'fieldLastName'].forEach(function (id) {
+      document.getElementById(id).classList.toggle('d-none', isEmployer);
+    });
+    ['pageRegFirstName', 'pageRegLastName'].forEach(function (id) {
+      const input = document.getElementById(id);
+      if (isEmployer) { input.removeAttribute('required'); input.value = ''; }
+      else { input.setAttribute('required', 'required'); }
+    });
+    if (isEmployer) {
+      companyInput.setAttribute('required', 'required');
+    } else {
+      companyInput.removeAttribute('required');
+      companyInput.value = '';
+    }
+  }
+  typeSeeker.addEventListener('change', toggleRole);
+  typeEmployer.addEventListener('change', toggleRole);
+
+  const p1 = document.getElementById('pageRegPassword');
+  const p2 = document.getElementById('pageRegPasswordRepeat');
+  function checkMatch() {
+    if (p1.value && p2.value && p1.value !== p2.value) {
+      p2.setCustomValidity('Пароли не совпадают');
+    } else {
+      p2.setCustomValidity('');
+    }
+  }
+  p1.addEventListener('input', checkMatch);
+  p2.addEventListener('input', checkMatch);
+
+  document.getElementById('registerPageForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    checkMatch();
+    this.classList.add('was-validated');
+    if (!this.checkValidity()) return;
+
+    const isEmployer = typeEmployer.checked;
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+
+    const data = {
+      email: document.getElementById('pageRegEmail').value.trim(),
+      password: p1.value,
+      role: isEmployer ? 'employer' : 'jobseeker',   
+      phone: document.getElementById('pageRegPhone').value.trim()
+    };
+    if (isEmployer) {
+      data.companyName = companyInput.value.trim();
+      data.companyIndustry = '';
+    } else {
+      data.firstName = document.getElementById('pageRegFirstName').value.trim();
+      data.lastName = document.getElementById('pageRegLastName').value.trim();
+    }
+
+    try {
+      await api.register(data);            
+      showToast('Регистрация успешна!');
+      setTimeout(() => location.href = isEmployer ? 'employer.html' : 'account.html', 800);
+    } catch (err) {
+      showToast(err.message || 'Ошибка регистрации', 'text-bg-danger');
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
