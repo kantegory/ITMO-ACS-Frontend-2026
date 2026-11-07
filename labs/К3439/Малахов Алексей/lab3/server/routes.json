@@ -1,0 +1,9 @@
+{
+  "/users*": "/600/users$1",
+  "/profiles*": "/644/profiles$1",
+  "/recipes*": "/644/recipes$1",
+  "/comments*": "/644/comments$1",
+  "/likes*": "/644/likes$1",
+  "/saved*": "/640/saved$1",
+  "/follows*": "/644/follows$1"
+}

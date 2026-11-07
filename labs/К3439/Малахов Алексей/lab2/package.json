@@ -1,0 +1,14 @@
+{
+  "name": "recipes-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ЛР2: сайт рецептов с моковым API на JSON Server и авторизацией json-server-auth",
+  "scripts": {
+    "start": "json-server db.json -m ./server/missing.js ./node_modules/json-server-auth ./server/guards.js -r routes.json --static ./public --port 3000",
+    "reset-db": "node scripts/reset-db.js"
+  },
+  "devDependencies": {
+    "json-server": "0.17.4",
+    "json-server-auth": "2.1.0"
+  }
+}

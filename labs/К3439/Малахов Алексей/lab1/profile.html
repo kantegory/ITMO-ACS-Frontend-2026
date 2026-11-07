@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет: Вкусная лента</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html" data-icon="logo">Вкусная лента</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="search.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile.html">Личный кабинет</a></li>
+          </ul>
+          <div class="d-flex gap-2 py-2 py-lg-0">
+            <a class="btn btn-outline-primary" href="login.html">Войти</a>
+            <a class="btn btn-primary" href="register.html">Регистрация</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-4">
+    <section class="panel mb-4">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-3">
+        <span class="avatar avatar-lg" id="profileAvatar"></span>
+        <div class="flex-grow-1">
+          <h1 class="h3 mb-1" id="profileName"></h1>
+          <p class="text-muted mb-1" id="profileMeta"></p>
+          <p class="mb-0" id="profileBio"></p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Редактировать профиль</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newRecipeModal" data-icon="plus"> Новый рецепт</button>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-4 mt-3" id="profileStats"></div>
+    </section>
+
+    <ul class="nav nav-tabs mb-4" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="published-tab" data-bs-toggle="tab" data-bs-target="#published" type="button" role="tab" aria-controls="published" aria-selected="true">Мои публикации</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Сохранённые</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="following-tab" data-bs-toggle="tab" data-bs-target="#following" type="button" role="tab" aria-controls="following" aria-selected="false">Подписки</button>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="published" role="tabpanel" aria-labelledby="published-tab" tabindex="0">
+        <div class="row g-4" id="publishedList"></div>
+      </div>
+      <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab" tabindex="0">
+        <div class="row g-4" id="savedList"></div>
+      </div>
+      <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab" tabindex="0">
+        <div class="row g-4" id="followingList"></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="editProfileForm" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="editProfileTitle">Редактирование профиля</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="editName" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="editName" name="name" required minlength="2">
+            <div class="invalid-feedback">Введите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="editCity" class="form-label">Город</label>
+            <input type="text" class="form-control" id="editCity" name="city">
+          </div>
+          <div>
+            <label for="editBio" class="form-label">О себе</label>
+            <textarea class="form-control" id="editBio" name="bio" rows="3" maxlength="200"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal fade" id="newRecipeModal" tabindex="-1" aria-labelledby="newRecipeTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <form class="modal-content" id="newRecipeForm" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="newRecipeTitle">Новый рецепт</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="recipeTitleInput" class="form-label">Название</label>
+            <input type="text" class="form-control" id="recipeTitleInput" name="title" required minlength="3">
+            <div class="invalid-feedback">Название должно быть не короче 3 символов.</div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+              <label for="recipeTypeInput" class="form-label">Тип блюда</label>
+              <select class="form-select" id="recipeTypeInput" name="type" required>
+                <option value="">Выберите</option>
+              </select>
+              <div class="invalid-feedback">Выберите тип блюда.</div>
+            </div>
+            <div class="col-sm-6">
+              <label for="recipeDifficultyInput" class="form-label">Сложность</label>
+              <select class="form-select" id="recipeDifficultyInput" name="difficulty" required>
+                <option value="">Выберите</option>
+              </select>
+              <div class="invalid-feedback">Выберите сложность.</div>
+            </div>
+            <div class="col-sm-6">
+              <label for="recipeTimeInput" class="form-label">Время, мин</label>
+              <input type="number" class="form-control" id="recipeTimeInput" name="time" min="1" max="600" required>
+              <div class="invalid-feedback">Укажите время от 1 до 600 минут.</div>
+            </div>
+            <div class="col-sm-6">
+              <label for="recipeServingsInput" class="form-label">Порции</label>
+              <input type="number" class="form-control" id="recipeServingsInput" name="servings" min="1" max="20" value="2" required>
+              <div class="invalid-feedback">От 1 до 20 порций.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="recipeDescriptionInput" class="form-label">Короткое описание</label>
+            <input type="text" class="form-control" id="recipeDescriptionInput" name="description" maxlength="150">
+          </div>
+          <div class="mb-3">
+            <label for="recipeIngredientsInput" class="form-label">Ингредиенты</label>
+            <textarea class="form-control" id="recipeIngredientsInput" name="ingredients" rows="4" required placeholder="Каждый с новой строки: Мука - 200 г"></textarea>
+            <div class="invalid-feedback">Добавьте хотя бы один ингредиент.</div>
+          </div>
+          <div>
+            <label for="recipeStepsInput" class="form-label">Шаги приготовления</label>
+            <textarea class="form-control" id="recipeStepsInput" name="steps" rows="5" required placeholder="Каждый шаг с новой строки"></textarea>
+            <div class="invalid-feedback">Опишите хотя бы один шаг.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Опубликовать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>Вкусная лента, 2026</span>
+      <span>Учебный проект, ИТМО</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
