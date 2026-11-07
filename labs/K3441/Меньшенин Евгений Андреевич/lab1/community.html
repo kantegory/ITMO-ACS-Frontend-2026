@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Сообщество — Ложка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container py-2">
+        <a class="navbar-brand" href="index.html"
+          ><span class="brand-mark">Л</span>Ложка</a
+        ><button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto gap-lg-3">
+            <li><a class="nav-link" href="search.html">Рецепты</a></li>
+            <li>
+              <a class="nav-link active" href="community.html">Сообщество</a>
+            </li>
+            <li><a class="nav-link" href="profile.html">Моя кухня</a></li>
+          </ul>
+          <a class="btn btn-primary" href="profile.html">Профиль</a>
+        </div>
+      </div>
+    </nav>
+    <header class="page-hero">
+      <div class="container text-center">
+        <span class="eyebrow">Люди и истории</span>
+        <h1 class="display-title mt-3">Готовить вместе вкуснее</h1>
+        <p class="lead mx-auto mt-3" style="max-width: 700px">
+          Знакомьтесь с авторами, обсуждайте рецепты и находите идеи для
+          следующего ужина.
+        </p>
+      </div>
+    </header>
+    <main class="section-pad community-page">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-end mb-4">
+              <div>
+                <span class="eyebrow">Свежие публикации</span>
+                <h2 class="section-title mt-2">Лента сообщества</h2>
+              </div>
+              <button class="btn btn-primary">
+                <i class="bi bi-plus-lg me-1"></i>Публикация
+              </button>
+            </div>
+            <article class="paper-card p-4 mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="author-avatar">АК</div>
+                <div class="flex-grow-1">
+                  <strong>Анна Котова</strong>
+                  <div class="small text-muted">2 часа назад</div>
+                </div>
+                <button class="btn btn-outline-primary btn-sm" data-follow>
+                  Подписаться
+                </button>
+              </div>
+              <p class="my-3">
+                Поймала последние летние томаты и собрала яркий обед. Секрет —
+                щепотка копчёной паприки в заправке.
+              </p>
+              <div class="recipe-visual visual-1 rounded-4">
+                <span class="food-emoji">🥗</span>
+              </div>
+              <div class="d-flex gap-4 mt-3">
+                <button class="btn p-0 border-0">
+                  <i class="bi bi-heart me-1"></i> 248</button
+                ><button class="btn p-0 border-0">
+                  <i class="bi bi-chat me-1"></i> 31</button
+                ><button class="btn p-0 border-0">
+                  <i class="bi bi-bookmark me-1"></i> Сохранить
+                </button>
+              </div>
+            </article>
+            <article class="paper-card p-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="author-avatar" style="background: #b95134">МС</div>
+                <div class="flex-grow-1">
+                  <strong>Максим Серов</strong>
+                  <div class="small text-muted">вчера</div>
+                </div>
+                <button class="btn btn-outline-primary btn-sm" data-follow>
+                  Подписаться
+                </button>
+              </div>
+              <p class="my-3">
+                Проверил три способа сделать хрустящую корочку у домашнего
+                хлеба. Победил пар в первые 15 минут выпечки.
+              </p>
+              <div class="recipe-visual visual-4 rounded-4">
+                <span class="food-emoji">🥖</span>
+              </div>
+              <div class="d-flex gap-4 mt-3">
+                <button class="btn p-0 border-0">
+                  <i class="bi bi-heart me-1"></i> 184</button
+                ><button class="btn p-0 border-0">
+                  <i class="bi bi-chat me-1"></i> 22
+                </button>
+              </div>
+            </article>
+          </div>
+          <aside class="col-lg-4">
+            <div class="paper-card p-4 mb-4">
+              <h2 class="h4">Авторы недели</h2>
+              <div class="d-grid gap-4 mt-4">
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="author-avatar">ЕС</div>
+                  <div class="flex-grow-1">
+                    <strong>Елена Соколова</strong>
+                    <div class="small text-muted">Выпечка · 42k</div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm" data-follow>
+                    +
+                  </button>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="author-avatar" style="background: #d86d4b">
+                    ДР
+                  </div>
+                  <div class="flex-grow-1">
+                    <strong>Денис Романов</strong>
+                    <div class="small text-muted">Азия · 31k</div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm" data-follow>
+                    +
+                  </button>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                  <div class="author-avatar" style="background: #70824d">
+                    ИВ
+                  </div>
+                  <div class="flex-grow-1">
+                    <strong>Ирина Волкова</strong>
+                    <div class="small text-muted">Веган · 28k</div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm" data-follow>
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="paper-card p-4">
+              <h2 class="h4">Популярные темы</h2>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <a class="tag-pill text-decoration-none" href="search.html"
+                  >#сезонное</a
+                ><a class="tag-pill text-decoration-none" href="search.html"
+                  >#ужинза30минут</a
+                ><a class="tag-pill text-decoration-none" href="search.html"
+                  >#выпечка</a
+                ><a class="tag-pill text-decoration-none" href="search.html"
+                  >#завтраки</a
+                ><a class="tag-pill text-decoration-none" href="search.html"
+                  >#безсахара</a
+                >
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer class="py-4">
+      <div class="container d-flex justify-content-between">
+        <span>© 2026 Ложка</span><a href="index.html">На главную</a>
+      </div>
+    </footer>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast">
+        <div class="toast-body"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

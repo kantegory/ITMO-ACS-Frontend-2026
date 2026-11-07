@@ -1,0 +1,17 @@
+{
+  "name": "lozhka-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Лабораторная работа №2: сервис рецептов с моковым API",
+  "scripts": {
+    "api": "json-server-auth db.json -r routes.json --port 3000",
+    "web": "http-server . -p 8080 -c-1",
+    "start": "concurrently -k -n API,WEB -c yellow,cyan \"json-server-auth db.json -r routes.json --port 3000\" \"http-server . -p 8080 -c-1\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "http-server": "^14.1.1",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}

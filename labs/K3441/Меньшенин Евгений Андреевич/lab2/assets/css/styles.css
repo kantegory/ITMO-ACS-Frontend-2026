@@ -1,0 +1,247 @@
+:root {
+  --ink: #26352f;
+  --muted: #6f7e77;
+  --cream: #fbf7ef;
+  --paper: #fffdf9;
+  --sage: #496b5a;
+  --sage-dark: #2f4b3e;
+  --terracotta: #d86d4b;
+  --terracotta-dark: #b95134;
+  --line: #e8e2d8;
+  --shadow: 0 18px 50px rgba(54, 67, 60, .1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, .brand { font-family: "Lora", Georgia, serif; }
+a { color: inherit; }
+.text-muted { color: var(--muted) !important; }
+
+.navbar {
+  background: rgba(251, 247, 239, .94);
+  border-bottom: 1px solid rgba(73, 107, 90, .12);
+  backdrop-filter: blur(14px);
+}
+
+.navbar-brand { color: var(--sage-dark); font-size: 1.45rem; font-weight: 700; }
+.brand-mark {
+  display: inline-grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  margin-right: .45rem;
+  place-items: center;
+  color: white;
+  background: var(--terracotta);
+  border-radius: 50% 50% 45% 55%;
+  font-family: sans-serif;
+}
+
+.nav-link { font-weight: 700; color: var(--ink); }
+.nav-link:hover, .nav-link.active { color: var(--terracotta); }
+.btn { border-radius: 999px; font-weight: 800; padding: .7rem 1.15rem; }
+.btn-primary { background: var(--terracotta); border-color: var(--terracotta); }
+.btn-primary:hover, .btn-primary:focus { background: var(--terracotta-dark); border-color: var(--terracotta-dark); }
+.btn-outline-primary { color: var(--terracotta); border-color: var(--terracotta); }
+.btn-outline-primary:hover { background: var(--terracotta); border-color: var(--terracotta); }
+.btn-dark { background: var(--sage-dark); border-color: var(--sage-dark); }
+
+.hero {
+  min-height: 610px;
+  display: grid;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(251,247,239,.99) 0%, rgba(251,247,239,.92) 34%, rgba(251,247,239,.1) 67%), url("../img/hero-food.webp") center/cover;
+}
+
+.hero-copy { max-width: 620px; padding: 7rem 0; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--terracotta-dark);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.display-title { font-size: clamp(2.75rem, 6vw, 5.4rem); line-height: .98; letter-spacing: -.045em; }
+.lead { color: #53615b; line-height: 1.75; }
+.search-shell { background: white; border: 1px solid var(--line); border-radius: 1.2rem; box-shadow: var(--shadow); padding: .55rem; }
+.search-shell .form-control { border: 0; box-shadow: none; }
+
+.section-pad { padding: 5.5rem 0; }
+.section-title { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.035em; }
+.soft-section { background: #f2ebdf; }
+.paper-card {
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 1.35rem;
+  box-shadow: 0 12px 34px rgba(54, 67, 60, .06);
+}
+.paper-card.hoverable { transition: transform .25s ease, box-shadow .25s ease; }
+.paper-card.hoverable:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.recipe-visual {
+  min-height: 220px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.1rem;
+  color: white;
+  background-position: center;
+  background-size: cover;
+}
+.visual-1 { background: linear-gradient(135deg, #e8ad69, #9f5138); }
+.visual-2 { background: linear-gradient(135deg, #8fad7a, #365746); }
+.visual-3 { background: linear-gradient(135deg, #efc8a0, #d76752); }
+.visual-4 { background: linear-gradient(135deg, #bea074, #694e38); }
+.visual-5 { background: linear-gradient(135deg, #c7d79c, #70824d); }
+.visual-6 { background: linear-gradient(135deg, #e4a2a0, #7e3c4c); }
+.food-emoji { position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -50%); font-size: 5.5rem; filter: drop-shadow(0 10px 15px rgba(0,0,0,.2)); }
+.time-pill, .tag-pill { border-radius: 999px; font-size: .78rem; font-weight: 800; }
+.time-pill { z-index: 1; padding: .45rem .65rem; color: var(--ink); background: rgba(255,255,255,.92); }
+.tag-pill { padding: .35rem .65rem; color: var(--sage-dark); background: #e8eee8; }
+.icon-button { width: 2.65rem; height: 2.65rem; display: inline-grid; place-items: center; padding: 0; border-radius: 50%; }
+.icon-button.active { color: white; background: var(--terracotta); border-color: var(--terracotta); }
+.rating { color: #dc8a2b; font-weight: 900; }
+
+.page-hero { padding: 5rem 0 3.5rem; background: #f2ebdf; }
+.filter-panel { position: sticky; top: 92px; padding: 1.5rem; }
+.form-control, .form-select { border-color: #ddd5c9; border-radius: .85rem; padding: .8rem 1rem; }
+.form-control:focus, .form-select:focus { border-color: var(--sage); box-shadow: 0 0 0 .2rem rgba(73,107,90,.12); }
+.form-label { font-weight: 800; }
+
+.auth-page { min-height: calc(100vh - 72px); display: grid; place-items: center; padding: 4rem 0; }
+.auth-card { width: min(100%, 540px); padding: clamp(1.5rem, 4vw, 3rem); }
+.auth-art { min-height: 680px; background: linear-gradient(160deg, rgba(47,75,62,.15), rgba(216,109,75,.25)), url("../img/hero-food.webp") center/cover; border-radius: 1.5rem; }
+
+.profile-page { min-height: calc(100vh - 72px); }
+.profile-cover {
+  height: clamp(180px, 22vw, 260px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #365746, #8fad7a 55%, #e8ad69);
+}
+.profile-cover::before,
+.profile-cover::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 50%;
+}
+.profile-cover::before { width: 280px; height: 280px; top: -155px; right: 12%; }
+.profile-cover::after { width: 190px; height: 190px; bottom: -125px; left: 9%; }
+.profile-layout { position: relative; z-index: 1; margin-top: -48px; }
+.profile-card {
+  height: auto;
+  position: relative;
+  overflow: visible;
+  padding-top: 5rem !important;
+}
+.avatar {
+  width: 128px;
+  height: 128px;
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  color: white;
+  background: var(--terracotta);
+  border: 7px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(54, 67, 60, .18);
+  font: 700 2.4rem "Lora", serif;
+}
+.profile-content { padding-top: 3rem; }
+.profile-tabs { gap: .35rem; }
+.profile-tabs .nav-link { border-radius: 999px; padding: .65rem 1rem; }
+.profile-tabs .nav-link.active,
+.profile-tabs .show > .nav-link {
+  color: white;
+  background: var(--terracotta);
+}
+.stat {
+  min-height: 92px;
+  display: grid;
+  place-content: center;
+  padding: .8rem .35rem;
+  text-align: center;
+  background: #f7f2e8;
+  border-radius: 1rem;
+}
+.stat strong { display: block; font: 700 1.35rem "Lora", serif; }
+.stat small { color: var(--muted); font-size: .72rem; }
+
+.recipe-photo { min-height: 520px; background: url("../img/hero-food.webp") center/cover; border-radius: 1.6rem; }
+.ingredient-list li, .step-list li { padding: .75rem 0; border-bottom: 1px solid var(--line); }
+.step-list { counter-reset: recipe-step; }
+.step-list li { counter-increment: recipe-step; }
+.step-list li::before {
+  content: counter(recipe-step);
+  flex: 0 0 auto;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--terracotta);
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.author-avatar { width: 54px; height: 54px; display: grid; place-items: center; color: white; background: var(--sage); border-radius: 50%; font-weight: 900; }
+.author-follow-short { width: 2.5rem; min-width: 2.5rem; padding-inline: 0; }
+.community-page .paper-card { height: auto; }
+.community-page [data-post-like].active,
+.community-page [data-post-save].active { color: var(--terracotta); }
+.empty-state { display: none; padding: 4rem 1rem; text-align: center; }
+footer { color: #d9e1dc; background: var(--sage-dark); }
+footer a { color: #fff; text-decoration: none; }
+
+.api-state {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: .75rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  border-radius: 1.35rem;
+}
+.api-state i { font-size: 2rem; color: var(--terracotta); }
+.api-state p { margin: 0; }
+.api-state.loading i { animation: spin 1.2s linear infinite; }
+.recipe-photo-api { min-height: 520px; border-radius: 1.6rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 991.98px) {
+  .hero { min-height: 540px; background: linear-gradient(rgba(251,247,239,.78), rgba(251,247,239,.96)), url("../img/hero-food.webp") center/cover; }
+  .hero-copy { padding: 5rem 0; }
+  .filter-panel { position: static; }
+  .auth-art { min-height: 360px; }
+  .profile-layout { margin-top: -36px; }
+  .profile-content { padding-top: 0; }
+  .profile-tabs .nav-link { padding: .55rem .8rem; }
+}
+
+@media (max-width: 575.98px) {
+  .section-pad { padding: 4rem 0; }
+  .page-hero { padding: 3.5rem 0 2.5rem; }
+  .display-title { font-size: 3rem; }
+  .profile-cover { height: 160px; }
+  .profile-layout { margin-top: -28px; }
+  .profile-card { padding-top: 4.5rem !important; }
+  .avatar { width: 112px; height: 112px; font-size: 2rem; }
+}

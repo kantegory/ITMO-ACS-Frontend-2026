@@ -1,0 +1,25 @@
+{
+  "name": "lozhka-lab3",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "api": "json-server-auth db.json -r routes.json --port 3000",
+    "start": "concurrently -k -n API,VITE -c yellow,cyan \"npm:api\" \"npm:dev\"",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "axios": "^1.12.2",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
+    "vite": "^7.1.9"
+  }
+}
