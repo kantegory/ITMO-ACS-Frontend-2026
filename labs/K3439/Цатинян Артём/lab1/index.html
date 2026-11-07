@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TABLELY — бронирование ресторанов</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">tablely<span>.</span></a
+        ><button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Рестораны</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">Мои брони</a>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-dark rounded-pill px-4" href="login.html"
+                >Войти</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Гастрономический гид по Петербургу</p>
+        <h1>Столик в любимом<br />ресторане — за минуту.</h1>
+        <p class="lead col-lg-6">
+          Выбирайте место для важного вечера, встречайте друзей и бронируйте без
+          звонков.
+        </p>
+        <form class="search-card row g-2" id="searchForm">
+          <div class="col-md">
+            <label>Где</label
+            ><select class="form-select" id="district">
+              <option value="all">Любой район</option>
+              <option value="center">Центр</option>
+              <option value="petro">Петроградская</option>
+            </select>
+          </div>
+          <div class="col-md">
+            <label>Когда</label
+            ><input class="form-control" type="date" value="2026-10-25" />
+          </div>
+          <div class="col-md">
+            <label>Гостей</label
+            ><select class="form-select">
+              <option>2 гостя</option>
+              <option>4 гостя</option>
+              <option>6 гостей</option>
+            </select>
+          </div>
+          <div class="col-md-auto d-grid">
+            <button class="btn btn-accent px-4">Найти столик</button>
+          </div>
+        </form>
+      </div>
+    </header>
+    <main class="container py-5">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+          <p class="eyebrow mb-1">Подборка недели</p>
+          <h2>Рестораны, которые стоит открыть</h2>
+        </div>
+        <a class="link-dark" href="#catalog"
+          >Все места <i class="bi bi-arrow-up-right"></i
+        ></a>
+      </div>
+      <div class="filter-bar mb-4" id="filters">
+        <button class="filter active" data-filter="all">Все</button
+        ><button class="filter" data-filter="Итальянская">Итальянская</button
+        ><button class="filter" data-filter="Азиатская">Азиатская</button
+        ><button class="filter" data-filter="Авторская">Авторская</button
+        ><button class="filter" data-filter="Вегетарианская">
+          Вегетарианская
+        </button>
+      </div>
+      <div class="row g-4" id="catalog">
+        <article
+          class="col-md-6 col-xl-4 restaurant"
+          data-cuisine="Итальянская"
+          data-district="center"
+        >
+          <div class="restaurant-card">
+            <img
+              src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
+              alt="Интерьер ресторана Cielo"
+            />
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <h3>Cielo</h3>
+                <span class="rating"><i class="bi bi-star-fill"></i> 4.9</span>
+              </div>
+              <p>Итальянская · Центр · ₽₽₽</p>
+              <a class="stretched-link" href="restaurant.html"
+                >Открыть ресторан</a
+              >
+            </div>
+          </div>
+        </article>
+        <article
+          class="col-md-6 col-xl-4 restaurant"
+          data-cuisine="Азиатская"
+          data-district="petro"
+        >
+          <div class="restaurant-card">
+            <img
+              src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
+              alt="Блюдо ресторана Mizu"
+            />
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <h3>Mizu</h3>
+                <span class="rating"><i class="bi bi-star-fill"></i> 4.8</span>
+              </div>
+              <p>Японская · Петроградская · ₽₽</p>
+              <a class="stretched-link" href="restaurant.html"
+                >Открыть ресторан</a
+              >
+            </div>
+          </div>
+        </article>
+        <article
+          class="col-md-6 col-xl-4 restaurant"
+          data-cuisine="Авторская"
+          data-district="center"
+        >
+          <div class="restaurant-card">
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+              alt="Блюдо ресторана Forma"
+            />
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <h3>Forma</h3>
+                <span class="rating"><i class="bi bi-star-fill"></i> 4.7</span>
+              </div>
+              <p>Авторская · Центр · ₽₽₽₽</p>
+              <a class="stretched-link" href="restaurant.html"
+                >Открыть ресторан</a
+              >
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+    <footer>
+      <div class="container d-flex justify-content-between flex-wrap gap-2">
+        <b>tablely.</b><span>Санкт-Петербург · 2026</span>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Регистрация — tablely</title>
+    <script src="js/theme-init.js"></script>
+    <link href="/bootstrap.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content"
+      >Перейти к основному содержимому</a
+    >
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">tablely<span>.</span></a
+        ><a class="link-dark" href="login.html">Уже есть аккаунт? Войти</a>
+      </div>
+    </nav>
+    <main class="container py-5" id="main-content" tabindex="-1">
+      <div class="row justify-content-center">
+        <section
+          class="col-md-7 col-lg-5 bg-white rounded-4 p-4 p-md-5 shadow-sm"
+        >
+          <p class="eyebrow">Первый шаг</p>
+          <h1 class="mb-4">Создать аккаунт</h1>
+          <form id="register-form">
+            <label class="form-label" for="register-name">Имя</label>
+            <input
+              class="form-control border rounded p-2 mb-3"
+              name="name"
+              id="register-name"
+              autocomplete="name"
+              required
+              placeholder="Имя"
+            /><label class="form-label" for="register-email">Почта</label
+            ><input
+              class="form-control border rounded p-2 mb-3"
+              name="email"
+              id="register-email"
+              autocomplete="email"
+              type="email"
+              required
+              placeholder="Почта"
+            /><label class="form-label" for="register-password">Пароль</label
+            ><input
+              class="form-control border rounded p-2 mb-4"
+              id="register-password"
+              type="password"
+              autocomplete="new-password"
+              required
+              minlength="6"
+              placeholder="Пароль"
+            /><button
+              type="button"
+              class="btn btn-link p-0 mb-3"
+              data-toggle-password="register-password"
+              aria-controls="register-password"
+              aria-pressed="false"
+            >
+              Показать</button
+            ><button class="btn btn-accent w-100 py-2">
+              Зарегистрироваться
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
