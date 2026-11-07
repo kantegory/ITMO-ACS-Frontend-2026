@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobHub — поиск работы и вакансий</title>
+  <meta name="description" content="JobHub — сервис поиска работы">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">Как это работает</a></li>
+        </ul>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0" id="navAuth"></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" tabindex="-1" class="flex-grow-1">
+
+  <section class="hero text-white">
+    <div class="container py-5">
+      <div class="row align-items-center g-5 py-lg-4">
+        <div class="col-lg-7">
+          <h1 class="display-5 fw-bold mb-3">Найдите работу,<br>которая вам подходит</h1>
+          <p class="lead text-white-50 mb-4">
+            Более 12 000 актуальных вакансий от проверенных работодателей.
+            Удобная фильтрация по отрасли, зарплате и опыту.
+          </p>
+          <form class="search-form card border-0 shadow-lg p-2 p-md-3" action="vacancies.html" method="get" role="search" aria-label="Поиск вакансий">
+            <div class="row g-2">
+              <div class="col-md-5">
+                <label for="heroQuery" class="form-label small fw-semibold text-muted">Ключевое слово</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i aria-hidden="true" class="bi bi-search"></i></span>
+                  <input type="search" class="form-control" id="heroQuery" name="q" placeholder="Например: разработчик">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="heroIndustry" class="form-label small fw-semibold text-muted">Отрасль</label>
+                <select class="form-select" id="heroIndustry" name="industry">
+                  <option value="">Все отрасли</option>
+                  <option value="IT">IT и телеком</option>
+                  <option value="finance">Финансы и банки</option>
+                  <option value="education">Образование</option>
+                  <option value="medicine">Медицина</option>
+                  <option value="trade">Торговля</option>
+                  <option value="marketing">Маркетинг и реклама</option>
+                </select>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i aria-hidden="true" class="bi bi-search me-1"></i>Найти
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block">
+          <div class="hero-stats">
+            <div class="hero-stat card border-0 shadow-lg">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="stat-icon bg-primary-subtle text-primary"><i aria-hidden="true" class="bi bi-briefcase"></i></span>
+                  <div>
+                    <div class="fs-4 fw-bold">12 400+</div>
+                    <div class="text-muted small">активных вакансий</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-stat card border-0 shadow-lg">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="stat-icon bg-success-subtle text-success"><i aria-hidden="true" class="bi bi-buildings"></i></span>
+                  <div>
+                    <div class="fs-4 fw-bold">3 200+</div>
+                    <div class="text-muted small">компаний-работодателей</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-stat card border-0 shadow-lg">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="stat-icon bg-warning-subtle text-warning"><i aria-hidden="true" class="bi bi-graph-up-arrow"></i></span>
+                  <div>
+                    <div class="fs-4 fw-bold">86 тыс.</div>
+                    <div class="text-muted small">откликов в месяц</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+        <div>
+          <h2 class="h3 fw-bold mb-1">Популярные отрасли</h2>
+          <p class="text-muted mb-0">Выберите сферу и смотрите только подходящие вакансии</p>
+        </div>
+        <a href="vacancies.html" class="link-primary fw-semibold">Все направления <i aria-hidden="true" class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+        <div class="col"><a href="vacancies.html?industry=IT" class="category-card card h-100 text-decoration-none text-center"><div class="card-body"><i aria-hidden="true" class="bi bi-code-slash category-icon text-primary"></i><div class="fw-semibold text-dark">IT и телеком</div><div class="small text-muted">2 340 вакансий</div></div></a></div>
+        <div class="col"><a href="vacancies.html?industry=finance" class="category-card card h-100 text-decoration-none text-center"><div class="card-body"><i aria-hidden="true" class="bi bi-bank category-icon text-success"></i><div class="fw-semibold text-dark">Финансы</div><div class="small text-muted">1 120 вакансий</div></div></a></div>
+        <div class="col"><a href="vacancies.html?industry=medicine" class="category-card card h-100 text-decoration-none text-center"><div class="card-body"><i aria-hidden="true" class="bi bi-heart-pulse category-icon text-danger"></i><div class="fw-semibold text-dark">Медицина</div><div class="small text-muted">940 вакансий</div></div></a></div>
+        <div class="col"><a href="vacancies.html?industry=education" class="category-card card h-100 text-decoration-none text-center"><div class="card-body"><i aria-hidden="true" class="bi bi-mortarboard category-icon text-warning"></i><div class="fw-semibold text-dark">Образование</div><div class="small text-muted">760 вакансий</div></div></a></div>
+        <div class="col"><a href="vacancies.html?industry=trade" class="category-card card h-100 text-decoration-none text-center"><div class="card-body"><i aria-hidden="true" class="bi bi-cart3 category-icon text-info"></i><div class="fw-semibold text-dark">Торговля</div><div class="small text-muted">1 580 вакансий</div></div></a></div>
+        <div class="col"><a href="vacancies.html?industry=marketing" class="category-card card h-100 text-decoration-none text-center"><div class="card-body"><i aria-hidden="true" class="bi bi-megaphone category-icon text-secondary"></i><div class="fw-semibold text-dark">Маркетинг</div><div class="small text-muted">680 вакансий</div></div></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+        <div>
+          <h2 class="h3 fw-bold mb-1">Свежие вакансии</h2>
+          <p class="text-muted mb-0">Опубликованы за последние 3 дня</p>
+        </div>
+        <a href="vacancies.html" class="btn btn-outline-primary">Смотреть все вакансии</a>
+      </div>
+
+      <div class="row g-4" id="recentVacancies"><div class="col-12 text-muted">Загрузка…</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5" id="how-it-works">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="h3 fw-bold mb-1">Как это работает</h2>
+        <p class="text-muted mb-0">Три шага от поиска до оффера</p>
+      </div>
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <div class="step-number mx-auto mb-3">1</div>
+          <h3 class="h5">Заполните резюме</h3>
+          <p class="text-muted">Создайте профиль соискателя и добавьте опыт, навыки и ожидания по зарплате.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="step-number mx-auto mb-3">2</div>
+          <h3 class="h5">Подберите вакансии</h3>
+          <p class="text-muted">Используйте фильтры по отрасли, зарплате и опыту, чтобы отсеять лишнее.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="step-number mx-auto mb-3">3</div>
+          <h3 class="h5">Отправьте отклик</h3>
+          <p class="text-muted">Откликайтесь в один клик и следите за статусом откликов в личном кабинете.</p>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#registerModal">
+          Создать резюме бесплатно
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="h3 fw-bold mb-4 text-center">Отзывы пользователей</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <figure class="card h-100 border-0 shadow-sm mb-0">
+            <div class="card-body">
+              <div class="text-warning mb-2"><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i></div>
+              <blockquote class="blockquote fs-6"><p>«Нашла работу за две недели. Фильтр по зарплате очень помог — не тратила время на неподходящие предложения».</p></blockquote>
+              <figcaption class="blockquote-footer mb-0">Анна К., <cite title="Source Title">аналитик</cite></figcaption>
+            </div>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="card h-100 border-0 shadow-sm mb-0">
+            <div class="card-body">
+              <div class="text-warning mb-2"><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-half"></i></div>
+              <blockquote class="blockquote fs-6"><p>«Как работодатель ценю управление вакансиями: видна статистика откликов и удобно редактировать условия».</p></blockquote>
+              <figcaption class="blockquote-footer mb-0">Дмитрий П., <cite title="Source Title">HR-директор</cite></figcaption>
+            </div>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="card h-100 border-0 shadow-sm mb-0">
+            <div class="card-body">
+              <div class="text-warning mb-2"><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i><i aria-hidden="true" class="bi bi-star-fill"></i></div>
+              <blockquote class="blockquote fs-6"><p>«Приятно, что у каждой вакансии подробные требования. Сразу понятно, подходишь ты или нет».</p></blockquote>
+              <figcaption class="blockquote-footer mb-0">Игорь М., <cite title="Source Title">разработчик</cite></figcaption>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="loginModalLabel">Вход в аккаунт</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="loginEmail" autocomplete="email" placeholder="you@example.com" required>
+            <div class="invalid-feedback">Введите корректный email.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="loginPassword" autocomplete="current-password" minlength="6" placeholder="Минимум 6 символов" required>
+            <div class="invalid-feedback">Пароль должен содержать не менее 6 символов.</div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="loginRemember" checked>
+              <label class="form-check-label" for="loginRemember">Запомнить меня</label>
+            </div>
+            <a href="#" class="small">Забыли пароль?</a>
+          </div>
+          <hr>
+          <p class="small text-muted mb-2">Войти как:</p>
+          <div class="d-grid gap-2">
+            <a href="account.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-person me-1"></i>Соискатель</a>
+            <a href="employer.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-building me-1"></i>Работодатель</a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="registerModalLabel">Регистрация</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted small">Кто вы?</p>
+          <div class="btn-group w-100 mb-4" role="group" aria-label="Тип аккаунта">
+            <input type="radio" class="btn-check" name="accountType" id="typeJobSeeker" value="seeker" checked>
+            <label class="btn btn-outline-primary" for="typeJobSeeker"><i aria-hidden="true" class="bi bi-person-workspace me-1"></i>Ищу работу</label>
+            <input type="radio" class="btn-check" name="accountType" id="typeEmployer" value="employer">
+            <label class="btn btn-outline-primary" for="typeEmployer"><i aria-hidden="true" class="bi bi-buildings me-1"></i>Ищу сотрудников</label>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="regName" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="regName" autocomplete="name" placeholder="Иван Иванов" required>
+              <div class="invalid-feedback">Укажите имя.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="regEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="regEmail" autocomplete="email" placeholder="you@example.com" required>
+              <div class="invalid-feedback">Введите корректный email.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="regPassword" class="form-label">Пароль</label>
+              <input type="password" class="form-control" id="regPassword" autocomplete="new-password" minlength="6" required>
+              <div class="invalid-feedback">Не менее 6 символов.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="regPassword2" class="form-label">Повторите пароль</label>
+              <input type="password" class="form-control" id="regPassword2" autocomplete="new-password" minlength="6" required>
+              <div class="invalid-feedback">Пароли не совпадают.</div>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="regAgree" required>
+                <label class="form-check-label" for="regAgree">Согласен с <a href="#">условиями использования</a> и <a href="#">политикой конфиденциальности</a></label>
+                <div class="invalid-feedback">Необходимо согласие.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/vacancies.js"></script>
+<script src="js/a11y.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

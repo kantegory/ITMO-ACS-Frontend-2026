@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Компании — JobHub</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#bfe4ff">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">Как это работает</a></li>
+        </ul>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0" id="navAuth"></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Компании</li>
+      </ol>
+    </nav>
+
+    <div class="row align-items-end g-3 mb-4">
+      <div class="col-lg-7">
+        <h1 class="h3 mb-1">Компании</h1>
+        <p class="text-muted mb-0">Более 3 200 работодателей публикуют вакансии на JobHub</p>
+      </div>
+      <div class="col-lg-5">
+        <label for="companySearch" class="visually-hidden">Поиск компании</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white"><i aria-hidden="true" class="bi bi-search"></i></span>
+          <input type="search" class="form-control" id="companySearch" placeholder="Найти компанию по названию">
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="companyGrid">
+
+      <div class="col company-col" data-name="Яндекс">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-primary text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Я</span>
+              <div>
+                <h2 class="h6 mb-0">Яндекс</h2>
+                <div class="small text-muted">IT и телеком</div>
+              </div>
+            </div>
+            <p class="small text-muted">Технологическая компания, создающая сервисы поиска, навигации и развлечений.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">148 вакансий</span>
+              <a href="vacancies.html?industry=IT" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="СберБанк">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-success text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">С</span>
+              <div>
+                <h2 class="h6 mb-0">СберБанк</h2>
+                <div class="small text-muted">Финансы и банки</div>
+              </div>
+            </div>
+            <p class="small text-muted">Крупнейший банк России и одна из крупнейших технологических компаний страны.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">96 вакансий</span>
+              <a href="vacancies.html?industry=finance" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="МТС Digital">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-danger text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">М</span>
+              <div>
+                <h2 class="h6 mb-0">МТС Digital</h2>
+                <div class="small text-muted">IT и телеком</div>
+              </div>
+            </div>
+            <p class="small text-muted">Цифровое подразделение МТС: мобильные продукты, медиа-сервисы и финтех.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">74 вакансии</span>
+              <a href="vacancies.html?industry=IT" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="Ozon">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-info text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">O</span>
+              <div>
+                <h2 class="h6 mb-0">Ozon</h2>
+                <div class="small text-muted">Торговля</div>
+              </div>
+            </div>
+            <p class="small text-muted">Маркетплейс и логистическая платформа с десятками миллионов покупателей.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">132 вакансии</span>
+              <a href="vacancies.html?industry=trade" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="Тинькофф">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-warning text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Т</span>
+              <div>
+                <h2 class="h6 mb-0">Тинькофф</h2>
+                <div class="small text-muted">Финансы и банки</div>
+              </div>
+            </div>
+            <p class="small text-muted">Онлайн-банк и технологическая экосистема финансовых и lifestyle-сервисов.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">88 вакансий</span>
+              <a href="vacancies.html?industry=finance" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="SkillBox">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-secondary text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">S</span>
+              <div>
+                <h2 class="h6 mb-0">SkillBox</h2>
+                <div class="small text-muted">Образование</div>
+              </div>
+            </div>
+            <p class="small text-muted">Образовательная платформа с курсами по программированию, дизайну и маркетингу.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">31 вакансия</span>
+              <a href="vacancies.html?industry=education" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="Медгородок">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-danger-subtle text-danger" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">МГ</span>
+              <div>
+                <h2 class="h6 mb-0">Медгородок</h2>
+                <div class="small text-muted">Медицина</div>
+              </div>
+            </div>
+            <p class="small text-muted">Сеть многопрофильных клиник в Казани и Поволжье.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">24 вакансии</span>
+              <a href="vacancies.html?industry=medicine" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="ВКонтакте">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-info-subtle text-info-emphasis" style="width:64px;height:64px;font-size:1.4rem;border:4px solid #fff;">VK</span>
+              <div>
+                <h2 class="h6 mb-0">ВКонтакте</h2>
+                <div class="small text-muted">Маркетинг и реклама</div>
+              </div>
+            </div>
+            <p class="small text-muted">Социальная сеть и рекламная платформа с широкой аудиторией.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">57 вакансий</span>
+              <a href="vacancies.html?industry=marketing" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col company-col" data-name="Леруа Мерлен">
+        <article class="company-card card border-0 shadow-sm h-100">
+          <div class="company-banner"></div>
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+              <span aria-hidden="true" class="company-logo bg-success-subtle text-success" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Л</span>
+              <div>
+                <h2 class="h6 mb-0">Леруа Мерлен</h2>
+                <div class="small text-muted">Торговля</div>
+              </div>
+            </div>
+            <p class="small text-muted">Сеть гипермаркетов товаров для строительства, ремонта и сада.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-primary-subtle text-primary-emphasis">43 вакансии</span>
+              <a href="vacancies.html?industry=trade" class="small">Вакансии компании</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <div id="companyEmpty" class="card border-0 shadow-sm d-none mt-4">
+      <div class="card-body text-center py-5">
+        <i aria-hidden="true" class="bi bi-building display-4 text-muted"></i>
+        <h2 class="h5 mt-3">Компания не найдена</h2>
+        <p class="text-muted mb-0">Проверьте написание названия или сбросьте поиск.</p>
+      </div>
+    </div>
+
+    <nav class="mt-4" aria-label="Навигация по страницам">
+      <ul class="pagination justify-content-center mb-0">
+        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Назад</a></li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Вперёд</a></li>
+      </ul>
+    </nav>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="loginModalLabel">Вход в аккаунт</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="loginEmail" autocomplete="email" placeholder="you@example.com" required>
+            <div class="invalid-feedback">Введите корректный email.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="loginPassword" autocomplete="current-password" minlength="6" required>
+            <div class="invalid-feedback">Не менее 6 символов.</div>
+          </div>
+          <div class="d-grid gap-2 mt-3">
+            <a href="account.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-person me-1"></i>Войти как соискатель</a>
+            <a href="employer.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-building me-1"></i>Войти как работодатель</a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="registerModalLabel">Регистрация</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="regName" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="regName" autocomplete="name" required>
+            <div class="invalid-feedback">Укажите имя.</div>
+          </div>
+          <div class="mb-3">
+            <label for="regEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="regEmail" autocomplete="email" required>
+            <div class="invalid-feedback">Введите корректный email.</div>
+          </div>
+          <a href="index.html" class="small">Полная форма регистрации</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/a11y.js"></script>
+<script src="js/main.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/api.js"></script>
+<script>
+  (async () => {
+    const grid = document.getElementById('companyGrid');
+    try {
+      const companies = await api.getCompanies();
+      grid.innerHTML = companies.map(c => `
+        <div class="col company-col" data-name="${c.name}">
+          <article class="company-card card border-0 shadow-sm h-100">
+            <div class="company-banner"></div>
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
+                <span aria-hidden="true" class="company-logo bg-primary text-white"
+                      style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">${c.logo}</span>
+                <div><h2 class="h6 mb-0">${c.name}</h2>
+                     <div class="small text-muted">${c.industry}</div></div>
+              </div>
+              <p class="small text-muted">${c.description}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge text-bg-primary-subtle text-primary-emphasis">${c.vacanciesCount} вакансий</span>
+                <a href="vacancies.html" class="small">Вакансии компании</a>
+              </div>
+            </div>
+          </article>
+        </div>`).join('');
+    } catch (e) {
+      grid.innerHTML = '<p class="text-muted">Не удалось загрузить компании</p>';
+    }
+  })();
+</script>
+</body>
+</html>

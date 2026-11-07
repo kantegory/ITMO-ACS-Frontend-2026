@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет — JobHub</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#bfe4ff">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+        </ul>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0" id="navAuth"></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Личный кабинет</li>
+      </ol>
+    </nav>
+
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body p-4">
+        <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+          <span class="account-avatar" id="profileAvatar">ДФ</span>
+          <div class="flex-grow-1">
+            <h1 class="h3 mb-1" id="profileName">Денис Фёдоров</h1>
+            <div class="text-muted mb-2">
+              <i aria-hidden="true" class="bi bi-geo-alt me-1"></i><span id="profileCity">Санкт-Петербург</span> · 
+              <i aria-hidden="true" class="bi bi-envelope ms-2 me-1"></i><span id="profileEmail">faralones67@gmail.com</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2" id="profileSkills">
+              <span class="badge skill-badge">JavaScript</span>
+              <span class="badge skill-badge">TypeScript</span>
+              <span class="badge skill-badge">React</span>
+              <span class="badge skill-badge">Node.js</span>
+              <span class="badge skill-badge">Figma</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column gap-2">
+            <a href="#resume" class="btn btn-primary" data-section-link="resume"><i aria-hidden="true" class="bi bi-file-earmark-text me-1"></i>Моё резюме</a>
+            <button type="button" class="btn btn-outline-secondary" data-toast="Настройки профиля сохранены">
+              <i aria-hidden="true" class="bi bi-gear me-1"></i>Настройки
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <aside class="col-lg-3">
+        <div class="card border-0 shadow-sm">
+          <div class="list-group list-group-flush" id="accountNav" role="group" aria-label="Разделы личного кабинета">
+            <a href="#overview" class="list-group-item list-group-item-action active py-3" data-section="overview" aria-current="true">
+              <i aria-hidden="true" class="bi bi-speedometer2 me-2"></i>Обзор
+            </a>
+            <a href="#resume" class="list-group-item list-group-item-action py-3" data-section="resume">
+              <i aria-hidden="true" class="bi bi-file-earmark-person me-2"></i>Резюме
+            </a>
+            <a href="#applications" class="list-group-item list-group-item-action py-3" data-section="applications">
+              <i aria-hidden="true" class="bi bi-send me-2"></i>Мои отклики <span class="badge text-bg-primary ms-1">4</span>
+            </a>
+            <a href="#favorites" class="list-group-item list-group-item-action py-3" data-section="favorites">
+              <i aria-hidden="true" class="bi bi-heart me-2"></i>Избранное
+            </a>
+            <a href="#settings" class="list-group-item list-group-item-action py-3" data-section="settings">
+              <i aria-hidden="true" class="bi bi-gear me-2"></i>Настройки
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-lg-9">
+
+        <section data-section-panel="overview">
+          <div class="row g-3 mb-4">
+            <div class="col-sm-4">
+              <div class="card stat-card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="small text-muted mb-1">Просмотры резюме</div>
+                  <div class="stat-value text-primary">127</div>
+                  <div class="small text-success"><i aria-hidden="true" class="bi bi-arrow-up"></i> +18 за неделю</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card stat-card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="small text-muted mb-1">Отклики</div>
+                  <div class="stat-value text-success">4</div>
+                  <div class="small text-muted">2 приглашения на интервью</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card stat-card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <div class="small text-muted mb-1">Избранные вакансии</div>
+                  <div class="stat-value text-warning-emphasis">7</div>
+                  <div class="small text-muted">3 с высокой зарплатой</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+              <h2 class="h6 mb-0">Последние отклики</h2>
+              <a href="#applications" class="small" data-section-link="applications">Все отклики</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-middle mb-0">
+<caption class="visually-hidden">Последние отклики</caption>
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Вакансия</th>
+                    <th scope="col">Компания</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Статус</th>
+                  </tr>
+                </thead>
+                <tbody id="recentApplications"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section data-section-panel="resume" class="d-none">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <h2 class="h6 mb-0">Резюме «Frontend-разработчик · Senior»</h2>
+              <div class="d-flex gap-2">
+                <span class="badge text-bg-success-subtle text-success-emphasis align-self-center">Опубликовано</span>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editResumeModal">
+                  <i aria-hidden="true" class="bi bi-pencil me-1"></i>Редактировать
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="Скачать резюме в PDF" data-toast="Резюме скачано в PDF">
+                  <i aria-hidden="true" class="bi bi-download"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-4 resume-preview">
+              <div class="row g-4">
+                <div class="col-md-8">
+                  <h3 class="h6 text-muted text-uppercase">Желаемая должность</h3>
+                  <p class="fw-semibold mb-4">Frontend-разработчик, Senior</p>
+
+                  <h3 class="h6 text-muted text-uppercase">О себе</h3>
+                  <p>Frontend-разработчик с 5-летним опытом создания высоконагруженных веб-приложений.
+                    Специализируюсь на React и TypeScript, люблю чистый код и автоматизацию процессов.</p>
+
+                  <h3 class="h6 text-muted text-uppercase">Опыт работы</h3>
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="fw-semibold">Frontend-разработчик — «Веб-Студия Атлас»</div>
+                      <div class="small text-muted mb-1">март 2022 — настоящее время</div>
+                      <p class="small mb-0">Разработка личных кабинетов клиентов, внедрение дизайн-системы, наставничество.</p>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="fw-semibold">Junior Frontend-разработчик — «Стартап Пиксель»</div>
+                      <div class="small text-muted mb-1">июль 2020 — февраль 2022</div>
+                      <p class="small mb-0">Вёрстка лендингов, интеграция API, поддержка существующего кода.</p>
+                    </div>
+                  </div>
+
+                  <h3 class="h6 text-muted text-uppercase mt-3">Образование</h3>
+                  <div class="fw-semibold">ИТМО</div>
+                  <div class="small text-muted">Программная инженерия, бакалавр · 2016–2020</div>
+                </div>
+                <div class="col-md-4">
+                  <h3 class="h6 text-muted text-uppercase">Навыки</h3>
+                  <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge skill-badge">JavaScript</span>
+                    <span class="badge skill-badge">TypeScript</span>
+                    <span class="badge skill-badge">React</span>
+                    <span class="badge skill-badge">Next.js</span>
+                    <span class="badge skill-badge">HTML/CSS</span>
+                    <span class="badge skill-badge">Bootstrap</span>
+                    <span class="badge skill-badge">Jest</span>
+                  </div>
+                  <h3 class="h6 text-muted text-uppercase">Ожидаемая зарплата</h3>
+                  <p class="fw-semibold mb-4">от 250 000 ₽</p>
+                  <h3 class="h6 text-muted text-uppercase">Формат работы</h3>
+                  <p class="fw-semibold mb-4">Удалённо, гибрид</p>
+                  <h3 class="h6 text-muted text-uppercase">Языки</h3>
+                  <p class="fw-semibold mb-0">Русский — родной<br>Английский — C1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section data-section-panel="applications" class="d-none">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <h2 class="h6 mb-0">Мои отклики</h2>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Фильтр откликов">
+                <button type="button" class="btn btn-outline-primary active">Все</button>
+                <button type="button" class="btn btn-outline-primary">Приглашения</button>
+                <button type="button" class="btn btn-outline-primary">Отказы</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-middle mb-0">
+<caption class="visually-hidden">Мои отклики</caption>
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Вакансия</th>
+                    <th scope="col">Компания</th>
+                    <th scope="col">Зарплата</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Статус</th>
+                  </tr>
+                </thead>
+                <tbody id="myApplications"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section data-section-panel="favorites" class="d-none">
+          <h2 class="h5 mb-3">Избранные вакансии</h2>
+          <div class="d-flex flex-column gap-3" id="favoritesList"></div>
+        </section>
+
+        <section data-section-panel="settings" class="d-none">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h2 class="h5 mb-4">Настройки профиля</h2>
+              <form class="needs-validation row g-3" novalidate aria-label="Настройки профиля">
+                <div class="col-md-6">
+                  <label for="setName" class="form-label">Имя</label>
+                  <input type="text" class="form-control" id="setName" autocomplete="given-name" value="Денис" required>
+                  <div class="invalid-feedback">Укажите имя.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="setLastName" class="form-label">Фамилия</label>
+                  <input type="text" class="form-control" id="setLastName" autocomplete="family-name" value="Фёдоров" required>
+                  <div class="invalid-feedback">Укажите фамилию.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="setEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="setEmail" autocomplete="email" value="faralones67@gmail.com" required>
+                  <div class="invalid-feedback">Введите корректный email.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="setCity" class="form-label">Город</label>
+                  <input type="text" class="form-control" id="setCity" autocomplete="address-level2" value="Санкт-Петербург">
+                </div>
+                <div class="col-12">
+                  <label for="setAbout" class="form-label">О себе</label>
+                  <textarea class="form-control" id="setAbout" rows="3">Frontend-разработчик с опытом создания высоконагруженных веб-приложений.</textarea>
+                </div>
+                <div class="col-12">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="setOpenResume" checked>
+                    <label class="form-check-label" for="setOpenResume">Резюме видно всем работодателям</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<div class="modal fade" id="editResumeModal" tabindex="-1" aria-labelledby="editResumeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <form class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="editResumeModalLabel">Редактирование резюме</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="resumePosition" class="form-label">Желаемая должность</label>
+              <input type="text" class="form-control" id="resumePosition" value="Frontend-разработчик, Senior" required>
+              <div class="invalid-feedback">Укажите должность.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="resumeSalary" class="form-label">Ожидаемая зарплата</label>
+              <input type="number" class="form-control" id="resumeSalary" min="0" step="5000" value="250000" required>
+              <div class="invalid-feedback">Укажите зарплату.</div>
+            </div>
+            <div class="col-12">
+              <label for="resumeAbout" class="form-label">О себе</label>
+              <textarea class="form-control" id="resumeAbout" rows="3">Frontend-разработчик с 5-летним опытом создания высоконагруженных веб-приложений.</textarea>
+            </div>
+            <div class="col-md-6">
+              <label for="resumeExperience" class="form-label">Опыт работы</label>
+              <select class="form-select" id="resumeExperience">
+                <option>Без опыта</option>
+                <option>1–3 года</option>
+                <option selected>3–6 лет</option>
+                <option>Более 6 лет</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="resumeFormat" class="form-label">Формат работы</label>
+              <select class="form-select" id="resumeFormat">
+                <option>Офис</option>
+                <option>Гибрид</option>
+                <option selected>Удалённо</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="resumeSkills" class="form-label">Ключевые навыки (через запятую)</label>
+              <input type="text" class="form-control" id="resumeSkills" value="JavaScript, TypeScript, React, Next.js, Jest">
+            </div>
+            <div class="col-12">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="resumePublish" checked>
+                <label class="form-check-label" for="resumePublish">Публиковать резюме</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/a11y.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.querySelectorAll('[data-section-link]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      const target = document.querySelector('#accountNav [data-section="' + link.dataset.sectionLink + '"]');
+      if (target) target.click();
+      document.getElementById('accountNav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  if (location.hash) {
+    const target = document.querySelector('#accountNav [data-section="' + location.hash.slice(1) + '"]');
+    if (target) target.click();
+  }
+</script>
+</body>
+</html>
