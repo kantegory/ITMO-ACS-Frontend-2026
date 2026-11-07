@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="search" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M16 16l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="user" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M6 19c1.2-3 3.2-4.5 6-4.5s4.8 1.5 6 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="filter" viewBox="0 0 24 24">
+    <path d="M4 6h16l-6 7v5l-4 2v-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="moon" viewBox="0 0 24 24">
+    <path d="M15 3a8 8 0 1 0 6 13 7 7 0 0 1-6-13z" fill="currentColor"/>
+  </symbol>
+  <symbol id="heart" viewBox="0 0 24 24">
+    <path d="M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z" fill="currentColor"/>
+  </symbol>
+</svg>

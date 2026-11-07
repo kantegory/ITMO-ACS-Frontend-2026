@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Иконки из спрайта</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f4f5f7;
+      color: #1c2430;
+    }
+    .bar {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 24px;
+      background: #fff;
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+      color: #3d4a5c;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid #d5dbe3;
+      border-radius: 8px;
+    }
+    .cards {
+      display: flex;
+      gap: 12px;
+      padding: 24px;
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #fff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <svg class="icon"><use href="sprite.svg#user"></use></svg>
+    <label class="search">
+      <svg class="icon"><use href="sprite.svg#search"></use></svg>
+      <input type="search" placeholder="Поиск набора">
+    </label>
+    <svg class="icon"><use href="sprite.svg#filter"></use></svg>
+    <svg class="icon"><use href="sprite.svg#moon"></use></svg>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <svg class="icon"><use href="sprite.svg#heart"></use></svg>
+      Набор в избранном
+    </div>
+  </div>
+</body>
+</html>
