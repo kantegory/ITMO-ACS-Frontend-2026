@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Рестораны — Столик</title>
+  <meta name="description" content="Поиск ресторанов Петербурга с фильтрами по кухне, району, цене и рейтингу.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand brand-logo" href="index.html">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 11V8M10 8h4"/></svg>
+          Столик
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="search.html">Рестораны</a></li>
+            <li class="nav-item"><a class="nav-link" href="bookings.html">Мои брони</a></li>
+          </ul>
+          <div class="d-flex gap-2" data-guest>
+            <a class="btn btn-outline-primary" href="login.html">Войти</a>
+            <a class="btn btn-primary" href="register.html">Регистрация</a>
+          </div>
+          <div class="dropdown d-none" data-auth>
+            <button class="btn user-menu dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="avatar avatar-sm" data-user-initials></span>
+              <span data-user-name></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html">Личный кабинет</a></li>
+              <li><a class="dropdown-item" href="bookings.html">История бронирований</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item" type="button" data-logout>Выйти</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow-1 py-4">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Рестораны</li>
+        </ol>
+      </nav>
+
+      <div class="mb-4">
+        <h1 class="mb-1">Рестораны Петербурга</h1>
+        <p class="text-muted-warm mb-0">Найдено: <strong id="resultsCount">9</strong></p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-3">
+          <div class="offcanvas-lg offcanvas-start filters-panel" tabindex="-1" id="filtersPanel" aria-labelledby="filtersTitle">
+            <div class="offcanvas-header">
+              <h2 class="offcanvas-title h5" id="filtersTitle">Фильтры</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#filtersPanel" aria-label="Закрыть"></button>
+            </div>
+            <div class="offcanvas-body">
+              <form id="filtersForm" class="filters-form w-100">
+                <fieldset class="mb-4">
+                  <legend class="filter-title">Кухня</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-italian" name="cuisine" type="checkbox" value="italian">
+                    <label class="form-check-label" for="cuisine-italian">Итальянская</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-japanese" name="cuisine" type="checkbox" value="japanese">
+                    <label class="form-check-label" for="cuisine-japanese">Японская</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-georgian" name="cuisine" type="checkbox" value="georgian">
+                    <label class="form-check-label" for="cuisine-georgian">Грузинская</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-french" name="cuisine" type="checkbox" value="french">
+                    <label class="form-check-label" for="cuisine-french">Французская</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-russian" name="cuisine" type="checkbox" value="russian">
+                    <label class="form-check-label" for="cuisine-russian">Русская</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-asian" name="cuisine" type="checkbox" value="asian">
+                    <label class="form-check-label" for="cuisine-asian">Азиатская</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-steak" name="cuisine" type="checkbox" value="steak">
+                    <label class="form-check-label" for="cuisine-steak">Стейк-хаус</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="cuisine-oriental" name="cuisine" type="checkbox" value="oriental">
+                    <label class="form-check-label" for="cuisine-oriental">Восточная</label>
+                  </div>
+                </fieldset>
+
+                <div class="mb-4">
+                  <label class="filter-title form-label" for="filterDistrict">Район</label>
+                  <select class="form-select" id="filterDistrict" name="district">
+                    <option value="">Все районы</option>
+                    <option value="central">Центральный</option>
+                    <option value="petrogradsky">Петроградский</option>
+                    <option value="vasileostrovsky">Василеостровский</option>
+                    <option value="admiralteysky">Адмиралтейский</option>
+                    <option value="moskovsky">Московский</option>
+                  </select>
+                </div>
+
+                <fieldset class="mb-4">
+                  <legend class="filter-title">Средний чек</legend>
+                  <div class="btn-group w-100" role="group">
+                    <input class="btn-check" id="price-1" name="price" type="checkbox" value="1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="price-1">₽</label>
+                    <input class="btn-check" id="price-2" name="price" type="checkbox" value="2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="price-2">₽₽</label>
+                    <input class="btn-check" id="price-3" name="price" type="checkbox" value="3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="price-3">₽₽₽</label>
+                  </div>
+                  <p class="form-text mb-0">₽ — до 1&nbsp;000&nbsp;₽, ₽₽ — 1&nbsp;000–2&nbsp;500&nbsp;₽, ₽₽₽ — от 2&nbsp;500&nbsp;₽ на человека</p>
+                </fieldset>
+
+                <fieldset class="mb-4">
+                  <legend class="filter-title">Рейтинг</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" id="rating-any" name="rating" type="radio" value="0" checked>
+                    <label class="form-check-label" for="rating-any">Любой</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="rating-4" name="rating" type="radio" value="4">
+                    <label class="form-check-label" for="rating-4">4.0 и выше</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="rating-45" name="rating" type="radio" value="4.5">
+                    <label class="form-check-label" for="rating-45">4.5 и выше</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mb-4">
+                  <legend class="filter-title">Особенности</legend>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" id="feature-terrace" name="feature" type="checkbox" role="switch" value="terrace">
+                    <label class="form-check-label" for="feature-terrace">Летняя веранда</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" id="feature-kids" name="feature" type="checkbox" role="switch" value="kids">
+                    <label class="form-check-label" for="feature-kids">Детское меню</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" id="feature-music" name="feature" type="checkbox" role="switch" value="music">
+                    <label class="form-check-label" for="feature-music">Живая музыка</label>
+                  </div>
+                </fieldset>
+
+                <button class="btn btn-outline-secondary w-100" type="reset">Сбросить фильтры</button>
+                <button class="btn btn-primary w-100 mt-2 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#filtersPanel">Показать результаты</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <div class="search-toolbar d-flex flex-wrap gap-2 mb-4">
+            <div class="search-field flex-grow-1">
+              <label class="visually-hidden" for="searchQuery">Поиск по названию или кухне</label>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input class="form-control" id="searchQuery" name="q" type="search" form="filtersForm" placeholder="Название ресторана или кухня">
+            </div>
+            <div class="d-flex gap-2">
+              <label class="visually-hidden" for="sortSelect">Сортировка</label>
+              <select class="form-select" id="sortSelect" name="sort" form="filtersForm">
+                <option value="rating">По рейтингу</option>
+                <option value="reviews">По числу отзывов</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+              </select>
+              <button class="btn btn-outline-primary d-lg-none text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#filtersPanel" aria-controls="filtersPanel">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                Фильтры <span class="badge text-bg-primary d-none" id="activeFiltersBadge"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="restaurantsList">
+            <div class="col" data-name="траттория «нонна» итальянская" data-cuisine="italian" data-district="petrogradsky" data-price="2" data-check="1800" data-rating="4.8" data-reviews="126" data-features="terrace kids">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/italian.svg" alt="Пицца на клетчатой скатерти">
+                  <span class="badge badge-cuisine">Итальянская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Траттория «Нонна»</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.8</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Петроградский</li>
+                    <li><span class="price-level">₽₽<span class="dim">₽</span></span>~1 800 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Домашняя паста, пицца из дровяной печи и тирамису по семейному рецепту.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="сакура дзэн японская" data-cuisine="japanese" data-district="central" data-price="3" data-check="2600" data-rating="4.6" data-reviews="88" data-features="music">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/japanese.svg" alt="Роллы с лососем на тёмной доске">
+                  <span class="badge badge-cuisine">Японская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Сакура Дзэн</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.6</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Центральный</li>
+                    <li><span class="price-level">₽₽₽</span>~2 600 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Омакасе от шефа, свежая рыба каждое утро и большая коллекция саке.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="хачапури и вино грузинская" data-cuisine="georgian" data-district="vasileostrovsky" data-price="2" data-check="1400" data-rating="4.7" data-reviews="203" data-features="kids music">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/georgian.svg" alt="Хачапури по-аджарски с желтком">
+                  <span class="badge badge-cuisine">Грузинская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Хачапури и вино</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.7</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Василеостровский</li>
+                    <li><span class="price-level">₽₽<span class="dim">₽</span></span>~1 400 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Хачапури из тандыра, хинкали ручной лепки и вина из Кахетии.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="le petit bistro французская" data-cuisine="french" data-district="admiralteysky" data-price="3" data-check="3200" data-rating="4.5" data-reviews="64" data-features="terrace">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/french.svg" alt="Круассан и чашка капучино">
+                  <span class="badge badge-cuisine">Французская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Le Petit Bistro</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.5</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Адмиралтейский</li>
+                    <li><span class="price-level">₽₽₽</span>~3 200 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Луковый суп, утиная ножка конфи и завтраки до 16:00.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="щи да каша русская" data-cuisine="russian" data-district="central" data-price="1" data-check="900" data-rating="4.4" data-reviews="151" data-features="kids">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/russian.svg" alt="Тарелка борща со сметаной">
+                  <span class="badge badge-cuisine">Русская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Щи да каша</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.4</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Центральный</li>
+                    <li><span class="price-level">₽<span class="dim">₽₽</span></span>~900 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Борщ, пельмени ручной лепки и морсы — как у бабушки, только в центре города.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="pho bo азиатская" data-cuisine="asian" data-district="moskovsky" data-price="1" data-check="800" data-rating="4.3" data-reviews="97" data-features="">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/asian.svg" alt="Миска фо бо с говядиной и зеленью">
+                  <span class="badge badge-cuisine">Азиатская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Pho Bo</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.3</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Московский</li>
+                    <li><span class="price-level">₽<span class="dim">₽₽</span></span>~800 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Наваристый фо, бань ми и вьетнамский кофе со сгущёнкой.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="мясо &amp; угли стейк-хаус" data-cuisine="steak" data-district="petrogradsky" data-price="3" data-check="3500" data-rating="4.9" data-reviews="175" data-features="music">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/steak.svg" alt="Стейк на деревянной доске с розмарином">
+                  <span class="badge badge-cuisine">Стейк-хаус</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Мясо &amp; Угли</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.9</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Петроградский</li>
+                    <li><span class="price-level">₽₽₽</span>~3 500 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Стейки сухой выдержки на углях, большая винная карта и открытая кухня.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="паста бар итальянская" data-cuisine="italian" data-district="vasileostrovsky" data-price="2" data-check="1100" data-rating="4.2" data-reviews="58" data-features="terrace">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/italian.svg" alt="Пицца на клетчатой скатерти">
+                  <span class="badge badge-cuisine">Итальянская</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Паста Бар</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.2</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Василеостровский</li>
+                    <li><span class="price-level">₽₽<span class="dim">₽</span></span>~1 100 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Свежая паста за 10 минут: карбонара, болоньезе и песто с бокалом вина.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+            <div class="col" data-name="дым востока восточная" data-cuisine="oriental" data-district="moskovsky" data-price="2" data-check="1300" data-rating="4.6" data-reviews="132" data-features="kids music">
+              <article class="card restaurant-card">
+                <div class="card-cover">
+                  <img class="card-img-top" src="img/oriental.svg" alt="Плов с морковью на узбекском блюде">
+                  <span class="badge badge-cuisine">Восточная</span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <h2 class="card-title h5 mb-0"><a href="restaurant.html">Дым Востока</a></h2>
+                    <span class="rating-pill"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4.6</span>
+                  </div>
+                  <ul class="meta-list mb-3">
+                    <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Московский</li>
+                    <li><span class="price-level">₽₽<span class="dim">₽</span></span>~1 300 ₽</li>
+                  </ul>
+                  <p class="card-text text-muted-warm small">Плов из казана, самса из тандыра и чайная церемония на топчанах.</p>
+                  <a class="btn btn-outline-primary mt-auto" href="restaurant.html#booking">Забронировать</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="empty-state text-center py-5 d-none" id="emptyState">
+            <img src="img/hero.svg" alt="" width="160" height="140">
+            <h2 class="h4 mt-3">Ничего не нашлось</h2>
+            <p class="text-muted-warm">Попробуйте убрать часть фильтров или изменить запрос.</p>
+            <button class="btn btn-primary" type="reset" form="filtersForm">Сбросить фильтры</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <a class="brand-logo mb-2" href="index.html">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 11V8M10 8h4"/></svg>
+            Столик
+          </a>
+          <p class="small mb-0">Бронирование столиков в ресторанах Санкт-Петербурга.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="h6 text-white">Сервис</h2>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a href="search.html">Рестораны</a></li>
+            <li class="mb-1"><a href="bookings.html">Мои брони</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2 class="h6 text-white">Аккаунт</h2>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a href="login.html">Вход</a></li>
+            <li class="mb-1"><a href="register.html">Регистрация</a></li>
+            <li class="mb-1"><a href="profile.html">Личный кабинет</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+        <span>© <span data-year>2026</span> Столик</span>
+        <span>Учебный проект, ИТМО</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

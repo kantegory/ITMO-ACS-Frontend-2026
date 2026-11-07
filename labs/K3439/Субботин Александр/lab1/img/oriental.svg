@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="rice" width="12" height="10" patternUnits="userSpaceOnUse">
+      <rect width="12" height="10" fill="#f2c46b"/>
+      <ellipse cx="4" cy="3" rx="3" ry="1.4" fill="#f8dc94"/><ellipse cx="10" cy="8" rx="3" ry="1.4" fill="#e6ad4c"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="250" fill="#f5e7cf"/>
+  <circle cx="200" cy="128" r="106" fill="#000" opacity=".07"/>
+  <circle cx="200" cy="125" r="103" fill="#fff"/>
+  <circle cx="200" cy="125" r="94" fill="none" stroke="#1f6f8b" stroke-width="9" stroke-dasharray="7 9"/>
+  <circle cx="200" cy="125" r="74" fill="url(#rice)"/>
+  <g fill="#e2701f">
+    <rect x="160" y="100" width="34" height="6" rx="3" transform="rotate(-25 177 103)"/>
+    <rect x="215" y="140" width="34" height="6" rx="3" transform="rotate(15 232 143)"/>
+    <rect x="170" y="150" width="30" height="6" rx="3" transform="rotate(35 185 153)"/>
+    <rect x="220" y="95" width="30" height="6" rx="3" transform="rotate(-45 235 98)"/>
+  </g>
+  <g fill="#8a4a2c"><ellipse cx="150" cy="130" rx="12" ry="9"/><ellipse cx="250" cy="120" rx="12" ry="9"/><ellipse cx="200" cy="170" rx="11" ry="8"/></g>
+  <circle cx="200" cy="122" r="18" fill="#f6efe3" stroke="#e1d3c0" stroke-width="2"/>
+  <g stroke="#e1d3c0" stroke-width="2"><line x1="200" y1="105" x2="200" y2="139"/><line x1="190" y1="108" x2="190" y2="136"/><line x1="210" y1="108" x2="210" y2="136"/></g>
+</svg>
