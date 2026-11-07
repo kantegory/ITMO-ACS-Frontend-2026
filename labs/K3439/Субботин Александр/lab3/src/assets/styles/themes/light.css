@@ -1,0 +1,88 @@
+/* =========================================================
+   Светлая тема «Столика» — базовая, подключена всегда.
+   Тёмная тема (dark.css) переопределяет те же переменные.
+   ========================================================= */
+
+:root {
+  /* Основа */
+  --bg: #faf6f0;
+  --surface: #ffffff;
+  --text: #2b2118;
+  --muted: #6f6257;
+  --border: #e9dfd3;
+  --shadow: 0 6px 24px rgba(43, 33, 24, 0.08);
+  --shadow-hover: 0 12px 32px rgba(43, 33, 24, 0.14);
+  --header-bg: rgba(250, 246, 240, 0.92);
+
+  /* Фирменный цвет: заливка кнопок, текст и ссылки на фоне страницы, мягкие плашки */
+  --brand: #b4441f;
+  --brand-rgb: 180, 68, 31;
+  --brand-dark: #8f3416;
+  --brand-gradient-end: #b94f24;  /* белый текст на нём — 5:1 */
+  --brand-text: #b4441f;
+  --brand-text-rgb: 180, 68, 31;
+  --brand-text-hover: #8f3416;
+  --brand-text-hover-rgb: 143, 52, 22;
+  --brand-soft: #f6e3d8;
+  --brand-soft-text: #8f3416;
+  --on-brand: #ffffff;
+
+  /* Фокус */
+  --focus-ring: #8f3416;
+  --focus-shadow: rgba(180, 68, 31, 0.35);
+
+  /* Ошибки и успех. Bootstrap-овский #dc3545 на кремовом фоне — 4.2:1, наш — 6:1 */
+  --danger: #b02a37;
+  --danger-rgb: 176, 42, 55;
+  --danger-hover: #8a1f2a;
+  --danger-text: #b02a37;
+  --valid: #146c43;
+
+  /* Рейтинг */
+  --rating-bg: #fff4dc;
+  --rating-text: #7a4d00;
+  --star: #e0a100;
+  --star-off: #ddd3c7;
+  --progress-bg: #efe7dc;
+  --price-dim: #7a6c60;         /* 5.1:1 к белому */
+
+  /* Мелочи */
+  --badge-cuisine-bg: rgba(255, 255, 255, 0.92);
+  --pill-badge-bg: rgba(255, 255, 255, 0.85);
+  --photo-overlay: rgba(0, 0, 0, 0.55);
+  --photo-caption-bg: rgba(0, 0, 0, 0.6);
+  --on-photo: #ffffff;
+  --dots: #d8cabb;
+  --map-bg: #e8efe3;
+  --map-road: rgba(255, 255, 255, 0.9);
+  --map-water: #c9dbe8;
+
+  /* Подвал — тёмный в обеих темах */
+  --footer-bg: #2b2118;
+  --footer-text: #d9cfc4;
+  --footer-link: #f1e6da;
+  --footer-link-hover: #ffffff;
+  --footer-brand: #f6b28f;
+  --footer-border: rgba(255, 255, 255, 0.12);
+
+  /* Переменные Bootstrap берут значения из наших — так модалки, формы, меню и тосты меняются вместе с темой */
+  --bs-body-bg: var(--bg);
+  --bs-body-bg-rgb: 250, 246, 240;
+  --bs-body-color: var(--text);
+  --bs-body-color-rgb: 43, 33, 24;
+  --bs-secondary-color: var(--muted);
+  --bs-border-color: var(--border);
+  --bs-primary: var(--brand);
+  --bs-primary-rgb: var(--brand-rgb);
+  --bs-link-color: var(--brand-text);
+  --bs-link-color-rgb: var(--brand-text-rgb);
+  --bs-link-hover-color: var(--brand-text-hover);
+  --bs-link-hover-color-rgb: var(--brand-text-hover-rgb);
+  --bs-danger: var(--danger);
+  --bs-danger-rgb: var(--danger-rgb);
+  --bs-danger-text-emphasis: var(--danger-hover);
+  --bs-form-invalid-color: var(--danger-text);
+  --bs-form-invalid-border-color: var(--danger-text);
+  --bs-form-valid-color: var(--valid);
+  --bs-form-valid-border-color: var(--valid);
+}
