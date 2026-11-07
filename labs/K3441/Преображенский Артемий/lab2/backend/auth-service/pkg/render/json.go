@@ -1,11 +1,16 @@
 package render
 
 import (
+	"encoding/json"
 	"net/http"
-	"restaurant-booking/internal/httpjson"
 )
 
-func Write(w http.ResponseWriter, status int, value any) error {
-	return httpjson.Write(w, status, value)
+func Write(w http.ResponseWriter, status int, v interface{}) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	return json.NewEncoder(w).Encode(v)
 }
-func WriteError(w http.ResponseWriter, status int) { httpjson.Error(w, status) }
+
+func WriteError(w http.ResponseWriter, status int) {
+	http.Error(w, http.StatusText(status), status)
+}

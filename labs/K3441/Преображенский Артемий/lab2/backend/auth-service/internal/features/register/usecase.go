@@ -2,9 +2,9 @@ package register
 
 import (
 	"context"
-	"net/mail"
 	"strings"
 
+	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
 	"restaurant-booking/auth-service/internal/domain"
@@ -12,41 +12,52 @@ import (
 )
 
 type Repository interface {
-	CreateWithEvent(context.Context, domain.Email, string, string, domain.Phone) (domain.User, error)
+	Create(ctx context.Context, email domain.Email, passwordHash string, fullName string, phone domain.Phone) (uuid.UUID, error)
+	GetByID(ctx context.Context, id uuid.UUID) (domain.User, error)
+}
+
+type Publisher interface {
+	PublishUser(ctx context.Context, user User) error
 }
 
 type Usecase struct {
-	repo   Repository
-	jwtCfg jwt.Config
+	repo      Repository
+	jwtCfg    jwt.Config
+	publisher Publisher
 }
 
-func NewUsecase(repo Repository, jwtCfg jwt.Config) *Usecase {
-	return &Usecase{repo: repo, jwtCfg: jwtCfg}
+func NewUsecase(repo Repository, jwtCfg jwt.Config, publisher Publisher) *Usecase {
+	return &Usecase{repo: repo, jwtCfg: jwtCfg, publisher: publisher}
 }
 
 func (u *Usecase) Register(ctx context.Context, input Input) (Output, error) {
 	email := strings.TrimSpace(input.Email)
 	fullName := strings.TrimSpace(input.FullName)
-	if email == "" || fullName == "" || len(input.Password) < 8 || len(input.Password) > 72 {
+	if email == "" || fullName == "" || input.Password == "" {
 		return Output{}, domain.ErrInvalidInput
-	}
-	address, err := mail.ParseAddress(email)
-	if err != nil || address.Address != email {
-		return Output{}, domain.ErrInvalidInput
-	}
-	phone := domain.Phone(strings.TrimSpace(input.Phone))
-	if err := domain.ValidatePhone(phone); err != nil {
-		return Output{}, err
 	}
 	hash, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.DefaultCost)
 	if err != nil {
 		return Output{}, err
 	}
-	user, err := u.repo.CreateWithEvent(ctx, domain.Email(email), string(hash), fullName, phone)
+	phone := strings.TrimSpace(input.Phone)
+	if err := domain.ValidatePhone(domain.Phone(phone)); err != nil {
+		return Output{}, err
+	}
+	id, err := u.repo.Create(ctx, domain.Email(email), string(hash), fullName, domain.Phone(phone))
 	if err != nil {
 		return Output{}, err
 	}
-	token, err := jwt.Sign(u.jwtCfg, user.ID)
+	if u.publisher != nil {
+		if err := u.publisher.PublishUser(ctx, User{ID: id, FullName: fullName}); err != nil {
+			return Output{}, err
+		}
+	}
+	user, err := u.repo.GetByID(ctx, id)
+	if err != nil {
+		return Output{}, err
+	}
+	token, err := jwt.Sign(u.jwtCfg, id)
 	if err != nil {
 		return Output{}, err
 	}

@@ -25,8 +25,5 @@ func (u *Usecase) List(ctx context.Context, input Input) (Output, error) {
 		return Output{}, fmt.Errorf("list restaurants: %w", err)
 	}
 
-	if items == nil {
-		items = []domain.Restaurant{}
-	}
 	return Output{Restaurants: items}, nil
 }

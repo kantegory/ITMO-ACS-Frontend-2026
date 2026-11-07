@@ -10,10 +10,10 @@ type Table struct {
 }
 
 type Input struct {
-	RestaurantID uuid.UUID `json:"restaurant_id"`
-	TableID      uuid.UUID `json:"table_id"`
+	RestaurantID uuid.UUID
+	TableID      uuid.UUID
 }
 
 type Output struct {
-	Table Table `json:"table"`
+	Table Table
 }

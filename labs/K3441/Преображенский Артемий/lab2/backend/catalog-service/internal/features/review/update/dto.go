@@ -7,18 +7,18 @@ import (
 )
 
 type Body struct {
-	Rating int    `json:"rating"`
-	Text   string `json:"text"`
+	Rating int
+	Text   string
 }
 
 type Input struct {
-	UserID       uuid.UUID `json:"user_id"`
-	RestaurantID string    `json:"restaurant_id"`
-	ReviewID     string    `json:"review_id"`
-	Rating       int       `json:"rating"`
-	Text         string    `json:"text"`
+	UserID       uuid.UUID
+	RestaurantID string
+	ReviewID     string
+	Rating       int
+	Text         string
 }
 
 type Output struct {
-	Review domain.Review `json:"review"`
+	Review domain.Review
 }

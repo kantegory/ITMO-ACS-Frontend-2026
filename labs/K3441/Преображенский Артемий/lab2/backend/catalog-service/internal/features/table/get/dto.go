@@ -3,8 +3,8 @@ package get
 import "restaurant-booking/catalog-service/internal/domain"
 
 type Input struct {
-	RestaurantID string `json:"restaurant_id"`
-	TableID      string `json:"table_id"`
+	RestaurantID string
+	TableID      string
 }
 
 type Output struct {

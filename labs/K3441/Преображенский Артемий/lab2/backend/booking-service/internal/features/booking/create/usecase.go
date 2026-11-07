@@ -2,6 +2,7 @@ package create
 
 import (
 	"context"
+	"time"
 
 	"github.com/google/uuid"
 
@@ -9,7 +10,8 @@ import (
 )
 
 type Repository interface {
-	CreateIfAvailable(ctx context.Context, b domain.Booking) (domain.Booking, error)
+	HasOverlap(ctx context.Context, tableID uuid.UUID, startTime time.Time, endTime time.Time) (bool, error)
+	Create(ctx context.Context, b domain.Booking) (domain.Booking, error)
 }
 
 type CatalogClient interface {
@@ -29,14 +31,13 @@ func (u *Usecase) Create(ctx context.Context, input Input) (Output, error) {
 	if input.RestaurantID == uuid.Nil || input.TableID == uuid.Nil {
 		return Output{}, domain.ErrInvalidInput
 	}
-	startTime, endTime := domain.NormalizeBookingSchedule(input.StartTime, input.EndTime)
 	b := domain.Booking{
 		UserID:       input.UserID,
 		RestaurantID: input.RestaurantID,
 		TableID:      input.TableID,
 		GuestsCount:  input.GuestsCount,
-		StartTime:    startTime,
-		EndTime:      endTime,
+		StartTime:    input.StartTime,
+		EndTime:      input.EndTime,
 	}
 	if err := b.Validate(); err != nil {
 		return Output{}, err
@@ -48,7 +49,14 @@ func (u *Usecase) Create(ctx context.Context, input Input) (Output, error) {
 	if table.SeatsCount < input.GuestsCount {
 		return Output{}, domain.ErrUnavailable
 	}
-	created, err := u.repo.CreateIfAvailable(ctx, b)
+	overlap, err := u.repo.HasOverlap(ctx, input.TableID, input.StartTime, input.EndTime)
+	if err != nil {
+		return Output{}, err
+	}
+	if overlap {
+		return Output{}, domain.ErrUnavailable
+	}
+	created, err := u.repo.Create(ctx, b)
 	if err != nil {
 		return Output{}, err
 	}

@@ -3,17 +3,18 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
-	"restaurant-booking/internal/serviceruntime"
+	"github.com/go-chi/chi/v5"
+	httpSwagger "github.com/swaggo/http-swagger"
 
 	"restaurant-booking/booking-service/config"
 	"restaurant-booking/booking-service/docs"
-	catalogclient "restaurant-booking/booking-service/internal/adapter/catalog-client"
+	"restaurant-booking/booking-service/internal/adapter/catalog-client"
 	"restaurant-booking/booking-service/internal/adapter/postgres"
 	httpcontroller "restaurant-booking/booking-service/internal/controller/http"
 	"restaurant-booking/booking-service/internal/features/booking/availability"
@@ -24,35 +25,22 @@ import (
 	"restaurant-booking/booking-service/pkg/jwt"
 )
 
+var revision = "local"
+
 func main() {
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stop()
 	cfg, err := config.LoadConfig()
 	if err != nil {
-		log.Print(err)
-		os.Exit(1)
+		panic(err)
 	}
-	if err := AppRun(ctx, cfg); err != nil {
-		log.Print("service stopped: ", err)
-		os.Exit(1)
+	if err := AppRun(context.Background(), cfg); err != nil {
+		panic(err)
 	}
 }
 
 func AppRun(ctx context.Context, cfg config.Config) error {
-	if err := cfg.Validate(); err != nil {
-		return err
-	}
-	startupCtx, startupCancel := context.WithTimeout(ctx, 5*time.Second)
-	defer startupCancel()
-	pgPool, err := postgres.New(startupCtx, cfg.Postgres)
+	pgPool, err := postgres.New(ctx, cfg.Postgres)
 	if err != nil {
-		return fmt.Errorf("database connection failed")
-	}
-	defer pgPool.Close()
-	err = serviceruntime.Schema(startupCtx, pgPool.Pgx(), 1)
-	startupCancel()
-	if err != nil {
-		return err
+		return fmt.Errorf("postgres.New: %w", err)
 	}
 
 	jwtCfg := jwt.Config{Secret: []byte(cfg.JWTSecret)}
@@ -78,6 +66,70 @@ func AppRun(ctx context.Context, cfg config.Config) error {
 
 	apiRouter := httpcontroller.Router(routes)
 
-	runtime := serviceruntime.New("booking", apiRouter, docs.OpenAPISpec, func(ctx context.Context) error { return serviceruntime.Schema(ctx, pgPool.Pgx(), 1) })
-	return runtime.Serve(ctx, cfg.HTTPAddr)
+	root := chi.NewRouter()
+	root.Use(func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("X-App-Revision", revision)
+			next.ServeHTTP(w, r)
+		})
+	})
+	root.Get("/ready", func(w http.ResponseWriter, r *http.Request) {
+		ctx, cancel := context.WithTimeout(r.Context(), time.Second)
+		defer cancel()
+		if err := pgPool.Pgx().Ping(ctx); err != nil {
+			http.Error(w, "database unavailable", http.StatusServiceUnavailable)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = fmt.Fprintln(w, `{"status":"ready"}`)
+	})
+	root.Get("/swagger/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/yaml")
+		w.Write(docs.OpenAPISpec)
+	})
+	root.Get("/swagger/*", httpSwagger.Handler(
+		httpSwagger.URL("/swagger/openapi.yaml"),
+	))
+	root.Get("/docs/booking/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/yaml")
+		_, _ = w.Write(docs.OpenAPISpec)
+	})
+	root.Get("/docs/booking/*", httpSwagger.Handler(httpSwagger.URL("/docs/booking/openapi.yaml")))
+	root.Mount("/", apiRouter)
+
+	server := &http.Server{
+		Addr:              cfg.HTTPAddr,
+		Handler:           root,
+		ReadHeaderTimeout: 5 * time.Second,
+	}
+
+	errCh := make(chan error, 1)
+	go func() {
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			errCh <- err
+		}
+	}()
+
+	sigCh := make(chan os.Signal, 1)
+	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
+	defer signal.Stop(sigCh)
+
+	select {
+	case sig := <-sigCh:
+		fmt.Printf("shutdown signal received: %s\n", sig.String())
+	case err := <-errCh:
+		pgPool.Close()
+		return fmt.Errorf("http server: %w", err)
+	}
+
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(shutdownCtx); err != nil {
+		pgPool.Close()
+		return fmt.Errorf("server shutdown: %w", err)
+	}
+
+	pgPool.Close()
+	return nil
 }

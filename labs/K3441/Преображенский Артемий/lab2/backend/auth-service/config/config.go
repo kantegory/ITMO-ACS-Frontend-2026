@@ -1,8 +1,8 @@
 package config
 
 import (
+	"log"
 	"os"
-	"restaurant-booking/internal/configcheck"
 
 	"github.com/joho/godotenv"
 
@@ -10,29 +10,27 @@ import (
 )
 
 type Config struct {
-	Postgres    postgres.Config
-	HTTPAddr    string
-	JWTSecret   string
-	JWTExpires  string
+	Postgres   postgres.Config
+	HTTPAddr   string
+	JWTSecret  string
+	JWTExpires string
 	RabbitMQURL string
 }
 
 func LoadConfig() (Config, error) {
-	_ = godotenv.Load()
+	if err := godotenv.Load(); err != nil {
+		log.Println(".env not found")
+	}
 
-	cfg := Config{
+	return Config{
 		Postgres: postgres.Config{
 			DBDSN: getEnv("AUTH_DB_DSN", ""),
 		},
-		HTTPAddr:    getEnv("AUTH_HTTP_ADDR", ":8081"),
-		JWTSecret:   getEnv("JWT_SECRET", ""),
-		JWTExpires:  getEnv("JWT_EXPIRES", "24h"),
+		HTTPAddr:   getEnv("AUTH_HTTP_ADDR", ":8081"),
+		JWTSecret:  getEnv("JWT_SECRET", "dev-secret-change-me"),
+		JWTExpires: getEnv("JWT_EXPIRES", "24h"),
 		RabbitMQURL: getEnv("RABBITMQ_URL", ""),
-	}
-	if err := cfg.Validate(); err != nil {
-		return Config{}, err
-	}
-	return cfg, nil
+	}, nil
 }
 
 func getEnv(key, defaultVal string) string {
@@ -40,13 +38,4 @@ func getEnv(key, defaultVal string) string {
 		return value
 	}
 	return defaultVal
-}
-
-func (c Config) Validate() error {
-	for _, err := range []error{configcheck.Postgres("AUTH_DB_DSN", c.Postgres.DBDSN), configcheck.Required("JWT_SECRET", c.JWTSecret), configcheck.Address(c.HTTPAddr), configcheck.URL("RABBITMQ_URL", c.RabbitMQURL, "amqp", "amqps"), configcheck.Duration("JWT_EXPIRES", c.JWTExpires)} {
-		if err != nil {
-			return err
-		}
-	}
-	return nil
 }

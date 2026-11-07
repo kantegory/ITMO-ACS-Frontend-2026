@@ -3,19 +3,19 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
-	"restaurant-booking/internal/serviceruntime"
+	"github.com/go-chi/chi/v5"
+	httpSwagger "github.com/swaggo/http-swagger"
 
-	"errors"
-	"github.com/prometheus/client_golang/prometheus"
 	"restaurant-booking/catalog-service/config"
 	"restaurant-booking/catalog-service/docs"
 	"restaurant-booking/catalog-service/internal/adapter/postgres"
+	"restaurant-booking/catalog-service/internal/adapter/rabbitmq"
 	httpcontroller "restaurant-booking/catalog-service/internal/controller/http"
 	menucreate "restaurant-booking/catalog-service/internal/features/menu/create"
 	menudelete "restaurant-booking/catalog-service/internal/features/menu/delete"
@@ -38,49 +38,37 @@ import (
 	"restaurant-booking/catalog-service/pkg/jwt"
 )
 
+var revision = "local"
+
 func main() {
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stop()
 	cfg, err := config.LoadConfig()
 	if err != nil {
-		log.Print(err)
-		os.Exit(1)
+		panic(err)
 	}
-	if err := AppRun(ctx, cfg); err != nil {
-		log.Print("service stopped: ", err)
-		os.Exit(1)
+	if err := AppRun(context.Background(), cfg); err != nil {
+		panic(err)
 	}
 }
 
 func AppRun(ctx context.Context, cfg config.Config) error {
-	if err := cfg.Validate(); err != nil {
-		return err
-	}
-	startupCtx, startupCancel := context.WithTimeout(ctx, 5*time.Second)
-	defer startupCancel()
-	pgPool, err := postgres.New(startupCtx, cfg.Postgres)
+	pgPool, err := postgres.New(ctx, cfg.Postgres)
 	if err != nil {
-		return fmt.Errorf("database connection failed")
-	}
-	defer pgPool.Close()
-	err = serviceruntime.Schema(startupCtx, pgPool.Pgx(), 2)
-	startupCancel()
-	if err != nil {
-		return err
+		return fmt.Errorf("postgres.New: %w", err)
 	}
 
 	jwtCfg := jwt.Config{Secret: []byte(cfg.JWTSecret)}
 
 	reviewCreateRepo := reviewcreate.NewPostgres(pgPool)
 
-	// Consumers stay alive while HTTP requests drain, then stop before the pool.
-	workerCtx, stopWorkers := context.WithCancel(context.WithoutCancel(ctx))
-	defer stopWorkers()
-	consumer, err := reviewcreate.StartUserConsumer(workerCtx, cfg.RabbitMQURL, reviewCreateRepo)
-	if err != nil {
-		return err
+	var rmqConsumer *rabbitmq.Consumer
+	if cfg.RabbitMQURL != "" {
+		c, err := reviewcreate.StartUserConsumer(ctx, cfg.RabbitMQURL, reviewCreateRepo)
+		if err != nil {
+			pgPool.Close()
+			return err
+		}
+		rmqConsumer = c
 	}
-	defer consumer.Close()
 
 	restaurantListUsecase := restaurantlist.NewUsecase(restaurantlist.NewPostgres(pgPool))
 	restaurantGetUsecase := restaurantget.NewUsecase(restaurantget.NewPostgres(pgPool))
@@ -129,26 +117,79 @@ func AppRun(ctx context.Context, cfg config.Config) error {
 
 	apiRouter := httpcontroller.Router(routes)
 
-	runtime := serviceruntime.New("catalog", apiRouter, docs.OpenAPISpec, func(ctx context.Context) error {
-		if err := serviceruntime.Schema(ctx, pgPool.Pgx(), 2); err != nil {
-			return err
-		}
-		if !consumer.Ready() {
-			return errors.New("consumer unavailable")
-		}
-		return nil
+	root := chi.NewRouter()
+	root.Use(func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("X-App-Revision", revision)
+			next.ServeHTTP(w, r)
+		})
 	})
-	runtime.Registry.MustRegister(
-		prometheus.NewGaugeFunc(prometheus.GaugeOpts{Name: "catalog_consumer_connected", Help: "Consumer subscription availability."}, func() float64 {
-			if consumer.Ready() {
-				return 1
-			}
-			return 0
-		}),
-		prometheus.NewCounterFunc(prometheus.CounterOpts{Name: "catalog_consumer_processed_total", Help: "Messages saved and acknowledged."}, func() float64 { return float64(consumer.Snapshot().Processed) }),
-		prometheus.NewCounterFunc(prometheus.CounterOpts{Name: "catalog_consumer_retries_total", Help: "Transient processing retries."}, func() float64 { return float64(consumer.Snapshot().Retried) }),
-		prometheus.NewCounterFunc(prometheus.CounterOpts{Name: "catalog_consumer_invalid_total", Help: "Messages copied into quarantine."}, func() float64 { return float64(consumer.Snapshot().Invalid) }),
-		prometheus.NewCounterFunc(prometheus.CounterOpts{Name: "catalog_consumer_reconnects_total", Help: "Subscription reconnect attempts."}, func() float64 { return float64(consumer.Snapshot().Reconnects) }),
-	)
-	return runtime.Serve(ctx, cfg.HTTPAddr)
+	root.Get("/ready", func(w http.ResponseWriter, r *http.Request) {
+		ctx, cancel := context.WithTimeout(r.Context(), time.Second)
+		defer cancel()
+		if err := pgPool.Pgx().Ping(ctx); err != nil {
+			http.Error(w, "database unavailable", http.StatusServiceUnavailable)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = fmt.Fprintln(w, `{"status":"ready"}`)
+	})
+	root.Get("/swagger/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/yaml")
+		w.Write(docs.OpenAPISpec)
+	})
+	root.Get("/swagger/*", httpSwagger.Handler(
+		httpSwagger.URL("/swagger/openapi.yaml"),
+	))
+	root.Get("/docs/catalog/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/yaml")
+		_, _ = w.Write(docs.OpenAPISpec)
+	})
+	root.Get("/docs/catalog/*", httpSwagger.Handler(httpSwagger.URL("/docs/catalog/openapi.yaml")))
+	root.Mount("/", apiRouter)
+
+	server := &http.Server{
+		Addr:              cfg.HTTPAddr,
+		Handler:           root,
+		ReadHeaderTimeout: 5 * time.Second,
+	}
+
+	errCh := make(chan error, 1)
+	go func() {
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			errCh <- err
+		}
+	}()
+
+	sigCh := make(chan os.Signal, 1)
+	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
+	defer signal.Stop(sigCh)
+
+	select {
+	case sig := <-sigCh:
+		fmt.Printf("shutdown signal received: %s\n", sig.String())
+	case err := <-errCh:
+		if rmqConsumer != nil {
+			rmqConsumer.Close()
+		}
+		pgPool.Close()
+		return fmt.Errorf("http server: %w", err)
+	}
+
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(shutdownCtx); err != nil {
+		if rmqConsumer != nil {
+			rmqConsumer.Close()
+		}
+		pgPool.Close()
+		return fmt.Errorf("server shutdown: %w", err)
+	}
+
+	if rmqConsumer != nil {
+		rmqConsumer.Close()
+	}
+	pgPool.Close()
+	return nil
 }

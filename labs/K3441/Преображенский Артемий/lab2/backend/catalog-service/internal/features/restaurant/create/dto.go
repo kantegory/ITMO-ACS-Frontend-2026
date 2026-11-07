@@ -17,7 +17,7 @@ type Body struct {
 }
 
 type Input struct {
-	UserID uuid.UUID `json:"user_id"`
+	UserID uuid.UUID
 	Body
 }
 

@@ -56,17 +56,16 @@ func (r *postgresRepository) Create(ctx context.Context, userID uuid.UUID, resta
 
 func (r *postgresRepository) UpsertUser(ctx context.Context, userID uuid.UUID, fullName string, updatedAt time.Time) error {
 	name := strings.TrimSpace(fullName)
-	if userID == uuid.Nil || name == "" || updatedAt.IsZero() {
+	if name == "" {
 		return domain.ErrInvalidInput
 	}
 	_, err := r.pool.Pgx().Exec(ctx, `
-  INSERT INTO users_cache (user_id, full_name, updated_at)
-  VALUES ($1, $2, $3)
-  ON CONFLICT (user_id) DO UPDATE
-  SET full_name = excluded.full_name,
-      updated_at = excluded.updated_at
-  WHERE users_cache.updated_at < excluded.updated_at
- `, userID, name, updatedAt)
+		INSERT INTO users_cache (user_id, full_name, updated_at)
+		VALUES ($1, $2, $3)
+		ON CONFLICT (user_id) DO UPDATE
+		SET full_name = excluded.full_name,
+		    updated_at = excluded.updated_at
+	`, userID, name, updatedAt)
 	return err
 }
 

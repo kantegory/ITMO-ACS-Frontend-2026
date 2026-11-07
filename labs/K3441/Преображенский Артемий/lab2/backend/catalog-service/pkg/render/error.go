@@ -2,18 +2,15 @@ package render
 
 import (
 	"errors"
+	"log"
 	"net/http"
 
 	"restaurant-booking/catalog-service/internal/domain"
 )
 
 func WriteDomainError(w http.ResponseWriter, err error) {
+	log.Println(err)
 	switch {
-	case errors.Is(err, domain.ErrProjectionPending):
-		w.Header().Set("Retry-After", "1")
-		WriteError(w, http.StatusServiceUnavailable)
-	case errors.Is(err, domain.ErrDependencyUnavailable):
-		WriteError(w, http.StatusServiceUnavailable)
 	case errors.Is(err, domain.ErrNotFound):
 		WriteError(w, http.StatusNotFound)
 	case errors.Is(err, domain.ErrConflict):

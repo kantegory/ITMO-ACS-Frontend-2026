@@ -3,9 +3,9 @@ package catalogclient
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
-	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -20,7 +20,7 @@ type Client struct {
 
 func New(baseURL string) *Client {
 	return &Client{
-		baseURL: strings.TrimRight(baseURL, "/"),
+		baseURL: baseURL,
 		http:    &http.Client{Timeout: 5 * time.Second},
 	}
 }
@@ -29,11 +29,11 @@ func (c *Client) GetTable(ctx context.Context, restaurantID uuid.UUID, tableID u
 	url := fmt.Sprintf("%s/service/restaurants/%s/tables/%s", c.baseURL, restaurantID.String(), tableID.String())
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		return domain.Table{}, domain.ErrDependencyUnavailable
+		return domain.Table{}, err
 	}
 	resp, err := c.http.Do(req)
 	if err != nil {
-		return domain.Table{}, domain.ErrDependencyUnavailable
+		return domain.Table{}, fmt.Errorf("catalog-service: %w", err)
 	}
 	defer resp.Body.Close()
 
@@ -41,15 +41,12 @@ func (c *Client) GetTable(ctx context.Context, restaurantID uuid.UUID, tableID u
 	case http.StatusOK:
 		var t domain.Table
 		if err := json.NewDecoder(resp.Body).Decode(&t); err != nil {
-			return domain.Table{}, domain.ErrDependencyUnavailable
-		}
-		if t.ID != tableID || t.RestaurantID != restaurantID {
-			return domain.Table{}, domain.ErrDependencyUnavailable
+			return domain.Table{}, err
 		}
 		return t, nil
 	case http.StatusNotFound:
 		return domain.Table{}, domain.ErrNotFound
 	default:
-		return domain.Table{}, domain.ErrDependencyUnavailable
+		return domain.Table{}, errors.New("catalog-service: unexpected status " + resp.Status)
 	}
 }

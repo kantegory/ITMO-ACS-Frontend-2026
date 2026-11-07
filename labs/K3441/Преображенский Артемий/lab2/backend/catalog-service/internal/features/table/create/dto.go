@@ -8,7 +8,7 @@ type Body struct {
 }
 
 type Input struct {
-	RestaurantID string `json:"restaurant_id"`
+	RestaurantID string
 	Body
 }
 

@@ -4,9 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"strings"
-
-	"github.com/google/uuid"
+	"time"
 
 	"restaurant-booking/catalog-service/internal/adapter/rabbitmq"
 	"restaurant-booking/catalog-service/internal/domain"
@@ -17,33 +15,30 @@ const RabbitUserRoutingKey = "user.registered"
 const RabbitUserCatalogQueueName = "catalog.user.registered"
 
 func StartUserConsumer(ctx context.Context, rmqURL string, repo Repository) (*rabbitmq.Consumer, error) {
-	consumer, err := rabbitmq.NewConsumer(rmqURL)
+	c, err := rabbitmq.NewConsumer(rmqURL)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("rabbitmq.NewConsumer: %w", err)
 	}
-	err = consumer.Start(ctx, rabbitmq.Options{
-		Exchange: RabbitUserExchangeName, RoutingKey: RabbitUserRoutingKey, Queue: RabbitUserCatalogQueueName,
-	}, userEventHandler(repo))
-	if err != nil {
-		_ = consumer.Close()
-		return nil, err
+	if err := c.DeclareTopicExchange(RabbitUserExchangeName); err != nil {
+		c.Close()
+		return nil, fmt.Errorf("rabbitmq exchange: %w", err)
 	}
-	return consumer, nil
-}
-
-func userEventHandler(repo Repository) rabbitmq.Handler {
-	return func(ctx context.Context, message rabbitmq.Message) error {
-		var event domain.User
-		if err := json.Unmarshal(message.Body, &event); err != nil {
-			return fmt.Errorf("%w: malformed JSON", rabbitmq.ErrInvalidMessage)
-		}
-		event.FullName = strings.TrimSpace(event.FullName)
-		if event.ID == uuid.Nil || event.FullName == "" {
-			return fmt.Errorf("%w: id and full_name are required", rabbitmq.ErrInvalidMessage)
-		}
-		if !message.Timestamp.IsZero() && message.Timestamp.Unix() < 0 {
-			return fmt.Errorf("%w: timestamp is invalid", rabbitmq.ErrInvalidMessage)
-		}
-		return repo.UpsertUser(ctx, event.ID, event.FullName, message.Timestamp.UTC())
+	if _, err := c.DeclareQueue(RabbitUserCatalogQueueName); err != nil {
+		c.Close()
+		return nil, fmt.Errorf("rabbitmq queue: %w", err)
 	}
+	if err := c.BindQueue(RabbitUserCatalogQueueName, RabbitUserExchangeName, RabbitUserRoutingKey); err != nil {
+		c.Close()
+		return nil, fmt.Errorf("rabbitmq bind: %w", err)
+	}
+	go func() {
+		_ = c.Consume(ctx, RabbitUserCatalogQueueName, func(cctx context.Context, body []byte) error {
+			var ev domain.User
+			if err := json.Unmarshal(body, &ev); err != nil {
+				return err
+			}
+			return repo.UpsertUser(cctx, ev.ID, ev.FullName, time.Now().UTC())
+		})
+	}()
+	return c, nil
 }

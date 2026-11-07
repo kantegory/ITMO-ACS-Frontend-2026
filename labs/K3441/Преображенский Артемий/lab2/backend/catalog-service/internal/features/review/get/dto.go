@@ -7,8 +7,8 @@ import (
 )
 
 type Input struct {
-	RestaurantID string `json:"restaurant_id"`
-	ReviewID     string `json:"review_id"`
+	RestaurantID string
+	ReviewID     string
 }
 
 type Item struct {
@@ -21,5 +21,5 @@ type Item struct {
 }
 
 type Output struct {
-	Item Item `json:"item"`
+	Item Item
 }

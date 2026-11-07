@@ -35,7 +35,6 @@ func (u *Usecase) Check(ctx context.Context, input Input) (Output, error) {
 	if err != nil {
 		return Output{}, domain.ErrInvalidInput
 	}
-	input.StartTime, input.EndTime = domain.NormalizeBookingSchedule(input.StartTime, input.EndTime)
 	if err := domain.ValidateBookingSchedule(input.StartTime, input.EndTime); err != nil {
 		return Output{}, err
 	}

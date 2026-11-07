@@ -7,10 +7,10 @@ import (
 )
 
 type Input struct {
-	UserID    uuid.UUID `json:"user_id"`
-	BookingID string    `json:"booking_id"`
+	UserID    uuid.UUID
+	BookingID string
 }
 
 type Output struct {
-	Booking domain.Booking `json:"booking"`
+	Booking domain.Booking
 }

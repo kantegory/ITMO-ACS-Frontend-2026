@@ -1,6 +1,6 @@
 SHELL := /bin/sh -eu
 
-COMPOSE := docker compose --env-file .env -f deploy/docker-compose.dev.yml
+COMPOSE := docker compose --env-file .env -f deploy/compose.yml
 SERVICE ?= auth-service
 
 .DEFAULT_GOAL := build

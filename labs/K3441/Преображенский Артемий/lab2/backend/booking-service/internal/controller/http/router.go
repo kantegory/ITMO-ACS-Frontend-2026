@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
-	"restaurant-booking/internal/httpjson"
+	chimiddleware "github.com/go-chi/chi/v5/middleware"
 
 	"restaurant-booking/booking-service/pkg/jwt"
 	appmiddleware "restaurant-booking/booking-service/pkg/middleware"
@@ -27,8 +27,8 @@ type Routes struct {
 func Router(routes Routes) http.Handler {
 	r := chi.NewRouter()
 	r.Use(appmiddleware.RequestLog)
-	r.Use(httpjson.Recoverer)
-	r.Use(httpjson.Timeout(60 * time.Second))
+	r.Use(chimiddleware.Recoverer)
+	r.Use(chimiddleware.Timeout(60 * time.Second))
 
 	auth := appmiddleware.Auth(routes.JWT)
 
@@ -45,7 +45,5 @@ func Router(routes Routes) http.Handler {
 		})
 	})
 
-	r.NotFound(func(w http.ResponseWriter, r *http.Request) { httpjson.Error(w, 404) })
-	r.MethodNotAllowed(func(w http.ResponseWriter, r *http.Request) { httpjson.Error(w, 405) })
 	return r
 }

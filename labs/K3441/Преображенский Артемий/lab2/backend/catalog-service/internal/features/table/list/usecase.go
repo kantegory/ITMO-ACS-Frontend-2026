@@ -29,8 +29,5 @@ func (u *Usecase) List(ctx context.Context, input Input) (Output, error) {
 	if err != nil {
 		return Output{}, err
 	}
-	if items == nil {
-		items = []domain.Table{}
-	}
 	return Output{Items: items}, nil
 }

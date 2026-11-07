@@ -3,15 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
-	"restaurant-booking/internal/serviceruntime"
+	"github.com/go-chi/chi/v5"
+	httpSwagger "github.com/swaggo/http-swagger"
 
-	"github.com/prometheus/client_golang/prometheus"
 	"restaurant-booking/auth-service/config"
 	"restaurant-booking/auth-service/docs"
 	"restaurant-booking/auth-service/internal/adapter/postgres"
@@ -20,51 +20,60 @@ import (
 	internalgetuser "restaurant-booking/auth-service/internal/features/internal-get-user"
 	"restaurant-booking/auth-service/internal/features/login"
 	"restaurant-booking/auth-service/internal/features/me"
-	"restaurant-booking/auth-service/internal/features/outbox"
 	"restaurant-booking/auth-service/internal/features/register"
 	"restaurant-booking/auth-service/pkg/jwt"
 )
 
+const rabbitUserExchangeName = "restaurant.user"
+const rabbitUserRoutingKey = "user.registered"
+
+var revision = "local"
+
 func main() {
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stop()
 	cfg, err := config.LoadConfig()
 	if err != nil {
-		log.Print(err)
-		os.Exit(1)
+		panic(err)
 	}
-	if err := AppRun(ctx, cfg); err != nil {
-		log.Print("service stopped: ", err)
-		os.Exit(1)
+
+	if err := AppRun(context.Background(), cfg); err != nil {
+		panic(err)
 	}
 }
 
 func AppRun(ctx context.Context, cfg config.Config) error {
-	if err := cfg.Validate(); err != nil {
-		return err
-	}
-	startupCtx, startupCancel := context.WithTimeout(ctx, 5*time.Second)
-	defer startupCancel()
-	pgPool, err := postgres.New(startupCtx, cfg.Postgres)
+	pgPool, err := postgres.New(ctx, cfg.Postgres)
 	if err != nil {
-		return fmt.Errorf("database connection failed")
-	}
-	defer pgPool.Close()
-	err = serviceruntime.Schema(startupCtx, pgPool.Pgx(), 2)
-	startupCancel()
-	if err != nil {
-		return err
+		return fmt.Errorf("postgres.New: %w", err)
 	}
 
-	publisher, err := rabbitmq.NewPublisher(cfg.RabbitMQURL)
-	if err != nil {
-		return err
+	var rmqPublisher *rabbitmq.Publisher
+	if cfg.RabbitMQURL != "" {
+		p, err := rabbitmq.NewPublisher(cfg.RabbitMQURL)
+		if err != nil {
+			pgPool.Close()
+			return fmt.Errorf("rabbitmq.NewPublisher: %w", err)
+		}
+		rmqPublisher = p
 	}
-	defer publisher.Close()
-	jwtDur, _ := time.ParseDuration(cfg.JWTExpires)
-	jwtCfg := jwt.Config{Secret: []byte(cfg.JWTSecret), Expires: jwtDur}
-	registerUsecase := register.NewUsecase(register.NewPostgres(pgPool), jwtCfg)
 
+	jwtDur, err := time.ParseDuration(cfg.JWTExpires)
+	if err != nil || jwtDur <= 0 {
+		if rmqPublisher != nil {
+			_ = rmqPublisher.Close()
+		}
+		pgPool.Close()
+		return fmt.Errorf("JWT_EXPIRES must be a positive duration")
+	}
+	jwtCfg := jwt.Config{
+		Secret:  []byte(cfg.JWTSecret),
+		Expires: jwtDur,
+	}
+
+	var registerPublisher register.Publisher
+	if rmqPublisher != nil {
+		registerPublisher = register.NewPublisher(rmqPublisher, rabbitUserExchangeName, rabbitUserRoutingKey)
+	}
+	registerUsecase := register.NewUsecase(register.NewPostgres(pgPool), jwtCfg, registerPublisher)
 	loginUsecase := login.NewUsecase(login.NewPostgres(pgPool), jwtCfg)
 	meUsecase := me.NewUsecase(me.NewPostgres(pgPool))
 	userGetUsecase := internalgetuser.NewUsecase(internalgetuser.NewPostgres(pgPool))
@@ -83,44 +92,80 @@ func AppRun(ctx context.Context, cfg config.Config) error {
 
 	apiRouter := httpcontroller.Router(routes)
 
-	runtime := serviceruntime.New("auth", apiRouter, docs.OpenAPISpec, func(ctx context.Context) error { return serviceruntime.Schema(ctx, pgPool.Pgx(), 2) })
-	published := prometheus.NewCounter(prometheus.CounterOpts{Name: "outbox_published_total", Help: "Confirmed outbox events."})
-	failed := prometheus.NewCounter(prometheus.CounterOpts{Name: "outbox_publish_failures_total", Help: "Failed outbox publication attempts."})
-	failures := prometheus.NewCounter(prometheus.CounterOpts{Name: "outbox_worker_errors_total", Help: "Outbox worker operation failures."})
-	repo := outbox.NewPostgres(pgPool)
-	worker := outbox.NewWorker(repo, publisher, outbox.Options{OnPublished: published.Inc, OnPublishFailed: failed.Inc, OnError: func(error) { failures.Inc() }})
-	workerCtx, stopWorkers := context.WithCancel(context.WithoutCancel(ctx))
-	done := make(chan struct{})
-	go func() { defer close(done); _ = worker.Run(workerCtx) }()
-	defer func() { stopWorkers(); <-done }()
-	runtime.Registry.MustRegister(published, failed, failures,
-		prometheus.NewGaugeFunc(prometheus.GaugeOpts{Name: "outbox_publisher_connected", Help: "Publisher connection availability."}, func() float64 {
-			if worker.Ready() {
-				return 1
-			}
-			return 0
-		}),
-		prometheus.NewGaugeFunc(prometheus.GaugeOpts{Name: "outbox_pending_events", Help: "Unpublished durable events; -1 when unavailable."}, func() float64 {
-			ctx, cancel := context.WithTimeout(workerCtx, time.Second)
-			defer cancel()
-			m, err := repo.Metrics(ctx)
-			if err != nil {
-				return -1
-			}
-			return float64(m.Pending)
-		}),
-		prometheus.NewGaugeFunc(prometheus.GaugeOpts{Name: "outbox_oldest_pending_age_seconds", Help: "Age of the oldest pending event; -1 when unavailable."}, func() float64 {
-			ctx, cancel := context.WithTimeout(workerCtx, time.Second)
-			defer cancel()
-			m, err := repo.Metrics(ctx)
-			if err != nil {
-				return -1
-			}
-			if m.OldestPendingAt == nil {
-				return 0
-			}
-			return time.Since(*m.OldestPendingAt).Seconds()
-		}),
-	)
-	return runtime.Serve(ctx, cfg.HTTPAddr)
+	root := chi.NewRouter()
+	root.Use(func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("X-App-Revision", revision)
+			next.ServeHTTP(w, r)
+		})
+	})
+	root.Get("/ready", func(w http.ResponseWriter, r *http.Request) {
+		ctx, cancel := context.WithTimeout(r.Context(), time.Second)
+		defer cancel()
+		if err := pgPool.Pgx().Ping(ctx); err != nil {
+			http.Error(w, "database unavailable", http.StatusServiceUnavailable)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = fmt.Fprintln(w, `{"status":"ready"}`)
+	})
+	root.Get("/swagger/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/yaml")
+		w.Write(docs.OpenAPISpec)
+	})
+	root.Get("/swagger/*", httpSwagger.Handler(
+		httpSwagger.URL("/swagger/openapi.yaml"),
+	))
+	root.Get("/docs/auth/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/yaml")
+		_, _ = w.Write(docs.OpenAPISpec)
+	})
+	root.Get("/docs/auth/*", httpSwagger.Handler(httpSwagger.URL("/docs/auth/openapi.yaml")))
+	root.Mount("/", apiRouter)
+
+	server := &http.Server{
+		Addr:              cfg.HTTPAddr,
+		Handler:           root,
+		ReadHeaderTimeout: 5 * time.Second,
+	}
+
+	errCh := make(chan error, 1)
+	go func() {
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			errCh <- err
+		}
+	}()
+
+	sigCh := make(chan os.Signal, 1)
+	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
+	defer signal.Stop(sigCh)
+
+	select {
+	case sig := <-sigCh:
+		fmt.Printf("shutdown signal received: %s\n", sig.String())
+	case err := <-errCh:
+		if rmqPublisher != nil {
+			rmqPublisher.Close()
+		}
+		pgPool.Close()
+		return fmt.Errorf("http server: %w", err)
+	}
+
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(shutdownCtx); err != nil {
+		if rmqPublisher != nil {
+			rmqPublisher.Close()
+		}
+		pgPool.Close()
+		return fmt.Errorf("server shutdown: %w", err)
+	}
+
+	if rmqPublisher != nil {
+		rmqPublisher.Close()
+	}
+	pgPool.Close()
+
+	return nil
 }

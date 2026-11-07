@@ -15,11 +15,6 @@ func JoinBookingDateTimes(bookingDate, startClock, endClock time.Time) (time.Tim
 	return start, end
 }
 
-// NormalizeBookingSchedule uses the precision and timezone stored by PostgreSQL.
-func NormalizeBookingSchedule(startTime, endTime time.Time) (time.Time, time.Time) {
-	return startTime.UTC().Truncate(time.Microsecond), endTime.UTC().Truncate(time.Microsecond)
-}
-
 func ValidateBookingSchedule(startTime, endTime time.Time) error {
 	if startTime.IsZero() || endTime.IsZero() {
 		return ErrInvalidInput

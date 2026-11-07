@@ -2,7 +2,6 @@ package create
 
 import (
 	"context"
-	"errors"
 	"time"
 
 	"github.com/google/uuid"
@@ -30,9 +29,6 @@ func (u *Usecase) Create(ctx context.Context, input Input) (Output, error) {
 		return Output{}, domain.ErrInvalidInput
 	}
 	authorName, err := u.repo.GetName(ctx, input.UserID)
-	if errors.Is(err, domain.ErrNotFound) {
-		return Output{}, domain.ErrProjectionPending
-	}
 	if err != nil {
 		return Output{}, err
 	}

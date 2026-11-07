@@ -1,8 +1,8 @@
 package config
 
 import (
+	"log"
 	"os"
-	"restaurant-booking/internal/configcheck"
 
 	"github.com/joho/godotenv"
 
@@ -17,20 +17,18 @@ type Config struct {
 }
 
 func LoadConfig() (Config, error) {
-	_ = godotenv.Load()
+	if err := godotenv.Load(); err != nil {
+		log.Println(".env not found")
+	}
 
-	cfg := Config{
+	return Config{
 		Postgres: postgres.Config{
 			DBDSN: getEnv("BOOKING_DB_DSN", ""),
 		},
 		HTTPAddr:          getEnv("BOOKING_HTTP_ADDR", ":8083"),
-		JWTSecret:         getEnv("JWT_SECRET", ""),
+		JWTSecret:         getEnv("JWT_SECRET", "dev-secret-change-me"),
 		CatalogServiceURL: getEnv("CATALOG_SERVICE_URL", "http://catalog-service:8082"),
-	}
-	if err := cfg.Validate(); err != nil {
-		return Config{}, err
-	}
-	return cfg, nil
+	}, nil
 }
 
 func getEnv(key, defaultVal string) string {
@@ -38,13 +36,4 @@ func getEnv(key, defaultVal string) string {
 		return value
 	}
 	return defaultVal
-}
-
-func (c Config) Validate() error {
-	for _, err := range []error{configcheck.Postgres("BOOKING_DB_DSN", c.Postgres.DBDSN), configcheck.Required("JWT_SECRET", c.JWTSecret), configcheck.Address(c.HTTPAddr), configcheck.URL("CATALOG_SERVICE_URL", c.CatalogServiceURL, "http", "https")} {
-		if err != nil {
-			return err
-		}
-	}
-	return nil
 }
