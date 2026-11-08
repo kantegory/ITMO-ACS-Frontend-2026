@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Объект — Аренда жилья</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Аренда жилья</a>
+        <div class="ms-auto d-flex align-items-center gap-2">
+            <a class="btn btn-outline-primary btn-sm auth-only" href="cabinet.html">Кабинет</a>
+            <a class="btn btn-outline-primary btn-sm guest-only" href="login.html">Вход</a>
+            <a class="btn btn-primary btn-sm guest-only" href="register.html">Регистрация</a>
+            <button class="btn btn-outline-danger btn-sm auth-only" onclick="logout()">Выйти</button>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-4">
+    <a href="index.html" class="text-decoration-none small"><i class="bi bi-arrow-left"></i> Назад к поиску</a>
+
+    <div class="row justify-content-center mt-2">
+        <div class="col-lg-9">
+
+            <!-- фото -->
+            <div class="property-gallery mb-3">
+                <img id="main-photo" src="" alt="Фото объекта">
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h2 class="fw-bold mb-3" id="prop-title"></h2>
+
+                    <div class="d-flex flex-wrap gap-3 mb-3 text-muted">
+                        <span><i class="bi bi-geo-alt-fill text-primary"></i> <span id="prop-city"></span></span>
+                        <span><i class="bi bi-door-open text-primary"></i> <span id="prop-rooms"></span></span>
+                        <span><i class="bi bi-bounding-box text-primary"></i> <span id="prop-area"></span></span>
+                    </div>
+
+                    <p class="price-tag fs-3 mb-3" id="prop-price"></p>
+
+                    <h5 class="mb-2">Описание</h5>
+                    <p id="prop-desc" class="text-muted"></p>
+
+                    <h5 class="mt-4 mb-2">Условия аренды</h5>
+                    <ul class="text-muted">
+                        <li>Минимальный срок аренды: 6 месяцев</li>
+                        <li>Залог: 1 месяц</li>
+                        <li>Коммунальные платежи включены</li>
+                        <li>Без животных</li>
+                        <li>Курящим — только им и сдаем</li>
+                    </ul>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="avatar-circle" style="width:44px;height:44px;font-size:16px;">А</div>
+                            <div>
+                                <div class="fw-semibold">Анна Петрова</div>
+                                <small class="text-muted">Арендодатель • ★ 4.9</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="btn-chat">
+                            <i class="bi bi-chat"></i> Написать продавцу
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Модалка чата -->
+<div class="modal fade" id="chatModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chatModalLabel"><i class="bi bi-chat-dots"></i> Чат</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="chat-messages" style="max-height: 60vh; overflow-y: auto;"></div>
+            <div class="modal-footer">
+                <label for="chat-input"></label><input type="text" class="form-control" id="chat-input" placeholder="Написать сообщение...">
+                <button class="btn btn-primary" id="chat-send">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
