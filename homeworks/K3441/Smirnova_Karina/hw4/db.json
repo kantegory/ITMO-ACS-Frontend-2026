@@ -1,0 +1,402 @@
+{
+  "users": [
+    {
+      "email": "user@mail.ru",
+      "password": "$2a$10$iyXvKpuKun4gs/nAkej2EujsivJVekaFDbffx6EkYP7FVjkus0TWS",
+      "name": "UserR",
+      "phone": "89111211212",
+      "id": 1
+    }
+  ],
+  "listings": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Современная квартира в центре",
+      "type": "Квартира",
+      "mode": "DAILY",
+      "location": "Санкт-Петербург",
+      "address": "ул. Рубинштейна, 15",
+      "price": 4500,
+      "image": "assets/flat-centre.png",
+      "description": "Светлый интерьер и спокойная атмосфера для короткой поездки в Петербург.",
+      "active": true
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Квартира у набережной",
+      "type": "Квартира",
+      "mode": "MONTHLY",
+      "location": "Санкт-Петербург",
+      "address": "наб. реки Фонтанки, 54",
+      "price": 65000,
+      "image": "assets/flat-river.png",
+      "description": "Уютное пространство для долгой аренды. Владелец всегда на связи.",
+      "active": true
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "title": "Студия на Петроградской",
+      "type": "Студия",
+      "mode": "DAILY",
+      "location": "Санкт-Петербург",
+      "address": "Большой пр. П.С., 48",
+      "price": 4200,
+      "image": "assets/studio.png",
+      "description": "Лаконичный современный интерьер. Удобный вариант для знакомства с городом.",
+      "active": true
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "title": "Дом в тихом пригороде",
+      "type": "Дом",
+      "mode": "MONTHLY",
+      "location": "Санкт-Петербург",
+      "address": "Сестрорецк, ул. Лесная, 8",
+      "price": 90000,
+      "image": "assets/house.png",
+      "description": "Спокойное место вдали от городской суеты. Доступно для длительной аренды.",
+      "active": true
+    },
+    {
+      "id": 5,
+      "userId": 4,
+      "title": "Комната на Васильевском",
+      "type": "Комната",
+      "mode": "DAILY",
+      "location": "Санкт-Петербург",
+      "address": "7-я линия В.О., 22",
+      "price": 2200,
+      "image": "assets/room.png",
+      "description": "Нейтральный интерьер в исторической части города. Для коротких поездок.",
+      "active": true
+    },
+    {
+      "id": 6,
+      "userId": 4,
+      "title": "Квартира у Таврического сада",
+      "type": "Квартира",
+      "mode": "DAILY",
+      "location": "Санкт-Петербург",
+      "address": "Кирочная ул., 38",
+      "price": 6000,
+      "image": "assets/flat-garden.png",
+      "description": "Современное пространство в спокойном районе. Всё для комфортной аренды.",
+      "active": true
+    },
+    {
+      "id": 7,
+      "userId": 2,
+      "title": "Уютная студия у метро",
+      "type": "Студия",
+      "mode": "DAILY",
+      "location": "Санкт-Петербург",
+      "address": "Московский пр., 73",
+      "price": 3800,
+      "image": "assets/studio.png",
+      "description": "Небольшая светлая студия рядом с метро и продуктовыми магазинами.",
+      "active": true
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "title": "Семейная квартира с двумя комнатами",
+      "type": "Квартира",
+      "mode": "MONTHLY",
+      "location": "Санкт-Петербург",
+      "address": "пр. Просвещения, 32",
+      "price": 58000,
+      "image": "assets/flat-river.png",
+      "description": "Просторная квартира для семьи. Рядом находятся парк, школа и остановки транспорта.",
+      "active": true
+    },
+    {
+      "id": 9,
+      "userId": 4,
+      "title": "Комната рядом с университетом",
+      "type": "Комната",
+      "mode": "MONTHLY",
+      "location": "Санкт-Петербург",
+      "address": "ул. Чайковского, 21",
+      "price": 24000,
+      "image": "assets/room.png",
+      "description": "Отдельная комната в спокойной квартире. Подходит для студента или молодого специалиста.",
+      "active": true
+    },
+    {
+      "id": 10,
+      "userId": 4,
+      "title": "Загородный дом для выходных",
+      "type": "Дом",
+      "mode": "DAILY",
+      "location": "Ленинградская область",
+      "address": "пос. Репино, Приморское ш., 18",
+      "price": 8500,
+      "image": "assets/house.png",
+      "description": "Тихий загородный дом с кухней и небольшой территорией для отдыха.",
+      "active": true
+    },
+    {
+      "id": 11,
+      "userId": 2,
+      "title": "Квартира рядом с Московским вокзалом",
+      "type": "Квартира",
+      "mode": "DAILY",
+      "location": "Санкт-Петербург",
+      "address": "Невский проспект, 112",
+      "price": 5200,
+      "image": "assets/flat-centre.png",
+      "description": "Удобная квартира для короткой поездки. До вокзала можно дойти пешком.",
+      "active": true
+    },
+    {
+      "id": 12,
+      "userId": 4,
+      "title": "Студия для длительной аренды",
+      "type": "Студия",
+      "mode": "MONTHLY",
+      "location": "Санкт-Петербург",
+      "address": "Комендантский пр., 45",
+      "price": 39000,
+      "image": "assets/studio.png",
+      "description": "Современная студия с необходимой мебелью и техникой для длительного проживания.",
+      "active": true
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "listingId": 1,
+      "startDate": "2026-10-22",
+      "endDate": "2026-10-25",
+      "total": 13500,
+      "status": "pending",
+      "createdAt": "2026-10-18T15:43:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "listingId": 6,
+      "startDate": "2026-10-28",
+      "endDate": "2026-10-30",
+      "total": 12000,
+      "status": "active",
+      "createdAt": "2026-10-16T13:20:00.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "listingId": 4,
+      "startDate": "2026-11-01",
+      "endDate": "2027-05-01",
+      "total": 540000,
+      "status": "pending",
+      "createdAt": "2026-10-18T12:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "listingId": 2,
+      "startDate": "2026-11-01",
+      "endDate": "2027-04-30",
+      "total": 390000,
+      "status": "active",
+      "createdAt": "2026-10-17T11:15:00.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "listingId": 5,
+      "startDate": "2026-10-10",
+      "endDate": "2026-10-12",
+      "total": 4400,
+      "status": "canceled",
+      "createdAt": "2026-10-05T09:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "listingId": 1,
+      "startDate": "2026-09-12",
+      "endDate": "2026-09-15",
+      "total": 13500,
+      "status": "completed",
+      "createdAt": "2026-09-10T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "listingId": 7,
+      "startDate": "2026-11-05",
+      "endDate": "2026-11-08",
+      "total": 11400,
+      "status": "pending",
+      "createdAt": "2026-10-22T10:15:00.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "listingId": 8,
+      "startDate": "2026-11-01",
+      "endDate": "2026-12-01",
+      "total": 58000,
+      "status": "active",
+      "createdAt": "2026-10-12T14:30:00.000Z"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "listingId": 10,
+      "startDate": "2026-08-15",
+      "endDate": "2026-08-17",
+      "total": 17000,
+      "status": "completed",
+      "createdAt": "2026-08-01T09:20:00.000Z"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "listingId": 11,
+      "startDate": "2026-09-20",
+      "endDate": "2026-09-22",
+      "total": 10400,
+      "status": "canceled",
+      "createdAt": "2026-09-15T18:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "listingId": 12,
+      "startDate": "2027-01-01",
+      "endDate": "2027-02-01",
+      "total": 39000,
+      "status": "pending",
+      "createdAt": "2026-10-23T08:45:00.000Z"
+    },
+    {
+      "userId": 1,
+      "listingId": 1,
+      "startDate": "2026-10-22",
+      "endDate": "2026-10-25",
+      "total": 13500,
+      "status": "canceled",
+      "createdAt": "2026-10-23T17:32:18.374Z",
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "listingId": 1,
+      "startDate": "2026-10-22",
+      "endDate": "2026-10-25",
+      "total": 13500,
+      "status": "pending",
+      "createdAt": "2026-10-23T17:32:43.770Z",
+      "id": 13
+    }
+  ],
+  "chats": [
+    {
+      "id": 1,
+      "userId": 1,
+      "listingId": 1,
+      "personName": "Анна Смирнова",
+      "lastMessage": "Вы: вава",
+      "lastTime": "20:33"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "listingId": 2,
+      "personName": "Анна Смирнова",
+      "lastMessage": "Да, можно договориться о просмотре.",
+      "lastTime": "14:10"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "listingId": 4,
+      "personName": "Иван Петров",
+      "lastMessage": "Здравствуйте! Интересует аренда дома.",
+      "lastTime": "12:30"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "listingId": 6,
+      "personName": "Ольга Белова",
+      "lastMessage": "Буду ждать вас 28 октября.",
+      "lastTime": "Вчера"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "chatId": 1,
+      "senderId": 1,
+      "text": "Здравствуйте! Хочу забронировать квартиру с 22 по 25 октября. Подскажите, эти даты свободны?",
+      "createdAt": "2026-10-18T15:35:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "chatId": 1,
+      "senderId": 2,
+      "text": "Здравствуйте! Спасибо за интерес к квартире. Проверю даты и скоро отвечу вам.",
+      "createdAt": "2026-10-18T15:42:00.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "chatId": 1,
+      "senderId": 1,
+      "text": "Спасибо! Заявку на 3 ночи уже отправила.",
+      "createdAt": "2026-10-18T15:43:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "chatId": 1,
+      "senderId": 0,
+      "type": "event",
+      "text": "Заявка на 22–25 октября · 13 500 ₽ · Ожидает подтверждения",
+      "createdAt": "2026-10-18T15:44:00.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "chatId": 2,
+      "senderId": 2,
+      "text": "Да, можно договориться о просмотре.",
+      "createdAt": "2026-10-18T14:10:00.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "chatId": 3,
+      "senderId": 2,
+      "text": "Здравствуйте! Интересует аренда дома.",
+      "createdAt": "2026-10-18T12:30:00.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "chatId": 4,
+      "senderId": 4,
+      "text": "Буду ждать вас 28 октября.",
+      "createdAt": "2026-10-17T16:20:00.000Z"
+    },
+    {
+      "userId": 1,
+      "chatId": 1,
+      "senderId": 1,
+      "text": "вава",
+      "createdAt": "2026-10-23T17:33:12.941Z",
+      "id": 8
+    }
+  ]
+}
