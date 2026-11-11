@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <title>Поварёшка — рецепты от домашних поваров</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html">
+          <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+          Поварёшка
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto ms-lg-4">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link" href="author.html">Кулинары</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html">Мой кабинет</a></li>
+          </ul>
+          <div class="d-flex gap-2 mt-3 mt-lg-0">
+            <a class="btn btn-outline-accent" href="login.html">Войти</a>
+            <a class="btn btn-accent" href="register.html">Регистрация</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <p class="hero__eyebrow">Сообщество домашних поваров</p>
+            <h1 class="hero__title">Что приготовим сегодня?</h1>
+            <p class="hero__text my-3">Рецепты от людей, которые готовят каждый день: с фотографиями, пошаговыми инструкциями и видео.</p>
+            <form class="hero-search" id="searchForm" role="search">
+              <input class="form-control" type="search" name="q" placeholder="Блины, борщ или «яйца»">
+              <button class="btn btn-accent px-4" type="submit"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg> Найти</button>
+            </form>
+            <div class="hero__chips">
+              <button class="chip" type="button" data-chip="блины">Блины</button>
+              <button class="chip" type="button" data-chip="суп">Супы</button>
+              <button class="chip" type="button" data-chip="яйца">С яйцами</button>
+              <button class="chip" type="button" data-chip="паста">Паста</button>
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="hero__photos">
+              <img src="img/recipes/shakshuka.jpg" alt="Шакшука в сковороде">
+              <img src="img/recipes/blini.jpg" alt="Стопка блинов">
+              <img src="img/recipes/pumpkin-soup.jpg" alt="Тыквенный суп">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container py-4">
+      <div class="row g-4">
+        <aside class="col-lg-3">
+          <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="filtersPanel">
+            <div class="offcanvas-header">
+              <h2 class="offcanvas-title h5">Фильтры</h2>
+              <button class="btn-close" type="button" data-bs-dismiss="offcanvas" data-bs-target="#filtersPanel"></button>
+            </div>
+            <div class="offcanvas-body">
+              <form class="filters w-100" id="filtersForm">
+                <div class="filters__group">
+                  <h3 class="filters__title">Тип блюда</h3>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="type" value="Завтраки" id="type0">
+                    <label class="form-check-label" for="type0">Завтраки</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="type" value="Супы" id="type1">
+                    <label class="form-check-label" for="type1">Супы</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="type" value="Основные блюда" id="type2">
+                    <label class="form-check-label" for="type2">Основные блюда</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="type" value="Выпечка и десерты" id="type3">
+                    <label class="form-check-label" for="type3">Выпечка и десерты</label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <h3 class="filters__title">Сложность</h3>
+                  <div class="tag-check">
+                    <input class="btn-check" type="checkbox" name="difficulty" value="Легко" id="diff0" autocomplete="off">
+                    <label class="btn" for="diff0">Легко</label>
+                    <input class="btn-check" type="checkbox" name="difficulty" value="Средне" id="diff1" autocomplete="off">
+                    <label class="btn" for="diff1">Средне</label>
+                    <input class="btn-check" type="checkbox" name="difficulty" value="Сложно" id="diff2" autocomplete="off">
+                    <label class="btn" for="diff2">Сложно</label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <h3 class="filters__title">Ингредиенты</h3>
+                  <div class="tag-check">
+                    <input class="btn-check" type="checkbox" name="tag" value="яйца" id="tag0" autocomplete="off">
+                    <label class="btn" for="tag0">яйца</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="мука" id="tag1" autocomplete="off">
+                    <label class="btn" for="tag1">мука</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="молоко" id="tag2" autocomplete="off">
+                    <label class="btn" for="tag2">молоко</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="сыр" id="tag3" autocomplete="off">
+                    <label class="btn" for="tag3">сыр</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="мясо" id="tag4" autocomplete="off">
+                    <label class="btn" for="tag4">мясо</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="овощи" id="tag5" autocomplete="off">
+                    <label class="btn" for="tag5">овощи</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="фрукты" id="tag6" autocomplete="off">
+                    <label class="btn" for="tag6">фрукты</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="макароны" id="tag7" autocomplete="off">
+                    <label class="btn" for="tag7">макароны</label>
+                    <input class="btn-check" type="checkbox" name="tag" value="рис" id="tag8" autocomplete="off">
+                    <label class="btn" for="tag8">рис</label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <h3 class="filters__title">Время приготовления</h3>
+                  <select class="form-select" name="time">
+                    <option value="">Любое</option>
+                    <option value="15">До 15 минут</option>
+                    <option value="30">До 30 минут</option>
+                    <option value="60">До 1 часа</option>
+                  </select>
+                </div>
+                <div class="filters__group d-grid gap-2">
+                  <button class="btn btn-accent d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#filtersPanel">Показать рецепты</button>
+                  <button class="btn btn-soft" type="reset">Сбросить фильтры</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </aside>
+
+        <div class="col-lg-9">
+          <div class="results-toolbar">
+            <div class="d-flex align-items-center gap-2">
+              <button class="btn btn-soft d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#filtersPanel"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Фильтры</button>
+              <h2 class="h4 mb-0">Найдено: <span id="resultsCount">11</span></h2>
+            </div>
+            <select class="form-select" id="sortSelect">
+              <option value="likes">Сначала популярные</option>
+              <option value="date">Сначала новые</option>
+              <option value="time">Быстрые в начале</option>
+            </select>
+          </div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4" id="recipesGrid">
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Основные блюда" data-difficulty="Средне" data-time="25" data-tags="макароны,яйца,сыр,мясо" data-likes="6" data-date="2026-10-10" data-search="паста карбонара настоящая карбонара без сливок: соус из желтков и сыра получается сам, если всё делать быстро. спагетти гуанчиале или бекон желтки пекорино или пармезан чёрный перец">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/carbonara.jpg" alt="Паста карбонара">
+                  <span class="badge recipe-card__type">Основные блюда</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Паста карбонара</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #3F5E6B">ДВ</span> Дмитрий Волков</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 25 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Средне</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 6</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Средне" data-time="40" data-tags="молоко,яйца,мука" data-likes="5" data-date="2026-10-02" data-search="тонкие блины на молоке классические тонкие блины с кружевными краями. тесто готовится за 10 минут, а блины подходят и к сметане, и к варенью. молоко яйца пшеничная мука сахар соль растительное масло">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/blini.jpg" alt="Тонкие блины на молоке">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Тонкие блины на молоке</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #B84A24">АС</span> Анна Смирнова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 40 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Средне</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 5</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Супы" data-difficulty="Средне" data-time="120" data-tags="мясо,овощи" data-likes="4" data-date="2026-10-05" data-search="борщ со сметаной насыщенный борщ на говяжьем бульоне. свёклу тушим отдельно с уксусом, чтобы суп остался ярким. говядина на кости свёкла капуста белокочанная картофель морковь и лук томатная паста сметана">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/borscht.jpg" alt="Борщ со сметаной">
+                  <span class="badge recipe-card__type">Супы</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Борщ со сметаной</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #5E6B3F">МО</span> Михаил Орлов</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 120 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Средне</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 4</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Выпечка и десерты" data-difficulty="Легко" data-time="60" data-tags="яйца,мука,фрукты" data-likes="4" data-date="2026-10-18" data-search="шарлотка с яблоками самый простой яблочный пирог: три яйца, стакан муки и много яблок. получается всегда. яблоки яйца сахар пшеничная мука корица">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/apple-cake.jpg" alt="Шарлотка с яблоками">
+                  <span class="badge recipe-card__type">Выпечка и десерты</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Шарлотка с яблоками</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #B84A24">АС</span> Анна Смирнова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 60 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 4</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Выпечка и десерты" data-difficulty="Сложно" data-time="120" data-tags="сыр,яйца,молоко" data-likes="4" data-date="2026-10-21" data-search="чизкейк «нью-йорк» плотный сливочный чизкейк на песочной основе. секрет — медленное выпекание и ночь в холодильнике. сливочный сыр песочное печенье сливочное масло сахар яйца сметана">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/cheesecake.jpg" alt="Чизкейк «Нью-Йорк»">
+                  <span class="badge recipe-card__type">Выпечка и десерты</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Чизкейк «Нью-Йорк»</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #B84A24">АС</span> Анна Смирнова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 120 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Сложно</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 4</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Легко" data-time="25" data-tags="яйца,овощи" data-likes="3" data-date="2026-10-08" data-search="шакшука яйца, запечённые в пряном томатном соусе с перцем. готовится в одной сковороде и подаётся прямо в ней. яйца помидоры в собственном соку болгарский перец лук чеснок зира и паприка">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/shakshuka.jpg" alt="Шакшука">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Шакшука</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #C08A2E">ЕК</span> Елена Ким</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 25 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 3</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Основные блюда" data-difficulty="Сложно" data-time="90" data-tags="мясо,рис,овощи" data-likes="3" data-date="2026-10-12" data-search="плов с бараниной и изюмом рассыпчатый плов в казане: зирвак, морковь соломкой и немного изюма для сладости. баранина рис длиннозёрный морковь лук изюм чеснок зира">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/plov.jpg" alt="Плов с бараниной и изюмом">
+                  <span class="badge recipe-card__type">Основные блюда</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Плов с бараниной и изюмом</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #5E6B3F">МО</span> Михаил Орлов</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 90 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Сложно</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 3</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Основные блюда" data-difficulty="Сложно" data-time="100" data-tags="макароны,мясо,молоко,сыр" data-likes="3" data-date="2026-10-27" data-search="лазанья болоньезе слои пасты, мясного рагу и соуса бешамель. долго, но результат стоит каждой минуты. листы лазаньи фарш говяжий томаты в собственном соку молоко мука и сливочное масло пармезан">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/lasagne.jpg" alt="Лазанья болоньезе">
+                  <span class="badge recipe-card__type">Основные блюда</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Лазанья болоньезе</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #3F5E6B">ДВ</span> Дмитрий Волков</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 100 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Сложно</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 3</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Супы" data-difficulty="Легко" data-time="40" data-tags="овощи" data-likes="2" data-date="2026-10-15" data-search="тыквенный крем-суп нежный суп-пюре из запечённой тыквы с кокосовым молоком и имбирем. хорош осенью. тыква кокосовое молоко лук имбирь овощной бульон">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/pumpkin-soup.jpg" alt="Тыквенный крем-суп">
+                  <span class="badge recipe-card__type">Супы</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Тыквенный крем-суп</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #5E6B3F">МО</span> Михаил Орлов</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 40 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 2</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Легко" data-time="15" data-tags="фрукты,яйца,мука" data-likes="2" data-date="2026-10-24" data-search="банановые панкейки пышные панкейки из спелых бананов. без сахара — сладость дают сами бананы. спелые бананы яйца пшеничная мука разрыхлитель">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/banana-pancakes.jpg" alt="Банановые панкейки">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Банановые панкейки</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #C08A2E">ЕК</span> Елена Ким</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 15 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 2</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Легко" data-time="10" data-tags="яйца" data-likes="1" data-date="2026-11-01" data-search="французский омлет с зеленью нежный омлет-рулет без корочки. мой первый рецепт, который получился с третьего раза. яйца сливочное масло зелёный лук соль">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/omelette.jpg" alt="Французский омлет с зеленью">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Французский омлет с зеленью</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #8A4F7D">МИ</span> Мария Иванова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 10 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 1</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="empty-state d-none" id="emptyState">
+            <p class="h5">Ничего не нашлось</p>
+            <p class="mb-0">Попробуйте убрать часть фильтров или изменить запрос.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <a class="brand text-decoration-none" href="index.html">
+        <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+        Поварёшка
+      </a>
+      <p class="mb-0">Сервис для обмена рецептами. Учебный проект, ИТМО, 2026</p>
+      <ul class="list-inline mb-0">
+        <li class="list-inline-item"><a href="index.html">Рецепты</a></li>
+        <li class="list-inline-item"><a href="register.html">Стать автором</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <title>Личный кабинет — Поварёшка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html">
+          <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+          Поварёшка
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto ms-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link" href="author.html">Кулинары</a></li>
+            <li class="nav-item"><a class="nav-link active" href="profile.html">Мой кабинет</a></li>
+          </ul>
+          <div class="d-flex gap-2 mt-3 mt-lg-0">
+            <a class="btn btn-outline-accent" href="login.html">Войти</a>
+            <a class="btn btn-accent" href="register.html">Регистрация</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="profile-cover"></div>
+    <section class="container">
+      <div class="profile-head">
+        <span class="avatar avatar--xl" style="--avatar-bg: #8A4F7D">МИ</span>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div>
+            <h1 class="profile-head__name">Мария Иванова</h1>
+            <p class="text-muted-warm mb-2"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg> Санкт-Петербург · demo@povaryoshka.ru</p>
+            <p class="mb-0">Учусь готовить и сохраняю всё, что хочется повторить.</p>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-soft" type="button" data-bs-toggle="modal" data-bs-target="#profileModal"><svg class="icon" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg> Редактировать</button>
+            <button class="btn btn-accent" type="button" data-bs-toggle="modal" data-bs-target="#recipeModal"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Новый рецепт</button>
+          </div>
+        </div>
+        <ul class="profile-stats">
+          <li><strong>1</strong><span>публикация</span></li>
+          <li><strong>4</strong><span>сохранено</span></li>
+          <li><strong>2</strong><span>подписки</span></li>
+          <li><strong>0</strong><span>подписчиков</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container py-3">
+      <ul class="nav nav-pills profile-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#tabMine" role="tab">Мои рецепты <span class="badge rounded-pill">1</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#tabSaved" role="tab">Сохранённые <span class="badge rounded-pill">4</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#tabFollowing" role="tab">Подписки <span class="badge rounded-pill">2</span></button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tabMine" role="tabpanel">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Легко" data-time="10" data-tags="яйца" data-likes="1" data-date="2026-11-01" data-search="французский омлет с зеленью нежный омлет-рулет без корочки. мой первый рецепт, который получился с третьего раза. яйца сливочное масло зелёный лук соль">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/omelette.jpg" alt="Французский омлет с зеленью">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save" type="button" title="Сохранить" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Французский омлет с зеленью</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #8A4F7D">МИ</span> Мария Иванова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 10 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 1</li>
+                  </ul>
+                </div>
+                <div class="recipe-card__actions">
+                  <button class="btn btn-soft btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#recipeModal"><svg class="icon" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg> Изменить</button>
+                  <button class="btn btn-soft btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M10 7V4h4v3M6 7l1 13h10l1-13"/></svg> Удалить</button>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <button class="add-card w-100" type="button" data-bs-toggle="modal" data-bs-target="#recipeModal">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                Добавить рецепт
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="tabSaved" role="tabpanel">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Средне" data-time="40" data-tags="молоко,яйца,мука" data-likes="5" data-date="2026-10-02" data-search="тонкие блины на молоке классические тонкие блины с кружевными краями. тесто готовится за 10 минут, а блины подходят и к сметане, и к варенью. молоко яйца пшеничная мука сахар соль растительное масло">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/blini.jpg" alt="Тонкие блины на молоке">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Тонкие блины на молоке</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #B84A24">АС</span> Анна Смирнова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 40 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Средне</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 5</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Завтраки" data-difficulty="Легко" data-time="25" data-tags="яйца,овощи" data-likes="3" data-date="2026-10-08" data-search="шакшука яйца, запечённые в пряном томатном соусе с перцем. готовится в одной сковороде и подаётся прямо в ней. яйца помидоры в собственном соку болгарский перец лук чеснок зира и паприка">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/shakshuka.jpg" alt="Шакшука">
+                  <span class="badge recipe-card__type">Завтраки</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Шакшука</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #C08A2E">ЕК</span> Елена Ким</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 25 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 3</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Основные блюда" data-difficulty="Средне" data-time="25" data-tags="макароны,яйца,сыр,мясо" data-likes="6" data-date="2026-10-10" data-search="паста карбонара настоящая карбонара без сливок: соус из желтков и сыра получается сам, если всё делать быстро. спагетти гуанчиале или бекон желтки пекорино или пармезан чёрный перец">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/carbonara.jpg" alt="Паста карбонара">
+                  <span class="badge recipe-card__type">Основные блюда</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Паста карбонара</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #3F5E6B">ДВ</span> Дмитрий Волков</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 25 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Средне</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 6</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="recipe-card card h-100" data-type="Выпечка и десерты" data-difficulty="Легко" data-time="60" data-tags="яйца,мука,фрукты" data-likes="4" data-date="2026-10-18" data-search="шарлотка с яблоками самый простой яблочный пирог: три яйца, стакан муки и много яблок. получается всегда. яблоки яйца сахар пшеничная мука корица">
+                <div class="recipe-card__media">
+                  <img src="img/recipes/apple-cake.jpg" alt="Шарлотка с яблоками">
+                  <span class="badge recipe-card__type">Выпечка и десерты</span>
+                  <button class="recipe-card__save is-active" type="button" title="Убрать из сохранённых" data-toggle-save>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <h3 class="recipe-card__title"><a class="stretched-link" href="recipe.html">Шарлотка с яблоками</a></h3>
+                  <p class="recipe-card__author"><span class="avatar avatar--sm" style="--avatar-bg: #B84A24">АС</span> Анна Смирнова</p>
+                  <ul class="recipe-meta">
+                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 60 мин</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg> Легко</li>
+                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> 4</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="tabFollowing" role="tabpanel">
+          <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col">
+              <div class="cook-card">
+                <span class="avatar avatar--lg" style="--avatar-bg: #B84A24">АС</span>
+                <div class="me-auto">
+                  <a class="cook-card__name" href="author.html">Анна Смирнова</a>
+                  <p class="cook-card__meta">Санкт-Петербург · 3 рецепта</p>
+                </div>
+                <button class="btn btn-soft btn-sm btn-toggle is-active" type="button" data-toggle-follow>Вы подписаны</button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="cook-card">
+                <span class="avatar avatar--lg" style="--avatar-bg: #C08A2E">ЕК</span>
+                <div class="me-auto">
+                  <a class="cook-card__name" href="author.html">Елена Ким</a>
+                  <p class="cook-card__meta">Новосибирск · 2 рецепта</p>
+                </div>
+                <button class="btn btn-soft btn-sm btn-toggle is-active" type="button" data-toggle-follow>Вы подписаны</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <form class="modal-content needs-validation" id="recipeForm" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h4">Новый рецепт</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="recipeTitle">Название</label>
+                <input class="form-control" id="recipeTitle" name="title" type="text" placeholder="Например, сырники со сметаной" required>
+                <div class="invalid-feedback">Укажите название блюда.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeType">Тип блюда</label>
+                <select class="form-select" id="recipeType" name="type">
+                    <option>Завтраки</option>
+                    <option>Супы</option>
+                    <option>Основные блюда</option>
+                    <option>Выпечка и десерты</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeDifficulty">Сложность</label>
+                <select class="form-select" id="recipeDifficulty" name="difficulty">
+                    <option>Легко</option>
+                    <option>Средне</option>
+                    <option>Сложно</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeTime">Время, минут</label>
+                <input class="form-control" id="recipeTime" name="time" type="number" min="1" value="30" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeServings">Порций</label>
+                <input class="form-control" id="recipeServings" name="servings" type="number" min="1" value="2" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="recipeDescription">Короткое описание</label>
+                <textarea class="form-control" id="recipeDescription" name="description" rows="2"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeIngredients">Ингредиенты</label>
+                <textarea class="form-control" id="recipeIngredients" name="ingredients" rows="5" placeholder="Творог — 400 г&#10;Яйцо — 1 шт." required></textarea>
+                <div class="form-text">Каждый ингредиент с новой строки.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeSteps">Шаги приготовления</label>
+                <textarea class="form-control" id="recipeSteps" name="steps" rows="5" placeholder="Смешайте творог с яйцом..." required></textarea>
+                <div class="form-text">Каждый шаг с новой строки.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeImage">Ссылка на фото</label>
+                <input class="form-control" id="recipeImage" name="image" type="url" placeholder="https://...">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeVideo">Ссылка на видео YouTube</label>
+                <input class="form-control" id="recipeVideo" name="video" type="url" placeholder="https://youtube.com/watch?v=...">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-soft" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-accent" type="submit">Опубликовать</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade" id="profileModal" tabindex="-1">
+      <div class="modal-dialog">
+        <form class="modal-content needs-validation" id="profileForm" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h4">Редактировать профиль</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label" for="profileName">Имя и фамилия</label>
+              <input class="form-control" id="profileName" name="name" type="text" value="Мария Иванова" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="profileCity">Город</label>
+              <input class="form-control" id="profileCity" name="city" type="text" value="Санкт-Петербург">
+            </div>
+            <div>
+              <label class="form-label" for="profileBio">О себе</label>
+              <textarea class="form-control" id="profileBio" name="bio" rows="3">Учусь готовить и сохраняю всё, что хочется повторить.</textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-soft" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-accent" type="submit">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-body text-center p-4">
+            <p class="h5">Удалить рецепт?</p>
+            <p class="text-muted-warm mb-0">Комментарии и лайки к нему тоже пропадут.</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-soft" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-accent" type="button" data-bs-dismiss="modal">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <a class="brand text-decoration-none" href="index.html">
+        <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+        Поварёшка
+      </a>
+      <p class="mb-0">Сервис для обмена рецептами. Учебный проект, ИТМО, 2026</p>
+      <ul class="list-inline mb-0">
+        <li class="list-inline-item"><a href="index.html">Рецепты</a></li>
+        <li class="list-inline-item"><a href="register.html">Стать автором</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

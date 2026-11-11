@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <title>Тонкие блины на молоке — Поварёшка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html">
+          <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+          Поварёшка
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto ms-lg-4">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link" href="author.html">Кулинары</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html">Мой кабинет</a></li>
+          </ul>
+          <div class="d-flex gap-2 mt-3 mt-lg-0">
+            <a class="btn btn-outline-accent" href="login.html">Войти</a>
+            <a class="btn btn-accent" href="register.html">Регистрация</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Рецепты</a></li>
+        <li class="breadcrumb-item"><a href="index.html">Завтраки</a></li>
+        <li class="breadcrumb-item active">Тонкие блины на молоке</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4 g-lg-5 align-items-center">
+      <div class="col-lg-6">
+        <img class="recipe-photo" src="img/recipes/blini.jpg" alt="Тонкие блины на молоке">
+      </div>
+      <div class="col-lg-6">
+        <span class="badge badge-soft">Завтраки</span>
+        <h1 class="recipe-title">Тонкие блины на молоке</h1>
+        <p class="lead">Классические тонкие блины с кружевными краями. Тесто готовится за 10 минут, а блины подходят и к сметане, и к варенью.</p>
+
+        <div class="author-line">
+          <span class="avatar" style="--avatar-bg: #B84A24">АС</span>
+          <div class="me-auto">
+            <a class="author-line__name" href="author.html">Анна Смирнова</a>
+            <div class="author-line__meta">3 рецепта · 3 подписчика</div>
+          </div>
+          <button class="btn btn-outline-accent btn-sm btn-toggle" type="button" data-toggle-follow>Подписаться</button>
+        </div>
+
+        <ul class="recipe-facts">
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Время</span><strong>40 мин</strong></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg><span>Порции</span><strong>4</strong></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20v-4M12 20v-8M18 20V6"/></svg><span>Сложность</span><strong>Средне</strong></li>
+        </ul>
+
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-soft btn-toggle" type="button" data-toggle-like>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></svg> Нравится <span data-like-count>5</span>
+          </button>
+          <button class="btn btn-soft btn-toggle is-active" type="button" data-toggle-save>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg> <span data-save-label>В сохранённых</span>
+          </button>
+          <a class="btn btn-soft" href="#comments"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg> 3</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 g-lg-5 mt-1">
+      <div class="col-lg-4">
+        <section class="panel">
+          <h2 class="panel__title">Ингредиенты</h2>
+          <p class="text-muted-warm small">Отмечайте то, что уже есть дома.</p>
+          <ul class="ingredients">
+            <li>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="ing0">
+                <label class="form-check-label" for="ing0">Молоко</label>
+              </div>
+              <span class="ingredients__amount">500 мл</span>
+            </li>
+            <li>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="ing1">
+                <label class="form-check-label" for="ing1">Яйца</label>
+              </div>
+              <span class="ingredients__amount">3 шт.</span>
+            </li>
+            <li>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="ing2">
+                <label class="form-check-label" for="ing2">Пшеничная мука</label>
+              </div>
+              <span class="ingredients__amount">200 г</span>
+            </li>
+            <li>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="ing3">
+                <label class="form-check-label" for="ing3">Сахар</label>
+              </div>
+              <span class="ingredients__amount">2 ст. л.</span>
+            </li>
+            <li>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="ing4">
+                <label class="form-check-label" for="ing4">Соль</label>
+              </div>
+              <span class="ingredients__amount">щепотка</span>
+            </li>
+            <li>
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="ing5">
+                <label class="form-check-label" for="ing5">Растительное масло</label>
+              </div>
+              <span class="ingredients__amount">3 ст. л.</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="col-lg-8">
+        <section class="panel">
+          <h2 class="panel__title">Приготовление</h2>
+          <ol class="steps">
+            <li>Взбейте яйца с сахаром и солью до однородности.</li>
+            <li>Влейте половину молока, затем частями всыпьте муку и перемешайте венчиком без комочков.</li>
+            <li>Добавьте оставшееся молоко и масло. Оставьте тесто на 15 минут.</li>
+            <li>Разогрейте сковороду, смажьте маслом и налейте тонкий слой теста, наклоняя сковороду.</li>
+            <li>Жарьте по 1 минуте с каждой стороны до золотистого цвета.</li>
+          </ol>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel__title">Видео-рецепт</h2>
+          <div class="ratio ratio-16x9 video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/GsB8ZI5vREA" title="Видео-рецепт: Тонкие блины на молоке" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </section>
+
+        <section class="panel" id="comments">
+          <h2 class="panel__title">Комментарии <span class="text-muted-warm" data-comments-count>3</span></h2>
+          <form class="mb-3 needs-validation" id="commentForm" novalidate>
+            <label class="form-label" for="commentText">Ваш комментарий</label>
+            <textarea class="form-control" id="commentText" name="text" rows="3" placeholder="Как у вас получилось?" required></textarea>
+            <div class="invalid-feedback">Напишите хотя бы пару слов.</div>
+            <button class="btn btn-accent mt-2" type="submit">Отправить</button>
+          </form>
+          <div id="commentsList">
+            <article class="comment">
+              <span class="avatar" style="--avatar-bg: #5E6B3F">МО</span>
+              <div>
+                <div class="comment__head">
+                  <span class="comment__name">Михаил Орлов</span>
+                  <span class="comment__date">9 октября 2026</span>
+                </div>
+                <p>Классика. Я ещё жарю на чугунной сковороде, так края хрустят.</p>
+              </div>
+            </article>
+            <article class="comment">
+              <span class="avatar" style="--avatar-bg: #6B5E3F">ОБ</span>
+              <div>
+                <div class="comment__head">
+                  <span class="comment__name">Ольга Белова</span>
+                  <span class="comment__date">6 октября 2026</span>
+                </div>
+                <p>Добавила ванильный сахар — дети съели всё за 10 минут.</p>
+              </div>
+            </article>
+            <article class="comment">
+              <span class="avatar" style="--avatar-bg: #8A4F7D">МИ</span>
+              <div>
+                <div class="comment__head">
+                  <span class="comment__name">Мария Иванова</span>
+                  <span class="comment__date">4 октября 2026</span>
+                </div>
+                <p>Получились с первого раза! Тесто действительно лучше дать постоять.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <a class="brand text-decoration-none" href="index.html">
+        <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+        Поварёшка
+      </a>
+      <p class="mb-0">Сервис для обмена рецептами. Учебный проект, ИТМО, 2026</p>
+      <ul class="list-inline mb-0">
+        <li class="list-inline-item"><a href="index.html">Рецепты</a></li>
+        <li class="list-inline-item"><a href="register.html">Стать автором</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
