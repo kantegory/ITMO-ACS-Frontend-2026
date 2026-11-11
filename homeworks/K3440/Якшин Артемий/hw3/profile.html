@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <title>Личный кабинет — Поварёшка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/themes/light.css">
+  <link rel="stylesheet" href="css/themes/dark.css" media="(prefers-color-scheme: dark)" id="darkTheme">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержанию</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg" aria-label="Основное меню">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html">
+          <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+          Поварёшка
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto ms-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link" href="author.html">Кулинары</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile.html">Мой кабинет</a></li>
+          </ul>
+          <div class="dropdown theme-switcher me-lg-2 mt-3 mt-lg-0">
+            <button class="btn btn-soft" id="themeButton" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Тема оформления" title="Тема оформления">
+              <svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+              <svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><button class="dropdown-item" type="button" data-theme-value="light" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Светлая</button></li>
+              <li><button class="dropdown-item" type="button" data-theme-value="dark" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg> Тёмная</button></li>
+              <li><button class="dropdown-item" type="button" data-theme-value="auto" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Как в системе</button></li>
+            </ul>
+          </div>
+          <div class="d-flex gap-2 mt-3 mt-lg-0" id="authArea"></div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="profile-cover"></div>
+    <section class="container">
+      <div class="profile-head" id="profileHead">
+        <div class="text-center py-5">
+          <div class="spinner-border" style="color: var(--color-accent)" role="status"><span class="visually-hidden">Загрузка…</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container py-3">
+      <ul class="nav nav-pills profile-tabs" role="tablist" aria-label="Разделы кабинета">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#tabMine" role="tab" id="tabMineButton" aria-controls="tabMine">Мои рецепты <span class="badge rounded-pill" id="countMine">0</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#tabSaved" role="tab" id="tabSavedButton" aria-controls="tabSaved">Сохранённые <span class="badge rounded-pill" id="countSaved">0</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#tabFollowing" role="tab" id="tabFollowingButton" aria-controls="tabFollowing">Подписки <span class="badge rounded-pill" id="countFollowing">0</span></button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tabMine" role="tabpanel" aria-labelledby="tabMineButton">
+        <h2 class="visually-hidden">Мои рецепты</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4" id="mineGrid"></div>
+        </div>
+        <div class="tab-pane fade" id="tabSaved" role="tabpanel" aria-labelledby="tabSavedButton">
+        <h2 class="visually-hidden">Сохранённые рецепты</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4" id="savedGrid"></div>
+        </div>
+        <div class="tab-pane fade" id="tabFollowing" role="tabpanel" aria-labelledby="tabFollowingButton">
+        <h2 class="visually-hidden">Подписки</h2>
+          <div class="row row-cols-1 row-cols-md-2 g-3" id="followingList"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalTitle">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <form class="modal-content needs-validation" id="recipeForm" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h4" id="recipeModalTitle">Новый рецепт</h2>
+            <button class="btn-close" type="button" aria-label="Закрыть" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id">
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="recipeTitle">Название</label>
+                <input class="form-control" id="recipeTitle" name="title" type="text" placeholder="Например, сырники со сметаной" aria-describedby="recipeTitleError" required>
+                <div class="invalid-feedback" id="recipeTitleError">Укажите название блюда.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeType">Тип блюда</label>
+                <select class="form-select" id="recipeType" name="type">
+                    <option>Завтраки</option>
+                    <option>Супы</option>
+                    <option>Основные блюда</option>
+                    <option>Выпечка и десерты</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeDifficulty">Сложность</label>
+                <select class="form-select" id="recipeDifficulty" name="difficulty">
+                    <option>Легко</option>
+                    <option>Средне</option>
+                    <option>Сложно</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeTime">Время, минут</label>
+                <input class="form-control" id="recipeTime" name="time" type="number" min="1" value="30" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeServings">Порций</label>
+                <input class="form-control" id="recipeServings" name="servings" type="number" min="1" value="2" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="recipeDescription">Короткое описание</label>
+                <textarea class="form-control" id="recipeDescription" name="description" rows="2"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeIngredients">Ингредиенты</label>
+                <textarea class="form-control" id="recipeIngredients" name="ingredients" rows="5" placeholder="Творог — 400 г&#10;Яйцо — 1 шт." aria-describedby="ingredientsHint" required></textarea>
+                <div class="form-text" id="ingredientsHint">Каждый ингредиент с новой строки в формате «продукт — количество».</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeSteps">Шаги приготовления</label>
+                <textarea class="form-control" id="recipeSteps" name="steps" rows="5" placeholder="Смешайте творог с яйцом..." aria-describedby="stepsHint" required></textarea>
+                <div class="form-text" id="stepsHint">Каждый шаг с новой строки.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeImage">Ссылка на фото</label>
+                <input class="form-control" id="recipeImage" name="image" type="url" placeholder="https://...">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="recipeVideo">Ссылка на видео YouTube</label>
+                <input class="form-control" id="recipeVideo" name="video" type="url" placeholder="https://youtube.com/watch?v=...">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-soft" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-accent" type="submit" id="recipeSubmit">Опубликовать</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle">
+      <div class="modal-dialog">
+        <form class="modal-content needs-validation" id="profileForm" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h4" id="profileModalTitle">Редактировать профиль</h2>
+            <button class="btn-close" type="button" aria-label="Закрыть" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label" for="profileName">Имя и фамилия</label>
+              <input class="form-control" id="profileName" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="profileCity">Город</label>
+              <input class="form-control" id="profileCity" name="city" type="text" autocomplete="address-level2">
+            </div>
+            <div>
+              <label class="form-label" for="profileBio">О себе</label>
+              <textarea class="form-control" id="profileBio" name="bio" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-soft" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-accent" type="submit">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalTitle">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-body text-center p-4">
+            <h2 class="h5" id="deleteModalTitle">Удалить рецепт?</h2>
+            <p class="text-muted-warm mb-0">Комментарии и лайки к нему тоже пропадут.</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-soft" type="button" data-bs-dismiss="modal">Отмена</button>
+            <button class="btn btn-accent" type="button" id="confirmDelete">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <a class="brand text-decoration-none" href="index.html">
+        <span class="brand__icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h12a6 6 0 0 1-12 0z"/><path d="M15 12 21 3"/></svg></span>
+        Поварёшка
+      </a>
+      <p class="mb-0">Сервис для обмена рецептами. Учебный проект, ИТМО, 2026</p>
+      <nav aria-label="Ссылки в подвале">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"><a href="index.html">Рецепты</a></li>
+          <li class="list-inline-item"><a href="register.html">Стать автором</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script type="module" src="js/pages/profile.js"></script>
+</body>
+</html>
