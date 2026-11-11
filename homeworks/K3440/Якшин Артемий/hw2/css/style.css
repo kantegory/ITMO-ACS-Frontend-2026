@@ -1,0 +1,1077 @@
+/* ==========================================================
+   «Поварёшка» — общие стили
+   Bootstrap 5 даёт сетку и компоненты, здесь — фирменный вид
+   ========================================================== */
+
+:root {
+  --color-bg: #fbf6f0;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f5ece3;
+  --color-text: #2a211c;
+  --color-muted: #6e625a;
+  --color-border: #eadfd5;
+  --color-accent: #b84a24;
+  --color-accent-hover: #9c3d1c;
+  --color-accent-soft: #f6e3d8;
+  --color-olive: #5e6b3f;
+  --color-olive-soft: #e8ecdc;
+  --color-gold: #946616;
+
+  --font-heading: "Lora", Georgia, serif;
+  --font-body: "Nunito", "Segoe UI", Arial, sans-serif;
+
+  --radius: 1rem;
+  --radius-sm: 0.625rem;
+  --shadow: 0 6px 24px rgba(42, 33, 28, 0.08);
+  --shadow-hover: 0 12px 32px rgba(42, 33, 28, 0.14);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* ссылка «Перейти к основному содержанию»: видна только при фокусе с клавиатуры */
+.skip-link {
+  position: absolute;
+  z-index: 2000;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-text);
+  color: #fff;
+  font-weight: 700;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  color: #fff;
+  transform: none;
+}
+
+h1, h2, h3, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+code {
+  color: var(--color-accent-hover);
+}
+
+/* ---------- фокус с клавиатуры ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.form-check-input:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.btn-check:focus-visible + .btn {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ссылка-заголовок растянута на всю карточку, поэтому обводим карточку целиком */
+.recipe-card:focus-within {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.recipe-card .stretched-link:focus-visible {
+  outline: none;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+.text-muted-warm {
+  color: var(--color-muted);
+}
+
+/* ---------- иконки ---------- */
+
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.2em;
+}
+
+/* ---------- кнопки ---------- */
+
+.btn {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.btn-accent {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--color-accent);
+  --bs-btn-border-color: var(--color-accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--color-accent-hover);
+  --bs-btn-hover-border-color: var(--color-accent-hover);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--color-accent-hover);
+  --bs-btn-active-border-color: var(--color-accent-hover);
+  --bs-btn-disabled-bg: var(--color-accent);
+  --bs-btn-disabled-border-color: var(--color-accent);
+  --bs-btn-focus-shadow-rgb: 184, 74, 36;
+}
+
+.btn-outline-accent {
+  --bs-btn-color: var(--color-accent);
+  --bs-btn-border-color: var(--color-accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--color-accent);
+  --bs-btn-hover-border-color: var(--color-accent);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--color-accent-hover);
+  --bs-btn-active-border-color: var(--color-accent-hover);
+  --bs-btn-focus-shadow-rgb: 184, 74, 36;
+}
+
+.btn-soft {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-bg: var(--color-surface-soft);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--color-text);
+  --bs-btn-hover-bg: var(--color-border);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-bg: var(--color-border);
+  --bs-btn-active-border-color: transparent;
+}
+
+/* переключаемые кнопки: лайк, сохранить, подписаться */
+/* тёмный терракотовый на светлом фоне: контраст 5.45:1 (было 4.17:1) */
+.btn-toggle.is-active {
+  --bs-btn-color: var(--color-accent-hover);
+  --bs-btn-bg: var(--color-accent-soft);
+  --bs-btn-hover-color: var(--color-accent-hover);
+  --bs-btn-hover-bg: var(--color-accent-soft);
+  --bs-btn-active-color: var(--color-accent-hover);
+}
+
+.btn-toggle.is-active .icon {
+  fill: currentColor;
+}
+
+/* ---------- формы ---------- */
+
+.form-control,
+.form-select {
+  border-color: var(--color-border);
+  border-radius: var(--radius-sm);
+  padding-block: 0.6rem;
+  padding-left: 0.9rem;
+}
+
+.form-control {
+  padding-right: 0.9rem;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 0.25rem rgba(184, 74, 36, 0.18);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+/* ---------- шапка ---------- */
+
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .navbar {
+  padding-block: 0.8rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.brand:hover {
+  color: var(--color-text);
+}
+
+.brand__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.site-header .nav-link {
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link.active {
+  color: var(--color-accent);
+}
+
+/* ---------- аватары ---------- */
+
+.avatar {
+  --avatar-bg: var(--color-accent);
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--avatar-bg);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.avatar--sm {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 0.7rem;
+}
+
+.avatar--lg {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.3rem;
+}
+
+.avatar--xl {
+  width: 6.5rem;
+  height: 6.5rem;
+  font-size: 2rem;
+  border: 4px solid var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- главная: первый экран ---------- */
+
+.hero {
+  padding-block: 3.5rem 3rem;
+  background:
+    radial-gradient(circle at 85% 20%, var(--color-accent-soft) 0, transparent 45%),
+    var(--color-bg);
+}
+
+.hero__eyebrow {
+  margin-bottom: 0.75rem;
+  color: var(--color-olive);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero__text {
+  max-width: 34rem;
+  color: var(--color-muted);
+  font-size: 1.15rem;
+}
+
+.hero-search {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 36rem;
+  padding: 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.hero-search .form-control {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.hero-search .form-control:focus {
+  box-shadow: none;
+}
+
+.hero-search .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.chip {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.hero__photos {
+  position: relative;
+  height: 340px;
+}
+
+.hero__photos img {
+  position: absolute;
+  object-fit: cover;
+  border: 6px solid var(--color-surface);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-hover);
+}
+
+.hero__photos img:nth-child(1) {
+  top: 0;
+  right: 8%;
+  width: 62%;
+  height: 230px;
+  transform: rotate(3deg);
+}
+
+.hero__photos img:nth-child(2) {
+  bottom: 0;
+  left: 2%;
+  width: 46%;
+  height: 180px;
+  transform: rotate(-4deg);
+}
+
+.hero__photos img:nth-child(3) {
+  right: 0;
+  bottom: 6%;
+  width: 34%;
+  height: 140px;
+  transform: rotate(-2deg);
+}
+
+/* ---------- фильтры ---------- */
+
+.filters {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+.filters__group + .filters__group {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.filters__group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* legend остаётся «плавающим», как в reboot Bootstrap: иначе браузер
+   встраивает его в рамку fieldset прямо поверх пунктирного разделителя */
+.filters__title {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.tag-check {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag-check .btn {
+  --bs-btn-padding-y: 0.25rem;
+  --bs-btn-padding-x: 0.75rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--color-text);
+  --bs-btn-border-color: var(--color-border);
+  --bs-btn-hover-color: var(--color-accent);
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: var(--color-accent);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--color-accent);
+  --bs-btn-active-border-color: var(--color-accent);
+}
+
+.results-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.results-toolbar .form-select {
+  width: auto;
+}
+
+.empty-state {
+  padding: 3rem 1rem;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--color-muted);
+}
+
+/* ---------- карточка рецепта ---------- */
+
+.recipe-card {
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.recipe-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.recipe-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-card__type {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.recipe-card__save {
+  position: absolute;
+  z-index: 2;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+}
+
+.recipe-card__save:hover,
+.recipe-card__save.is-active {
+  background-color: #fff;
+  color: var(--color-accent);
+}
+
+.recipe-card__save.is-active .icon {
+  fill: currentColor;
+}
+
+.recipe-card__title {
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+}
+
+.recipe-card__title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.recipe-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.recipe-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.recipe-meta .is-liked {
+  color: var(--color-accent);
+}
+
+.recipe-card__actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
+}
+
+/* ---------- страница рецепта ---------- */
+
+.breadcrumb {
+  --bs-breadcrumb-divider-color: var(--color-muted);
+  --bs-breadcrumb-item-active-color: var(--color-muted);
+  font-weight: 600;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.recipe-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-hover);
+}
+
+.badge-soft {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background-color: var(--color-olive-soft);
+  color: var(--color-olive);
+  font-weight: 800;
+}
+
+.recipe-title {
+  margin-block: 0.75rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+}
+
+.author-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+.author-line__name {
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.author-line__meta {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.recipe-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipe-facts li {
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-soft);
+  text-align: center;
+}
+
+.recipe-facts .icon {
+  color: var(--color-accent);
+  font-size: 1.25rem;
+}
+
+.recipe-facts span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.recipe-facts strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.panel {
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+.panel + .panel {
+  margin-top: 1.5rem;
+}
+
+.panel__title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.ingredients {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ingredients li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.55rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.ingredients li:last-child {
+  border-bottom: 0;
+}
+
+.ingredients .form-check-input:checked + .form-check-label {
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.ingredients__amount {
+  color: var(--color-muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  position: relative;
+  min-height: 2.5rem;
+  padding: 0.3rem 0 1.25rem 3.5rem;
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background-color: var(--color-accent-soft);
+  /* контраст 5.45:1; автоматические проверки псевдоэлементы не видят, нашёл Firefox */
+  color: var(--color-accent-hover);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.video-frame {
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-soft);
+}
+
+.comment {
+  display: flex;
+  gap: 0.85rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.comment__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.comment__name {
+  font-weight: 800;
+}
+
+.comment__date {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.comment p {
+  margin: 0;
+}
+
+/* ---------- страница кулинара и личный кабинет ---------- */
+
+.profile-cover {
+  height: 160px;
+  background:
+    linear-gradient(120deg, rgba(184, 74, 36, 0.85), rgba(192, 138, 46, 0.75)),
+    url("../img/recipes/shakshuka.jpg") center / cover;
+}
+
+.profile-head {
+  position: relative;
+  margin-top: -3.25rem;
+}
+
+.profile-head__name {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 2rem;
+}
+
+.profile-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-stats strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+}
+
+.profile-stats span {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.profile-tabs {
+  --bs-nav-pills-link-active-bg: var(--color-accent);
+  --bs-nav-link-color: var(--color-muted);
+  --bs-nav-link-hover-color: var(--color-accent);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-tabs .nav-link {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.profile-tabs .badge {
+  margin-left: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.cook-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+.cook-card__name {
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cook-card__meta {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.add-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 100%;
+  padding: 2rem 1rem;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.add-card:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.add-card .icon {
+  font-size: 2rem;
+}
+
+/* ---------- вход и регистрация ---------- */
+
+.auth {
+  display: grid;
+  min-height: calc(100vh - 74px);
+}
+
+@media (min-width: 992px) {
+  .auth {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.auth__media {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.auth__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(42, 33, 28, 0.8), rgba(42, 33, 28, 0.1));
+}
+
+.auth__quote {
+  position: relative;
+  max-width: 26rem;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  line-height: 1.35;
+}
+
+.auth__quote footer {
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.auth__body {
+  display: grid;
+  place-items: center;
+  padding: 2.5rem 1rem;
+}
+
+.auth__card {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.auth__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* ---------- модальные окна ---------- */
+
+.modal-content {
+  border: 0;
+  border-radius: var(--radius);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+}
+
+/* ---------- подвал ---------- */
+
+.site-footer {
+  margin-top: 4rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer .brand {
+  font-size: 1.15rem;
+}
+
+.site-footer .brand__icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.site-footer a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- меньше движения для тех, кто это выбрал ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .recipe-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- адаптивность ---------- */
+
+@media (max-width: 575.98px) {
+  .hero {
+    padding-block: 2rem;
+  }
+
+  .recipe-facts {
+    gap: 0.5rem;
+  }
+
+  .recipe-facts li {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .profile-head__name {
+    font-size: 1.6rem;
+  }
+}
+
+/* ---------- уведомления и меню пользователя ---------- */
+
+.toast {
+  border-radius: var(--radius-sm);
+  background-color: var(--color-text);
+  color: #fff;
+  font-weight: 600;
+}
+
+.toast .btn-close {
+  filter: invert(1);
+}
+
+.dropdown-menu {
+  border-color: var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.dropdown-item:active {
+  background-color: var(--color-accent);
+}
