@@ -1,0 +1,21 @@
+/* немного собственных стилей поверх Bootstrap */
+:root {
+  --note-accent: #b84a24;
+}
+
+body {
+  background-color: #fbf6f0;
+}
+
+.note-form {
+  max-width: 36rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: #b84a24;
+  --bs-btn-border-color: #b84a24;
+  --bs-btn-hover-bg: #9c3d1c;
+  --bs-btn-hover-border-color: #9c3d1c;
+  --bs-btn-active-bg: #9c3d1c;
+  --bs-btn-active-border-color: #9c3d1c;
+}
