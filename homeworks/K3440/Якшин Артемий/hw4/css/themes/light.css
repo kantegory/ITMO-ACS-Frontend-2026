@@ -1,0 +1,42 @@
+/* ==========================================================
+   Светлая тема — подключается всегда и служит темой по умолчанию.
+   Все цвета сайта берутся только из этих переменных.
+   ========================================================== */
+
+:root {
+  color-scheme: light;
+
+  --color-bg: #fbf6f0;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f5ece3;
+  --color-text: #2a211c;
+  --color-muted: #6e625a;
+  --color-border: #eadfd5;
+  --color-accent: #b84a24;
+  --color-accent-hover: #9c3d1c;
+  --color-accent-soft: #f6e3d8;
+  --color-on-accent: #ffffff;
+  --color-olive: #5e6b3f;
+  --color-olive-soft: #e8ecdc;
+  --color-gold: #946616;
+
+  /* плашки «Завтраки» и кнопка-закладка поверх фотографий */
+  --color-chip-bg: rgba(255, 255, 255, 0.92);
+  --color-chip-text: #2a211c;
+
+  --accent-rgb: 184, 74, 36;
+  --focus-ring: rgba(184, 74, 36, 0.18);
+  --shadow: 0 6px 24px rgba(42, 33, 28, 0.08);
+  --shadow-hover: 0 12px 32px rgba(42, 33, 28, 0.14);
+  --cover-gradient: linear-gradient(120deg, rgba(184, 74, 36, 0.85), rgba(192, 138, 46, 0.75));
+  --toast-close-filter: invert(1);
+
+  /* Bootstrap рисует поля, модальные окна и меню по своим переменным —
+     связываем их с нашими, чтобы компоненты меняли цвет вместе с темой */
+  --bs-body-bg: var(--color-surface);
+  --bs-body-color: var(--color-text);
+  --bs-emphasis-color: var(--color-text);
+  --bs-secondary-color: var(--color-muted);
+  --bs-tertiary-bg: var(--color-surface-soft);
+  --bs-border-color: var(--color-border);
+}
