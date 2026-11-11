@@ -1,0 +1,33 @@
+/* ==========================================================
+   Тёмная тема. В SPA JavaScript есть всегда, поэтому тема включается
+   атрибутом data-theme на <html>: его ставит composable useTheme
+   (по выбору пользователя или по prefers-color-scheme через matchMedia).
+   ========================================================== */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #1b1613;
+  --color-surface: #26201c;
+  --color-surface-soft: #332b25;
+  --color-text: #f2e9e1;
+  --color-muted: #b9aba1;
+  --color-border: #3f362f;
+  --color-accent: #e8865d;
+  --color-accent-hover: #f3a07d;
+  --color-accent-soft: #4a2b1f;
+  --color-on-accent: #1b1613;
+  --color-olive: #bccb8f;
+  --color-olive-soft: #323823;
+  --color-gold: #946616;
+
+  --color-chip-bg: rgba(27, 22, 19, 0.85);
+  --color-chip-text: #f2e9e1;
+
+  --accent-rgb: 232, 134, 93;
+  --focus-ring: rgba(232, 134, 93, 0.35);
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --cover-gradient: linear-gradient(120deg, rgba(74, 43, 31, 0.9), rgba(51, 43, 37, 0.85));
+  --toast-close-filter: none;
+}

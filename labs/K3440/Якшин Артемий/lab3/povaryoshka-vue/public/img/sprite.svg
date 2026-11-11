@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Общий SVG-спрайт «Поварёшки».
+    Все иконки нарисованы линией на сетке 24×24. Цвет берётся из currentColor,
+    толщина линии и заливка задаются в CSS (класс .icon), поэтому одна и та же
+    иконка подходит и для светлой, и для тёмной темы.
+    Использование: <svg class="icon"><use href="img/sprite.svg#icon-heart"></use></svg>
+  -->
+
+  <!-- поварёшка: логотип сайта -->
+  <symbol id="icon-ladle" viewBox="0 0 24 24">
+    <path d="M3 12h12a6 6 0 0 1-12 0z"/>
+    <path d="M15 12 21 3"/>
+  </symbol>
+
+  <!-- лупа: поиск рецептов -->
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="7"/>
+    <path d="m20 20-3.5-3.5"/>
+  </symbol>
+
+  <!-- три полоски разной длины: фильтры -->
+  <symbol id="icon-filter" viewBox="0 0 24 24">
+    <path d="M4 6h16M7 12h10M10 18h4"/>
+  </symbol>
+
+  <!-- сердечко: «Нравится» и число лайков -->
+  <symbol id="icon-heart" viewBox="0 0 24 24">
+    <path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/>
+  </symbol>
+
+  <!-- закладка: сохранить рецепт -->
+  <symbol id="icon-bookmark" viewBox="0 0 24 24">
+    <path d="M6 4h12v16l-6-4-6 4z"/>
+  </symbol>
+
+  <!-- часы: время приготовления -->
+  <symbol id="icon-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 7v5l3 2"/>
+  </symbol>
+
+  <!-- три столбика: сложность рецепта -->
+  <symbol id="icon-level" viewBox="0 0 24 24">
+    <path d="M6 20v-4M12 20v-8M18 20V6"/>
+  </symbol>
+
+  <!-- два человечка: количество порций -->
+  <symbol id="icon-users" viewBox="0 0 24 24">
+    <circle cx="9" cy="8" r="3.5"/>
+    <path d="M2.5 20a6.5 6.5 0 0 1 13 0"/>
+    <path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/>
+  </symbol>
+
+  <!-- облачко: комментарии -->
+  <symbol id="icon-comment" viewBox="0 0 24 24">
+    <path d="M4 5h16v11H9l-5 4z"/>
+  </symbol>
+
+  <!-- плюс: добавить рецепт -->
+  <symbol id="icon-plus" viewBox="0 0 24 24">
+    <path d="M12 5v14M5 12h14"/>
+  </symbol>
+
+  <!-- карандаш: изменить -->
+  <symbol id="icon-edit" viewBox="0 0 24 24">
+    <path d="M4 20h4L19 9l-4-4L4 16z"/>
+  </symbol>
+
+  <!-- мусорное ведро: удалить -->
+  <symbol id="icon-trash" viewBox="0 0 24 24">
+    <path d="M4 7h16M10 7V4h4v3M6 7l1 13h10l1-13"/>
+  </symbol>
+
+  <!-- метка на карте: город кулинара -->
+  <symbol id="icon-pin" viewBox="0 0 24 24">
+    <path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/>
+    <circle cx="12" cy="10" r="2"/>
+  </symbol>
+
+  <!-- дверь со стрелкой: выйти из аккаунта -->
+  <symbol id="icon-logout" viewBox="0 0 24 24">
+    <path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>
+  </symbol>
+
+  <!-- солнце: светлая тема -->
+  <symbol id="icon-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+  </symbol>
+
+  <!-- месяц: тёмная тема -->
+  <symbol id="icon-moon" viewBox="0 0 24 24">
+    <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>
+  </symbol>
+
+  <!-- монитор: тема как в системе -->
+  <symbol id="icon-screen" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="12" rx="2"/>
+    <path d="M8 20h8M12 16v4"/>
+  </symbol>
+</svg>
