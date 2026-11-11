@@ -1,0 +1,13 @@
+{
+  "name": "povaryoshka-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "«Поварёшка»: сайт рецептов на Bootstrap с моковым API на json-server",
+  "scripts": {
+    "start": "json-server db.json -m ./node_modules/json-server-auth -r routes.json --static . --port 3000"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}
