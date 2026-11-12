@@ -4,3 +4,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card-image img{transition:none}}
 .container{--bs-gutter-x:3rem}h1{overflow-wrap:anywhere}
 @media(max-width:575px){.row.g-5{--bs-gutter-x:2.4rem}}
+
+.skip-link{position:fixed;left:1rem;top:-100px;z-index:2000;background:var(--surface);color:var(--ink);padding:.8rem 1rem;border:2px solid var(--green);border-radius:4px}.skip-link:focus{top:1rem}.form-control::placeholder{color:#65705f}main:focus{outline:none}.form-error:focus,#profile-error:focus{outline:2px solid var(--accent);outline-offset:5px}[aria-invalid="true"]{border-color:#a52e22}
+@media(forced-colors:active){.btn,.recipe-card,.ingredients,.filter-panel,.auth-panel,.publish-panel{border:1px solid CanvasText}.btn:focus-visible,a:focus-visible{outline:3px solid Highlight}}
+:root{--muted:#5b665b}
