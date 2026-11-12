@@ -54,7 +54,7 @@ export async function api(path, { method = 'GET', body = {} } = {}) {
     if (method === 'PATCH') {
       const name = String(body.name || '').trim()
       const bio = String(body.bio || '').trim()
-      if (name.length < 2 || name.length > 60 || bio.length > 500) fail('Проверьте имя (2–60 символов) и описание (до 500 символов).')
+      if (name.length < 2 || name.length > 60 || bio.length > 500) fail('Проверьте имя (2-60 символов) и описание (до 500 символов).')
       Object.assign(user, { name, bio })
       return save(cleanUser(user))
     }
