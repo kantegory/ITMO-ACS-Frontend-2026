@@ -1,0 +1,27 @@
+[
+  {
+    "page": "catalog",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "page": "recipe",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "page": "login",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "page": "register",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "page": "author",
+    "score": 100,
+    "failures": []
+  }
+]
