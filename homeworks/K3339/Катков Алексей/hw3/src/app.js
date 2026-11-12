@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Modal, Collapse } from 'bootstrap'
 import './style.css'
+import { syncThemeControl } from './theme'
 import { api } from './api'
 import { session, saveSession } from './session'
 import { TYPES, DIFFICULTIES, PHOTOS, same, validateRecipe } from './validation'
@@ -33,9 +34,10 @@ function header() {
     <a class="brand" href="index.html">щепотка<span aria-hidden="true">.</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню">Меню</button>
     <div class="collapse navbar-collapse" id="navigation"><ul class="navbar-nav me-auto ms-lg-5 gap-lg-3"><li class="nav-item"><a class="nav-link ${page === 'index' ? 'active' : ''}" ${page === 'index' ? 'aria-current="page"' : ''} href="index.html">Рецепты</a></li><li class="nav-item"><a class="nav-link" href="profile.html#saved">Сохранённое</a></li></ul>
-    <div class="nav-actions">${user ? `<a class="nav-link" href="profile.html">${e(user.name.split(' ')[0])}</a><button class="text-button" data-action="logout">Выйти</button>` : '<a class="nav-link" href="login.html">Войти</a>'}<a class="btn btn-primary btn-sm" href="publish.html">Добавить рецепт</a></div></div>
+    <div class="nav-actions"><div class="theme-control"><label class="visually-hidden" for="theme-select">Цветовая тема</label><select class="form-select form-select-sm" id="theme-select"><option value="system">По системе</option><option value="light">Светлая</option><option value="dark">Тёмная</option></select></div>${user ? `<a class="nav-link" href="profile.html">${e(user.name.split(' ')[0])}</a><button class="text-button" data-action="logout">Выйти</button>` : '<a class="nav-link" href="login.html">Войти</a>'}<a class="btn btn-primary btn-sm" href="publish.html">Добавить рецепт</a></div></div>
   </div></nav>`
   new Collapse(document.querySelector("#navigation"), { toggle: false })
+  syncThemeControl()
 }
 
 function requireLogin() {
