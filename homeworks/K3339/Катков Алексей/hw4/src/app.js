@@ -3,6 +3,7 @@ import { Modal, Collapse } from 'bootstrap'
 import './style.css'
 import { syncThemeControl } from './theme'
 import { api } from './api'
+import { icon } from './icons'
 import { session, saveSession } from './session'
 import { TYPES, DIFFICULTIES, PHOTOS, same, validateRecipe } from './validation'
 
@@ -33,8 +34,8 @@ function header() {
   document.querySelector('#site-header').innerHTML = `<nav class="navbar navbar-expand-lg" aria-label="Основная навигация"><div class="container">
     <a class="brand" href="index.html">щепотка<span aria-hidden="true">.</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню">Меню</button>
-    <div class="collapse navbar-collapse" id="navigation"><ul class="navbar-nav me-auto ms-lg-5 gap-lg-3"><li class="nav-item"><a class="nav-link ${page === 'index' ? 'active' : ''}" ${page === 'index' ? 'aria-current="page"' : ''} href="index.html">Рецепты</a></li><li class="nav-item"><a class="nav-link" href="profile.html#saved">Сохранённое</a></li></ul>
-    <div class="nav-actions"><div class="theme-control"><label class="visually-hidden" for="theme-select">Цветовая тема</label><select class="form-select form-select-sm" id="theme-select"><option value="system">По системе</option><option value="light">Светлая</option><option value="dark">Тёмная</option></select></div>${user ? `<a class="nav-link" href="profile.html">${e(user.name.split(' ')[0])}</a><button class="text-button" data-action="logout">Выйти</button>` : '<a class="nav-link" href="login.html">Войти</a>'}<a class="btn btn-primary btn-sm" href="publish.html">Добавить рецепт</a></div></div>
+    <div class="collapse navbar-collapse" id="navigation"><ul class="navbar-nav me-auto ms-lg-5 gap-lg-3"><li class="nav-item"><a class="nav-link ${page === 'index' ? 'active' : ''}" ${page === 'index' ? 'aria-current="page"' : ''} href="index.html">Рецепты</a></li><li class="nav-item"><a class="nav-link" href="profile.html#saved">${icon('bookmark')}Сохранённое</a></li></ul>
+    <div class="nav-actions"><div class="theme-control"><label class="visually-hidden" for="theme-select">Цветовая тема</label><select class="form-select form-select-sm" id="theme-select"><option value="system">По системе</option><option value="light">Светлая</option><option value="dark">Тёмная</option></select></div>${user ? `<a class="nav-link" href="profile.html">${icon('user')}${e(user.name.split(' ')[0])}</a><button class="text-button" data-action="logout">Выйти</button>` : `<a class="nav-link" href="login.html">${icon('user')}Войти</a>`}<a class="btn btn-primary btn-sm" href="publish.html">Добавить рецепт</a></div></div>
   </div></nav>`
   new Collapse(document.querySelector("#navigation"), { toggle: false })
   syncThemeControl()
@@ -55,8 +56,8 @@ function cards(recipes, likes = []) {
   if (!recipes.length) return '<div class="empty-state"><h3 class="h5">Здесь пока нет рецептов</h3><p>Попробуйте изменить фильтры или добавьте свой рецепт.</p><a class="btn btn-outline-primary" href="index.html#catalog">Все рецепты</a></div>'
   return `<div class="row g-4">${recipes.map((r) => `<div class="col-sm-6 col-xl-4"><article class="recipe-card h-100">
     <a class="card-image" tabindex="-1" aria-hidden="true" href="${recipeLink(r.id)}"><img src="${e(r.image)}" alt="${e(r.title)}" width="700" height="700" loading="lazy"></a>
-    <div class="card-body"><div class="card-meta"><span>${e(r.type)}</span><span>${r.minutes} мин</span></div><h3><a href="${recipeLink(r.id)}">${e(r.title)}</a></h3><p>${e(r.description)}</p>
-    <div class="card-bottom"><a href="${authorLink(r.userId)}">${e(authorName(r.userId))}</a><span class="card-likes" aria-label="Отметок нравится: ${likes.filter((l) => same(l.recipeId, r.id)).length}">♡ ${likes.filter((l) => same(l.recipeId, r.id)).length}</span></div></div>
+    <div class="card-body"><div class="card-meta"><span>${e(r.type)}</span><span>${icon('clock')}${r.minutes} мин</span></div><h3><a href="${recipeLink(r.id)}">${e(r.title)}</a></h3><p>${e(r.description)}</p>
+    <div class="card-bottom"><a href="${authorLink(r.userId)}">${e(authorName(r.userId))}</a><span class="card-likes" aria-label="Отметок нравится: ${likes.filter((l) => same(l.recipeId, r.id)).length}">${icon('heart')} ${likes.filter((l) => same(l.recipeId, r.id)).length}</span></div></div>
   </article></div>`).join('')}</div>`
 }
 
@@ -69,7 +70,7 @@ async function catalog() {
     <form id="filters" class="filter-panel" role="search" aria-label="Поиск рецептов"><div class="row g-3"><div class="col-lg-4"><label for="search" class="form-label">Название или описание</label><input class="form-control" type="search" id="search" name="search" maxlength="100" placeholder="Паста, пирог, завтрак…" value="${e(query.get('search') || '')}"></div>
     <div class="col-sm-6 col-lg-2"><label for="type" class="form-label">Тип блюда</label><select id="type" name="type" class="form-select">${options(TYPES, query.get('type'))}</select></div>
     <div class="col-sm-6 col-lg-2"><label for="difficulty" class="form-label">Сложность</label><select id="difficulty" name="difficulty" class="form-select">${options(DIFFICULTIES, query.get('difficulty'))}</select></div>
-    <div class="col-sm-8 col-lg-3"><label for="ingredient" class="form-label">Ингредиент</label><input id="ingredient" name="ingredient" maxlength="80" class="form-control" placeholder="Например, томаты" value="${e(query.get('ingredient') || '')}"></div><div class="col-sm-4 col-lg-1 d-flex align-items-end"><button type="submit" class="btn btn-primary w-100" aria-label="Найти рецепты">Найти</button></div></div>
+    <div class="col-sm-8 col-lg-3"><label for="ingredient" class="form-label">Ингредиент</label><input id="ingredient" name="ingredient" maxlength="80" class="form-control" placeholder="Например, томаты" value="${e(query.get('ingredient') || '')}"></div><div class="col-sm-4 col-lg-1 d-flex align-items-end"><button type="submit" class="btn btn-primary w-100" aria-label="Найти рецепты">${icon('search')}Найти</button></div></div>
     <div class="filter-bottom"><a href="index.html#catalog">Сбросить фильтры</a><div class="sort"><label for="sort">Порядок:</label><select id="sort" name="sort" class="form-select form-select-sm"><option value="new">Сначала новые</option><option value="quick" ${query.get('sort') === 'quick' ? 'selected' : ''}>Сначала быстрые</option></select></div></div></form>
     <div class="results-heading"><p id="results-count">Найдено рецептов: <strong>${recipes.length}</strong></p><div class="category-links">${['Завтрак', 'Салат', 'Выпечка'].map((t) => `<a href="index.html?type=${encodeURIComponent(t)}#catalog">${t}</a>`).join('')}</div></div>
     ${cards(recipes, likes)}</section>`
@@ -82,8 +83,8 @@ async function recipe() {
   const liked = likes.find((l) => same(l.userId, user?.id))
   const bookmark = saved.find((s) => same(s.recipeId, id))
   main.innerHTML = `<div class="container page-space"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html#catalog">Все рецепты</a><span aria-hidden="true">/</span><span aria-current="page">${e(r.title)}</span></nav>
-    <div class="row g-5 align-items-center recipe-intro"><div class="col-lg-6"><p class="eyebrow">${e(r.type)}</p><h1>${e(r.title)}</h1><p class="lead-text">${e(r.description)}</p><div class="recipe-stats"><span>${r.minutes} минут</span><span>${r.servings} порц.</span><span>${e(r.difficulty)}</span></div><p class="author-line">Рецепт от <a href="${authorLink(r.userId)}">${e(authorName(r.userId))}</a></p>
-    <div class="action-row"><button class="btn ${liked ? 'btn-primary' : 'btn-outline-primary'}" data-action="like" data-id="${e(liked?.id || '')}" data-recipe="${e(id)}" aria-pressed="${!!liked}">Нравится · ${likes.length}</button><button class="btn ${bookmark ? 'btn-primary' : 'btn-outline-primary'}" data-action="save" data-id="${e(bookmark?.id || '')}" data-recipe="${e(id)}" aria-pressed="${!!bookmark}">${bookmark ? 'Сохранено' : 'Сохранить рецепт'}</button></div></div>
+    <div class="row g-5 align-items-center recipe-intro"><div class="col-lg-6"><p class="eyebrow">${e(r.type)}</p><h1>${e(r.title)}</h1><p class="lead-text">${e(r.description)}</p><div class="recipe-stats"><span>${icon('clock')}${r.minutes} минут</span><span>${r.servings} порц.</span><span>${e(r.difficulty)}</span></div><p class="author-line">Рецепт от <a href="${authorLink(r.userId)}">${e(authorName(r.userId))}</a></p>
+    <div class="action-row"><button class="btn ${liked ? 'btn-primary' : 'btn-outline-primary'}" data-action="like" data-id="${e(liked?.id || '')}" data-recipe="${e(id)}" aria-pressed="${!!liked}">${icon('heart')}Нравится · ${likes.length}</button><button class="btn ${bookmark ? 'btn-primary' : 'btn-outline-primary'}" data-action="save" data-id="${e(bookmark?.id || '')}" data-recipe="${e(id)}" aria-pressed="${!!bookmark}">${icon('bookmark')}${bookmark ? 'Сохранено' : 'Сохранить рецепт'}</button></div></div>
     <div class="col-lg-6"><img class="detail-photo" src="${e(r.image)}" alt="Готовое блюдо: ${e(r.title)}" width="700" height="700"></div></div>
     <div class="row g-5 recipe-body"><aside class="col-lg-4"><section class="ingredients" aria-labelledby="ingredients-title"><h2 id="ingredients-title">Ингредиенты</h2><p class="quiet">На ${r.servings} порц.</p><ul role="list">${r.ingredients.map((i) => `<li><span>${e(i.name)}</span><strong>${e(i.amount)}</strong></li>`).join('')}</ul></section></aside>
     <div class="col-lg-8"><section aria-labelledby="steps-title"><h2 id="steps-title">Как приготовить</h2><ol class="steps" role="list">${r.steps.map((s) => `<li><p>${e(s)}</p></li>`).join('')}</ol></section>

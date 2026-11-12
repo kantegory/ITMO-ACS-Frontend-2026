@@ -16,3 +16,5 @@
 .nav-actions{flex-wrap:wrap;gap:.8rem}.theme-control .form-select{min-height:40px;width:130px;font-size:.78rem;padding:.45rem 1.8rem .45rem .65rem}.theme-control{flex-shrink:0}
 .navbar-nav .nav-link.active,.navbar-nav .nav-link.show{color:var(--ink)}.form-control::placeholder{color:var(--placeholder)}
 .btn,.nav-link,.form-control,.form-select{transition:none}
+
+.icon{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;flex-shrink:0}.btn{display:inline-flex;align-items:center;justify-content:center}.btn .icon,.nav-link .icon{margin-right:.35rem}.card-likes,.card-meta span:last-child,.recipe-stats span{display:inline-flex;align-items:center;gap:.3rem}

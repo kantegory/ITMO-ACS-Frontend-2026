@@ -8,7 +8,7 @@ mkdirSync(directory, { recursive: true })
 const env = { ...process.env }
 const edge = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 if (!env.CHROME_PATH && process.platform === 'win32' && existsSync(edge)) env.CHROME_PATH = edge
-const base = process.env.AUDIT_URL || 'http://127.0.0.1:5176/'
+const base = process.env.AUDIT_URL || 'http://127.0.0.1:5178/'
 const summary = []
 for (const [name, path] of [['catalog', 'index.html'], ['recipe', 'recipe.html?id=1'], ['login', 'login.html'], ['register', 'register.html'], ['author', 'author.html?id=2']]) {
   console.log(`Accessibility audit: ${name}`)
