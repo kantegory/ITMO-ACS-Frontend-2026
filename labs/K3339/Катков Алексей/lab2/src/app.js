@@ -161,6 +161,7 @@ document.addEventListener('submit', async (event) => {
       location.href = recipeLink(result.id)
     }
   } catch (error) {
+    if (error.status === 401 && user) { user = null; header() }
     const target = form.querySelector('.form-error, #profile-error')
     if (target) target.textContent = error.message
     else notice(error.message, true)
@@ -193,7 +194,10 @@ document.addEventListener('click', async (event) => {
       await recipe()
       notice('Комментарий удалён.')
     }
-  } catch (error) { notice(error.message, true) }
+  } catch (error) {
+    if (error.status === 401) { user = null; header() }
+    notice(error.message, true)
+  }
   finally { button.disabled = false }
 })
 
