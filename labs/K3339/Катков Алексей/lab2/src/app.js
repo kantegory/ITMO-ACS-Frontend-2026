@@ -16,6 +16,7 @@ const authorLink = (id) => `author.html?id=${encodeURIComponent(id)}`
 const date = (value) => new Intl.DateTimeFormat('ru', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(value))
 let user = null
 let authors = []
+const readyDialogs = new WeakSet()
 
 function notice(text, error = false) {
   const target = document.querySelector('#notice')
@@ -154,7 +155,9 @@ document.addEventListener('submit', async (event) => {
       saveSession({ ...session(), user })
       const modal = document.querySelector('#profile-modal')
       modal.addEventListener('hidden.bs.modal', async () => { authors = await api("/authors"); header(); await profile(); notice('Профиль обновлён.') }, { once: true })
-      Modal.getInstance(modal).hide()
+      const hide = () => Modal.getInstance(modal).hide()
+      if (readyDialogs.has(modal)) hide()
+      else modal.addEventListener('shown.bs.modal', hide, { once: true })
     } else if (form.id === 'publish-form') {
       const body = validateRecipe({ ...data, ingredients: data.ingredients.split('\n').filter((line) => line.trim()).map((line) => { const [name, ...amount] = line.split('|'); return { name, amount: amount.join('|') } }), steps: data.steps.split('\n').filter((line) => line.trim()) })
       const result = await api('/recipes', { method: 'POST', body })
@@ -217,3 +220,6 @@ async function init() {
 }
 
 init()
+
+document.addEventListener('show.bs.modal', (event) => readyDialogs.delete(event.target))
+document.addEventListener('shown.bs.modal', (event) => readyDialogs.add(event.target))
