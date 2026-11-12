@@ -76,7 +76,7 @@ async function catalog() {
 async function recipe() {
   const id = params().get('id') || '1'
   const [r, comments, likes, saved] = await Promise.all([api(`/recipes/${encodeURIComponent(id)}`), api(`/comments?recipeId=${encodeURIComponent(id)}`), api(`/likes?recipeId=${encodeURIComponent(id)}`), user ? api('/saved') : []])
-  document.title = `${r.title} — Щепотка`
+  document.title = `${r.title} - Щепотка`
   const liked = likes.find((l) => same(l.userId, user?.id))
   const bookmark = saved.find((s) => same(s.recipeId, id))
   main.innerHTML = `<div class="container page-space"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html#catalog">Все рецепты</a><span aria-hidden="true">/</span><span aria-current="page">${e(r.title)}</span></nav>
@@ -106,7 +106,7 @@ async function authorPage() {
   const id = params().get('id') || '2'
   const [author, recipes, likes, follows] = await Promise.all([api(`/authors/${encodeURIComponent(id)}`), api(`/recipes?authorId=${encodeURIComponent(id)}`), api('/likes'), user ? api('/follows') : []])
   const follow = follows.find((f) => same(f.authorId, id))
-  document.title = `${author.name} — Щепотка`
+  document.title = `${author.name} - Щепотка`
   main.innerHTML = `<div class="container page-space"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Рецепты</a><span aria-hidden="true">/</span><span>Кулинары</span></nav><section class="profile-heading"><div class="avatar" aria-hidden="true">${e(author.name[0])}</div><div><p class="eyebrow">ДОМАШНЯЯ КУХНЯ</p><h1>${e(author.name)}</h1><p class="mb-0">${e(author.bio || 'Делится любимыми рецептами.')}</p></div>${same(user?.id, author.id) ? '<a class="btn btn-outline-primary ms-lg-auto" href="profile.html">Мой профиль</a>' : `<button class="btn ${follow ? 'btn-outline-primary' : 'btn-primary'} ms-lg-auto" data-action="follow" data-id="${e(follow?.id || '')}" data-author="${e(id)}" aria-pressed="${!!follow}">${follow ? 'Вы подписаны' : 'Подписаться'}</button>`}</section><section class="profile-section" aria-labelledby="author-recipes"><div class="section-heading"><h2 id="author-recipes">Рецепты автора</h2><span class="quiet">Всего: ${recipes.length}</span></div>${cards(recipes, likes)}</section></div>`
 }
 

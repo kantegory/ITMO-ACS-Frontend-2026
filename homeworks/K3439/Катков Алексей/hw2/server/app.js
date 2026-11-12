@@ -77,7 +77,7 @@ export function createApi({ dbPath = resolve(import.meta.dirname, '../.runtime/d
     const user = current(req)
     const name = String(req.body.name || '').trim()
     const bio = String(req.body.bio || '').trim()
-    if (name.length < 2 || name.length > 60 || bio.length > 500) error('Проверьте имя (2–60 символов) и описание (до 500 символов).')
+    if (name.length < 2 || name.length > 60 || bio.length > 500) error('Проверьте имя (2-60 символов) и описание (до 500 символов).')
     const updated = { ...user, name, bio }
     replace('users', list('users').map((item) => same(item.id, user.id) ? updated : item))
     res.json(cleanUser(updated))
