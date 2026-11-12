@@ -1,0 +1,10 @@
+{
+  "name": "stolik-lab2",
+  "private": true,
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "dependencies": {
+    "json-server": "0.17.4"
+  }
+}

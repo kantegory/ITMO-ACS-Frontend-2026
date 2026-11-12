@@ -1,0 +1,8 @@
+/* ДЗ2: контраст, заметный фокус, системные настройки движения. */
+:root{--accent:#913c2a;--accent-dark:#762b1d;--muted:#495b53}
+a:not(.btn):not(.brand){text-decoration:underline;text-underline-offset:.18em}
+:focus-visible{outline:3px solid #174f67!important;outline-offset:3px}
+.btn:focus-visible,.form-control:focus-visible,.form-select:focus-visible{box-shadow:0 0 0 4px #fff,0 0 0 7px #174f67}
+.empty{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media(forced-colors:active){.brand-mark,.tag,.btn-primary{border:1px solid ButtonText}.restaurant-card,.surface,.filter-panel{border:1px solid CanvasText}}
