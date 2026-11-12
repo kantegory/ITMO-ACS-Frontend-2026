@@ -7,5 +7,5 @@
     </div>
   </header>
   <main id="main" class="container py-5" tabindex="-1"><slot /></main>
-  <footer class="container py-4 border-top text-secondary small">Катков Алексей · K3339 · ДЗ5</footer>
+  <footer class="container py-4 border-top text-secondary small">Катков Алексей · K3439 · ДЗ5</footer>
 </template>

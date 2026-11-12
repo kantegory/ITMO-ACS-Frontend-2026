@@ -22,7 +22,7 @@ export const useNotesStore = defineStore('notes', {
         const saved = await notesApi.createNote(note)
         this.notes.unshift(saved)
       } catch {
-        this.error = 'Не удалось сохранить заметку. Текст остался в форме — попробуйте ещё раз.'
+        this.error = 'Не удалось сохранить заметку. Текст остался в форме - попробуйте ещё раз.'
         throw new Error(this.error)
       } finally {
         this.saving = false
