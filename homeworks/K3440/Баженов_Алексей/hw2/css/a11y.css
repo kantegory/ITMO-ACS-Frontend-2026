@@ -1,0 +1,33 @@
+.skip-link:focus {
+    position: fixed;
+    top: .5rem;
+    left: .5rem;
+    z-index: 2000;
+    padding: .5rem 1rem;
+    background: #fff;
+    color: #212529;
+    border: 2px solid var(--accent);
+    border-radius: .375rem;
+}
+
+main:focus {
+    outline: none;
+}
+
+.text-muted {
+    color: #595f65 !important;
+}
+
+.rating {
+    color: #9a5b00;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}

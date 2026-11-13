@@ -1,0 +1,14 @@
+{
+  "name": "lab2-restaurants-api",
+  "version": "1.0.0",
+  "description": "ЛР2: сайт бронирования столиков + моковое API (json-server, json-server-auth)",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "json-server": "0.17.4",
+    "json-server-auth": "2.1.0"
+  }
+}

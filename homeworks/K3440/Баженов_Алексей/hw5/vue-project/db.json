@@ -1,0 +1,29 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "name": "1 заметка",
+      "text": "Это текст первой заметки",
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "name": "2 заметка",
+      "text": "Текст второй",
+      "userId": 1
+    },
+    {
+      "id": "3",
+      "name": "Третья заметка",
+      "text": "Габен сразу создаст 4(",
+      "userId": 1
+    },
+    {
+      "name": "ваииваиви",
+      "text": "виав",
+      "userId": 1,
+      "id": "Na2Y8LoTaTY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,384 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "La Trattoria",
+      "cuisine": "italian",
+      "cuisineLabel": "Итальянская",
+      "district": "center",
+      "districtLabel": "Центр",
+      "price": 2,
+      "rating": 4.7,
+      "photo": 1,
+      "address": "Кронверкский пр., 49",
+      "hours": "с 11:00 до 23:00",
+      "description": "Уютный итальянский ресторан в центре города.",
+      "menu": [
+        {
+          "name": "Пицца Маргарита",
+          "price": 550
+        },
+        {
+          "name": "Паста Карбонара",
+          "price": 590
+        },
+        {
+          "name": "Тирамису",
+          "price": 380
+        }
+      ],
+      "photos": [
+        {
+          "photo": 1,
+          "label": "Зал ресторана"
+        },
+        {
+          "photo": 2,
+          "label": "Блюда ресторана"
+        },
+        {
+          "photo": 3,
+          "label": "Летняя веранда"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Токио Тэй",
+      "cuisine": "japanese",
+      "cuisineLabel": "Японская",
+      "district": "north",
+      "districtLabel": "Север",
+      "price": 3,
+      "rating": 4.8,
+      "photo": 2,
+      "address": "ул. Савушкина, 12",
+      "hours": "с 12:00 до 24:00",
+      "description": "Японская кухня и сезонное меню от шеф-повара.",
+      "menu": [
+        {
+          "name": "Рамен с свининой",
+          "price": 690
+        },
+        {
+          "name": "Сашими-сет",
+          "price": 1290
+        },
+        {
+          "name": "Моти",
+          "price": 320
+        }
+      ],
+      "photos": [
+        {
+          "photo": 2,
+          "label": "Зал ресторана"
+        },
+        {
+          "photo": 1,
+          "label": "Блюда ресторана"
+        },
+        {
+          "photo": 3,
+          "label": "Суши-бар"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Хинкальная №1",
+      "cuisine": "georgian",
+      "cuisineLabel": "Грузинская",
+      "district": "center",
+      "districtLabel": "Центр",
+      "price": 1,
+      "rating": 4.5,
+      "photo": 3,
+      "address": "Большой пр. П.С., 31",
+      "hours": "с 10:00 до 23:00",
+      "description": "Домашние хинкали и хачапури по доступным ценам.",
+      "menu": [
+        {
+          "name": "Хинкали (5 шт.)",
+          "price": 350
+        },
+        {
+          "name": "Хачапури по-аджарски",
+          "price": 420
+        },
+        {
+          "name": "Лобио",
+          "price": 280
+        }
+      ],
+      "photos": [
+        {
+          "photo": 3,
+          "label": "Зал ресторана"
+        },
+        {
+          "photo": 1,
+          "label": "Блюда ресторана"
+        },
+        {
+          "photo": 2,
+          "label": "Открытая кухня"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Le Petit Paris",
+      "cuisine": "french",
+      "cuisineLabel": "Французская",
+      "district": "south",
+      "districtLabel": "Юг",
+      "price": 3,
+      "rating": 4.6,
+      "photo": 1,
+      "address": "Московский пр., 88",
+      "hours": "с 12:00 до 23:00",
+      "description": "Классическая французская кухня и винная карта.",
+      "menu": [
+        {
+          "name": "Луковый суп",
+          "price": 540
+        },
+        {
+          "name": "Утиная грудка",
+          "price": 1190
+        },
+        {
+          "name": "Крем-брюле",
+          "price": 430
+        }
+      ],
+      "photos": [
+        {
+          "photo": 1,
+          "label": "Зал ресторана"
+        },
+        {
+          "photo": 3,
+          "label": "Блюда ресторана"
+        },
+        {
+          "photo": 2,
+          "label": "Винная комната"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sakura Garden",
+      "cuisine": "japanese",
+      "cuisineLabel": "Японская",
+      "district": "center",
+      "districtLabel": "Центр",
+      "price": 2,
+      "rating": 4.4,
+      "photo": 2,
+      "address": "ул. Рубинштейна, 20",
+      "hours": "с 11:00 до 23:00",
+      "description": "Суши, роллы и горячие блюда в саду на крыше.",
+      "menu": [
+        {
+          "name": "Ролл Калифорния",
+          "price": 490
+        },
+        {
+          "name": "Удон с курицей",
+          "price": 460
+        },
+        {
+          "name": "Тартар из лосося",
+          "price": 620
+        }
+      ],
+      "photos": [
+        {
+          "photo": 2,
+          "label": "Зал ресторана"
+        },
+        {
+          "photo": 3,
+          "label": "Блюда ресторана"
+        },
+        {
+          "photo": 1,
+          "label": "Садовая терраса"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Тбилисо",
+      "cuisine": "georgian",
+      "cuisineLabel": "Грузинская",
+      "district": "north",
+      "districtLabel": "Север",
+      "price": 2,
+      "rating": 4.9,
+      "photo": 3,
+      "address": "Выборгская наб., 5",
+      "hours": "с 12:00 до 24:00",
+      "description": "Грузинская кухня на мангале и живая музыка по вечерам.",
+      "menu": [
+        {
+          "name": "Шашлык из баранины",
+          "price": 780
+        },
+        {
+          "name": "Сациви",
+          "price": 520
+        },
+        {
+          "name": "Чурчхела",
+          "price": 190
+        }
+      ],
+      "photos": [
+        {
+          "photo": 3,
+          "label": "Зал ресторана"
+        },
+        {
+          "photo": 2,
+          "label": "Блюда ресторана"
+        },
+        {
+          "photo": 1,
+          "label": "Мангальная зона"
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "restaurantId": 1,
+      "author": "Анна",
+      "rating": 5,
+      "text": "Лучшая карбонара в городе!"
+    },
+    {
+      "id": 2,
+      "restaurantId": 1,
+      "author": "Михаил",
+      "rating": 4,
+      "text": "Вкусно, но вечером шумновато."
+    },
+    {
+      "id": 3,
+      "restaurantId": 2,
+      "author": "Ольга",
+      "rating": 5,
+      "text": "Свежайшая рыба, отличный сервис."
+    },
+    {
+      "id": 4,
+      "restaurantId": 3,
+      "author": "Дмитрий",
+      "rating": 5,
+      "text": "Хинкали как в Тбилиси, и недорого."
+    },
+    {
+      "id": 5,
+      "restaurantId": 4,
+      "author": "Елена",
+      "rating": 4,
+      "text": "Красивый зал, десерты выше всяких похвал."
+    },
+    {
+      "id": 6,
+      "restaurantId": 5,
+      "author": "Сергей",
+      "rating": 4,
+      "text": "Хорошие роллы, летом очень приятная терраса."
+    },
+    {
+      "id": 7,
+      "restaurantId": 6,
+      "author": "Нино",
+      "rating": 5,
+      "text": "Шашлык и музыка — идеальный вечер."
+    },
+    {
+      "id": 8,
+      "restaurantId": 6,
+      "author": "Артём",
+      "rating": 5,
+      "text": "Самый вкусный сациви."
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "restaurantId": 1,
+      "date": "2026-11-15",
+      "time": "19:00",
+      "guests": 4,
+      "status": "confirmed"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "restaurantId": 2,
+      "date": "2026-11-20",
+      "time": "20:30",
+      "guests": 2,
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "restaurantId": 6,
+      "date": "2026-10-02",
+      "time": "18:00",
+      "guests": 6,
+      "status": "completed"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "restaurantId": 3,
+      "date": "2026-09-14",
+      "time": "13:00",
+      "guests": 3,
+      "status": "cancelled"
+    },
+    {
+      "userId": 2,
+      "restaurantId": 1,
+      "date": "45454-05-05",
+      "time": "05:45",
+      "guests": 2,
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "restaurantId": 1,
+      "date": "2026-11-07",
+      "time": "10:00",
+      "guests": 5,
+      "status": "pending",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Иван Иванов",
+      "email": "ivan@example.com",
+      "password": "$2a$10$UfI8cTxMgICVDvprhmsSr.wjdhe2DlKEGdJVN8PKB8XF7/nJ3uuXy"
+    },
+    {
+      "email": "alex@gmail.com",
+      "password": "$2a$10$Kj8R1lknHUecAnSPGKrTp.trp5D2ZvTBezVgrpVFu1tWYCsJvQI7K",
+      "name": "alex",
+      "id": 2
+    }
+  ]
+}
