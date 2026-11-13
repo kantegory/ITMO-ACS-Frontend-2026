@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход — JobHub</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#bfe4ff">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#briefcase-fill"/></svg></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">Как это работает</a></li>
+        </ul>
+        <div class="d-flex gap-2 mt-3 mt-lg-0">
+          <a href="register.html" class="btn btn-outline-primary">
+            <svg aria-hidden="true" class="icon me-1" focusable="false"><use href="img/sprite.svg#person-plus"/></svg>Регистрация
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-5 d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Вход</li>
+          </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <span class="brand-mark mx-auto mb-2" style="width:44px;height:44px;font-size:1.3rem;">
+                <svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#briefcase-fill"/></svg>
+              </span>
+              <h1 class="h4 fw-bold">Вход в личный кабинет</h1>
+              <p class="text-muted small">Введите ваши учётные данные для продолжения</p>
+            </div>
+
+            <form novalidate id="loginForm" aria-label="Вход в личный кабинет">
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Электронная почта</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#envelope"/></svg></span>
+                  <input type="email" class="form-control" id="loginEmail" autocomplete="email" placeholder="you@example.com" value="faralones67@gmail.com" required>
+                </div>
+                <div class="invalid-feedback">Введите корректный email.</div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <label for="loginPassword" class="form-label mb-0">Пароль</label>
+                  <a href="#" class="small link-secondary" data-toast="Ссылка для сброса пароля отправлена на email">Забыли пароль?</a>
+                </div>
+                <div class="input-group mt-1">
+                  <span class="input-group-text bg-white"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#lock"/></svg></span>
+                  <input type="password" class="form-control" id="loginPassword" autocomplete="current-password" placeholder="Введите пароль" value="password123" minlength="6" required>
+                </div>
+                <div class="invalid-feedback">Пароль должен содержать от 6 символов.</div>
+              </div>
+
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="loginRemember">
+                <label class="form-check-label small" for="loginRemember">Запомнить меня на этом устройстве</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+                <svg aria-hidden="true" class="icon me-1" focusable="false"><use href="img/sprite.svg#box-arrow-in-right"/></svg>Войти
+              </button>
+              
+              <div class="text-center small text-muted mb-2">
+                Тестовые данные:<br>
+                Соискатель: faralones67@gmail.com / password123<br>
+                Работодатель: hr@yandex.ru / employer123
+              </div>
+            </form>
+          </div>
+          <div class="card-footer bg-white border-0 text-center pb-4 pt-0">
+            <span class="text-muted small">Ещё нет аккаунта?</span>
+            <a href="register.html" class="small fw-semibold ms-1">Зарегистрироваться</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/a11y.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

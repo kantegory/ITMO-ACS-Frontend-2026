@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кабинет работодателя — JobHub</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#bfe4ff">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
+
+<header class="site-header shadow-sm position-sticky top-0">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <span class="brand-mark"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#briefcase-fill"/></svg></span>
+        JobHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
+          <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
+          <li class="nav-item"><a class="nav-link" href="account.html">Личный кабинет</a></li>
+        </ul>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0" id="navAuth"></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Кабинет работодателя</li>
+      </ol>
+    </nav>
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+      <div>
+        <h1 class="h3 mb-1">Кабинет работодателя</h1>
+        <p class="text-muted mb-0">Яндекс · управление вакансиями и откликами</p>
+      </div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newVacancyModal">
+        <svg aria-hidden="true" class="icon me-1" focusable="false"><use href="img/sprite.svg#plus-lg"/></svg>Разместить вакансию
+      </button>
+    </div>
+
+
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-muted mb-1">Вакансии</div>
+                <div class="stat-value" id="employerVacanciesCount">4</div>
+              </div>
+              <span class="stat-icon bg-primary-subtle text-primary"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#briefcase"/></svg></span>
+            </div>
+            <div class="small text-muted mt-2">Активных: <span id="employerActiveCount">3</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-muted mb-1">Просмотры</div>
+                <div class="stat-value">2 418</div>
+              </div>
+              <span class="stat-icon bg-success-subtle text-success"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#eye"/></svg></span>
+            </div>
+            <div class="small text-success mt-2"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#arrow-up"/></svg> +12% за неделю</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-muted mb-1">Отклики</div>
+                <div class="stat-value">37</div>
+              </div>
+              <span class="stat-icon bg-warning-subtle text-warning"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#send"/></svg></span>
+            </div>
+            <div class="small text-muted mt-2">Новых: 9</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="card stat-card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-muted mb-1">Конверсия</div>
+                <div class="stat-value">14%</div>
+              </div>
+              <span class="stat-icon bg-danger-subtle text-danger"><svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#graph-up-arrow"/></svg></span>
+            </div>
+            <div class="small text-muted mt-2">Отклик → интервью</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white py-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <h2 class="h6 mb-0">Мои вакансии</h2>
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newVacancyModal">
+              <svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#plus-lg"/></svg> Добавить
+            </button>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle mb-0" id="employerVacancies">
+<caption class="visually-hidden">Мои вакансии</caption>
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Вакансия</th>
+                  <th scope="col">Зарплата</th>
+                  <th scope="col">Статус</th>
+                  <th scope="col" class="text-center">Отклики</th>
+                  <th scope="col">Опубликована</th>
+                  <th scope="col" class="text-end">Действия</th>
+                </tr>
+              </thead>
+              <tbody id="employerBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+            <h2 class="h6 mb-0">Новые отклики</h2>
+            <span class="badge text-bg-primary">9</span>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+              <li class="d-flex gap-3">
+                <span class="application-avatar">ДФ</span>
+                <div class="flex-grow-1">
+                  <div class="fw-semibold">Денис Фёдоров</div>
+                  <div class="small text-muted">Senior Frontend-разработчик · 5 опыта</div>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Действия">
+                    <svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#three-dots-vertical"/></svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" data-toast="Приглашение отправлено">Пригласить</button></li>
+                    <li><button class="dropdown-item" data-toast="Отказ отправлен">Отказать</button></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="d-flex gap-3">
+                <span class="application-avatar">МК</span>
+                <div class="flex-grow-1">
+                  <div class="fw-semibold">Мария Ковалёва</div>
+                  <div class="small text-muted">Backend-разработчик Go · 3 года опыта</div>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Действия">
+                    <svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#three-dots-vertical"/></svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" data-toast="Приглашение отправлено">Пригласить</button></li>
+                    <li><button class="dropdown-item" data-toast="Отказ отправлен">Отказать</button></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="d-flex gap-3">
+                <span class="application-avatar">ИП</span>
+                <div class="flex-grow-1">
+                  <div class="fw-semibold">Иван Петров</div>
+                  <div class="small text-muted">Менеджер по продажам B2B · 4 года опыта</div>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Действия">
+                    <svg aria-hidden="true" class="icon" focusable="false"><use href="img/sprite.svg#three-dots-vertical"/></svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" data-toast="Приглашение отправлено">Пригласить</button></li>
+                    <li><button class="dropdown-item" data-toast="Отказ отправлен">Отказать</button></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer bg-white py-3 text-center">
+            <a href="#" class="small">Посмотреть все отклики</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<div class="modal fade" id="newVacancyModal" tabindex="-1" aria-labelledby="newVacancyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <form id="newVacancyForm" novalidate aria-label="Новая вакансия">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="newVacancyModalLabel">Новая вакансия</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="newVacancyTitle" class="form-label">Название вакансии</label>
+              <input type="text" class="form-control" id="newVacancyTitle" placeholder="Например: Product Manager" required>
+              <div class="invalid-feedback">Укажите название.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="newVacancyIndustry" class="form-label">Отрасль</label>
+              <select class="form-select" id="newVacancyIndustry" required>
+                <option value="">Выберите отрасль</option>
+                <option value="IT">IT и телеком</option>
+                <option value="finance">Финансы и банки</option>
+                <option value="trade">Торговля</option>
+                <option value="marketing">Маркетинг и реклама</option>
+                <option value="education">Образование</option>
+                <option value="medicine">Медицина</option>
+              </select>
+              <div class="invalid-feedback">Выберите отрасль.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="newVacancySalary" class="form-label">Зарплата</label>
+              <input type="text" class="form-control" id="newVacancySalary" placeholder="от 150 000 ₽" required>
+              <div class="invalid-feedback">Укажите зарплату.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="newVacancyExperience" class="form-label">Опыт работы</label>
+              <select class="form-select" id="newVacancyExperience">
+                <option>Без опыта</option>
+                <option>1–3 года</option>
+                <option>3–6 лет</option>
+                <option>Более 6 лет</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="newVacancyFormat" class="form-label">Формат работы</label>
+              <select class="form-select" id="newVacancyFormat">
+                <option>Офис</option>
+                <option>Гибрид</option>
+                <option>Удалённо</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="newVacancyDescription" class="form-label">Описание и требования</label>
+              <textarea class="form-control" id="newVacancyDescription" rows="4" required></textarea>
+              <div class="invalid-feedback">Опишите вакансию.</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary"><svg aria-hidden="true" class="icon me-1" focusable="false"><use href="img/sprite.svg#send"/></svg>Опубликовать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="vacancyModal" tabindex="-1" aria-labelledby="vacancyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form id="vacancyForm" novalidate aria-label="Редактирование вакансии">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="vacancyModalLabel">Редактирование вакансии</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="vacancyTitle" class="form-label">Название</label>
+            <input type="text" class="form-control" id="vacancyTitle" required>
+            <div class="invalid-feedback">Укажите название.</div>
+          </div>
+          <div class="mb-3">
+            <label for="vacancyIndustry" class="form-label">Отрасль</label>
+            <select class="form-select" id="vacancyIndustry" required>
+              <option value="IT">IT и телеком</option>
+              <option value="finance">Финансы и банки</option>
+              <option value="trade">Торговля</option>
+              <option value="marketing">Маркетинг и реклама</option>
+              <option value="education">Образование</option>
+              <option value="medicine">Медицина</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="vacancySalary" class="form-label">Зарплата</label>
+            <input type="text" class="form-control" id="vacancySalary" required>
+            <div class="invalid-feedback">Укажите зарплату.</div>
+          </div>
+          <div class="mb-0">
+            <label for="vacancyStatus" class="form-label">Статус</label>
+            <select class="form-select" id="vacancyStatus">
+              <option value="active">Активна</option>
+              <option value="closed">Архив</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteVacancyModal" tabindex="-1" aria-labelledby="deleteVacancyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="deleteVacancyModalLabel">Удалить вакансию?</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-0">Вакансия «<span id="deleteVacancyName" class="fw-semibold"></span>» будет удалена без возможности восстановления.
+          Все отклики по этой вакансии также будут скрыты.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteVacancy"><svg aria-hidden="true" class="icon me-1" focusable="false"><use href="img/sprite.svg#trash"/></svg>Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="appToastBody">Готово</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/employer-page.js"></script>
+<script src="js/a11y.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
