@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Комната занятия — Вместе</title>
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container-xl py-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <a class="brand" href="index.html">ВМЕСТЕ</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="index.html">Занятия</a>
+      <a href="profile.html">Мой план</a>
+      <a class="active" aria-current="page" href="session.html">Комната</a>
+      <a href="blog.html">Блог</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container-xl py-5">
+  <p class="eyebrow" id="sessionMeta">
+    Совместная практика · Пилатес
+  </p>
+
+  <h1 class="display-title mb-4" id="sessionTitle">
+    Сильный центр
+  </h1>
+
+  <div class="row g-4">
+    <section class="col-12 col-lg-8" aria-label="Управление занятием">
+      <div class="brutal-card p-4 mb-4 text-center">
+        <p class="eyebrow">Таймер упражнения</p>
+
+        <div
+                class="timer-display"
+                id="timer"
+                role="timer"
+                aria-label="Оставшееся время"
+        >
+          00:40
+        </div>
+
+        <p id="currentMove" class="h3" aria-live="polite">
+          Дыхание и настройка
+        </p>
+
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+          <button
+                  class="btn btn-brutal btn-sage"
+                  id="timerToggle"
+                  type="button"
+          >
+            Начать
+          </button>
+          <button
+                  class="btn btn-brutal btn-lilac"
+                  id="nextMove"
+                  type="button"
+          >
+            Следующее упражнение
+          </button>
+        </div>
+
+        <p class="small mt-3 mb-0">
+          Демонстрационный таймер: каждое упражнение длится 40 секунд.
+          Синхронизация между участниками появится позже.
+        </p>
+      </div>
+
+      <div class="future-video p-4 mb-4">
+        <div class="camera-icon" aria-hidden="true">▣</div>
+        <h2 class="h3">Видеосвязь появится позже</h2>
+        <p class="mb-0">
+          Здесь участники смогут видеть друг друга во время занятия.
+        </p>
+      </div>
+
+      <section class="brutal-card p-4">
+        <h2 class="h3">План занятия</h2>
+        <ol id="sessionSteps" class="instruction-list">
+          <li class="current-step">Дыхание и настройка</li>
+          <li>Разминка плеч и спины</li>
+          <li>Основной блок для корпуса</li>
+          <li>Спокойное завершение</li>
+        </ol>
+      </section>
+    </section>
+
+    <aside class="col-12 col-lg-4">
+      <section class="brutal-card p-4">
+        <p class="eyebrow">Пример состава группы</p>
+        <h2 class="h3">Участники · 4</h2>
+
+        <ul class="participant-list">
+          <li><span class="avatar" aria-hidden="true">А</span> Анна</li>
+          <li><span class="avatar" aria-hidden="true">И</span> Илья</li>
+          <li><span class="avatar" aria-hidden="true">М</span> Мария</li>
+          <li><span class="avatar" aria-hidden="true">Д</span> Денис</li>
+        </ul>
+
+        <a class="btn btn-brutal btn-clay w-100 mt-3" href="profile.html">
+          Мой план
+        </a>
+
+        <a
+                class="btn btn-brutal btn-lilac w-100 mt-3"
+                id="sessionDetails"
+                href="training.html?id=pilates"
+        >
+          О тренировке
+        </a>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
