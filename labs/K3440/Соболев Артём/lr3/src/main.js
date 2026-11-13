@@ -1,0 +1,18 @@
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import router from "./router/index.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/themes.css";
+import "./assets/css/base.css";
+import "./assets/css/layout.css";
+import "./assets/css/components.css";
+import "./assets/css/home.css";
+import "./assets/css/workouts.css";
+import "./assets/css/blog.css";
+import "./assets/css/details.css";
+import "./assets/css/auth.css";
+import "./assets/css/account.css";
+import "./assets/css/accessibility.css";
+import "./assets/app.css";
+createApp(App).use(createPinia()).use(router).mount("#app");
