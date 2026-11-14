@@ -1,0 +1,84 @@
+/* Навигация и футер */
+.site-nav {
+  padding: 12px 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.navbar-brand {
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+}
+.navbar-brand:hover {
+  color: var(--ink);
+}
+.site-nav .nav-link {
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+  color: var(--ink);
+}
+.site-nav .btn,
+.site-nav [data-login-link] {
+  display: inline-flex;
+  width: 84px;
+  min-width: 84px;
+  height: 40px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+.site-nav [data-logout] {
+  border-radius: 0;
+}
+.theme-toggle {
+  display: inline-flex;
+  width: 132px;
+  min-width: 132px;
+  height: 40px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-left: 14px;
+  padding: 7px 8px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  font-stretch: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.theme-toggle svg,
+.plan-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+.site-footer {
+  padding: 18px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+.site-footer .container {
+  align-items: center;
+}
+.site-footer > div > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+

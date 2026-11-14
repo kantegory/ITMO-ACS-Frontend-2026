@@ -1,0 +1,81 @@
+/* Вход и регистрация */
+.auth-wrap {
+  display: grid;
+  min-height: calc(100vh - 58px);
+  place-items: center;
+  padding: 40px 16px;
+}
+.auth-form-side {
+  width: min(100%, 470px);
+  padding: 34px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.auth-form {
+  width: 100%;
+}
+.auth-form h1 {
+  margin: 0 0 22px;
+  color: var(--ink);
+  font-size: 30px;
+  font-weight: 700;
+}
+.form-note {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+.form-note a {
+  color: var(--ink);
+  font-weight: 600;
+}
+.auth-form .forgot-password-link {
+  color: var(--ink);
+}
+.auth-form .home-return {
+  margin-top: 8px;
+}
+.password-field {
+  position: relative;
+}
+.password-field .form-control {
+  padding-right: 48px;
+}
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  padding: 5px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  transform: translateY(-50%);
+}
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+.password-mismatch {
+  display: block;
+  margin-top: 6px;
+  color: #b33b32;
+  font-size: 12px;
+}
+.password-mismatch[hidden] {
+  display: none;
+}
+
+.auth-field {
+  margin-bottom: 16px;
+}
+.auth-form [type=submit] {
+  width: 100%;
+}

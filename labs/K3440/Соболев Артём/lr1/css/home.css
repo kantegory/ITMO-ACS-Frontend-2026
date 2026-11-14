@@ -1,0 +1,62 @@
+/* Главный экран и общие секции */
+.hero {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  padding: 56px 0 48px;
+}
+.hero-copy {
+  grid-column: 1 / -1;
+}
+.hero h1 {
+  margin: 0 0 20px;
+  color: var(--ink);
+  font-size: clamp(26px, 3.4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.08;
+  white-space: nowrap;
+}
+.platform-features-title {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.platform-features {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.platform-features li {
+  font-size: 14px;
+}
+.platform-features li::before {
+  margin-right: 9px;
+  content: "•";
+}
+.section {
+  padding: 48px 0 56px;
+}
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.section-heading h2,
+.inner-hero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.journal-preview {
+  padding-bottom: 58px;
+}
+
+
+

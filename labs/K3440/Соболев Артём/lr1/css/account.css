@@ -1,0 +1,92 @@
+/* Личный кабинет и история */
+.account-hero {
+  padding: 30px 0;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+}
+.account-hero h1 {
+  margin: 5px 0 0;
+  color: var(--ink);
+  font-size: 32px;
+  font-weight: 700;
+}
+.account-greeting {
+  margin: 7px 0 0;
+  color: var(--muted);
+}
+.account-layout {
+  padding: 26px 0 48px;
+}
+.account-section {
+  margin-top: 42px;
+}
+.account-section .section-heading {
+  margin-bottom: 18px;
+}
+.account-section .section-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+}
+.stat-card,
+.dash-card {
+  height: 100%;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.stat-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+.stat-card strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--ink);
+  font-size: 25px;
+}
+.stat-card span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.dash-card h2 {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+}
+.plan-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.plan-row:last-child {
+  border-bottom: 0;
+}
+.plan-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--ink);
+  background: var(--soft);
+}
+.plan-row b {
+  color: var(--ink);
+  font-size: 13px;
+}
+.plan-row small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+.plan-row .ms-auto {
+  color: var(--muted);
+  font-size: 12px;
+}
+

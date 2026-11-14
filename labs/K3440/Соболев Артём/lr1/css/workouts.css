@@ -1,0 +1,99 @@
+/* Поиск и список тренировок */
+.filters {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.6fr) repeat(3, minmax(145px, 1fr));
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.filters > label {
+  margin: 0;
+}
+.search-box {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.search-box input {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  font-stretch: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  font-size: 13px;
+}
+.search-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+.filter-select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.filter-select option {
+  color: var(--ink);
+  background: var(--surface);
+}
+.workout-info {
+  display: flex;
+  min-height: 118px;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+}
+.workout-info h2,
+.workout-info h3 {
+  margin: 0 0 5px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+}
+.workout-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.card-tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+.workout-card {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.workout-card:hover {
+  color: var(--ink);
+}
+
