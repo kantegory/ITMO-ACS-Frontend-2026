@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Локальная заглушка для изображений рецептов, пока нет реальных фото. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img"
+  aria-label="Изображение рецепта отсутствует">
+  <rect width="400" height="240" fill="#e9ecef" />
+  <g fill="none" stroke="#adb5bd" stroke-width="6" stroke-linecap="round"
+    stroke-linejoin="round">
+    <circle cx="200" cy="112" r="46" />
+    <circle cx="200" cy="112" r="22" />
+    <line x1="120" y1="60" x2="120" y2="150" />
+    <line x1="108" y1="60" x2="108" y2="88" />
+    <line x1="132" y1="60" x2="132" y2="88" />
+    <line x1="280" y1="60" x2="280" y2="150" />
+    <line x1="270" y1="60" x2="290" y2="60" />
+  </g>
+  <text x="200" y="205" text-anchor="middle" fill="#6c757d"
+    font-family="system-ui, sans-serif" font-size="18">Фото скоро появится</text>
+</svg>

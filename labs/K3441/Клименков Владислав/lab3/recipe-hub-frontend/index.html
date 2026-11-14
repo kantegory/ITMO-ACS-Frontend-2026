@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    // Тема применяется до загрузки CSS, чтобы не было вспышки светлой темы.
+    (function () {
+      try {
+        var preference = localStorage.getItem('recipehub-theme');
+        var systemDark = window.matchMedia
+          && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = preference === 'light' || preference === 'dark'
+          ? preference
+          : (systemDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      } catch (error) {
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+
+  <title>RecipeHub — сервис обмена рецептами</title>
+  <meta name="description" content="RecipeHub — публикуйте рецепты, находите новые блюда и подписывайтесь на кулинаров.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

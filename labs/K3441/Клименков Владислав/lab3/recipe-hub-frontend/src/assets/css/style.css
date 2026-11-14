@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Кастомные стили RecipeHub.
+
+   Принцип: по возможности использовать штатные классы Bootstrap 5.
+   Здесь описан только тот минимум, который Bootstrap не закрывает:
+   фирменный акцент, обложки карточек и мелкие утилиты.
+
+   Все цвета берутся из переменных variables.css, поэтому файл не нужно
+   менять при переключении светлой и тёмной темы (ДР3).
+   ========================================================================== */
+
+body {
+  font-family: var(--rh-font-family);
+  background-color: var(--rh-color-background);
+  color: var(--rh-color-text);
+}
+
+/* Каркас SPA: подвал прижат к низу страницы. */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app > main {
+  flex: 1 0 auto;
+}
+
+/* Утилита: убрать подчёркивание у ссылок-обёрток карточек */
+.rh-link-reset,
+.rh-link-reset:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Обложка карточки рецепта: одинаковая высота и аккуратный crop */
+.rh-card-image {
+  width: 100%;
+  height: var(--rh-card-image-height);
+  object-fit: cover;
+  background-color: var(--rh-color-border);
+}
+
+/* Кнопка с фирменным цветом поверх стандартных размеров Bootstrap.
+   Цвет текста тоже зависит от темы: на светлой это белый,
+   на тёмной — тёмный (primary в тёмной теме светлее). */
+.btn-rh-primary {
+  --bs-btn-color: var(--rh-color-on-primary);
+  --bs-btn-bg: var(--rh-color-primary);
+  --bs-btn-border-color: var(--rh-color-primary);
+  --bs-btn-hover-color: var(--rh-color-on-primary);
+  --bs-btn-hover-bg: var(--rh-color-primary-hover);
+  --bs-btn-hover-border-color: var(--rh-color-primary-hover);
+  --bs-btn-active-color: var(--rh-color-on-primary);
+  --bs-btn-active-bg: var(--rh-color-primary-hover);
+  --bs-btn-active-border-color: var(--rh-color-primary-hover);
+}
+
+/* Вторичная контурная кнопка: штатный #6c757d на фоне #f8f9fa даёт
+   контраст 4.45 (чуть ниже порога AA). Токены --rh-color-control
+   и --rh-color-on-control задают контрастную пару для каждой темы. */
+.btn-outline-secondary {
+  --bs-btn-color: var(--rh-color-control);
+  --bs-btn-border-color: var(--rh-color-control);
+  --bs-btn-hover-color: var(--rh-color-on-control);
+  --bs-btn-hover-bg: var(--rh-color-control);
+  --bs-btn-hover-border-color: var(--rh-color-control);
+  --bs-btn-active-color: var(--rh-color-on-control);
+  --bs-btn-active-bg: var(--rh-color-control);
+  --bs-btn-active-border-color: var(--rh-color-control);
+  --bs-btn-disabled-color: var(--rh-color-control);
+  --bs-btn-disabled-border-color: var(--rh-color-control);
+}
+
+/* Видимый фокус для обычных ссылок (у .btn свой box-shadow от Bootstrap).
+   currentColor гарантирует контраст на любом фоне. */
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: var(--rh-radius-sm);
+}
+
+/* Иконки из SVG-спрайта: размер и выравнивание.
+   Цвет и способ отрисовки (fill/stroke) задаются внутри symbol. */
+.rh-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+/* Область шагов приготовления */
+.rh-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  border-radius: 50%;
+  background-color: var(--rh-color-primary);
+  color: var(--rh-color-on-primary);
+  font-weight: 600;
+}
+
+/* Заглушка изображения (когда картинки нет) */
+.rh-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--rh-color-border);
+  color: var(--rh-color-control);
+}
+
+/* Кнопки-иконки для лайков и подписок */
+.rh-action-btn.is-active {
+  color: var(--rh-color-primary-text);
+  border-color: var(--rh-color-primary-text);
+}
+
+/* Темизируемый бейдж вместо text-bg-light: фон, граница и текст
+   меняются вместе с темой, оставаясь контрастными. */
+.rh-badge {
+  background-color: var(--rh-color-background);
+  border: 1px solid var(--rh-color-border);
+  color: var(--rh-color-text);
+}
+
+/* Бейдж «Сохранён»: контрастная пара из токенов темы
+   (вместо text-bg-secondary, у которого контраст ниже AA). */
+.rh-badge-saved {
+  background-color: var(--rh-color-control);
+  border: 1px solid var(--rh-color-control);
+  color: var(--rh-color-on-control);
+}
+
+.rh-theme-icon {
+  color: var(--rh-color-primary-text);
+}
+
+.rh-theme-menu .dropdown-item[aria-pressed="true"] {
+  font-weight: 600;
+}
+
+.rh-theme-menu [data-theme-check] {
+  color: var(--rh-color-primary-text);
+}
+
+/* Комментарии */
+.rh-comment:not(:last-child) {
+  border-bottom: 1px solid var(--rh-color-border);
+}
+
+/* Небольшой отступ под фиксированный футер */
+.rh-page {
+  min-height: 60vh;
+}

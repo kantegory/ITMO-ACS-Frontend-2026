@@ -1,0 +1,112 @@
+/* ==========================================================================
+   CSS-переменные и темы RecipeHub (ДР3).
+
+   Темы переключаются атрибутом data-bs-theme на <html>:
+     <html data-bs-theme="light">  — светлая (по умолчанию);
+     <html data-bs-theme="dark">   — тёмная.
+
+   Bootstrap 5.3 использует этот же атрибут для своих color modes, поэтому
+   карточки, модалки, формы, дропдауны и кнопка закрытия переключаются без
+   дополнительного кода. Свои токены --rh-* описывают бренд и семантику,
+   а ниже они проброшены в переменные Bootstrap (--bs-*).
+
+   Цветовые пары проверены на контраст WCAG 2.1 AA (см. README, ДР3).
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Фирменные цвета */
+  --rh-color-primary: #b4552d;
+  --rh-color-primary-hover: #96441f;
+  /* Оранжевый текст/иконка на светлой или тёмной поверхности. */
+  --rh-color-primary-text: #b4552d;
+  --rh-color-on-primary: #ffffff;
+  --rh-color-accent: #4f6d3f;
+
+  /* Поверхности и текст */
+  --rh-color-surface: #ffffff;
+  --rh-color-background: #f8f9fa;
+  --rh-color-border: #dee2e6;
+  --rh-color-text: #212529;
+  /* #6c757d на #f8f9fa даёт 4.45 — меньше требуемых 4.5,
+     поэтому приглушённый текст чуть темнее. */
+  --rh-color-text-muted: #5b6269;
+  /* Контурные кнопки: цвет текста/границы и цвет текста при наведении. */
+  --rh-color-control: #5b6269;
+  --rh-color-on-control: #ffffff;
+
+  /* Ссылки: #0d6efd на #f8f9fa даёт 4.27. #0a58ca — 6.11. */
+  --rh-color-link: #0a58ca;
+  --rh-color-link-hover: #084298;
+
+  /* Типографика */
+  --rh-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+
+  /* Скругления и тени */
+  --rh-radius: 0.5rem;
+  --rh-radius-sm: 0.375rem;
+  --rh-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+  /* Единая высота изображения-обложки карточки рецепта */
+  --rh-card-image-height: 12rem;
+
+  /* --- Проброс в Bootstrap -------------------------------------------------
+     Значения через var() разрешаются уже с учётом текущей темы, поэтому
+     достаточно один раз связать токены с переменными Bootstrap. */
+  --bs-body-bg: var(--rh-color-surface);
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-body-color: var(--rh-color-text);
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-emphasis-color: var(--rh-color-text);
+  --bs-emphasis-color-rgb: 33, 37, 41;
+  --bs-secondary-color: var(--rh-color-text-muted);
+  --bs-secondary-color-rgb: 91, 98, 105;
+  --bs-secondary-bg: var(--rh-color-background);
+  --bs-secondary-bg-rgb: 248, 249, 250;
+  --bs-tertiary-bg: var(--rh-color-background);
+  --bs-tertiary-bg-rgb: 248, 249, 250;
+  --bs-border-color: var(--rh-color-border);
+  --bs-heading-color: var(--rh-color-text);
+  --bs-link-color: var(--rh-color-link);
+  --bs-link-color-rgb: 10, 88, 202;
+  --bs-link-hover-color: var(--rh-color-link-hover);
+  --bs-link-hover-color-rgb: 8, 66, 152;
+  --bs-focus-ring-color: rgba(180, 85, 45, 0.25);
+}
+
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+
+  --rh-color-primary: #e8875c;
+  --rh-color-primary-hover: #f0a17f;
+  --rh-color-primary-text: #e8875c;
+  --rh-color-on-primary: #1b1e21;
+  --rh-color-accent: #9cbf8b;
+
+  --rh-color-surface: #212529;
+  --rh-color-background: #17191c;
+  --rh-color-border: #495057;
+  --rh-color-text: #e9ecef;
+  --rh-color-text-muted: #adb5bd;
+  --rh-color-control: #ced4da;
+  --rh-color-on-control: #212529;
+
+  --rh-color-link: #8ab4f8;
+  --rh-color-link-hover: #b6d4fe;
+
+  --rh-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+
+  /* RGB-триплеты нельзя вычислить из hex средствами CSS, поэтому
+     задаём их для каждой темы явно. */
+  --bs-body-bg-rgb: 33, 37, 41;
+  --bs-body-color-rgb: 233, 236, 239;
+  --bs-emphasis-color-rgb: 233, 236, 239;
+  --bs-secondary-color-rgb: 173, 181, 189;
+  --bs-secondary-bg-rgb: 23, 25, 28;
+  --bs-tertiary-bg-rgb: 23, 25, 28;
+  --bs-link-color-rgb: 138, 180, 248;
+  --bs-link-hover-color-rgb: 182, 212, 254;
+  --bs-focus-ring-color: rgba(232, 135, 92, 0.35);
+}
