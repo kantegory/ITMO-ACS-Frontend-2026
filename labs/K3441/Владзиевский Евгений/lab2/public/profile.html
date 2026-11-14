@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет | Ключи</title>
+  <meta name="description" content="Личный кабинет: текущая аренда, мои объявления, заявки на просмотр и избранное.">
+  <script>
+    // Тема применяется до отрисовки страницы, иначе при загрузке мигает светлый фон
+    (function () {
+      var pref = 'auto';
+      try { pref = JSON.parse(localStorage.getItem('klyuchi:theme')) || 'auto'; } catch (e) { /* приватный режим */ }
+      var dark = pref === 'dark' ||
+        (pref === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var theme = dark ? 'dark' : 'light';
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.dataset.bsTheme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2" aria-label="Основное меню">
+      <div class="container">
+        <a class="brand" href="index.html"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="img/sprite.svg#key-fill"></use></svg></span>Ключи</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto ms-lg-4">
+            <li class="nav-item"><a class="nav-link" href="search.html">Снять жильё</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html#landlord">Сдать жильё</a></li>
+            <li class="nav-item"><a class="nav-link" href="messages.html">Сообщения <span class="badge-dot d-none" data-nav-unread><span data-nav-unread-count>0</span><span class="visually-hidden"> непрочитанных сообщения</span></span></a></li>
+          </ul>
+          <div class="d-flex gap-2 align-items-center mt-3 mt-lg-0">
+            <div data-theme-slot></div>
+            <div class="d-flex gap-2 align-items-center" data-auth-slot></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="profile-head">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center gap-3 gap-md-4 mb-4">
+          <span class="avatar avatar-lg" data-user-initials aria-hidden="true">ЕВ</span>
+          <div class="flex-grow-1">
+            <h1 class="mb-1" data-user-name>&nbsp;</h1>
+            <p class="text-muted-2 mb-0"><span data-user-email></span>, на сервисе с <span data-user-since></span></p>
+            <p class="mb-0 mt-1 small d-none" data-verified><svg class="icon text-primary me-1" aria-hidden="true"><use href="img/sprite.svg#patch-check-fill"></use></svg>Паспорт подтверждён</p>
+          </div>
+          <button class="btn btn-tag btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#newListingModal"><svg class="icon me-1" aria-hidden="true"><use href="img/sprite.svg#plus-lg"></use></svg>Новое объявление</button>
+        </div>
+        <ul class="nav profile-tabs" role="tablist">
+          <li class="nav-item" role="presentation"><button class="nav-link active" id="tab-renting" data-bs-toggle="tab" data-bs-target="#pane-renting" type="button" role="tab" aria-controls="pane-renting" aria-selected="true">Я снимаю</button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" id="tab-landlord" data-bs-toggle="tab" data-bs-target="#pane-landlord" type="button" role="tab" aria-controls="pane-landlord" aria-selected="false">Я сдаю <span class="badge-dot"><span data-listing-count>0</span><span class="visually-hidden"> моих объявлений</span></span></button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" id="tab-favorites" data-bs-toggle="tab" data-bs-target="#pane-favorites" type="button" role="tab" aria-controls="pane-favorites" aria-selected="false">Избранное <span class="badge-dot"><span data-fav-count>0</span><span class="visually-hidden"> объявлений в избранном</span></span></button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" id="tab-settings" data-bs-toggle="tab" data-bs-target="#pane-settings" type="button" role="tab" aria-controls="pane-settings" aria-selected="false">Настройки</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="tab-content">
+        <!-- Я снимаю -->
+        <section class="tab-pane fade show active" id="pane-renting" role="tabpanel" aria-labelledby="tab-renting" tabindex="0">
+          <h2 class="fs-4 mb-3">Текущая аренда</h2>
+          <div id="rent-current"></div>
+
+          <h2 class="fs-4 mb-3">Раньше снимал</h2>
+          <div class="panel p-0 table-responsive">
+            <table class="table table-clean">
+              <caption class="visually-hidden">Жильё, которое я снимал раньше</caption>
+              <thead><tr><th scope="col" class="ps-3">Объект</th><th scope="col">Период</th><th scope="col">Плата</th><th scope="col">Депозит</th><th scope="col" class="pe-3">Отзыв</th></tr></thead>
+              <tbody id="rent-past"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Я сдаю -->
+        <section class="tab-pane fade" id="pane-landlord" role="tabpanel" aria-labelledby="tab-landlord" tabindex="0">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <h2 class="fs-4 m-0">Мои объявления</h2>
+            <div class="small text-muted-2">Доход за год при полной занятости: <strong class="text-body" data-income>—</strong></div>
+          </div>
+          <div class="panel p-0 table-responsive mb-4">
+            <table class="table table-clean">
+              <caption class="visually-hidden">Мои объявления</caption>
+              <thead><tr><th scope="col" class="ps-3">Объект</th><th scope="col">Статус</th><th scope="col">Цена</th><th scope="col" class="pe-3"><span class="visually-hidden">Действия</span></th></tr></thead>
+              <tbody id="my-listings"></tbody>
+            </table>
+          </div>
+
+          <h2 class="fs-4 mb-3">Заявки на просмотр</h2>
+          <div class="row g-3" id="requests"></div>
+        </section>
+
+        <!-- Избранное -->
+        <section class="tab-pane fade" id="pane-favorites" role="tabpanel" aria-labelledby="tab-favorites" tabindex="0">
+          <h2 class="fs-4 mb-3">Избранное</h2>
+          <div class="row g-4" id="fav-list"></div>
+          <div class="empty-state d-none" id="fav-empty">
+            <h3 class="fs-5">В избранном пусто</h3>
+            <p class="text-muted-2">Нажмите на сердечко на карточке, и квартира появится здесь.</p>
+            <a class="btn btn-primary" href="search.html">Перейти к поиску</a>
+          </div>
+        </section>
+
+        <!-- Настройки -->
+        <section class="tab-pane fade" id="pane-settings" role="tabpanel" aria-labelledby="tab-settings" tabindex="0">
+          <h2 class="fs-4 mb-3">Настройки профиля</h2>
+          <form class="panel" id="settings-form" style="max-width: 640px" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label" for="set-name">Имя и фамилия</label>
+                <input class="form-control" id="set-name" required>
+                <div class="invalid-feedback">Укажите имя</div>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label" for="set-phone">Телефон</label>
+                <input class="form-control" id="set-phone" type="tel" value="+7 921 000-00-00">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="set-email">Почта</label>
+                <input class="form-control" id="set-email" type="email" required>
+                <div class="invalid-feedback">Введите корректную почту</div>
+              </div>
+              <div class="col-12">
+                <fieldset>
+                  <legend class="form-label fs-6">Уведомления</legend>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-new" checked><label class="form-check-label" for="n-new">Новые объявления по сохранённому поиску</label></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-msg" checked><label class="form-check-label" for="n-msg">Сообщения от владельцев</label></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-pay"><label class="form-check-label" for="n-pay">Напоминать о платеже за 3 дня</label></div>
+                </fieldset>
+              </div>
+            </div>
+            <button class="btn btn-primary mt-4" type="submit">Сохранить изменения</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Новое объявление -->
+  <div class="modal fade" id="newListingModal" tabindex="-1" aria-labelledby="newListingTitle">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <form class="modal-content" id="listing-form" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="newListingTitle">Новое объявление</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="nl-type">Тип жилья</label>
+              <select class="form-select" id="nl-type" name="type" required>
+                <option value="">Выберите</option>
+                <option>Квартира</option><option>Студия</option><option>Комната</option><option>Дом</option>
+              </select>
+              <div class="invalid-feedback">Выберите тип</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="nl-city">Город</label>
+              <select class="form-select" id="nl-city" name="city" required>
+                <option>Санкт-Петербург</option><option>Москва</option><option>Казань</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="nl-title">Заголовок объявления</label>
+              <input class="form-control" id="nl-title" name="title" placeholder="Например: двушка у метро с балконом" required minlength="10">
+              <div class="invalid-feedback">Не меньше 10 символов</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="nl-address">Адрес</label>
+              <input class="form-control" id="nl-address" name="address" placeholder="Улица, дом" required>
+              <div class="invalid-feedback">Укажите адрес</div>
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="nl-rooms">Комнат</label>
+              <input class="form-control" id="nl-rooms" name="rooms" type="number" min="1" max="10" value="1" required>
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="nl-area">Площадь, м²</label>
+              <input class="form-control" id="nl-area" name="area" type="number" min="8" required>
+              <div class="invalid-feedback">От 8 м²</div>
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="nl-price">Цена, ₽/мес</label>
+              <input class="form-control" id="nl-price" name="price" type="number" min="5000" step="500" required>
+              <div class="invalid-feedback">От 5 000 ₽</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="nl-text">Описание</label>
+              <textarea class="form-control" id="nl-text" name="text" rows="3" placeholder="Что рядом, какой ремонт, кто соседи"></textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="nl-photos">Фотографии</label>
+              <input class="form-control" id="nl-photos" type="file" accept="image/*" multiple>
+              <div class="form-text">До 20 фото, JPG или PNG. Первое станет обложкой.</div>
+            </div>
+            <div class="col-12">
+              <fieldset>
+                <legend class="form-label fs-6">Кого готовы пустить</legend>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="nl-pets" name="pets"><label class="form-check-label" for="nl-pets">С животными</label></div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="nl-kids" name="kids" checked><label class="form-check-label" for="nl-kids">С детьми</label></div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Отправить на проверку</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Оплата -->
+  <div class="modal fade" id="payModal" tabindex="-1" aria-labelledby="payTitle">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="payTitle">Оплата за ноябрь</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <table class="terms">
+            <caption class="visually-hidden">Что входит в платёж за ноябрь</caption>
+            <tbody>
+              <tr><th scope="row">Аренда</th><td data-pay-rent></td></tr>
+              <tr><th scope="row">Коммунальные за октябрь</th><td data-pay-util></td></tr>
+              <tr><th scope="row">Итого</th><td class="fs-5" data-pay-total></td></tr>
+            </tbody>
+          </table>
+          <p class="small text-muted-2 mt-3 mb-0">Деньги придут владельцу в течение одного рабочего дня.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Позже</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-pay-button data-toast="Оплата прошла">Оплатить <span data-pay-total></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-3">
+      <span>© <span data-year>2026</span> Ключи. Учебный проект, ИТМО.</span>
+      <nav class="d-flex flex-wrap gap-3" aria-label="Ссылки в подвале">
+        <a href="search.html">Поиск</a>
+        <a href="profile.html">Личный кабинет</a>
+        <a href="messages.html">Сделки</a>
+        <a href="login.html">Вход</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
