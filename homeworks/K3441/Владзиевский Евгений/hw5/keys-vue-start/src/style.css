@@ -1,0 +1,31 @@
+/* Общие стили. Цвета вынесены в переменные — так же, как в ДЗ3. */
+:root {
+  --ink: #18213a;
+  --muted: #5b6480;
+  --paper: #f3f5f9;
+  --surface: #ffffff;
+  --line: #dce1ec;
+  --cobalt: #2847d9;
+  --cobalt-dark: #1d36ad;
+  --cobalt-tint: #e8ecfc;
+  --tag: #ffd84d;
+
+  color-scheme: light;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 2px;
+}
