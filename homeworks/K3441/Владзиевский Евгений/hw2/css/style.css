@@ -131,6 +131,21 @@ main:focus { outline: none; }
   --bs-btn-active-border-color: var(--cobalt-dark);
 }
 
+/* Серый у Bootstrap по умолчанию (#6c757d) даёт на фоне страницы
+   контраст 4.29 — ниже AA. Берём свой цвет. */
+.btn-outline-secondary {
+  --bs-btn-color: var(--ink-soft);
+  --bs-btn-border-color: var(--line);
+  --bs-btn-hover-bg: var(--ink-soft);
+  --bs-btn-hover-border-color: var(--ink-soft);
+  --bs-btn-hover-color: var(--surface);
+  --bs-btn-active-bg: var(--ink);
+  --bs-btn-active-border-color: var(--ink);
+  --bs-btn-active-color: var(--surface);
+  --bs-btn-disabled-color: var(--muted);
+  --bs-btn-disabled-border-color: var(--line);
+}
+
 .btn-tag {
   background: var(--tag);
   color: var(--tag-ink);
