@@ -1,0 +1,14 @@
+{
+  "name": "klyuchi-lab2",
+  "version": "1.0.0",
+  "description": "ЛР2: сервис аренды жилья «Ключи» на моковом API json-server с авторизацией",
+  "private": true,
+  "scripts": {
+    "start": "json-server-auth db.json -r routes.json -s ./public -p 3000",
+    "seed": "node tools/make-db.mjs"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}

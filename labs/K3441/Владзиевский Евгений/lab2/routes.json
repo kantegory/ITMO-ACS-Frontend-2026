@@ -1,0 +1,16 @@
+{
+  "/api/*": "/$1",
+
+  "users": 600,
+  "owners": 444,
+  "listings": 644,
+  "reviews": 664,
+
+  "favorites": 600,
+  "dialogs": 600,
+  "messages": 600,
+  "deals": 600,
+  "rentals": 600,
+  "viewings": 600,
+  "requests": 600
+}

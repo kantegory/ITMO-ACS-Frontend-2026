@@ -1,0 +1,843 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "demo@klyuchi.ru",
+      "password": "$2a$10$fh1X.lWU/Qs7.94pNU8O7OL3z/hBoMH3qQOrOPwFeUHGoK842cSvG",
+      "name": "Евгений Владзиевский",
+      "role": "tenant",
+      "phone": "+7 921 000-00-00",
+      "since": "2025-03-01",
+      "verified": true
+    },
+    {
+      "id": 2,
+      "email": "olga@klyuchi.ru",
+      "password": "$2a$10$Ycoq9XKks3pe5fXKdxt7yuiRHT8Y5FWpo3W6HXLnQhjjUZM9ly09y",
+      "name": "Ольга Смирнова",
+      "role": "owner",
+      "phone": "+7 921 111-11-11",
+      "since": "2023-05-14",
+      "verified": true
+    },
+    {
+      "id": 3,
+      "email": "artem@klyuchi.ru",
+      "password": "$2a$10$9lC7wKrtQjDxDXhV6ogvGeSeTik3b7TAHocmF/5T3xRXuDSBnJS3i",
+      "name": "Артём Васильев",
+      "role": "owner",
+      "phone": "+7 921 222-22-22",
+      "since": "2024-01-20",
+      "verified": true
+    },
+    {
+      "id": 4,
+      "email": "natalia@klyuchi.ru",
+      "password": "$2a$10$lT7xvrmPFtk7YXXHuvyRj.Q6qTxYa.RSHvmy.ZNfXqcXqJGuwCBAq",
+      "name": "Наталья Ким",
+      "role": "owner",
+      "phone": "+7 921 333-33-33",
+      "since": "2022-09-02",
+      "verified": true
+    },
+    {
+      "id": 5,
+      "email": "igor@klyuchi.ru",
+      "password": "$2a$10$83LgjEftqKIMT/jELnTkXuvLHcorkBmjfj4qRPW.uishKf9HfETiS",
+      "name": "Игорь Павлов",
+      "role": "owner",
+      "phone": "+7 921 444-44-44",
+      "since": "2021-11-30",
+      "verified": true
+    },
+    {
+      "id": 6,
+      "email": "sergey@klyuchi.ru",
+      "password": "$2a$10$DHFGowhE2DeMhy26NcTs7u8CvvISpo8GOnc2b7vvX7quJ3KIz/KIS",
+      "name": "Сергей Орлов",
+      "role": "owner",
+      "phone": "+7 921 555-55-55",
+      "since": "2023-02-11",
+      "verified": true
+    },
+    {
+      "id": 7,
+      "email": "maria@klyuchi.ru",
+      "password": "$2a$10$LlwVJF8KGReRn8ikapnrEesT9Gv58FwNOD0uXZ.0plk3FnW2OuPuy",
+      "name": "Мария Белова",
+      "role": "owner",
+      "phone": "+7 921 666-66-66",
+      "since": "2024-06-18",
+      "verified": true
+    }
+  ],
+  "owners": [
+    {
+      "id": 1,
+      "name": "Евгений Владзиевский",
+      "since": "2025-03-01",
+      "verified": true,
+      "responseTime": "в течение часа"
+    },
+    {
+      "id": 2,
+      "name": "Ольга Смирнова",
+      "since": "2023-05-14",
+      "verified": true,
+      "responseTime": "в течение часа"
+    },
+    {
+      "id": 3,
+      "name": "Артём Васильев",
+      "since": "2024-01-20",
+      "verified": true,
+      "responseTime": "в течение часа"
+    },
+    {
+      "id": 4,
+      "name": "Наталья Ким",
+      "since": "2022-09-02",
+      "verified": true,
+      "responseTime": "в течение часа"
+    },
+    {
+      "id": 5,
+      "name": "Игорь Павлов",
+      "since": "2021-11-30",
+      "verified": true,
+      "responseTime": "в течение часа"
+    },
+    {
+      "id": 6,
+      "name": "Сергей Орлов",
+      "since": "2023-02-11",
+      "verified": true,
+      "responseTime": "в течение часа"
+    },
+    {
+      "id": 7,
+      "name": "Мария Белова",
+      "since": "2024-06-18",
+      "verified": true,
+      "responseTime": "в течение часа"
+    }
+  ],
+  "listings": [
+    {
+      "id": 1,
+      "type": "flat",
+      "rooms": 2,
+      "area": 58,
+      "floor": "4 из 6",
+      "city": "Санкт-Петербург",
+      "district": "Петроградский",
+      "metro": "Чкаловская, 6 мин",
+      "address": "ул. Ленина, 14",
+      "price": 62000,
+      "deposit": 62000,
+      "commission": 0,
+      "title": "Двухкомнатная квартира с паркетом ёлочкой",
+      "img": "flat-1",
+      "photos": [
+        "flat-1",
+        "kitchen-1",
+        "bedroom-1",
+        "room-1"
+      ],
+      "pets": false,
+      "kids": true,
+      "furniture": true,
+      "balcony": false,
+      "built": 1912,
+      "posted": "2026-10-15",
+      "lat": 59.9645,
+      "lng": 30.2995,
+      "text": "Светлая квартира в доходном доме начала века. Потолки 3,4 м, окна во двор, поэтому тихо. Кухня отделена от комнат, есть посудомойка и стиральная машина. Рядом Карповка и Ботанический сад.",
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "type": "studio",
+      "rooms": 1,
+      "area": 31,
+      "floor": "9 из 17",
+      "city": "Санкт-Петербург",
+      "district": "Выборгский",
+      "metro": "Лесная, 9 мин",
+      "address": "Кантемировская ул., 39",
+      "price": 38000,
+      "deposit": 38000,
+      "commission": 0,
+      "title": "Студия с рабочим местом и видом на парк",
+      "img": "flat-2",
+      "photos": [
+        "flat-2",
+        "kitchen-2",
+        "room-1"
+      ],
+      "pets": true,
+      "kids": false,
+      "furniture": true,
+      "balcony": true,
+      "built": 2019,
+      "posted": "2026-10-16",
+      "lat": 59.9853,
+      "lng": 30.3285,
+      "text": "Студия в новом доме с консьержем. Есть отдельный стол у окна и быстрый интернет 500 Мбит/с, роутер оставлю. Можно с котом.",
+      "userId": 3
+    },
+    {
+      "id": 3,
+      "type": "flat",
+      "rooms": 2,
+      "area": 46,
+      "floor": "3 из 5",
+      "city": "Санкт-Петербург",
+      "district": "Адмиралтейский",
+      "metro": "Садовая, 7 мин",
+      "address": "наб. канала Грибоедова, 98",
+      "price": 55000,
+      "deposit": 55000,
+      "commission": 27500,
+      "title": "Евродвушка у канала Грибоедова",
+      "img": "flat-3",
+      "photos": [
+        "flat-3",
+        "bedroom-2",
+        "kitchen-1"
+      ],
+      "pets": false,
+      "kids": true,
+      "furniture": true,
+      "balcony": false,
+      "built": 1880,
+      "posted": "2026-10-12",
+      "lat": 59.9255,
+      "lng": 30.3065,
+      "text": "Кухня-гостиная и отдельная спальня. Свежий ремонт 2025 года, новая сантехника. Дом в историческом центре, до Сенной площади пять минут пешком.",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "type": "flat",
+      "rooms": 3,
+      "area": 92,
+      "floor": "6 из 7",
+      "city": "Санкт-Петербург",
+      "district": "Центральный",
+      "metro": "Чернышевская, 5 мин",
+      "address": "ул. Фурштатская, 27",
+      "price": 120000,
+      "deposit": 120000,
+      "commission": 0,
+      "title": "Трёхкомнатная квартира-лофт с камином",
+      "img": "flat-4",
+      "photos": [
+        "flat-4",
+        "kitchen-2",
+        "bedroom-3",
+        "bedroom-1"
+      ],
+      "pets": true,
+      "kids": true,
+      "furniture": true,
+      "balcony": true,
+      "built": 1903,
+      "posted": "2026-10-10",
+      "lat": 59.9445,
+      "lng": 30.3635,
+      "text": "Большая квартира с мансардными окнами, две спальни и гостиная с электрокамином. Два санузла. Подходит для семьи или двух пар.",
+      "userId": 5
+    },
+    {
+      "id": 5,
+      "type": "flat",
+      "rooms": 2,
+      "area": 64,
+      "floor": "2 из 9",
+      "city": "Санкт-Петербург",
+      "district": "Московский",
+      "metro": "Электросила, 4 мин",
+      "address": "Московский пр., 139",
+      "price": 58000,
+      "deposit": 58000,
+      "commission": 0,
+      "title": "Двушка в сталинке с эркером",
+      "img": "flat-5",
+      "photos": [
+        "flat-5",
+        "kitchen-1",
+        "bedroom-2"
+      ],
+      "pets": false,
+      "kids": true,
+      "furniture": true,
+      "balcony": false,
+      "built": 1954,
+      "posted": "2026-10-08",
+      "lat": 59.8795,
+      "lng": 30.3185,
+      "text": "Просторная квартира в сталинском доме. Эркер в гостиной, большая кухня с обеденным столом на шестерых. Метро в соседнем доме.",
+      "userId": 2
+    },
+    {
+      "id": 6,
+      "type": "flat",
+      "rooms": 3,
+      "area": 105,
+      "floor": "12 из 16",
+      "city": "Санкт-Петербург",
+      "district": "Приморский",
+      "metro": "Беговая, 10 мин",
+      "address": "ул. Савушкина, 145",
+      "price": 95000,
+      "deposit": 95000,
+      "commission": 47500,
+      "title": "Трёшка с панорамными окнами на залив",
+      "img": "flat-6",
+      "photos": [
+        "flat-6",
+        "bedroom-3",
+        "kitchen-2",
+        "room-1"
+      ],
+      "pets": false,
+      "kids": true,
+      "furniture": true,
+      "balcony": true,
+      "built": 2017,
+      "posted": "2026-10-05",
+      "lat": 59.9895,
+      "lng": 30.2045,
+      "text": "Окна в пол, из гостиной видно Лахта Центр и залив. Подземный паркинг, место можно арендовать отдельно за 8 000 ₽.",
+      "userId": 6
+    },
+    {
+      "id": 7,
+      "type": "flat",
+      "rooms": 1,
+      "area": 44,
+      "floor": "5 из 8",
+      "city": "Москва",
+      "district": "Хамовники",
+      "metro": "Фрунзенская, 6 мин",
+      "address": "Комсомольский пр., 21",
+      "price": 98000,
+      "deposit": 98000,
+      "commission": 0,
+      "title": "Однокомнатная квартира с высокими окнами",
+      "img": "flat-7",
+      "photos": [
+        "flat-7",
+        "bedroom-1",
+        "kitchen-1"
+      ],
+      "pets": true,
+      "kids": false,
+      "furniture": true,
+      "balcony": false,
+      "built": 1937,
+      "posted": "2026-10-14",
+      "lat": 55.7275,
+      "lng": 37.5845,
+      "text": "Тихая квартира в кирпичном доме рядом с Нескучным садом. Дизайнерская мебель, кондиционер, стиральная и сушильная машины.",
+      "userId": 7
+    },
+    {
+      "id": 8,
+      "type": "flat",
+      "rooms": 4,
+      "area": 140,
+      "floor": "20 из 20",
+      "city": "Москва",
+      "district": "Пресненский",
+      "metro": "Выставочная, 8 мин",
+      "address": "Пресненская наб., 8",
+      "price": 260000,
+      "deposit": 260000,
+      "commission": 130000,
+      "title": "Пентхаус с террасой в Сити",
+      "img": "flat-8",
+      "photos": [
+        "flat-8",
+        "kitchen-2",
+        "bedroom-3",
+        "bedroom-2"
+      ],
+      "pets": false,
+      "kids": true,
+      "furniture": true,
+      "balcony": true,
+      "built": 2015,
+      "posted": "2026-09-30",
+      "lat": 55.7485,
+      "lng": 37.5395,
+      "text": "Последний этаж, своя терраса 30 м². Три спальни, гардеробная, кабинет. Охрана и паркинг в доме.",
+      "userId": 6
+    },
+    {
+      "id": 9,
+      "type": "house",
+      "rooms": 4,
+      "area": 180,
+      "floor": "2 этажа",
+      "city": "Санкт-Петербург",
+      "district": "Курортный",
+      "metro": "электричка до Репино, 40 мин",
+      "address": "пос. Репино, Приморское ш., 412",
+      "price": 150000,
+      "deposit": 150000,
+      "commission": 0,
+      "title": "Дом с садом у Финского залива",
+      "img": "house-1",
+      "photos": [
+        "house-1",
+        "room-1",
+        "kitchen-1",
+        "bedroom-1"
+      ],
+      "pets": true,
+      "kids": true,
+      "furniture": true,
+      "balcony": true,
+      "built": 2012,
+      "posted": "2026-10-01",
+      "lat": 60.1735,
+      "lng": 29.8695,
+      "text": "Двухэтажный дом на участке 12 соток, до залива 600 м. Сауна, мангальная зона, гараж на две машины. Сдаётся на срок от года.",
+      "userId": 5
+    },
+    {
+      "id": 10,
+      "type": "house",
+      "rooms": 5,
+      "area": 220,
+      "floor": "2 этажа",
+      "city": "Москва",
+      "district": "Одинцовский",
+      "metro": "МЦД-1 Одинцово, 15 мин на авто",
+      "address": "дер. Жуковка, 61",
+      "price": 340000,
+      "deposit": 340000,
+      "commission": 170000,
+      "title": "Современный дом с панорамным остеклением",
+      "img": "house-2",
+      "photos": [
+        "house-2",
+        "kitchen-2",
+        "bedroom-3",
+        "bedroom-2"
+      ],
+      "pets": true,
+      "kids": true,
+      "furniture": true,
+      "balcony": true,
+      "built": 2021,
+      "posted": "2026-09-25",
+      "lat": 55.7345,
+      "lng": 37.2435,
+      "text": "Дом в закрытом посёлке. Гостиная с окнами в сад, четыре спальни, кабинет. Обслуживание участка включено в стоимость.",
+      "userId": 7
+    },
+    {
+      "id": 11,
+      "type": "house",
+      "rooms": 3,
+      "area": 120,
+      "floor": "3 этажа",
+      "city": "Казань",
+      "district": "Советский",
+      "metro": "Горки, 15 мин на авто",
+      "address": "ЖК «Царёво», ул. Петра Гаврилова, 6",
+      "price": 85000,
+      "deposit": 85000,
+      "commission": 0,
+      "title": "Таунхаус в тихом посёлке",
+      "img": "house-3",
+      "photos": [
+        "house-3",
+        "room-1",
+        "kitchen-1"
+      ],
+      "pets": true,
+      "kids": true,
+      "furniture": false,
+      "balcony": true,
+      "built": 2018,
+      "posted": "2026-10-11",
+      "lat": 55.7905,
+      "lng": 49.2405,
+      "text": "Таунхаус на три этажа с небольшим двориком. Мебель частично, кухня встроенная с техникой. Рядом школа и детский сад.",
+      "userId": 1
+    },
+    {
+      "id": 12,
+      "type": "room",
+      "rooms": 1,
+      "area": 18,
+      "floor": "3 из 5",
+      "city": "Санкт-Петербург",
+      "district": "Василеостровский",
+      "metro": "Василеостровская, 8 мин",
+      "address": "7-я линия В.О., 52",
+      "price": 24000,
+      "deposit": 12000,
+      "commission": 0,
+      "title": "Комната в квартире с двумя соседями",
+      "img": "flat-9",
+      "photos": [
+        "flat-9",
+        "kitchen-2"
+      ],
+      "pets": false,
+      "kids": false,
+      "furniture": true,
+      "balcony": false,
+      "built": 1899,
+      "posted": "2026-10-17",
+      "lat": 59.9415,
+      "lng": 30.2805,
+      "text": "Комната 18 м² с новой мебелью. Соседи: студентка и программист, оба тихие. Коммунальные платежи делим на троих, выходит около 2 500 ₽.",
+      "userId": 3
+    }
+  ],
+  "favorites": [
+    {
+      "id": 1,
+      "userId": 1,
+      "listingId": 4
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "listingId": 9
+    }
+  ],
+  "dialogs": [
+    {
+      "id": 1,
+      "userId": 1,
+      "partnerId": 4,
+      "listingId": 3,
+      "unread": 1
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "partnerId": 2,
+      "listingId": 1,
+      "unread": 1
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "partnerId": 5,
+      "listingId": 9,
+      "unread": 0
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "partnerId": 3,
+      "listingId": 2,
+      "unread": 0
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "dialogId": 1,
+      "authorId": 1,
+      "text": "Здравствуйте! Евродвушка у канала ещё свободна?",
+      "time": "12:04"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "dialogId": 1,
+      "authorId": 4,
+      "text": "Добрый день! Да, свободна с 1 ноября.",
+      "time": "12:10"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "dialogId": 1,
+      "authorId": 1,
+      "text": "Можно посмотреть в субботу днём?",
+      "time": "12:11"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "dialogId": 1,
+      "authorId": null,
+      "text": "Просмотр назначен на 19 октября, 15:00",
+      "time": ""
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "dialogId": 1,
+      "authorId": 4,
+      "text": "Жду в субботу в 15:00. Код домофона пришлю утром.",
+      "time": "12:30"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "dialogId": 2,
+      "authorId": 2,
+      "text": "Евгений, напоминаю, что в ноябре придут показания счётчиков.",
+      "time": "вчера"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "dialogId": 2,
+      "authorId": 1,
+      "text": "Хорошо, сфотографирую и пришлю 25-го.",
+      "time": "вчера"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "dialogId": 2,
+      "authorId": 2,
+      "text": "Спасибо! И мастер по батареям придёт во вторник после шести.",
+      "time": "09:15"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "dialogId": 3,
+      "authorId": 1,
+      "text": "Дом в Репино сдаётся только на год, или можно на полгода?",
+      "time": "14 окт"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "dialogId": 3,
+      "authorId": 5,
+      "text": "Только от года, извините. Зимой дом не хочу оставлять пустым.",
+      "time": "14 окт"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "dialogId": 4,
+      "authorId": null,
+      "text": "Сделка завершена, депозит 36 000 ₽ возвращён",
+      "time": ""
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "dialogId": 4,
+      "authorId": 3,
+      "text": "Спасибо, что следили за квартирой. Удачи на новом месте!",
+      "time": "31 мар"
+    }
+  ],
+  "deals": [
+    {
+      "id": 1,
+      "userId": 1,
+      "no": "К-2026-0412",
+      "listingId": 1,
+      "role": "Арендатор",
+      "other": "Ольга Смирнова",
+      "period": "01.04.2026 – 31.03.2027",
+      "price": 62000,
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "no": "К-2026-0977",
+      "listingId": 11,
+      "role": "Владелец",
+      "other": "Семья Гариповых",
+      "period": "01.07.2026 – 30.06.2027",
+      "price": 85000,
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "no": "К-2026-1105",
+      "listingId": 3,
+      "role": "Владелец",
+      "other": "Мария Лебедева",
+      "period": "с 01.11.2026",
+      "price": 55000,
+      "status": "wait"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "no": "К-2025-0833",
+      "listingId": 2,
+      "role": "Арендатор",
+      "other": "Артём Васильев",
+      "period": "01.09.2025 – 31.03.2026",
+      "price": 36000,
+      "status": "done"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "no": "К-2025-0310",
+      "listingId": 12,
+      "role": "Арендатор",
+      "other": "Артём Васильев",
+      "period": "01.02.2025 – 31.08.2025",
+      "price": 22000,
+      "status": "done"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "no": "К-2025-0702",
+      "listingId": 6,
+      "role": "Арендатор",
+      "other": "Сергей Орлов",
+      "period": "–",
+      "price": 95000,
+      "status": "cancel"
+    }
+  ],
+  "rentals": [
+    {
+      "id": 1,
+      "userId": 1,
+      "listingId": 1,
+      "status": "active",
+      "price": 62000,
+      "deposit": 62000,
+      "utilities": 4870,
+      "nextPayment": "1 ноября",
+      "until": "31 марта 2027",
+      "monthsDone": 7,
+      "monthsTotal": 12
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "listingId": 2,
+      "status": "past",
+      "price": 36000,
+      "deposit": 36000,
+      "period": "сен 2025 – мар 2026",
+      "depositReturned": true,
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "listingId": 12,
+      "status": "past",
+      "price": 22000,
+      "deposit": 12000,
+      "period": "фев 2025 – авг 2025",
+      "depositReturned": true,
+      "rating": null
+    }
+  ],
+  "viewings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "listingId": 4,
+      "date": "2026-10-22",
+      "time": "19:30",
+      "people": "2",
+      "comment": "Работаем удалённо, с нами кот",
+      "status": "confirmed"
+    }
+  ],
+  "requests": [
+    {
+      "id": 1,
+      "userId": 1,
+      "listingId": 3,
+      "name": "Мария Лебедева",
+      "date": "2026-10-19",
+      "time": "15:00",
+      "people": "1",
+      "comment": "Работаю дизайнером, живу одна, без животных. Готова заехать с 1 ноября.",
+      "status": "new"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "listingId": 3,
+      "name": "Кирилл и Настя",
+      "date": "2026-10-20",
+      "time": "18:00",
+      "people": "2",
+      "comment": "Молодая семья, оба работаем. Есть рекомендации от прошлого владельца.",
+      "status": "new"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "ownerId": 2,
+      "author": "Дмитрий К.",
+      "date": "2026-08-20",
+      "rating": 5,
+      "text": "Снимали год, всё как в объявлении. Сломался бойлер, мастер пришёл на следующий день за счёт владельца."
+    },
+    {
+      "id": 2,
+      "ownerId": 2,
+      "author": "Алина С.",
+      "date": "2026-03-02",
+      "rating": 5,
+      "text": "Депозит вернули в день выезда, акт подписали за десять минут."
+    },
+    {
+      "id": 3,
+      "ownerId": 4,
+      "author": "Павел Н.",
+      "date": "2026-05-12",
+      "rating": 5,
+      "text": "Квартира в центре, с документами всё чисто. Договор подписали онлайн."
+    },
+    {
+      "id": 4,
+      "ownerId": 5,
+      "author": "Елена Б.",
+      "date": "2026-07-01",
+      "rating": 4,
+      "text": "Дом хороший, но до магазина далеко. Владелец отвечает быстро."
+    },
+    {
+      "id": 5,
+      "ownerId": 3,
+      "author": "Ника Т.",
+      "date": "2026-02-08",
+      "rating": 5,
+      "text": "Студия чистая, интернет действительно быстрый."
+    },
+    {
+      "id": 6,
+      "ownerId": 1,
+      "author": "Семья Гариповых",
+      "date": "2026-07-04",
+      "rating": 5,
+      "text": "Таунхаус сдали вовремя, ключи передали лично. На вопросы отвечает в тот же день."
+    },
+    {
+      "id": 7,
+      "ownerId": 1,
+      "author": "Роман Д.",
+      "date": "2026-04-16",
+      "rating": 4,
+      "text": "Квартира как на фото. Небольшая задержка с актом, но всё решили за день."
+    }
+  ]
+}
