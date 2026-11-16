@@ -1,0 +1,12 @@
+{
+  "name": "finderjobs-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "api": "json-server-auth db.json -r routes.json"
+  },
+  "devDependencies": {
+    "json-server": "0.17.4",
+    "json-server-auth": "2.1.0"
+  }
+}
