@@ -1,0 +1,523 @@
+const DEMO_DATA = {
+    "users": [
+        {
+            "email": "employer@example.com",
+            "password": "Test1234!",
+            "role": "employer",
+            "firstname": "Анна",
+            "lastname": "Соколова",
+            "id": 1
+        },
+        {
+            "email": "candidate@example.com",
+            "password": "Test1234!",
+            "role": "candidate",
+            "firstname": "Анастасия",
+            "lastname": "Маркозубова",
+            "id": 2
+        },
+        {
+            "email": "resume1@example.com",
+            "password": "Test1234!",
+            "firstname": "Иван",
+            "lastname": "Петров",
+            "role": "candidate",
+            "id": 3
+        },
+        {
+            "email": "resume2@example.com",
+            "password": "Test1234!",
+            "firstname": "Мария",
+            "lastname": "Смирнова",
+            "role": "candidate",
+            "id": 4
+        },
+        {
+            "email": "resume3@example.com",
+            "password": "Test1234!",
+            "firstname": "Алексей",
+            "lastname": "Волков",
+            "role": "candidate",
+            "id": 5
+        },
+        {
+            "email": "resume4@example.com",
+            "password": "Test1234!",
+            "firstname": "Дарья",
+            "lastname": "Кузнецова",
+            "role": "candidate",
+            "id": 6
+        },
+        {
+            "email": "resume5@example.com",
+            "password": "Test1234!",
+            "firstname": "Егор",
+            "lastname": "Морозов",
+            "role": "candidate",
+            "id": 7
+        },
+        {
+            "email": "resume6@example.com",
+            "password": "Test1234!",
+            "firstname": "Полина",
+            "lastname": "Орлова",
+            "role": "candidate",
+            "id": 8
+        },
+        {
+            "email": "resume7@example.com",
+            "password": "Test1234!",
+            "firstname": "Дмитрий",
+            "lastname": "Соколов",
+            "role": "candidate",
+            "id": 9
+        },
+        {
+            "email": "resume8@example.com",
+            "password": "Test1234!",
+            "firstname": "Анна",
+            "lastname": "Лебедева",
+            "role": "candidate",
+            "id": 10
+        },
+        {
+            "email": "resume9@example.com",
+            "password": "Test1234!",
+            "firstname": "Никита",
+            "lastname": "Фёдоров",
+            "role": "candidate",
+            "id": 11
+        },
+        {
+            "email": "resume10@example.com",
+            "password": "Test1234!",
+            "firstname": "София",
+            "lastname": "Белова",
+            "role": "candidate",
+            "id": 12
+        },
+        {
+            "email": "resume11@example.com",
+            "password": "Test1234!",
+            "firstname": "Артём",
+            "lastname": "Зайцев",
+            "role": "candidate",
+            "id": 13
+        },
+        {
+            "email": "resume12@example.com",
+            "password": "Test1234!",
+            "firstname": "Елена",
+            "lastname": "Новикова",
+            "role": "candidate",
+            "id": 14
+        }
+    ],
+    "companies": [
+        {
+            "id": "company-1",
+            "name": "ООО «Айти Технологии»",
+            "industry": "IT",
+            "city": "Санкт-Петербург"
+        },
+        {
+            "id": "company-2",
+            "name": "АО «Инновации»",
+            "industry": "Управление",
+            "city": "Москва"
+        }
+    ],
+    "vacancies": [
+        {
+            "id": "vacancy-1",
+            "title": "Frontend-разработчик",
+            "companyId": "company-1",
+            "industry": "IT",
+            "salary": 120000,
+            "experience": "От 1 года",
+            "description": "Разработка и поддержка пользовательских интерфейсов.",
+            "requirements": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Bootstrap"
+            ],
+            "userId": 1
+        },
+        {
+            "id": "vacancy-2",
+            "title": "Project-менеджер",
+            "companyId": "company-2",
+            "industry": "Управление",
+            "salary": 80000,
+            "experience": "От 3 лет",
+            "description": "Координация команды и ведение проектов.",
+            "requirements": [
+                "Планирование",
+                "Коммуникация",
+                "Управление проектами"
+            ],
+            "userId": 1
+        },
+        {
+            "id": "vacancy-3",
+            "title": "SMM-специалист",
+            "companyId": "company-2",
+            "industry": "Маркетинг",
+            "salary": 90000,
+            "experience": "Без опыта",
+            "description": "Подготовка публикаций и развитие социальных сетей компании.",
+            "requirements": [
+                "Копирайтинг",
+                "Социальные сети",
+                "Креативность"
+            ],
+            "userId": 1
+        },
+        {
+            "title": "Junior Frontend-разработчик",
+            "salary": 90000,
+            "industry": "IT",
+            "experience": "Без опыта",
+            "description": "Разработка страниц на HTML, CSS и JavaScript. Помощь наставника и гибкий график.",
+            "requirements": [
+                "HTML и CSS",
+                "Основы JavaScript",
+                "Готовность учиться"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "NtL4tCj"
+        },
+        {
+            "title": "Backend-разработчик Node.js",
+            "salary": 180000,
+            "industry": "IT",
+            "experience": "От 3 лет",
+            "description": "Разработка REST API и интеграций, работа с базами данных.",
+            "requirements": [
+                "Node.js",
+                "SQL",
+                "Git"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "_Mush93"
+        },
+        {
+            "title": "Менеджер проектов",
+            "salary": 130000,
+            "industry": "Управление",
+            "experience": "От 3 лет",
+            "description": "Планирование задач, координация команды и общение с заказчиками.",
+            "requirements": [
+                "Планирование",
+                "Коммуникация",
+                "Управление рисками"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "ed9wO-O"
+        },
+        {
+            "title": "QA-инженер",
+            "salary": 110000,
+            "industry": "IT",
+            "experience": "От 1 года",
+            "description": "Ручное тестирование веб-приложений и проверка REST API.",
+            "requirements": [
+                "Тест-дизайн",
+                "Postman",
+                "SQL"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "4xLefnF"
+        },
+        {
+            "title": "UX/UI-дизайнер",
+            "salary": 125000,
+            "industry": "IT",
+            "experience": "От 1 года",
+            "description": "Проектирование удобных интерфейсов и подготовка макетов.",
+            "requirements": [
+                "Figma",
+                "Прототипирование",
+                "Портфолио"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "4URfc5l"
+        },
+        {
+            "title": "Стажёр JavaScript-разработчик",
+            "salary": 60000,
+            "industry": "IT",
+            "experience": "Без опыта",
+            "description": "Разработка небольших функций под руководством наставника.",
+            "requirements": [
+                "Основы JavaScript",
+                "HTML",
+                "Git"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "s7u5AW9"
+        },
+        {
+            "title": "Vue-разработчик",
+            "salary": 170000,
+            "industry": "IT",
+            "experience": "От 3 лет",
+            "description": "Разработка SPA на Vue 3 и интеграция с API.",
+            "requirements": [
+                "Vue 3",
+                "Vue Router",
+                "REST API"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "UXkZHQ3"
+        },
+        {
+            "title": "Контент-менеджер",
+            "salary": 65000,
+            "industry": "Маркетинг",
+            "experience": "Без опыта",
+            "description": "Подготовка и публикация материалов на сайте компании.",
+            "requirements": [
+                "Грамотный русский язык",
+                "Внимательность",
+                "Работа с текстами"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "p6a1m1K"
+        },
+        {
+            "title": "Интернет-маркетолог",
+            "salary": 140000,
+            "industry": "Маркетинг",
+            "experience": "От 3 лет",
+            "description": "Планирование рекламы, анализ конверсии и развитие каналов продвижения.",
+            "requirements": [
+                "Веб-аналитика",
+                "Реклама",
+                "Планирование бюджета"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "7J55Yus"
+        },
+        {
+            "title": "Ассистент менеджера проектов",
+            "companyName": "ООО «Айти Технологии»",
+            "salary": 60000,
+            "industry": "Управление",
+            "experience": "Без опыта",
+            "description": "Помощь в ведении задач и подготовке проектной документации.",
+            "requirements": [
+                "Организованность",
+                "Деловая переписка",
+                "Таблицы"
+            ],
+            "userId": 1,
+            "id": "Bef8Gd6"
+        },
+        {
+            "title": "Менеджер продукта",
+            "salary": 200000,
+            "industry": "Управление",
+            "experience": "От 3 лет",
+            "description": "Развитие продукта, исследование потребностей и управление приоритетами.",
+            "requirements": [
+                "Продуктовая аналитика",
+                "Исследования",
+                "Работа с командой"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "BydVzED"
+        },
+        {
+            "title": "SMM-специалист",
+            "salary": 75000,
+            "industry": "Маркетинг",
+            "experience": "От 1 года",
+            "description": "Ведение социальных сетей и подготовка контент-плана.",
+            "requirements": [
+                "Копирайтинг",
+                "Анализ статистики",
+                "Работа с контентом"
+            ],
+            "companyName": "ООО «Айти Технологии»",
+            "userId": 1,
+            "id": "6YfC00G"
+        }
+    ],
+    "resumes": [
+        {
+            "title": "Frontend-разработчик",
+            "city": "Санкт-Петербург",
+            "salary": 80000,
+            "skills": "HTML, CSS, Bootstrap, JavaScript, Git",
+            "education": "Университет ИТМО",
+            "experience": "Учебные проекты: сайт поиска работы и REST API",
+            "candidateName": "Анастасия Маркозубова",
+            "userId": 2,
+            "id": 1
+        },
+        {
+            "candidateName": "Иван Петров",
+            "title": "Frontend-разработчик",
+            "city": "Москва",
+            "salary": 110000,
+            "skills": "HTML, CSS, JavaScript, React, Git",
+            "education": "Московский политехнический университет",
+            "experience": "2 года: разработка интерфейсов интернет-магазина",
+            "userId": 3,
+            "id": 2
+        },
+        {
+            "candidateName": "Мария Смирнова",
+            "title": "UX/UI-дизайнер",
+            "city": "Санкт-Петербург",
+            "salary": 95000,
+            "skills": "Figma, прототипирование, дизайн-системы, UX-исследования",
+            "education": "СПбГУПТД, дизайн",
+            "experience": "1 год: макеты мобильных приложений и лендингов",
+            "userId": 4,
+            "id": 3
+        },
+        {
+            "candidateName": "Алексей Волков",
+            "title": "Backend-разработчик Node.js",
+            "city": "Казань",
+            "salary": 180000,
+            "skills": "Node.js, Express, PostgreSQL, Docker, REST API",
+            "education": "КФУ, прикладная информатика",
+            "experience": "4 года: серверные приложения и интеграции",
+            "userId": 5,
+            "id": 4
+        },
+        {
+            "candidateName": "Дарья Кузнецова",
+            "title": "QA-инженер",
+            "city": "Новосибирск",
+            "salary": 85000,
+            "skills": "Postman, SQL, тест-кейсы, DevTools, Jira",
+            "education": "НГТУ, информационные системы",
+            "experience": "1 год: ручное тестирование веб-приложений",
+            "userId": 6,
+            "id": 5
+        },
+        {
+            "candidateName": "Егор Морозов",
+            "title": "Стажёр JavaScript-разработчик",
+            "city": "Екатеринбург",
+            "salary": 50000,
+            "skills": "JavaScript, HTML, CSS, Bootstrap, Git",
+            "education": "УрФУ, программная инженерия, студент",
+            "experience": "Без коммерческого опыта. Учебные проекты: каталог товаров и список задач",
+            "userId": 7,
+            "id": 6
+        },
+        {
+            "candidateName": "Полина Орлова",
+            "title": "SMM-специалист",
+            "city": "Санкт-Петербург",
+            "salary": 75000,
+            "skills": "Контент-план, копирайтинг, VK, аналитика, Canva",
+            "education": "СПбГУ, реклама и связи с общественностью",
+            "experience": "2 года: ведение социальных сетей локальных брендов",
+            "userId": 8,
+            "id": 7
+        },
+        {
+            "candidateName": "Дмитрий Соколов",
+            "title": "Менеджер проектов",
+            "city": "Москва",
+            "salary": 150000,
+            "skills": "Scrum, Kanban, управление командой, Jira, планирование",
+            "education": "НИУ ВШЭ, менеджмент",
+            "experience": "5 лет: управление командами разработки до 10 человек",
+            "userId": 9,
+            "id": 8
+        },
+        {
+            "candidateName": "Анна Лебедева",
+            "title": "Контент-менеджер",
+            "city": "Пермь",
+            "salary": 55000,
+            "skills": "Редактирование, CMS, HTML, подготовка изображений",
+            "education": "ПГНИУ, филология",
+            "experience": "Без коммерческого опыта. Ведение студенческого медиапроекта",
+            "userId": 10,
+            "id": 9
+        },
+        {
+            "candidateName": "Никита Фёдоров",
+            "title": "Vue-разработчик",
+            "city": "Нижний Новгород",
+            "salary": 160000,
+            "skills": "Vue 3, Pinia, Vue Router, TypeScript, Axios",
+            "education": "ННГУ, прикладная математика",
+            "experience": "3 года: личные кабинеты и CRM-системы",
+            "userId": 11,
+            "id": 10
+        },
+        {
+            "candidateName": "София Белова",
+            "title": "Интернет-маркетолог",
+            "city": "Самара",
+            "salary": 120000,
+            "skills": "Яндекс Директ, Метрика, SEO, Excel, рекламные кампании",
+            "education": "Самарский университет, маркетинг",
+            "experience": "3 года: продвижение интернет-магазинов",
+            "userId": 12,
+            "id": 11
+        },
+        {
+            "candidateName": "Артём Зайцев",
+            "title": "QA Automation Engineer",
+            "city": "Томск",
+            "salary": 170000,
+            "skills": "Playwright, JavaScript, Python, API, CI/CD",
+            "education": "ТГУ, информатика",
+            "experience": "4 года: автоматизация тестирования веб-сервисов",
+            "userId": 13,
+            "id": 12
+        },
+        {
+            "candidateName": "Елена Новикова",
+            "title": "Ассистент менеджера проектов",
+            "city": "Краснодар",
+            "salary": 60000,
+            "skills": "Деловая переписка, Excel, протоколы встреч, Trello",
+            "education": "КубГУ, управление",
+            "experience": "1 год: сопровождение проектов и подготовка документов",
+            "userId": 14,
+            "id": 13
+        }
+    ],
+    "applications": [
+        {
+            "userId": 2,
+            "employerId": 1,
+            "vacancyId": "vacancy-2",
+            "candidateName": "Анастасия Маркозубова",
+            "status": "Отправлен",
+            "createdAt": "2026-10-23T14:09:02.744Z",
+            "id": 1
+        },
+        {
+            "userId": 2,
+            "employerId": 1,
+            "vacancyId": "vacancy-3",
+            "candidateName": "Анастасия Маркозубова",
+            "status": "Отправлен",
+            "createdAt": "2026-10-23T14:41:54.153Z",
+            "id": 2
+        }
+    ]
+};
