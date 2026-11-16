@@ -1,0 +1,19 @@
+{
+  "name": "finderjobs-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "api": "node server.cjs",
+    "start": "node server.cjs"
+  },
+  "devDependencies": {
+    "@babel/generator": "^8.0.6",
+    "@babel/parser": "^8.0.8",
+    "@babel/traverse": "^8.0.7",
+    "json-server": "0.17.4",
+    "json-server-auth": "2.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "playwright": "^1.64.1",
+    "prettier": "^3.9.10"
+  }
+}
