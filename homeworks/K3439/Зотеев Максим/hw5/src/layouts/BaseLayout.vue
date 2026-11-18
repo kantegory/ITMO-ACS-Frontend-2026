@@ -1,9 +1,6 @@
 <template>
-  <main class="container notebook">
-    <header class="notebook-header">
-      <span class="book-mark" aria-hidden="true"></span>
-      <h1>Блокнот</h1>
-    </header>
+  <main class="container my-3">
+    <h1 class="mb-3">Блокнот</h1>
     <slot />
   </main>
 </template>

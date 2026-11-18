@@ -35,22 +35,20 @@ export default {
 
 <template>
   <BaseLayout>
-    <div class="workspace">
-      <NoteForm :loading="loading || loadError" />
-      <section aria-labelledby="my-notes" :aria-busy="loading">
-        <h2 id="my-notes">Мои заметки <span class="count">{{ notes.length }}</span></h2>
-        <p v-if="loadError" role="alert">
-          Не удалось загрузить заметки.
-          <button class="retry" type="button" @click="refreshNotes">Повторить</button>
-        </p>
-        <p v-else-if="loading" role="status">Загрузка…</p>
-        <p v-else-if="!notes.length">Здесь появится ваша первая заметка.</p>
-        <ul v-if="notes.length" class="notes-grid list-unstyled">
-          <li v-for="note in notes" :key="note.id">
-            <NoteCard :name="note.name" :text="note.text" />
-          </li>
-        </ul>
-      </section>
-    </div>
+    <NoteForm :loading="loading || loadError" />
+    <section class="mt-4" aria-labelledby="my-notes" :aria-busy="loading">
+      <h2 id="my-notes" class="h4">Мои заметки ({{ notes.length }})</h2>
+      <p v-if="loadError" role="alert">
+        Не удалось загрузить заметки.
+        <button class="btn btn-link p-0" type="button" @click="refreshNotes">Повторить</button>
+      </p>
+      <p v-else-if="loading" role="status">Загрузка…</p>
+      <p v-else-if="!notes.length">Здесь появится ваша первая заметка.</p>
+      <ul v-if="notes.length" class="row row-cols-1 row-cols-md-2 g-2 list-unstyled">
+        <li v-for="note in notes" :key="note.id" class="col">
+          <NoteCard :name="note.name" :text="note.text" />
+        </li>
+      </ul>
+    </section>
   </BaseLayout>
 </template>
