@@ -3,6 +3,7 @@ import { mapActions } from 'pinia'
 import { useNotesStore } from '@/stores/notes'
 
 export default {
+  emits: ['saved'],
   props: {
     loading: { type: Boolean, default: false },
   },
@@ -30,6 +31,7 @@ export default {
         await this.createNote({ ...this.form, userId: 1 })
         this.form = { name: '', text: '' }
         this.status = 'Заметка сохранена.'
+        this.$emit('saved')
       } catch {
         this.error = 'Не удалось сохранить заметку. Проверьте подключение к API и попробуйте ещё раз.'
       } finally {

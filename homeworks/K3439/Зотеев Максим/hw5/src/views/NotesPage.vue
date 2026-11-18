@@ -35,11 +35,11 @@ export default {
 
 <template>
   <BaseLayout>
-    <NoteForm :loading="loading || loadError" />
+    <NoteForm :loading="loading || loadError" @saved="refreshNotes" />
     <section class="mt-4" aria-labelledby="my-notes" :aria-busy="loading">
       <h2 id="my-notes" class="h4">Мои заметки ({{ notes.length }})</h2>
       <p v-if="loadError" role="alert">
-        Не удалось загрузить заметки.
+        Не удалось загрузить список заметок.
         <button class="btn btn-link p-0" type="button" @click="refreshNotes">Повторить</button>
       </p>
       <p v-else-if="loading" role="status">Загрузка…</p>
