@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поиск жилья — Аренда жилья</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Аренда жилья</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Поиск</a></li>
+          <li class="nav-item"><a class="nav-link" href="messages.html">Сообщения</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Личный кабинет</a></li>
+        </ul>
+        <a class="btn btn-outline-primary me-2" href="login.html">Вход</a>
+        <a class="btn btn-primary" href="register.html">Регистрация</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h1 class="h2 mb-4">Поиск жилья</h1>
+
+    <div class="row">
+      <div class="col-lg-3 mb-4">
+        <form id="filters" class="card card-body">
+          <h2 class="h5 mb-3">Фильтры</h2>
+          <div class="mb-3">
+            <label for="type" class="form-label">Тип жилья</label>
+            <select id="type" class="form-select">
+              <option value="">Любой</option>
+              <option value="Квартира">Квартира</option>
+              <option value="Студия">Студия</option>
+              <option value="Комната">Комната</option>
+              <option value="Дом">Дом</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">Город</label>
+            <select id="city" class="form-select">
+              <option value="">Любой</option>
+              <option value="Санкт-Петербург">Санкт-Петербург</option>
+              <option value="Москва">Москва</option>
+              <option value="Казань">Казань</option>
+              <option value="Сочи">Сочи</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Цена, ₽ в месяц</label>
+            <div class="input-group">
+              <input type="number" id="priceMin" class="form-control" placeholder="от" min="0">
+              <input type="number" id="priceMax" class="form-control" placeholder="до" min="0">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Показать</button>
+          <button type="reset" class="btn btn-outline-secondary">Сбросить</button>
+        </form>
+      </div>
+
+      <div class="col-lg-9">
+        <p class="text-muted">Найдено объявлений: <span id="count">6</span></p>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-4 listing" data-type="Квартира" data-city="Санкт-Петербург" data-price="65000">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600" class="card-img-top" alt="Двухкомнатная квартира">
+              <div class="card-body">
+                <span class="badge text-bg-secondary mb-2">Квартира</span>
+                <h2 class="h5 card-title">Двухкомнатная квартира, 58 м²</h2>
+                <p class="card-text text-muted mb-2">Санкт-Петербург, Петроградский район</p>
+                <p class="fw-bold fs-5 mb-0">65 000 ₽ / мес</p>
+              </div>
+              <div class="card-footer bg-white border-0 pb-3">
+                <a href="property.html" class="btn btn-outline-primary w-100">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4 listing" data-type="Студия" data-city="Санкт-Петербург" data-price="38000">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600" class="card-img-top" alt="Студия">
+              <div class="card-body">
+                <span class="badge text-bg-secondary mb-2">Студия</span>
+                <h2 class="h5 card-title">Студия, 28 м²</h2>
+                <p class="card-text text-muted mb-2">Санкт-Петербург, Василеостровский район</p>
+                <p class="fw-bold fs-5 mb-0">38 000 ₽ / мес</p>
+              </div>
+              <div class="card-footer bg-white border-0 pb-3">
+                <a href="property.html" class="btn btn-outline-primary w-100">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4 listing" data-type="Комната" data-city="Санкт-Петербург" data-price="22000">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" class="card-img-top" alt="Комната">
+              <div class="card-body">
+                <span class="badge text-bg-secondary mb-2">Комната</span>
+                <h2 class="h5 card-title">Комната в трёхкомнатной квартире, 18 м²</h2>
+                <p class="card-text text-muted mb-2">Санкт-Петербург, Московский район</p>
+                <p class="fw-bold fs-5 mb-0">22 000 ₽ / мес</p>
+              </div>
+              <div class="card-footer bg-white border-0 pb-3">
+                <a href="property.html" class="btn btn-outline-primary w-100">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4 listing" data-type="Квартира" data-city="Москва" data-price="145000">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600" class="card-img-top" alt="Трёхкомнатная квартира">
+              <div class="card-body">
+                <span class="badge text-bg-secondary mb-2">Квартира</span>
+                <h2 class="h5 card-title">Трёхкомнатная квартира, 86 м²</h2>
+                <p class="card-text text-muted mb-2">Москва, Хамовники</p>
+                <p class="fw-bold fs-5 mb-0">145 000 ₽ / мес</p>
+              </div>
+              <div class="card-footer bg-white border-0 pb-3">
+                <a href="property.html" class="btn btn-outline-primary w-100">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4 listing" data-type="Квартира" data-city="Казань" data-price="48000">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=600" class="card-img-top" alt="Квартира в Казани">
+              <div class="card-body">
+                <span class="badge text-bg-secondary mb-2">Квартира</span>
+                <h2 class="h5 card-title">Двухкомнатная квартира, 52 м²</h2>
+                <p class="card-text text-muted mb-2">Казань, Вахитовский район</p>
+                <p class="fw-bold fs-5 mb-0">48 000 ₽ / мес</p>
+              </div>
+              <div class="card-footer bg-white border-0 pb-3">
+                <a href="property.html" class="btn btn-outline-primary w-100">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4 listing" data-type="Дом" data-city="Сочи" data-price="250000">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600" class="card-img-top" alt="Дом с бассейном">
+              <div class="card-body">
+                <span class="badge text-bg-secondary mb-2">Дом</span>
+                <h2 class="h5 card-title">Дом с бассейном, 180 м²</h2>
+                <p class="card-text text-muted mb-2">Сочи, Адлерский район</p>
+                <p class="fw-bold fs-5 mb-0">250 000 ₽ / мес</p>
+              </div>
+              <div class="card-footer bg-white border-0 pb-3">
+                <a href="property.html" class="btn btn-outline-primary w-100">Подробнее</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="empty" class="alert alert-warning mt-4 d-none">По вашему запросу ничего не найдено.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
