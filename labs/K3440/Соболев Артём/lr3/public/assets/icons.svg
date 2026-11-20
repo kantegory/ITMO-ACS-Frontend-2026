@@ -1,0 +1,27 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  style="display: none"
+>
+  <!-- Иконка глаза для кнопки показа или скрытия пароля. -->
+  <symbol id="eye" viewBox="0 0 24 24">
+    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+    <circle cx="12" cy="12" r="3" />
+  </symbol>
+
+  <!-- Иконка полумесяца для кнопки переключения темы. -->
+  <symbol id="theme" viewBox="0 0 24 24">
+    <path d="M20.2 15.6A8.5 8.5 0 0 1 8.4 3.8 8.7 8.7 0 1 0 20.2 15.6Z" />
+  </symbol>
+
+  <!-- Иконка галочки для отметки завершённой тренировки в истории. -->
+  <symbol id="check" viewBox="0 0 24 24">
+    <path d="m5 12 4 4L19 6" />
+  </symbol>
+
+  <!-- Иконка лупы для поля поиска тренировок. -->
+  <symbol id="search" viewBox="0 0 24 24">
+    <circle cx="10.8" cy="10.8" r="6.8" />
+    <path d="m16 16 5 5" />
+  </symbol>
+</svg>
