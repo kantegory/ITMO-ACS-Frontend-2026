@@ -1,0 +1,8 @@
+{
+  "/register": "/register",
+  "/login": "/login",
+  "/restaurants": "/restaurants",
+  "/restaurants/:id": "/restaurants/:id",
+  "/bookings": "/600/bookings",
+  "/bookings/:id": "/600/bookings/:id"
+}

@@ -1,0 +1,263 @@
+:root {
+  --brand: #c0392b;
+  --brand-dark: #922b21;
+  --bg-soft: #f1f2f4;
+}
+
+[data-bs-theme="dark"] {
+  --brand: #e2574a;
+  --brand-dark: #c0392b;
+  --bg-soft: #15181c;
+}
+
+body {
+  background-color: var(--bg-soft);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #fff !important;
+}
+
+.navbar-dark .nav-link,
+.navbar-dark .nav-link.active,
+.navbar-dark .dropdown-toggle {
+  color: #fff !important;
+}
+
+.btn-brand {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.btn-brand:hover {
+  background-color: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: #fff;
+  padding: 4rem 0;
+}
+
+.restaurant-card {
+  display: block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.restaurant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.restaurant-card:focus-visible {
+  outline: 3px solid var(--brand-dark);
+  outline-offset: 2px;
+}
+
+.restaurant-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+}
+
+.rating-stars {
+  color: #f1a208;
+}
+
+.rating-star-filled {
+  fill: #f1a208;
+}
+
+.rating-star-empty {
+  fill: #d9d9d9;
+}
+[data-bs-theme="dark"] .rating-star-empty {
+  fill: #4a4a4a;
+}
+
+.filter-sidebar {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+}
+[data-bs-theme="dark"] .filter-sidebar {
+  background: #1f2328;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.auth-card {
+  max-width: 420px;
+  margin: 3rem auto;
+}
+
+.booking-history-item {
+  background-color: #f6f1ef;
+  border: 1px solid #e5dcd9;
+}
+.booking-history-item .text-muted {
+  color: #55504f !important;
+}
+[data-bs-theme="dark"] .booking-history-item {
+  background-color: #262320;
+  border-color: #3a3632;
+}
+[data-bs-theme="dark"] .booking-history-item .text-muted {
+  color: #d8c9c4 !important;
+}
+
+.cancel-btn {
+  color: #7e1620;
+  background-color: #fbeae9;
+  border-color: #e3a8a4;
+}
+.cancel-btn:hover,
+.cancel-btn:focus {
+  color: #fff;
+  background-color: #a41e2d;
+  border-color: #a41e2d;
+}
+[data-bs-theme="dark"] .cancel-btn {
+  color: #f3c6c2;
+  background-color: #3a1f1f;
+  border-color: #6b3330;
+}
+[data-bs-theme="dark"] .cancel-btn:hover,
+[data-bs-theme="dark"] .cancel-btn:focus {
+  color: #fff;
+  background-color: #e2574a;
+  border-color: #e2574a;
+}
+
+.status-badge-confirmed {
+  background-color: #e8f3e8;
+  color: #1e5121;
+  border: 1px solid #a8d3a8;
+}
+.status-badge-pending {
+  background-color: #fdf3e2;
+  color: #7a4a00;
+  border: 1px solid #ecd0a0;
+}
+.status-badge-cancelled {
+  background-color: #eef0f1;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+[data-bs-theme="dark"] .status-badge-confirmed {
+  background-color: #1f2e20;
+  color: #c3e6c4;
+  border-color: #3c5a3e;
+}
+[data-bs-theme="dark"] .status-badge-pending {
+  background-color: #352a16;
+  color: #e6c687;
+  border-color: #6b5530;
+}
+[data-bs-theme="dark"] .status-badge-cancelled {
+  background-color: #2a2d2f;
+  color: #c2c8cc;
+  border-color: #454a4e;
+}
+
+.menu-photo {
+  height: 140px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+footer {
+  background-color: #2b2b2b;
+  color: #ccc;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: #ccc;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 0.5rem;
+}
+[data-bs-theme="dark"] .review-card {
+  background: #1f2328;
+}
+
+.price-tag {
+  font-weight: 600;
+}
+
+.toast-container {
+  z-index: 1080;
+}
+
+/* Мягкие уведомления: вместо сплошной заливки Bootstrap alert-danger/alert-success —
+   лёгкий тонированный фон, цветная левая граница и маленькая цветная иконка. */
+.alert-soft {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+}
+
+.alert-soft-danger {
+  background-color: #fbeae9;
+  border-color: #e3a8a4;
+  color: #7e1620;
+}
+.alert-soft-danger .icon {
+  color: #a41e2d;
+  flex-shrink: 0;
+  margin-top: 0.2em;
+}
+[data-bs-theme="dark"] .alert-soft-danger {
+  background-color: #3a1f1f;
+  border-color: #6b3330;
+  color: #f3c6c2;
+}
+[data-bs-theme="dark"] .alert-soft-danger .icon {
+  color: #e2574a;
+}
+
+.alert-soft-success {
+  background-color: #e8f3e8;
+  border-color: #a8d3a8;
+  color: #1e5121;
+}
+.alert-soft-success .icon {
+  color: #2e7d32;
+  flex-shrink: 0;
+  margin-top: 0.2em;
+}
+[data-bs-theme="dark"] .alert-soft-success {
+  background-color: #1f2e20;
+  border-color: #3c5a3e;
+  color: #c3e6c4;
+}
+[data-bs-theme="dark"] .alert-soft-success .icon {
+  color: #4caf50;
+}
+
+.alert-soft-warning {
+  background-color: #fdf3e2;
+  border-color: #ecd0a0;
+  color: #7a4a00;
+}
+[data-bs-theme="dark"] .alert-soft-warning {
+  background-color: #352a16;
+  border-color: #6b5530;
+  color: #e6c687;
+}
