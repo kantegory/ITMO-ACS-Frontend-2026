@@ -1,0 +1,51 @@
+{
+  "users": [],
+  "companies": [
+    {
+      "id": "company-1",
+      "name": "ООО «Айти Технологии»",
+      "industry": "IT",
+      "city": "Санкт-Петербург"
+    },
+    {
+      "id": "company-2",
+      "name": "АО «Инновации»",
+      "industry": "Управление",
+      "city": "Москва"
+    }
+  ],
+  "vacancies": [
+    {
+      "id": "vacancy-1",
+      "title": "Frontend-разработчик",
+      "companyId": "company-1",
+      "industry": "IT",
+      "salary": 120000,
+      "experience": "От 1 года",
+      "description": "Разработка и поддержка пользовательских интерфейсов.",
+      "requirements": ["HTML", "CSS", "JavaScript", "Bootstrap"]
+    },
+    {
+      "id": "vacancy-2",
+      "title": "Project-менеджер",
+      "companyId": "company-2",
+      "industry": "Управление",
+      "salary": 80000,
+      "experience": "От 3 лет",
+      "description": "Координация команды и ведение проектов.",
+      "requirements": ["Планирование", "Коммуникация", "Управление проектами"]
+    },
+    {
+      "id": "vacancy-3",
+      "title": "SMM-специалист",
+      "companyId": "company-2",
+      "industry": "Маркетинг",
+      "salary": 90000,
+      "experience": "Без опыта",
+      "description": "Подготовка публикаций и развитие социальных сетей компании.",
+      "requirements": ["Копирайтинг", "Социальные сети", "Креативность"]
+    }
+  ],
+  "resumes": [],
+  "applications": []
+}
