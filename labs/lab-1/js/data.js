@@ -1,0 +1,171 @@
+// Общие демо-данные для всех страниц сайта
+const RESTAURANTS = [
+  {
+    id: 1,
+    name: "Трактир «Берёзка»",
+    cuisine: "Русская",
+    city: "Москва, Центр",
+    price: 2,
+    rating: 4.6,
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
+    description: "Домашняя русская кухня в уютном зале с печкой и живой музыкой по вечерам.",
+    photos: [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=500&h=350&fit=crop"
+    ],
+    menu: [
+      { name: "Борщ со сметаной", price: 390 },
+      { name: "Пельмени домашние", price: 450 },
+      { name: "Блины с икрой", price: 690 },
+      { name: "Морс клюквенный", price: 190 }
+    ],
+    reviews: [
+      { author: "Анна К.", rating: 5, text: "Очень вкусно и атмосферно, как у бабушки!" },
+      { author: "Игорь П.", rating: 4, text: "Хорошее обслуживание, но пришлось немного подождать столик." }
+    ]
+  },
+  {
+    id: 2,
+    name: "Sakura Sushi",
+    cuisine: "Японская",
+    city: "Москва, Юго-Запад",
+    price: 3,
+    rating: 4.8,
+    img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&h=400&fit=crop",
+    description: "Авторские суши и сашими от шеф-повара из Осаки, свежая рыба каждый день.",
+    photos: [
+      "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1553621042-f6e147245754?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1553621046-77b5f98f81c3?w=500&h=350&fit=crop"
+    ],
+    menu: [
+      { name: "Сет «Филадельфия»", price: 890 },
+      { name: "Мисо-суп", price: 290 },
+      { name: "Унаги маки", price: 520 },
+      { name: "Чай с жасмином", price: 150 }
+    ],
+    reviews: [
+      { author: "Мария С.", rating: 5, text: "Лучшие суши в городе, рыба всегда свежая." },
+      { author: "Дмитрий В.", rating: 5, text: "Отличная подача и сервис." }
+    ]
+  },
+  {
+    id: 3,
+    name: "Trattoria Bella",
+    cuisine: "Итальянская",
+    city: "Санкт-Петербург, Центр",
+    price: 3,
+    rating: 4.5,
+    img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop",
+    description: "Настоящая итальянская паста и пицца на дровяной печи, большой выбор вин.",
+    photos: [
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1576458088443-04a19bb13da6?w=500&h=350&fit=crop"
+    ],
+    menu: [
+      { name: "Пицца Маргарита", price: 540 },
+      { name: "Паста Карбонара", price: 480 },
+      { name: "Тирамису", price: 320 },
+      { name: "Вино домашнее (бокал)", price: 280 }
+    ],
+    reviews: [
+      { author: "Елена Т.", rating: 4, text: "Отличная пицца, приятная атмосфера." },
+      { author: "Сергей М.", rating: 5, text: "Лучшая карбонара, что я ел вне Италии." }
+    ]
+  },
+  {
+    id: 4,
+    name: "Dragon Wok",
+    cuisine: "Китайская",
+    city: "Москва, Север",
+    price: 1,
+    rating: 4.2,
+    img: "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=600&h=400&fit=crop",
+    description: "Быстро, сытно и по-домашнему: лапша вок, димсамы и утка по-пекински.",
+    photos: [
+      "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1525755662778-989d0524087e?w=500&h=350&fit=crop"
+    ],
+    menu: [
+      { name: "Лапша вок с курицей", price: 350 },
+      { name: "Димсамы (6 шт.)", price: 290 },
+      { name: "Утка по-пекински", price: 990 },
+      { name: "Зелёный чай", price: 120 }
+    ],
+    reviews: [
+      { author: "Наталья Ж.", rating: 4, text: "Вкусно и недорого, но зал тесноват." },
+      { author: "Олег К.", rating: 4, text: "Утка просто отличная." }
+    ]
+  },
+  {
+    id: 5,
+    name: "La Maison",
+    cuisine: "Французская",
+    city: "Санкт-Петербург, Петроградская",
+    price: 4,
+    rating: 4.9,
+    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop",
+    description: "Изысканная французская кухня, камерная обстановка и сомелье в зале.",
+    photos: [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=500&h=350&fit=crop"
+    ],
+    menu: [
+      { name: "Фуа-гра с бриошью", price: 1290 },
+      { name: "Утиная грудка конфи", price: 1450 },
+      { name: "Крем-брюле", price: 450 },
+      { name: "Бокал шампанского", price: 650 }
+    ],
+    reviews: [
+      { author: "Виктория Л.", rating: 5, text: "Идеальный вечер, безупречная подача." },
+      { author: "Антон Р.", rating: 5, text: "Дорого, но каждая деталь на высшем уровне." }
+    ]
+  },
+  {
+    id: 6,
+    name: "Pizza Street",
+    cuisine: "Итальянская",
+    city: "Москва, Восток",
+    price: 1,
+    rating: 4.0,
+    img: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&h=400&fit=crop",
+    description: "Пицца на вынос и небольшой уютный зал, отлично для семейного ужина.",
+    photos: [
+      "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1511689660979-10d2b1aada49?w=500&h=350&fit=crop",
+      "https://images.unsplash.com/photo-1548365328-9f547fb0953e?w=500&h=350&fit=crop"
+    ],
+    menu: [
+      { name: "Пицца Пепперони", price: 420 },
+      { name: "Пицца 4 сыра", price: 450 },
+      { name: "Салат Капрезе", price: 320 },
+      { name: "Лимонад домашний", price: 180 }
+    ],
+    reviews: [
+      { author: "Константин Б.", rating: 4, text: "Быстро и вкусно, хорошая цена." },
+      { author: "Юлия Н.", rating: 3, text: "Неплохо, но тесто можно лучше." }
+    ]
+  }
+];
+
+function getRestaurantById(id) {
+  return RESTAURANTS.find((r) => r.id === Number(id));
+}
+
+function priceSymbols(level) {
+  const symbols = ["$", "$$", "$$$", "$$$$"];
+  return symbols[level - 1] || "$";
+}
+
+function renderStars(rating) {
+  const full = Math.round(rating);
+  let html = "";
+  for (let i = 1; i <= 5; i++) {
+    html += i <= full ? "★" : "☆";
+  }
+  return html;
+}

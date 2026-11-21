@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ресторан — TableBook</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<a class="visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#922b21;" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">TableBook</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Открыть меню навигации">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Поиск ресторанов</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Личный кабинет</a></li>
+        </ul>
+        <ul class="navbar-nav align-items-lg-center" id="nav-auth-slot"></ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container my-5" id="main-content">
+  <div id="restaurant-root">
+    <!-- Контент подставляется скриптом js/restaurant.js -->
+  </div>
+</main>
+
+<!-- Модальное окно бронирования -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true" aria-labelledby="bookingModalTitle">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="booking-form">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="bookingModalTitle">Бронирование столика</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть окно бронирования"></button>
+        </div>
+        <div class="modal-body">
+          <div id="booking-login-warning" class="alert alert-info d-none" role="status">
+            Чтобы забронировать столик, <a href="login.html">войдите в аккаунт</a>.
+          </div>
+          <div id="booking-error" class="alert alert-danger d-none" role="alert" aria-live="assertive"></div>
+          <div class="mb-3">
+            <label class="form-label" for="b-date">Дата</label>
+            <input type="date" class="form-control" id="b-date" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="b-time">Время</label>
+            <input type="time" class="form-control" id="b-time" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="b-guests">Количество гостей</label>
+            <input type="number" class="form-control" id="b-guests" min="1" max="20" value="2" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="b-comment">Комментарий</label>
+            <textarea class="form-control" id="b-comment" rows="2" placeholder="Например: столик у окна"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-brand" id="booking-submit">Забронировать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast об успешном бронировании -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="booking-toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">Столик успешно забронирован! Подробности — в личном кабинете.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть уведомление"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/restaurant.js"></script>
+</body>
+</html>
