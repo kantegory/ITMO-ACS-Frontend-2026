@@ -33,8 +33,8 @@ function logout() {
       <RouterLink class="nav-link" to="/">Поиск</RouterLink>
       <RouterLink v-if="user" class="nav-link" to="/profile">Кабинет</RouterLink>
       <RouterLink v-if="user" class="nav-link" to="/messages">Сообщения</RouterLink>
-      <button class="btn btn-outline-secondary btn-sm ms-md-auto" :aria-pressed="theme === 'dark'" @click="toggleTheme">
-        Тёмная тема
+      <button class="btn btn-outline-secondary btn-sm ms-md-auto" type="button" @click="toggleTheme">
+        {{ theme === 'dark' ? 'Светлая тема' : 'Тёмная тема' }}
       </button>
       <button v-if="user" class="btn btn-outline-secondary btn-sm" @click="logout">Выйти ({{ user.firstName }})</button>
       <RouterLink v-else class="btn btn-outline-primary btn-sm" to="/login">Войти</RouterLink>
