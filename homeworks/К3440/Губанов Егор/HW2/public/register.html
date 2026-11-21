@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Регистрация — Вместе</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="register">
+
+<a class="skip-link" href="#content">К содержимому</a>
+
+<header class="site-header">
+  <div class="container-xl py-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <a class="brand" href="index.html">ВМЕСТЕ</a>
+    <nav id="siteNav" class="site-nav" aria-label="Основная навигация"></nav>
+  </div>
+</header>
+
+<noscript>
+  <p class="container status">Для работы сайта включи JavaScript.</p>
+</noscript>
+
+<main id="content" class="container-xl py-5" tabindex="-1">
+  <section class="brutal-card p-4 p-md-5 auth-wrap mx-auto">
+    <p class="eyebrow">Двигаться легче вместе</p>
+
+    <h1 id="authTitle" class="display-title">Создать аккаунт</h1>
+
+    <form
+            id="authForm"
+            class="needs-validation mt-4"
+            aria-labelledby="authTitle"
+            novalidate
+    >
+      <div class="mb-3">
+        <label class="form-label" for="name">Имя</label>
+        <input
+                class="form-control"
+                id="name"
+                name="name"
+                autocomplete="given-name"
+                maxlength="60"
+                required
+        >
+        <div id="nameError" class="invalid-feedback">
+          Введи имя: от 1 до 60 символов.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Почта</label>
+        <input
+                class="form-control"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+        >
+        <div id="emailError" class="invalid-feedback">
+          Введи корректную почту.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="password">Пароль</label>
+
+        <input
+                class="form-control"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+                aria-describedby="passwordHint"
+        >
+
+        <p id="passwordHint" class="form-text">
+          Минимум 6 символов.
+        </p>
+
+        <div id="passwordError" class="invalid-feedback">
+          Введи пароль длиной не менее 6 символов.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="confirmPassword">
+          Повтори пароль
+        </label>
+        <input
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+        >
+        <div id="confirmPasswordError" class="invalid-feedback">
+          Повтори пароль: минимум 6 символов.
+          Пароли должны совпадать.
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label" for="goal">Что тебе ближе?</label>
+        <select class="form-select" id="goal" name="goal">
+          <option value="pilates">Пилатес</option>
+          <option value="yoga">Йога</option>
+          <option value="stretch">Растяжка</option>
+          <option value="cardio">Кардио</option>
+          <option value="strength">Силовая</option>
+        </select>
+      </div>
+
+      <button class="btn btn-brutal btn-clay w-100" type="submit">
+        Зарегистрироваться
+      </button>
+
+      <p
+              id="formStatus"
+              class="status"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              tabindex="-1"
+      ></p>
+    </form>
+
+    <p class="mt-4 mb-0">
+      Уже есть аккаунт?
+      <a id="otherAuth" href="login.html">Войти</a>
+    </p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

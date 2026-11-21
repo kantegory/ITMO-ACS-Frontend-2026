@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мой план — Вместе</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="profile">
+
+<a class="skip-link" href="#content">К содержимому</a>
+
+<header class="site-header">
+  <div class="container-xl py-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <a class="brand" href="index.html">ВМЕСТЕ</a>
+    <nav id="siteNav" class="site-nav" aria-label="Основная навигация"></nav>
+  </div>
+</header>
+
+<noscript>
+  <p class="container status">Для работы сайта включи JavaScript.</p>
+</noscript>
+
+<main id="content" class="container-xl py-5">
+  <p id="pageStatus" class="status" role="status">
+    Загружаем личный кабинет…
+  </p>
+
+  <div id="profileContent" hidden>
+    <p class="eyebrow">Личный кабинет</p>
+
+    <h1 id="profileName" class="display-title"></h1>
+    <p id="profileMeta" class="lead-copy"></p>
+
+    <section
+            class="brutal-card p-4 my-4"
+            aria-labelledby="planTitle"
+    >
+      <div class="d-flex flex-wrap justify-content-between gap-3 align-items-center">
+        <h2 id="planTitle" class="h3 mb-0">План на неделю</h2>
+
+        <p
+                id="progressLabel"
+                class="eyebrow mb-0"
+                aria-live="polite"
+        ></p>
+      </div>
+
+      <div
+              id="progressTrack"
+              class="progress brutal-progress mt-3"
+              role="progressbar"
+              aria-label="Выполнение плана"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+      >
+        <div
+                id="planProgress"
+                class="progress-bar"
+                style="width:0%"
+        ></div>
+      </div>
+    </section>
+
+    <p id="emptyPlan" class="status" hidden>
+      В плане пока нет занятий.
+      Выбери тренировку в каталоге и укажи день недели.
+    </p>
+
+    <section
+            id="planList"
+            class="plan-list"
+            aria-label="Занятия в плане"
+    ></section>
+
+    <a class="btn btn-brutal btn-clay mt-4" href="index.html">
+      Выбрать занятие
+    </a>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

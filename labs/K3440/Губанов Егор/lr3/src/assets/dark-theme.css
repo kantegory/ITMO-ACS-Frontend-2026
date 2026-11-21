@@ -1,0 +1,129 @@
+:root[data-bs-theme="dark"] {
+    color-scheme: dark;
+    --paper: #20211e;
+    --surface: #292c27;
+    --field: #232520;
+    --ink: #d5d6cc;
+    --muted: #afb3a8;
+    --edge: #41463d;
+    --control-edge: #727a6c;
+    --accent: #a2b49d;
+    --sage: #36443a;
+    --lilac: #44434d;
+    --clay: #4e463b;
+    --line: 1px solid var(--edge);
+    --hard-shadow: 0 3px 8px rgb(0 0 0 / 18%);
+    --bs-body-color: var(--ink);
+    --bs-body-bg: var(--paper);
+    --bs-secondary-color: var(--muted);
+    --bs-border-color: var(--edge);
+    --bs-danger-rgb: 222, 181, 170;
+}
+
+[data-bs-theme="dark"] .site-header {
+    background: var(--surface);
+    border-bottom: var(--line);
+}
+
+[data-bs-theme="dark"] :is(.brutal-card, .filter-panel, .article-dialog, .skip-link, .status) {
+    background: var(--surface);
+}
+
+[data-bs-theme="dark"] :is(.brutal-card, .filter-panel) {
+    box-shadow: var(--hard-shadow);
+}
+
+[data-bs-theme="dark"] .lead-copy {
+    color: var(--muted);
+}
+
+[data-bs-theme="dark"] .pose-svg {
+    stroke: #adb6a7;
+}
+
+[data-bs-theme="dark"] .participant-list li {
+    border-color: var(--edge);
+}
+
+[data-bs-theme="dark"] :is(.form-control, .form-select) {
+    background-color: var(--field);
+    border-color: var(--control-edge);
+    color: var(--ink);
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+    color: var(--muted);
+    opacity: 1;
+}
+
+[data-bs-theme="dark"] :is(.form-control, .form-select):focus {
+    border-color: var(--accent);
+    box-shadow: none;
+}
+
+[data-bs-theme="dark"] .btn-brutal {
+    --bs-btn-hover-bg: #3b4037;
+    --bs-btn-active-color: var(--ink);
+    --bs-btn-active-bg: var(--sage);
+    --bs-btn-active-border-color: var(--control-edge);
+    --bs-btn-disabled-color: var(--muted);
+    --bs-btn-disabled-bg: var(--surface);
+    --bs-btn-disabled-border-color: var(--control-edge);
+    color: var(--ink);
+    border-color: var(--control-edge);
+    box-shadow: none;
+}
+
+[data-bs-theme="dark"] .btn-brutal:hover {
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--accent);
+    color: var(--ink);
+    transform: none;
+}
+
+[data-bs-theme="dark"] .form-check-input {
+    background-color: var(--field);
+    border-color: var(--control-edge);
+}
+
+[data-bs-theme="dark"] .form-check-input:checked {
+    background-color: #526657;
+    border-color: var(--accent);
+}
+
+[data-bs-theme="dark"] .form-check-input:focus {
+    border-color: var(--accent);
+    box-shadow: none;
+}
+
+[data-bs-theme="dark"] .brutal-progress {
+    background: #34382f;
+}
+
+[data-bs-theme="dark"] .brutal-progress .progress-bar {
+    background: #81977e;
+}
+
+[data-bs-theme="dark"] .status.is-error {
+    background: #3d302e;
+    border-color: #71574e;
+    color: #deb5aa;
+}
+
+[data-bs-theme="dark"] .video-frame {
+    background: #191a17;
+}
+
+[data-bs-theme="dark"] .article-dialog::backdrop {
+    background: rgb(15 16 13 / 70%);
+}
+
+[data-bs-theme="dark"] a:not(.btn):hover {
+    color: var(--accent);
+}
+
+[data-bs-theme="dark"] :focus-visible,
+[data-bs-theme="dark"] .site-nav :is(a, .nav-button):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}

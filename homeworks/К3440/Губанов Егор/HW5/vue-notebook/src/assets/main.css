@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f5f6f8;
+  color: #252a34;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  padding: 32px 0;
+}
+
+main.container {
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+form {
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+form label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+form label:not(:first-child) {
+  margin-top: 16px;
+}
+
+form .form-control {
+  padding: 10px 12px;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form .btn {
+  align-self: flex-start;
+  margin-top: 16px;
+  padding: 10px 24px;
+}
+
+#notes .card {
+  height: 100%;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+#notes .card-body {
+  padding: 20px;
+}
+
+#notes .card-title {
+  font-size: 18px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+#notes .card-text {
+  margin-bottom: 0;
+  color: #555e6b;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 575px) {
+  #app {
+    padding: 20px 0;
+  }
+
+  form {
+    padding: 16px;
+  }
+}

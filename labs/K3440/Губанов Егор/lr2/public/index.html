@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Занятия — Вместе</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="catalog">
+
+<a class="skip-link" href="#content">К содержимому</a>
+
+<header class="site-header">
+    <div class="container-xl py-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+        <a class="brand" href="index.html">ВМЕСТЕ</a>
+        <nav id="siteNav" class="site-nav" aria-label="Основная навигация"></nav>
+    </div>
+</header>
+
+<noscript>
+    <p class="container status">Для работы сайта включи JavaScript.</p>
+</noscript>
+
+<main id="content" class="container-xl py-5">
+    <p class="eyebrow">Йога · Пилатес · Растяжка · Кардио · Сила</p>
+
+    <h1 class="display-title">Найти занятие</h1>
+
+    <p class="lead-copy">
+        Выбери практику и добавь её в свой план.
+    </p>
+
+    <form
+            id="filters"
+            class="filter-panel row g-3 align-items-end my-4"
+            role="search"
+    >
+        <div class="col-12 col-md-3">
+            <label class="form-label" for="typeFilter">Направление</label>
+            <select class="form-select" id="typeFilter" name="type">
+                <option value="">Все направления</option>
+                <option value="pilates">Пилатес</option>
+                <option value="yoga">Йога</option>
+                <option value="stretch">Растяжка</option>
+                <option value="cardio">Кардио</option>
+                <option value="strength">Силовая</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <label class="form-label" for="levelFilter">Уровень</label>
+            <select class="form-select" id="levelFilter" name="level">
+                <option value="">Любой</option>
+                <option value="beginner">Начальный</option>
+                <option value="middle">Средний</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <label class="form-label" for="durationFilter">Длительность</label>
+            <select class="form-select" id="durationFilter" name="duration">
+                <option value="">Любая</option>
+                <option value="15">До 15 минут</option>
+                <option value="20">До 20 минут</option>
+                <option value="30">До 30 минут</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <label class="form-label" for="searchFilter">Поиск</label>
+            <input
+                    class="form-control"
+                    id="searchFilter"
+                    name="search"
+                    type="search"
+                    placeholder="Например, корпус"
+            >
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-brutal btn-sage" type="submit">
+                Найти
+            </button>
+        </div>
+    </form>
+
+    <p id="pageStatus" class="status" role="status">
+        Загружаем занятия…
+    </p>
+
+    <p id="resultsCount" class="eyebrow" aria-live="polite"></p>
+
+    <section
+            id="trainingList"
+            class="row g-4"
+            aria-label="Список занятий"
+            aria-busy="true"
+    ></section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

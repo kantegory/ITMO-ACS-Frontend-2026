@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вместе</title>
+    <script>
+        (() => {
+            let mode
+            try { mode = localStorage.getItem('vmeste-theme') } catch {}
+            const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+            document.documentElement.dataset.bsTheme =
+                mode === 'light' || mode === 'dark' ? mode : (dark ? 'dark' : 'light')
+        })()
+    </script>
+</head>
+<body>
+<noscript>Для работы сайта включи JavaScript.</noscript>
+<div id="app"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

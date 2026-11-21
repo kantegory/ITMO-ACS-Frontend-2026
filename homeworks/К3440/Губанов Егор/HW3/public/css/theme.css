@@ -1,0 +1,182 @@
+:root {
+    color-scheme: light;
+
+    --paper: #f4f0e7;
+    --surface: #fffdf8;
+    --ink: #302a35;
+
+    --sage: #a8b6a0;
+    --lilac: #c9b5d5;
+    --clay: #d98669;
+
+    --border: #302a35;
+    --shadow: #302a35;
+
+    --muted: #62576b;
+    --link-hover: #695a70;
+    --focus: #5d4770;
+
+    --error-bg: #f7d4ca;
+    --error-text: #8f2034;
+
+    --progress-track: #ffffff;
+    --progress-fill: #58715c;
+
+    --check-fill: #302a35;
+    --video-bg: #302a35;
+    --close-filter: none;
+
+    --line: 2px solid var(--border);
+    --hard-shadow: 5px 5px 0 var(--shadow);
+
+    --bs-body-color: var(--ink);
+    --bs-body-bg: var(--paper);
+    --bs-secondary-color: var(--muted);
+    --bs-secondary-bg: var(--surface);
+    --bs-border-color: var(--border);
+    --bs-emphasis-color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+
+        --paper: #19161d;
+        --surface: #25212b;
+        --ink: #f4f0e7;
+
+        --sage: #384b3b;
+        --lilac: #493752;
+        --clay: #603b2f;
+
+        --border: #a99cae;
+        --shadow: #0c0a0f;
+
+        --muted: #c5b9cb;
+        --link-hover: #dbc4ef;
+        --focus: #dec7f6;
+
+        --error-bg: #4a252c;
+        --error-text: #ffbcc8;
+
+        --progress-track: #302936;
+        --progress-fill: #93c59c;
+
+        --check-fill: #725887;
+        --video-bg: #0c0a0f;
+        --close-filter: invert(1);
+    }
+}
+
+.brutal-card,
+.filter-panel {
+    background: var(--surface);
+}
+
+.form-control,
+.form-control:focus,
+.form-select,
+.form-select:focus {
+    color: var(--ink);
+    background-color: var(--surface);
+}
+
+.form-control::placeholder,
+.form-text {
+    color: var(--muted);
+    opacity: 1;
+}
+
+.was-validated .form-select:valid {
+    border-color: var(--border);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+.status.is-error {
+    background: var(--error-bg);
+}
+
+.skip-link {
+    background: var(--surface);
+}
+
+/* Цвета кнопок во всех состояниях */
+.btn-sage {
+    --button-bg: var(--sage);
+}
+
+.btn-lilac {
+    --button-bg: var(--lilac);
+}
+
+.btn-clay {
+    --button-bg: var(--clay);
+}
+
+.btn-paper {
+    --button-bg: var(--paper);
+}
+
+.btn-brutal {
+    --bs-btn-color: var(--ink);
+    --bs-btn-hover-color: var(--ink);
+    --bs-btn-active-color: var(--ink);
+    --bs-btn-disabled-color: var(--ink);
+
+    --bs-btn-border-color: var(--border);
+    --bs-btn-hover-border-color: var(--border);
+    --bs-btn-active-border-color: var(--border);
+    --bs-btn-disabled-border-color: var(--border);
+
+    --bs-btn-bg: var(--button-bg, var(--surface));
+    --bs-btn-hover-bg: var(--button-bg, var(--surface));
+    --bs-btn-active-bg: var(--button-bg, var(--surface));
+    --bs-btn-disabled-bg: var(--button-bg, var(--surface));
+
+    box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.btn-brutal:hover {
+    border-color: var(--border);
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.btn-close {
+    filter: var(--close-filter);
+    opacity: 1;
+}
+
+.form-check-input {
+    background-color: var(--surface);
+}
+
+.form-check-input:checked {
+    background-color: var(--check-fill);
+    border-color: var(--border);
+}
+
+.brutal-progress {
+    background: var(--progress-track);
+}
+
+.brutal-progress .progress-bar {
+    background: var(--progress-fill);
+}
+
+:focus-visible {
+    outline-color: var(--focus);
+}
+
+.video-frame {
+    background: var(--video-bg);
+}
+
+@media (max-width: 575.98px) {
+    .brutal-card,
+    .filter-panel {
+        box-shadow: 3px 3px 0 var(--shadow);
+    }
+}

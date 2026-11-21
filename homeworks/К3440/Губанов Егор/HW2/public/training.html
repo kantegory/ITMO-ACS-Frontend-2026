@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тренировка — Вместе</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="training">
+
+<a class="skip-link" href="#content">К содержимому</a>
+
+<header class="site-header">
+  <div class="container-xl py-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <a class="brand" href="index.html">ВМЕСТЕ</a>
+    <nav id="siteNav" class="site-nav" aria-label="Основная навигация"></nav>
+  </div>
+</header>
+
+<noscript>
+  <p class="container status">Для работы сайта включи JavaScript.</p>
+</noscript>
+
+<main id="content" class="container-xl py-5" tabindex="-1">
+  <a href="index.html">← Все занятия</a>
+
+  <p
+          id="pageStatus"
+          class="status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+  >
+    Загружаем тренировку…
+  </p>
+
+  <div id="trainingContent" hidden>
+    <p id="trainingMeta" class="eyebrow mt-4"></p>
+
+    <h1 id="trainingTitle" class="display-title mb-4"></h1>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+        <div class="ratio ratio-16x9 video-frame">
+          <iframe
+                  id="trainingVideo"
+                  src="about:blank"
+                  title="Видео тренировки"
+                  allow="encrypted-media; picture-in-picture; fullscreen"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+          ></iframe>
+        </div>
+
+        <p class="small mt-3">
+          <span id="videoAuthor"></span>
+          ·
+          <a
+                  id="videoLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+          >
+            Открыть на YouTube
+            <span class="visually-hidden">
+              — откроется в новой вкладке
+            </span>
+          </a>
+        </p>
+
+        <section class="my-4">
+          <h2 class="h3">О практике</h2>
+          <p id="trainingDescription"></p>
+        </section>
+
+        <section class="brutal-card p-4">
+          <h2 class="h3">Что понадобится</h2>
+          <ul id="equipment" class="mb-0"></ul>
+        </section>
+      </div>
+
+      <aside class="col-12 col-lg-4">
+        <section class="brutal-card p-4 mb-4">
+          <h2 class="h3">План занятия</h2>
+
+          <ol id="trainingSteps" class="instruction-list"></ol>
+
+          <a
+                  id="openSession"
+                  class="btn btn-brutal btn-sage w-100"
+                  href="session.html"
+          >
+            Открыть комнату
+          </a>
+
+          <p class="small mt-3 mb-0">
+            У таймера свой план этапов.
+            С видеозаписью он не синхронизирован.
+          </p>
+        </section>
+
+        <section class="brutal-card p-4">
+          <h2 class="h3">Добавить в мой план</h2>
+
+          <form id="planForm">
+            <label class="form-label" for="planDay">
+              День недели
+            </label>
+
+            <select
+                    id="planDay"
+                    class="form-select mb-3"
+                    aria-describedby="planHelp"
+            ></select>
+
+            <p id="planHelp" class="small">
+              Одно занятие на день.
+              Новый выбор заменит предыдущее занятие этого дня.
+            </p>
+
+            <button
+                    class="btn btn-brutal btn-clay w-100"
+                    type="submit"
+            >
+              Сохранить в план
+            </button>
+          </form>
+
+          <p
+                  id="planStatus"
+                  class="status"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+          ></p>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
