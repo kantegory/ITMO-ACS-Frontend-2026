@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Приготовили — рецепты, кулинарные блоги и ваша коллекция любимых блюд."><title>Рецепты — Приготовили</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script defer src="assets/vendor/bootstrap.bundle.min.js">
+</script>
+<script defer src="assets/data/ingredients.js">
+</script>
+<script defer src="assets/data/recipes.js">
+</script>
+<script defer src="assets/js/catalog-utils.js">
+</script>
+<script defer src="assets/js/common.js">
+</script>
+<script defer src="assets/js/catalog.js">
+</script>
+</head>
+<body data-page="catalog"><svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M3 4h6a4 4 0 0 1 3 1.5A4 4 0 0 1 15 4h6v15h-6a4 4 0 0 0-3 1.5A4 4 0 0 0 9 19H3zM12 5.5v15"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 5a5.3 5.3 0 0 0-7.5 0L12 6l-.5-1A5.3 5.3 0 0 0 4 12.5L12 21l8-8.5A5.3 5.3 0 0 0 20 5z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol></svg><a class="skip-link" href="#main">К содержимому</a>
+<div class="page-layout">
+<aside class="sidebar"><a class="brand" href="index.html" aria-label="Приготовили, главная">приготовили<span>.</span></a><span class="sidebar-caption">РЕЦЕПТЫ И ЛЮДИ</span>
+<nav class="main-nav" aria-label="Основная навигация"><a class="side-link" data-nav="catalog" href="index.html"><svg><use href="#i-grid"/></svg><span>Все рецепты</span></a><a class="side-link" data-nav="blogs" href="blogs.html"><svg><use href="#i-book"/></svg><span>Кулинарные блоги</span></a><a class="side-link" data-nav="profile" href="profile.html"><svg><use href="#i-user"/></svg><span>Мой профиль</span></a>
+</nav>
+<div class="sidebar-bottom" id="sidebar-user"><span class="small-rule"></span>
+<p>Рецепты и кулинарные блоги.
+</p>
+</div>
+</aside>
+<main class="main-content" id="main">
+<header class="page-header"><span class="page-kicker">ВАША ЕЖЕДНЕВНАЯ ПОРЦИЯ ВДОХНОВЕНИЯ</span>
+<div id="session-controls">
+</div>
+</header>
+<section class="page-intro">
+<div>
+<h1>Сборник рецептов
+</h1>
+<p>Найти что-нибудь вкусное. Приготовить. Повторить.
+</p>
+</div><a class="button" href="profile.html?tab=publications&amp;publish=1" aria-label="Свой рецепт"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Свой рецепт</span></a>
+</section>
+<section aria-label="Поиск рецептов">
+<form id="search-form" class="search-form" role="search"><label class="search-input"><svg><use href="#i-search"/></svg><input id="query" type="search" placeholder="Найти рецепт" aria-label="Найти рецепт"></label><button class="button button-dark" type="submit">Найти</button>
+</form>
+<div class="filter-row"><label><span class="visually-hidden">Время приготовления</span><select id="time" class="filter-select"><option value="0">Время приготовления</option><option value="15">До 15 минут</option><option value="30">До 30 минут</option><option value="45">До 45 минут</option><option value="60">До 1 часа</option><option value="90">До 1,5 часов</option><option value="120">До 2 часов</option></select></label>
+<div class="ingredient-control" id="filter-ingredients">
+<details class="ingredient-picker"><summary>Ингредиенты <span class="ingredient-count" hidden></span></summary>
+<div class="ingredient-popover">
+<label class="ingredient-search"><svg aria-hidden="true"><use href="#i-search"/></svg><input class="ingredient-query" type="search" placeholder="Например, цветная капуста" aria-label="Поиск ингредиента" autocomplete="off"></label>
+<p class="muted small">Отметьте продукты, которые должны быть в блюде.
+</p>
+<div class="ingredient-options">
+</div>
+<div class="ingredient-picker-footer"><span class="library-count"></span><button type="button" class="picker-done">Готово</button>
+</div>
+</div></details>
+<div class="selected-ingredients">
+</div>
+</div>
+<label><span class="visually-hidden">Тип блюда</span><select id="type" class="filter-select"><option value="">Тип блюда</option><option value="main">Основное</option><option value="breakfast">Завтрак</option><option value="soup">Суп</option><option value="salad">Салат</option><option value="dessert">Десерт</option><option value="baking">Выпечка</option><option value="snack">Закуска</option></select></label>
+<label><span class="visually-hidden">Сложность</span><select id="difficulty" class="filter-select"><option value="">Сложность</option><option value="easy">Просто</option><option value="medium">Средняя</option><option value="hard">Сложно</option></select></label><button class="text-button" id="reset-filters" type="button" hidden>Сбросить</button>
+</div>
+<div id="filter-selected" class="filter-selected" hidden>
+<div class="selected-chips">
+</div>
+<p>В блюде должны быть <strong>все</strong> выбранные продукты. Другие ингредиенты тоже допускаются.
+</p>
+</div>
+<div class="list-caption"><span id="result-count" role="status" aria-live="polite"></span><label><span class="visually-hidden">Сортировка</span><select id="sort" class="sort-select"><option value="new">Сначала новые</option><option value="fast">Сначала быстрые</option><option value="popular">По популярности</option></select></label>
+</div>
+<div id="recipe-list" class="recipe-list">
+</div>
+<div id="empty" class="empty-state" hidden><svg><use href="#i-book"/></svg>
+<h2>Пока ничего не нашлось
+</h2>
+<p>Попробуйте убрать один ингредиент или увеличить время приготовления.
+</p><button class="button" type="button" data-reset-filters>Сбросить фильтры</button>
+</div>
+</section>
+<footer class="page-footer"><span>Рецепты, которые хочется повторять.</span><span>приготовили.</span>
+</footer>
+</main>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+<div id="app-toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+<div class="d-flex">
+<div class="toast-body" id="toast-text">
+</div><button class="btn-close me-2 m-auto" type="button" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+</div>
+</div>
+</div>
+<noscript>
+<div class="noscript-message">Для поиска, профиля и социальных функций включите JavaScript. Формы и страницы доступны из меню.
+</div>
+</noscript>
+</body></html>

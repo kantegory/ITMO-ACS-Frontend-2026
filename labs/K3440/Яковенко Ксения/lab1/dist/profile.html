@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Приготовили — рецепты, кулинарные блоги и ваша коллекция любимых блюд."><title>Личный кабинет — Приготовили</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script defer src="assets/vendor/bootstrap.bundle.min.js">
+</script>
+<script defer src="assets/data/ingredients.js">
+</script>
+<script defer src="assets/data/recipes.js">
+</script>
+<script defer src="assets/js/catalog-utils.js">
+</script>
+<script defer src="assets/js/common.js">
+</script>
+<script defer src="assets/js/profile.js">
+</script>
+</head>
+<body data-page="profile"><svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M3 4h6a4 4 0 0 1 3 1.5A4 4 0 0 1 15 4h6v15h-6a4 4 0 0 0-3 1.5A4 4 0 0 0 9 19H3zM12 5.5v15"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 5a5.3 5.3 0 0 0-7.5 0L12 6l-.5-1A5.3 5.3 0 0 0 4 12.5L12 21l8-8.5A5.3 5.3 0 0 0 20 5z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol></svg><a class="skip-link" href="#main">К содержимому</a>
+<div class="page-layout">
+<aside class="sidebar"><a class="brand" href="index.html" aria-label="Приготовили, главная">приготовили<span>.</span></a><span class="sidebar-caption">РЕЦЕПТЫ И ЛЮДИ</span>
+<nav class="main-nav" aria-label="Основная навигация"><a class="side-link" data-nav="catalog" href="index.html"><svg><use href="#i-grid"/></svg><span>Все рецепты</span></a><a class="side-link" data-nav="blogs" href="blogs.html"><svg><use href="#i-book"/></svg><span>Кулинарные блоги</span></a><a class="side-link" data-nav="profile" href="profile.html"><svg><use href="#i-user"/></svg><span>Мой профиль</span></a>
+</nav>
+<div class="sidebar-bottom" id="sidebar-user"><span class="small-rule"></span>
+<p>Рецепты и кулинарные блоги.
+</p>
+</div>
+</aside>
+<main class="main-content" id="main">
+<header class="page-header"><span class="page-kicker">ВАША ЕЖЕДНЕВНАЯ ПОРЦИЯ ВДОХНОВЕНИЯ</span>
+<div id="session-controls">
+</div>
+</header>
+<section id="profile-gate" class="empty-state" hidden><svg><use href="#i-user"/></svg>
+<h1>Ваша кухня начинается здесь
+</h1>
+<p>Войдите, чтобы видеть сохранённые рецепты, свои публикации и подписки.
+</p><a class="button button-dark" href="login.html?next=profile.html">Войти</a> <a class="button" href="register.html">Создать профиль</a>
+</section>
+<section id="profile-content" hidden>
+<div class="profile-heading">
+<div class="large-avatar" id="profile-avatar">
+</div>
+<div><span class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</span>
+<h1 id="profile-name">
+</h1>
+<p id="profile-bio" class="muted">
+</p>
+</div><button class="button" data-bs-toggle="modal" data-bs-target="#editProfileModal" type="button">Редактировать</button>
+</div>
+<ul class="nav profile-tabs" role="tablist">
+<li class="nav-item" role="presentation"><button class="nav-link active" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved-pane" type="button" role="tab" aria-controls="saved-pane" aria-selected="true">Сохранённое <span id="saved-total"></span></button>
+</li>
+<li class="nav-item" role="presentation"><button class="nav-link" id="publications-tab" data-bs-toggle="tab" data-bs-target="#publications-pane" type="button" role="tab" aria-controls="publications-pane" aria-selected="false">Мои публикации <span id="publications-total"></span></button>
+</li>
+<li class="nav-item" role="presentation"><button class="nav-link" id="following-tab" data-bs-toggle="tab" data-bs-target="#following-pane" type="button" role="tab" aria-controls="following-pane" aria-selected="false">Подписки <span id="following-total"></span></button>
+</li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane show active" id="saved-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="0">
+<div id="saved-list" class="recipe-list">
+</div>
+</div>
+<div class="tab-pane" id="publications-pane" role="tabpanel" aria-labelledby="publications-tab" tabindex="0">
+<div class="pane-heading">
+<p class="muted">То, что вы приготовили и решили сохранить для других.
+</p><button class="button" type="button" data-bs-toggle="modal" data-bs-target="#publishModal"><svg><use href="#i-plus"/></svg>Новый рецепт</button>
+</div>
+<div id="publications-list" class="recipe-list">
+</div>
+</div>
+<div class="tab-pane" id="following-pane" role="tabpanel" aria-labelledby="following-tab" tabindex="0">
+<div id="following-list">
+</div>
+</div>
+</div>
+</section>
+<div class="modal" id="editProfileModal" tabindex="-1" aria-labelledby="edit-profile-title" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title fs-4" id="edit-profile-title">О вас
+</h2><button class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<form id="edit-profile-form">
+<div class="modal-body">
+<div class="mb-3"><label for="edit-name" class="form-label">Имя</label><input id="edit-name" class="form-control" name="name" required minlength="2" maxlength="40">
+</div>
+<div class="mb-3"><label for="edit-bio" class="form-label">Немного о вашей кухне</label><textarea id="edit-bio" name="bio" class="form-control" maxlength="300" rows="3"></textarea>
+</div>
+</div>
+<div class="modal-footer"><button class="button button-dark" type="submit">Сохранить</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<footer class="page-footer"><span>Рецепты, которые хочется повторять.</span><span>приготовили.</span>
+</footer>
+</main>
+</div>
+<div class="modal" id="publishModal" tabindex="-1" aria-labelledby="publish-title" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title fs-4" id="publish-title">Поделиться рецептом
+</h2><button class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<div class="modal-body">
+<form id="publish-form">
+<div id="publish-error" class="alert alert-light border" role="alert" hidden>
+</div>
+<div class="mb-3"><label class="form-label" for="publish-name">Название</label><input class="form-control" id="publish-name" name="title" required minlength="4" maxlength="90" placeholder="Как называется ваше блюдо?">
+</div>
+<div class="mb-3"><label class="form-label" for="publish-description">Короткое описание</label><textarea class="form-control" id="publish-description" name="description" rows="2" required maxlength="180"></textarea>
+</div>
+<div class="row g-3 mb-4">
+<div class="col-sm-4"><label class="form-label" for="publish-time">Полное время, мин</label><input class="form-control" id="publish-time" name="minutes" type="number" min="1" max="1440" value="30" required>
+</div>
+<div class="col-sm-4"><label class="form-label" for="publish-type">Тип блюда</label><select class="form-select" id="publish-type" name="type"><option value="main">Основное</option><option value="breakfast">Завтрак</option><option value="soup">Суп</option><option value="salad">Салат</option><option value="dessert">Десерт</option><option value="baking">Выпечка</option><option value="snack">Закуска</option></select>
+</div>
+<div class="col-sm-4"><label class="form-label" for="publish-level">Сложность</label><select class="form-select" id="publish-level" name="difficulty"><option value="easy">Просто</option><option value="medium">Средняя</option><option value="hard">Сложно</option></select>
+</div>
+</div>
+<label class="form-label">Состав блюда</label>
+<div class="ingredient-control" id="publish-ingredients">
+<details class="ingredient-picker"><summary>Ингредиенты <span class="ingredient-count" hidden></span></summary>
+<div class="ingredient-popover">
+<label class="ingredient-search"><svg aria-hidden="true"><use href="#i-search"/></svg><input class="ingredient-query" type="search" placeholder="Например, цветная капуста" aria-label="Поиск ингредиента" autocomplete="off"></label>
+<p class="muted small">Отметьте продукты, которые должны быть в блюде.
+</p>
+<div class="ingredient-options">
+</div>
+<div class="ingredient-picker-footer"><span class="library-count"></span><button type="button" class="picker-done">Готово</button>
+</div>
+</div></details>
+<div class="selected-ingredients">
+</div>
+</div>
+<p class="form-text">Выберите все ингредиенты. В «Приготовили» публикуют рецепты без продуктов животного происхождения.
+</p>
+<div id="publish-amounts" class="mb-4">
+</div>
+<div class="mb-3"><label class="form-label" for="publish-servings">Порций</label><input class="form-control short-input" id="publish-servings" name="servings" type="number" min="1" max="20" value="2" required>
+</div>
+<div class="mb-3"><label class="form-label" for="publish-steps">Пошаговые инструкции</label><textarea class="form-control" id="publish-steps" name="steps" rows="5" required minlength="20" maxlength="5000" placeholder="Каждый шаг — с новой строки"></textarea>
+</div>
+<div class="mb-3"><label class="form-label" for="publish-photo">Фотография</label><input class="form-control" id="publish-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp">
+<p class="form-text">JPG, PNG или WebP, до 1 МБ. Поле можно оставить пустым.
+</p>
+</div>
+<div class="mb-4"><label class="form-label" for="publish-video">Видео на YouTube <span class="muted">(необязательно)</span></label><input class="form-control" id="publish-video" name="video" type="url" placeholder="https://www.youtube.com/watch?v=…">
+</div>
+<button class="button button-dark" type="submit">Опубликовать рецепт</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+<div id="app-toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+<div class="d-flex">
+<div class="toast-body" id="toast-text">
+</div><button class="btn-close me-2 m-auto" type="button" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+</div>
+</div>
+</div>
+<noscript>
+<div class="noscript-message">Для поиска, профиля и социальных функций включите JavaScript. Формы и страницы доступны из меню.
+</div>
+</noscript>
+</body></html>
