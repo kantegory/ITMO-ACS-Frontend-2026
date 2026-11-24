@@ -45,6 +45,7 @@ function requireRole(role) {
 }
 
 export async function register({ name, email, password, role }) {
+  if (!name) throw new Error('Введите имя.');
   const salt = crypto.randomUUID();
   const hash = await passwordHash(password, salt);
   const accounts = read('accounts', []);
