@@ -121,8 +121,7 @@ function protect(request, response, next) {
   if (id && record?.userId !== user.id) return fail(response, 404, 'Запись не найдена.');
 
   if (reading && !id) {
-    request.query = { userId: String(user.id) };
-    return next();
+    return response.json(records.filter(item => item.userId === user.id));
   }
 
   if (jobs && ((method === 'POST' && !id) || (method === 'PATCH' && id))) {
