@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отравись-ка - Обмен рецептами и кулинарный блог</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Стили оформления -->
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Ссылка перехода к контенту -->
+  <a href="#main-content" class="skip-link visually-hidden-focusable">Перейти к основному контенту</a>
+
+  <!-- SVG-спрайт иконок -->
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
+    <symbol id="clock" viewBox="0 0 16 16">
+      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </symbol>
+    <symbol id="heart-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+    </symbol>
+    <symbol id="bookmark" viewBox="0 0 16 16">
+      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+    </symbol>
+    <symbol id="bookmark-fill" viewBox="0 0 16 16">
+      <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+    </symbol>
+    <symbol id="person" viewBox="0 0 16 16">
+      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+    </symbol>
+    <symbol id="person-circle" viewBox="0 0 16 16">
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </symbol>
+    <symbol id="search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </symbol>
+    <symbol id="plus" viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+    </symbol>
+    <symbol id="plus-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+    </symbol>
+    <symbol id="logout" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+    </symbol>
+    <symbol id="sun" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </symbol>
+    <symbol id="moon" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.02 7.71c0 4.031 3.298 7.288 7.324 7.288 2.378 0 4.512-.98 6.02-2.556a8.312 8.312 0 0 1-5.074-1.636 8.318 8.318 0 0 1-3.414-5.32 8.307 8.307 0 0 1-.018-.175z"/>
+    </symbol>
+    <symbol id="star" viewBox="0 0 16 16">
+      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+    </symbol>
+    <symbol id="egg-fried" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+      <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.82-5.216zm-1 .034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+    </symbol>
+    <symbol id="fire" viewBox="0 0 16 16">
+      <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.5 10 7 10.5 7 11c.5-1.5 1-2.5 2-3 .5 1.5 2 2.5 2 3.5 0 1.75-1.343 2.75-3 2.75Z"/>
+    </symbol>
+    <symbol id="journal" viewBox="0 0 16 16">
+      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+    </symbol>
+  </svg>
+
+  <!-- Шапка сайта -->
+  <header role="banner">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top shadow-sm" role="navigation" aria-label="Основная навигация">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="На главную Отравись-ка">
+          <svg class="icon fs-3 me-2 text-danger" aria-hidden="true"><use xlink:href="#egg-fried"></use></svg>
+          <span>Отравись-ка</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">
+                <svg class="icon me-1" aria-hidden="true"><use xlink:href="#journal"></use></svg>
+                <span>Каталог рецептов</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="recipe.html">
+                <svg class="icon me-1" aria-hidden="true"><use xlink:href="#fire"></use></svg>
+                <span>Популярный рецепт</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <!-- Переключатель темы -->
+            <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Переключить тему оформления" title="Переключить тему оформления">
+              <svg class="icon" aria-hidden="true"><use xlink:href="#moon"></use></svg>
+            </button>
+
+            <!-- Кнопка добавления рецепта -->
+            <button class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#addRecipeModal" aria-haspopup="dialog">
+              <svg class="icon" aria-hidden="true"><use xlink:href="#plus-circle"></use></svg>
+              <span>Добавить рецепт</span>
+            </button>
+
+            <!-- Блок авторизации -->
+            <div id="nav-auth-container" class="d-flex align-items-center gap-2">
+              <a href="login.html" class="btn btn-danger btn-sm">Вход</a>
+              <a href="register.html" class="btn btn-outline-danger btn-sm">Регистрация</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <main id="main-content" class="py-4" role="main">
+    <div class="container">
+
+      <!-- Секция поиска -->
+      <section class="p-4 p-md-5 mb-4 rounded-3 text-white shadow-sm" style="background: linear-gradient(135deg, #d9534f 0%, #b52b27 100%);" aria-labelledby="banner-heading" role="search">
+        <div class="col-md-8 mx-auto text-center">
+          <h1 id="banner-heading" class="display-6 fw-bold">Отравись-ка: рецепты с огоньком</h1>
+          <p class="fs-6 mb-4 opacity-75">Проверенные домашние блюда, авторские секреты и кулинарные эксперименты</p>
+          
+          <form role="search" onsubmit="event.preventDefault();" aria-label="Поиск по рецептам">
+            <div class="input-group input-group-lg shadow-sm hero-search-group">
+              <span class="input-group-text bg-white border-0" id="search-addon">
+                <svg class="icon text-muted" aria-hidden="true"><use xlink:href="#search"></use></svg>
+              </span>
+              <label for="search-input" class="visually-hidden">Поиск по рецептам</label>
+              <input type="search" id="search-input" class="form-control border-0" placeholder="Поиск по названию блюда или ингредиентам..." aria-label="Поиск по рецептам" aria-describedby="search-addon">
+              <button class="btn btn-warning fw-bold px-4 text-dark" type="button" id="btn-search">Найти</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Фильтры и категории -->
+      <section aria-label="Фильтры каталога рецептов">
+        <div class="row align-items-center mb-4 g-3">
+          <div class="col-lg-6">
+            <div class="d-flex gap-2 flex-wrap" role="group" aria-label="Быстрый выбор категории блюда">
+              <button class="btn btn-sm btn-outline-secondary btn-category-tag active" data-category="all" type="button">Все блюда</button>
+              <button class="btn btn-sm btn-outline-secondary btn-category-tag" data-category="breakfast" type="button">Завтраки</button>
+              <button class="btn btn-sm btn-outline-secondary btn-category-tag" data-category="lunch" type="button">Обеды</button>
+              <button class="btn btn-sm btn-outline-secondary btn-category-tag" data-category="dinner" type="button">Ужины</button>
+              <button class="btn btn-sm btn-outline-secondary btn-category-tag" data-category="dessert" type="button">Десерты</button>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row g-2 justify-content-lg-end">
+              <div class="col-auto">
+                <label for="category-filter" class="visually-hidden">Фильтр по категории</label>
+                <select id="category-filter" class="form-select form-select-sm" aria-label="Фильтр по категории блюда">
+                  <option value="all">Категория: Все</option>
+                  <option value="breakfast">Завтраки</option>
+                  <option value="lunch">Обеды</option>
+                  <option value="dinner">Ужины</option>
+                  <option value="dessert">Десерты</option>
+                </select>
+              </div>
+              <div class="col-auto">
+                <label for="difficulty-filter" class="visually-hidden">Фильтр по сложности</label>
+                <select id="difficulty-filter" class="form-select form-select-sm" aria-label="Фильтр по сложности приготовления">
+                  <option value="all">Сложность: Любая</option>
+                  <option value="easy">Просто</option>
+                  <option value="medium">Средне</option>
+                  <option value="hard">Сложно</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 id="catalog-heading" class="h4 fw-bold mb-0">Каталог рецептов</h2>
+          <span id="recipe-count" class="text-muted small" aria-live="polite">Загрузка рецептов...</span>
+        </div>
+
+        <!-- Каталог рецептов -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="recipe-cards-container" aria-live="polite" aria-busy="false">
+          <!-- Карточки рендерятся из JS -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Модальное окно добавления рецепта -->
+  <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title h5 fw-bold d-flex align-items-center gap-2" id="addRecipeModalLabel">
+            <svg class="icon text-danger" aria-hidden="true"><use xlink:href="#plus-circle"></use></svg>
+            <span>Новый рецепт</span>
+          </h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть модальное окно"></button>
+        </div>
+        <form id="add-recipe-form">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="new-recipe-title" class="form-label">Название блюда <span class="text-danger" aria-hidden="true">*</span></label>
+              <input type="text" class="form-control" id="new-recipe-title" required placeholder="Например, Сливочная уха по-фински" aria-required="true">
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label for="new-recipe-category" class="form-label">Категория</label>
+                <select class="form-select" id="new-recipe-category">
+                  <option value="breakfast">Завтрак</option>
+                  <option value="lunch">Обед</option>
+                  <option value="dinner" selected>Ужин</option>
+                  <option value="dessert">Десерт</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="new-recipe-difficulty" class="form-label">Сложность</label>
+                <select class="form-select" id="new-recipe-difficulty">
+                  <option value="easy">Просто</option>
+                  <option value="medium" selected>Средне</option>
+                  <option value="hard">Сложно</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="new-recipe-time" class="form-label">Время приготовления</label>
+              <input type="text" class="form-control" id="new-recipe-time" value="30 мин" placeholder="например, 45 мин">
+            </div>
+            <div class="mb-3">
+              <label for="new-recipe-desc" class="form-label">Краткое описание</label>
+              <textarea class="form-control" id="new-recipe-desc" rows="3" placeholder="Опишите особенности блюда, вкус и подачу..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-danger">Опубликовать рецепт</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подвал сайта -->
+  <footer class="py-4 mt-auto" role="contentinfo">
+    <div class="container text-center text-muted small">
+      &copy; 2026 «Отравись-ка». Кулинарный блог и сервис обмена рецептами.
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Скрипты -->
+  <script src="js/main.js"></script>
+</body>
+</html>

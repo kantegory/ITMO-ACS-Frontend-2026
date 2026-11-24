@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "artem.gordeev@example.com",
+      "password": "$2a$10$7u0W/3jCXGvn8lFVWEv59.BOEAq/rai5hLqvi1StQzjjbffLUt87C",
+      "name": "Гордеев Артём",
+      "username": "artem_gordeev",
+      "bio": "Студент ИТМО • Кулинарный энтузиаст"
+    },
+    {
+      "id": 2,
+      "email": "chef.marco@example.com",
+      "password": "$2a$10$7u0W/3jCXGvn8lFVWEv59.BOEAq/rai5hLqvi1StQzjjbffLUt87C",
+      "name": "Шеф Марко",
+      "username": "chef_marco",
+      "bio": "Шеф-повар итальянской кухни"
+    },
+    {
+      "email": "new.chef@example.com",
+      "password": "$2a$10$raAowGqT0f/lV8HiSfmt8uFemXPRArTXDOr27iXWG6M/HXHvyy63m",
+      "name": "Иван Смирнов",
+      "username": "ivan_chef",
+      "bio": "Кулинарный блогер",
+      "id": 4
+    }
+  ],
+  "recipes": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Паста Карбонара по-домашнему",
+      "category": "dinner",
+      "difficulty": "medium",
+      "time": "25 мин",
+      "desc": "Классическая итальянская паста с хрустящим беконом, сливочным соусом из желтков и ароматным пармезаном.",
+      "author": "Шеф Марко",
+      "image": "images/карбонара.png",
+      "likes": 142
+    },
+    {
+      "id": 2,
+      "userId": 5,
+      "title": "Греческий салат с фетой",
+      "category": "lunch",
+      "difficulty": "easy",
+      "time": "15 мин",
+      "desc": "Свежие овощи, сочные томаты черри, хрустящий огурец и нежная фета с оливковым маслом первого отжима.",
+      "author": "Елена Соколова",
+      "image": "images/греческий.png",
+      "likes": 89
+    },
+    {
+      "id": 3,
+      "userId": 6,
+      "title": "Домашний наваристый борщ",
+      "category": "lunch",
+      "difficulty": "hard",
+      "time": "90 мин",
+      "desc": "Традиционный борщ на мясном бульоне со свеклой, чесночной заправкой и ароматной зеленью.",
+      "author": "Бабушка Нина",
+      "image": "images/борщ.png",
+      "likes": 310
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "title": "Пышные американские панкейки",
+      "category": "breakfast",
+      "difficulty": "easy",
+      "time": "20 мин",
+      "desc": "Воздушные блинчики на молоке с добавлением свежих ягод черники и кленового сиропа.",
+      "author": "Гордеев Артём",
+      "image": "images/панки.png",
+      "likes": 215
+    },
+    {
+      "id": 5,
+      "userId": 7,
+      "title": "Классический чизкейк Нью-Йорк",
+      "category": "dessert",
+      "difficulty": "medium",
+      "time": "60 мин",
+      "desc": "Нежнейшая кремовая текстура на основе творожного сыра с хрустящей песочной основой.",
+      "author": "Кондитер Анна",
+      "image": "images/чизкейк.png",
+      "likes": 198
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "title": "Хрустящая пицца Пепперони",
+      "category": "dinner",
+      "difficulty": "medium",
+      "time": "35 мин",
+      "desc": "Пышное воздушное тесто с аппетитной сырной корочкой, пряным томатным соусом и колбасками пепперони.",
+      "author": "Шеф Марко",
+      "image": "images/пицца.png",
+      "likes": 276
+    }
+  ]
+}

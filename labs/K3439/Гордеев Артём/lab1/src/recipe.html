@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Паста Карбонара по-домашнему - Отравись-ка</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Кастомные стили -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Навигация -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <i class="bi bi-egg-fried fs-3 me-2 text-danger"></i>
+        <span>Отравись-ка</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="bi bi-journal-richtext me-1"></i>Каталог рецептов</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="recipe.html"><i class="bi bi-fire me-1"></i>Популярный рецепт</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="profile.html" class="btn btn-light btn-sm border">
+            <i class="bi bi-person-circle me-1"></i>Профиль
+          </a>
+          <a href="login.html" class="btn btn-danger btn-sm">Вход</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-4">
+    <div class="container">
+
+      <!-- Хлебные крошки -->
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Главная</a></li>
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Рецепты</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Паста Карбонара по-домашнему</li>
+        </ol>
+      </nav>
+
+      <div class="row g-4">
+
+        <!-- Левая колонка: Основной контент рецепта -->
+        <div class="col-lg-8">
+
+          <div class="bg-white p-4 rounded-3 shadow-sm mb-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+              <div>
+                <span class="badge bg-danger-subtle text-danger recipe-badge me-1">Итальянская кухня</span>
+                <span class="badge bg-warning-subtle text-dark recipe-badge me-1">Ужин</span>
+                <span class="badge bg-secondary-subtle text-secondary recipe-badge"><i class="bi bi-clock me-1"></i>25 мин</span>
+              </div>
+
+              <!-- Кнопки действий -->
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-danger btn-like" title="Оценить блюдо">
+                  <i class="bi bi-heart me-1"></i><span class="like-count">142</span>
+                </button>
+                <button class="btn btn-sm btn-outline-warning btn-bookmark" title="Сохранить в закладки">
+                  <i class="bi bi-bookmark me-1"></i>В закладки
+                </button>
+              </div>
+            </div>
+
+            <h1 class="h2 fw-bold mb-3">Паста Карбонара по-домашнему</h1>
+            <p class="lead text-muted fs-6">
+              Аутентичный рецепт римской пасты без сливок. Секрет идеального шелковистого соуса - правильная температура желтков, выдержанный пармезан и ароматный вытопленный бекон.
+            </p>
+
+            <!-- Автор публикации -->
+            <div class="d-flex align-items-center justify-content-between border-top border-bottom py-3 my-3">
+              <div class="d-flex align-items-center">
+                <img src="images/аватар.png" alt="Аватар шефа" class="rounded-circle me-3" width="48" height="48">
+                <div>
+                  <h6 class="mb-0 fw-bold">Шеф Марко Росси</h6>
+                  <small class="text-muted">Опубликовано 12 ноября 2026 &bull; 1.2k просмотров</small>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-outline-danger btn-subscribe">
+                <i class="bi bi-person-plus me-1"></i>Подписаться
+              </button>
+            </div>
+
+            <!-- Реальная фотография блюда -->
+            <div class="mb-4 rounded-3 overflow-hidden shadow-sm" style="max-height: 440px;">
+              <img src="images/карбонара.png" alt="Паста Карбонара" class="recipe-main-img">
+            </div>
+
+            <!-- Пошаговое приготовление -->
+            <h4 class="fw-bold mb-3"><i class="bi bi-list-ol text-danger me-2"></i>Пошаговый процесс</h4>
+
+            <div class="step-card">
+              <div class="step-number mb-1">Шаг 1. Варка спагетти</div>
+              <p class="mb-0 text-secondary">
+                Поставьте большую кастрюлю с подсоленной водой на сильный огонь. Опустите спагетти (400 г) в кипящую воду и варите до состояния al dente (примерно на 1-2 минуты меньше времени, указанного на упаковке). Сохраните 100 мл воды из-под пасты перед сливом.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number mb-1">Шаг 2. Обжарка бекона</div>
+              <p class="mb-0 text-secondary">
+                Нарежьте бекон или панчетту небольшими брусочками. Разогрейте сухую сковороду на среднем огне и обжаривайте бекон 5-7 минут до появления хрустящей золотистой корочки. Снимите сковороду с прямого сильного огня.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number mb-1">Шаг 3. Приготовление соуса</div>
+              <p class="mb-0 text-secondary">
+                В отдельной глубокой миске взбейте венчиком 3 яичных желтка и 1 целое яйцо. Добавьте мелко натертый пармезан (50 г) и свежемолотый черный перец. Перемешайте до состояния густой однородной пасты.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number mb-1">Шаг 4. Соединение и подача</div>
+              <p class="mb-0 text-secondary">
+                Переложите горячие спагетти в сковороду к теплому бекону, перемешайте. Влейте яично-сырную смесь, быстро и энергично перемешивая, чтобы яйца не свернулись, а образовали кремовый соус. При необходимости добавьте немного сохраненной горячей воды. Подавайте немедленно, посыпав пармезаном и черным перцем!
+              </p>
+            </div>
+
+            <!-- Видео-инструкция -->
+            <h4 class="fw-bold mb-3 mt-4"><i class="bi bi-play-circle text-danger me-2"></i>Видео-инструкция</h4>
+            <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm bg-dark d-flex align-items-center justify-content-center mb-4">
+              <div class="text-center text-white p-4">
+                <i class="bi bi-play-btn fs-1 text-danger"></i>
+                <h6 class="mt-2 mb-1">Смотреть мастер-класс по приготовлению карбонары</h6>
+                <small class="text-white-50">Длительность: 6 минут 40 секунд &bull; Full HD 1080p</small>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Блок отзывов и комментариев -->
+          <div class="bg-white p-4 rounded-3 shadow-sm mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="fw-bold mb-0">Отзывы и комментарии</h4>
+              <span class="badge bg-danger rounded-pill" id="comment-count">2</span>
+            </div>
+
+            <!-- Форма добавления комментария -->
+            <form id="comment-form" class="mb-4 p-3 bg-light rounded-3">
+              <h6 class="fw-bold mb-2">Оставить отзыв</h6>
+              <div class="row g-2 mb-2">
+                <div class="col-md-8">
+                  <input type="text" id="comment-author" class="form-control form-control-sm" placeholder="Ваше имя" required value="Иван Смирнов">
+                </div>
+                <div class="col-md-4">
+                  <select id="comment-rating" class="form-select form-select-sm">
+                    <option value="5" selected>Оценка: 5 из 5</option>
+                    <option value="4">Оценка: 4 из 5</option>
+                    <option value="3">Оценка: 3 из 5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-2">
+                <textarea id="comment-text" class="form-control form-control-sm" rows="3" placeholder="Поделитесь впечатлениями о рецепте..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-sm btn-danger">Отправить комментарий</button>
+            </form>
+
+            <!-- Список существующих комментариев -->
+            <div id="comments-list">
+              <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                      <strong>Анна Кузнецова</strong>
+                      <span class="text-warning ms-2">★★★★★</span>
+                    </div>
+                    <small class="text-muted">вчера в 19:40</small>
+                  </div>
+                  <p class="card-text mb-0">Готовила вчера на ужин. Получилось с первого раза, соус не свернулся! Главное снять сковороду с огня перед вливанием желтков.</p>
+                </div>
+              </div>
+
+              <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                      <strong>Илья Мельников</strong>
+                      <span class="text-warning ms-2">★★★★★</span>
+                    </div>
+                    <small class="text-muted">3 дня назад</small>
+                  </div>
+                  <p class="card-text mb-0">Наконец-то настоящий рецепт без сливок! Вкус просто потрясающий, вся семья в восторге.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Правая колонка: Ингредиенты и пищевая ценность -->
+        <div class="col-lg-4">
+
+          <!-- Блок ингредиентов -->
+          <div class="bg-white p-4 rounded-3 shadow-sm mb-4 sticky-top" style="top: 80px;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0"><i class="bi bi-basket text-danger me-2"></i>Ингредиенты</h5>
+              <span class="badge bg-light text-dark border">4 порции</span>
+            </div>
+
+            <p class="small text-muted mb-3">Отмечайте чекбоксом купленные или подготовленные продукты:</p>
+
+            <div class="ingredient-list">
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Спагетти из твердых сортов - 400 г</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Бекон сырокопченый / панчетта - 150 г</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Яичные желтки - 3 шт.</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Целое куриное яйцо - 1 шт.</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Сыр Пармезан (или Грана Падано) - 60 г</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Черный свежемолотый перец - 1 ч. л.</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Морская соль - по вкусу</span>
+              </label>
+            </div>
+
+            <!-- Пищевая ценность -->
+            <div class="mt-4 pt-3 border-top">
+              <h6 class="fw-bold mb-2">Энергетическая ценность (на 100 г):</h6>
+              <div class="row text-center g-2">
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Ккал</small>
+                    <span class="fw-bold">345</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Белки</small>
+                    <span class="fw-bold">14 г</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Жиры</small>
+                    <span class="fw-bold">16 г</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Углев.</small>
+                    <span class="fw-bold">38 г</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer class="py-4 mt-auto">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-egg-fried fs-4 text-danger me-2"></i>
+        <span class="text-muted small">&copy; 2026 Отравись-ка.</span>
+      </div>
+      <ul class="nav">
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted small">Каталог</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted small">Профиль</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link px-2 text-muted small">Вход</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Главный скрипт -->
+  <script src="js/main.js"></script>
+</body>
+</html>

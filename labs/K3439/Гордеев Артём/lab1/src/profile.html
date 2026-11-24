@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет - Отравись-ка</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Кастомные стили -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Навигация -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <i class="bi bi-egg-fried fs-3 me-2 text-danger"></i>
+        <span>Отравись-ка</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="bi bi-journal-richtext me-1"></i>Каталог рецептов</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recipe.html"><i class="bi bi-fire me-1"></i>Популярный рецепт</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#addRecipeModal">
+            <i class="bi bi-plus-circle me-1"></i>Добавить рецепт
+          </button>
+          <a href="profile.html" class="btn btn-danger btn-sm">
+            <i class="bi bi-person-circle me-1"></i>Профиль
+          </a>
+          <a href="login.html" class="btn btn-outline-secondary btn-sm" title="Выход">
+            <i class="bi bi-box-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-4">
+    <div class="container">
+
+      <!-- Карточка профиля -->
+      <div class="card profile-card mb-4 shadow-sm">
+        <div class="profile-cover"></div>
+        <div class="card-body px-4 pb-4 pt-0">
+          <div class="d-flex flex-column flex-md-row align-items-center align-items-md-center justify-content-between gap-3">
+            <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+              <div class="profile-avatar-wrapper text-center">
+                <img src="images/аватар.png" alt="Аватар пользователя" class="profile-avatar">
+              </div>
+              <div class="text-center text-md-start pt-md-2">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2">
+                  <h3 class="fw-bold mb-0">Гордеев Артём</h3>
+                  <span class="badge bg-danger-subtle text-danger rounded-pill px-2 py-1 small">Шеф</span>
+                </div>
+                <p class="text-muted mb-2 small">@artem_gordeev &bull; Студент ИТМО  &bull; Кулинарный энтузиаст</p>
+                <div class="d-flex justify-content-center justify-content-md-start gap-3 small text-secondary">
+                  <span><strong>4</strong> публикации</span>
+                  <span><strong>18</strong> сохраненных</span>
+                  <span><strong>120</strong> подписчиков</span>
+                  <span><strong>15</strong> подписок</span>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex gap-2 pt-2 pt-md-0">
+              <button class="btn btn-danger btn-sm px-3" data-bs-toggle="modal" data-bs-target="#addRecipeModal">
+                <i class="bi bi-plus-lg me-1"></i>Новый рецепт
+              </button>
+              <button class="btn btn-outline-secondary btn-sm px-3">
+                <i class="bi bi-gear me-1"></i>Настройки
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Вкладки личного кабинета -->
+      <ul class="nav nav-pills mb-4 bg-white p-2 rounded-3 shadow-sm" id="profileTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="my-recipes-tab" data-bs-toggle="pill" data-bs-target="#my-recipes" type="button" role="tab" aria-controls="my-recipes" aria-selected="true">
+            <i class="bi bi-journal-check me-2"></i>Мои рецепты (4)
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="saved-recipes-tab" data-bs-toggle="pill" data-bs-target="#saved-recipes" type="button" role="tab" aria-controls="saved-recipes" aria-selected="false">
+            <i class="bi bi-bookmark-heart me-2"></i>Сохраненные (2)
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="following-tab" data-bs-toggle="pill" data-bs-target="#following" type="button" role="tab" aria-controls="following" aria-selected="false">
+            <i class="bi bi-people me-2"></i>Подписки (3)
+          </button>
+        </li>
+      </ul>
+
+      <!-- Контент вкладок -->
+      <div class="tab-content" id="profileTabsContent">
+
+        <!-- Вкладка 1: Мои рецепты -->
+        <div class="tab-pane fade show active" id="my-recipes" role="tabpanel" aria-labelledby="my-recipes-tab">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            
+            <div class="col">
+              <div class="card h-100 recipe-card shadow-sm">
+                <img src="images/панки.png" class="card-img-top recipe-card-img" alt="Панкейки">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-warning-subtle text-dark recipe-badge">Завтрак</span>
+                    <span class="badge bg-secondary-subtle text-secondary recipe-badge"><i class="bi bi-clock me-1"></i>20 мин</span>
+                  </div>
+                  <h5 class="card-title fw-bold">Пышные американские панкейки</h5>
+                  <p class="card-text text-muted small flex-grow-1">Воздушные блинчики на молоке со свежими ягодами черники и кленовым сиропом.</p>
+                  <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                    <span class="text-muted small"><i class="bi bi-heart-fill text-danger me-1"></i>215 лайков</span>
+                    <div>
+                      <button class="btn btn-sm btn-outline-secondary py-1 px-2" title="Редактировать"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger py-1 px-2" title="Удалить"><i class="bi bi-trash"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card h-100 recipe-card shadow-sm">
+                <img src="images/греческий.png" class="card-img-top recipe-card-img" alt="Салат">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-success-subtle text-success recipe-badge">Обед</span>
+                    <span class="badge bg-secondary-subtle text-secondary recipe-badge"><i class="bi bi-clock me-1"></i>15 мин</span>
+                  </div>
+                  <h5 class="card-title fw-bold">Греческий салат с фетой</h5>
+                  <p class="card-text text-muted small flex-grow-1">Свежие овощи, сочные томаты, хрустящий огурец и сыр фета с оливковым маслом.</p>
+                  <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                    <span class="text-muted small"><i class="bi bi-heart-fill text-danger me-1"></i>89 лайков</span>
+                    <div>
+                      <button class="btn btn-sm btn-outline-secondary py-1 px-2"><i class="bi bi-pencil"></i></button>
+                      <button class="btn btn-sm btn-outline-danger py-1 px-2"><i class="bi bi-trash"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Вкладка 2: Сохраненные рецепты -->
+        <div class="tab-pane fade" id="saved-recipes" role="tabpanel" aria-labelledby="saved-recipes-tab">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            
+            <div class="col">
+              <div class="card h-100 recipe-card shadow-sm">
+                <img src="images/карбонара.png" class="card-img-top recipe-card-img" alt="Карбонара">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger-subtle text-danger recipe-badge">Ужин</span>
+                    <span class="badge bg-secondary-subtle text-secondary recipe-badge"><i class="bi bi-clock me-1"></i>25 мин</span>
+                  </div>
+                  <h5 class="card-title fw-bold"><a href="recipe.html" class="text-decoration-none text-dark">Паста Карбонара по-домашнему</a></h5>
+                  <p class="card-text text-muted small flex-grow-1">Классическая итальянская паста с хрустящим беконом, соусом из желтков и пармезаном.</p>
+                  <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                    <small class="text-muted"><i class="bi bi-person me-1"></i>Шеф Марко</small>
+                    <button class="btn btn-sm btn-outline-danger py-1 px-2" title="Удалить из закладок">
+                      <i class="bi bi-bookmark-dash me-1"></i>Удалить
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card h-100 recipe-card shadow-sm">
+                <img src="images/чизкейк.png" class="card-img-top recipe-card-img" alt="Чизкейк">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-primary-subtle text-primary recipe-badge">Десерт</span>
+                    <span class="badge bg-secondary-subtle text-secondary recipe-badge"><i class="bi bi-clock me-1"></i>60 мин</span>
+                  </div>
+                  <h5 class="card-title fw-bold">Классический чизкейк Нью-Йорк</h5>
+                  <p class="card-text text-muted small flex-grow-1">Нежнейшая кремовая текстура на основе творожного сыра с хрустящей песочной основой.</p>
+                  <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                    <small class="text-muted"><i class="bi bi-person me-1"></i>Кондитер Анна</small>
+                    <button class="btn btn-sm btn-outline-danger py-1 px-2" title="Удалить из закладок">
+                      <i class="bi bi-bookmark-dash me-1"></i>Удалить
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Вкладка 3: Подписки -->
+        <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+          <div class="row row-cols-1 row-cols-md-3 g-3">
+            
+            <div class="col">
+              <div class="card border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="images/аватар.png" class="rounded-circle" width="50" height="50" alt="Шеф Марко">
+                  <div class="flex-grow-1">
+                    <h6 class="fw-bold mb-0">Шеф Марко Росси</h6>
+                    <small class="text-muted d-block">Итальянская кухня &bull; 48 рецептов</small>
+                  </div>
+                  <button class="btn btn-sm btn-secondary btn-subscribe subscribed">Вы подписаны</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="images/аватар.png" class="rounded-circle" width="50" height="50" alt="Бабушка Нина">
+                  <div class="flex-grow-1">
+                    <h6 class="fw-bold mb-0">Бабушка Нина</h6>
+                    <small class="text-muted d-block">Русская классика &bull; 112 рецептов</small>
+                  </div>
+                  <button class="btn btn-sm btn-secondary btn-subscribe subscribed">Вы подписаны</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="images/аватар.png" class="rounded-circle" width="50" height="50" alt="Кондитер Анна">
+                  <div class="flex-grow-1">
+                    <h6 class="fw-bold mb-0">Кондитер Анна</h6>
+                    <small class="text-muted d-block">Выпечка и торты &bull; 64 рецепта</small>
+                  </div>
+                  <button class="btn btn-sm btn-secondary btn-subscribe subscribed">Вы подписаны</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Модальное окно добавления рецепта -->
+  <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="addRecipeModalLabel"><i class="bi bi-plus-circle text-danger me-2"></i>Новый рецепт</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <form id="add-recipe-form">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="new-recipe-title" class="form-label">Название блюда</label>
+              <input type="text" class="form-control" id="new-recipe-title" required placeholder="Например, Домашние сырники">
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label for="new-recipe-category" class="form-label">Категория</label>
+                <select class="form-select" id="new-recipe-category">
+                  <option value="breakfast">Завтрак</option>
+                  <option value="lunch">Обед</option>
+                  <option value="dinner" selected>Ужин</option>
+                  <option value="dessert">Десерт</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="new-recipe-difficulty" class="form-label">Сложность</label>
+                <select class="form-select" id="new-recipe-difficulty">
+                  <option value="easy">Просто</option>
+                  <option value="medium" selected>Средне</option>
+                  <option value="hard">Сложно</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="new-recipe-time" class="form-label">Время приготовления</label>
+              <input type="text" class="form-control" id="new-recipe-time" value="30 мин">
+            </div>
+            <div class="mb-3">
+              <label for="new-recipe-desc" class="form-label">Краткое описание</label>
+              <textarea class="form-control" id="new-recipe-desc" rows="3" placeholder="Расскажите об особенностях блюда..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-danger">Опубликовать</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Футер -->
+  <footer class="py-4 mt-auto">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-egg-fried fs-4 text-danger me-2"></i>
+        <span class="text-muted small">&copy; 2026 Отравись-ка.</span>
+      </div>
+      <ul class="nav">
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted small">Каталог</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted small">Профиль</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link px-2 text-muted small">Вход</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Главный скрипт -->
+  <script src="js/main.js"></script>
+</body>
+</html>

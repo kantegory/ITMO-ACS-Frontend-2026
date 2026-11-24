@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Паста Карбонара по-домашнему - Отравись-ка</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Стили оформления -->
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Ссылка перехода к контенту -->
+  <a href="#main-content" class="skip-link visually-hidden-focusable">Перейти к основному контенту</a>
+
+  <!-- SVG-спрайт иконок -->
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
+    <symbol id="clock" viewBox="0 0 16 16">
+      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </symbol>
+    <symbol id="heart-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+    </symbol>
+    <symbol id="bookmark" viewBox="0 0 16 16">
+      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+    </symbol>
+    <symbol id="bookmark-fill" viewBox="0 0 16 16">
+      <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+    </symbol>
+    <symbol id="person" viewBox="0 0 16 16">
+      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+    </symbol>
+    <symbol id="person-circle" viewBox="0 0 16 16">
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </symbol>
+    <symbol id="plus" viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+    </symbol>
+    <symbol id="logout" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+    </symbol>
+    <symbol id="sun" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </symbol>
+    <symbol id="moon" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.02 7.71c0 4.031 3.298 7.288 7.324 7.288 2.378 0 4.512-.98 6.02-2.556a8.312 8.312 0 0 1-5.074-1.636 8.318 8.318 0 0 1-3.414-5.32 8.307 8.307 0 0 1-.018-.175z"/>
+    </symbol>
+    <symbol id="star" viewBox="0 0 16 16">
+      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+    </symbol>
+    <symbol id="egg-fried" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+      <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.82-5.216zm-1 .034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+    </symbol>
+    <symbol id="fire" viewBox="0 0 16 16">
+      <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.5 10 7 10.5 7 11c.5-1.5 1-2.5 2-3 .5 1.5 2 2.5 2 3.5 0 1.75-1.343 2.75-3 2.75Z"/>
+    </symbol>
+    <symbol id="journal" viewBox="0 0 16 16">
+      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 16 16">
+      <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+    </symbol>
+  </svg>
+
+  <!-- Шапка сайта -->
+  <header role="banner">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top shadow-sm" role="navigation" aria-label="Основная навигация">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="На главную Отравись-ка">
+          <svg class="icon fs-3 me-2 text-danger" aria-hidden="true"><use xlink:href="#egg-fried"></use></svg>
+          <span>Отравись-ка</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Переключить навигацию">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <svg class="icon me-1" aria-hidden="true"><use xlink:href="#journal"></use></svg>
+                <span>Каталог рецептов</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="recipe.html">
+                <svg class="icon me-1" aria-hidden="true"><use xlink:href="#fire"></use></svg>
+                <span>Популярный рецепт</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <!-- Переключатель темы -->
+            <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Переключить тему оформления" title="Переключить тему оформления">
+              <svg class="icon" aria-hidden="true"><use xlink:href="#moon"></use></svg>
+            </button>
+
+            <!-- Блок авторизации -->
+            <div id="nav-auth-container" class="d-flex align-items-center gap-2">
+              <a href="login.html" class="btn btn-danger btn-sm">Вход</a>
+              <a href="register.html" class="btn btn-outline-danger btn-sm">Регистрация</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <main id="main-content" class="py-4" role="main">
+    <div class="container">
+
+      <!-- Хлебные крошки -->
+      <nav aria-label="Хлебные крошки" class="mb-3">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Главная</a></li>
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Рецепты</a></li>
+          <li class="breadcrumb-item active" id="recipe-breadcrumb" aria-current="page">Паста Карбонара по-домашнему</li>
+        </ol>
+      </nav>
+
+      <div class="row g-4">
+
+        <!-- Левая колонка: Основной контент рецепта -->
+        <div class="col-lg-8">
+
+          <article class="bg-white p-4 rounded-3 shadow-sm mb-4" aria-labelledby="recipe-title">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+              <div>
+                <span class="badge bg-danger-subtle text-danger recipe-badge me-1" id="recipe-cuisine">Итальянская кухня</span>
+                <span class="badge bg-warning-subtle text-warning recipe-badge me-1" id="recipe-category">Ужин</span>
+                <span class="badge bg-secondary-subtle text-secondary recipe-badge d-inline-flex align-items-center gap-1">
+                  <svg class="icon" aria-hidden="true"><use xlink:href="#clock"></use></svg>
+                  <span id="recipe-time">25 мин</span>
+                </span>
+              </div>
+
+              <!-- Кнопки действий -->
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-danger btn-like" title="Оценить блюдо" aria-label="Оценить блюдо">
+                  <svg class="icon me-1" aria-hidden="true"><use xlink:href="#heart"></use></svg>
+                  <span class="like-count" id="recipe-likes">142</span>
+                </button>
+                <button class="btn btn-sm btn-outline-warning btn-bookmark" title="Сохранить в закладки" aria-label="Сохранить в закладки">
+                  <svg class="icon me-1" aria-hidden="true"><use xlink:href="#bookmark"></use></svg>
+                  <span>В закладки</span>
+                </button>
+              </div>
+            </div>
+
+            <h1 id="recipe-title" class="h2 fw-bold mb-3">Паста Карбонара по-домашнему</h1>
+            <p class="lead text-muted fs-6" id="recipe-desc">
+              Аутентичный рецепт римской пасты без сливок. Секрет идеального шелковистого соуса - правильная температура желтков, выдержанный пармезан и ароматный вытопленный бекон.
+            </p>
+
+            <!-- Автор публикации -->
+            <div class="d-flex align-items-center justify-content-between border-top border-bottom py-3 my-3">
+              <div class="d-flex align-items-center">
+                <img src="images/аватар.png" alt="Аватар шеф-повара Марко" class="rounded-circle me-3" width="48" height="48">
+                <div>
+                  <h2 class="h6 fw-bold mb-0" id="recipe-author">Шеф Марко</h2>
+                  <small class="text-muted" id="recipe-author-sub">Мастер итальянской кухни &bull; 45 рецептов</small>
+                </div>
+              </div>
+              <button class="btn btn-outline-danger btn-sm btn-subscribe d-flex align-items-center gap-1" type="button" aria-label="Подписаться на шефа Марко">
+                <svg class="icon" aria-hidden="true"><use xlink:href="#plus"></use></svg>
+                <span>Подписаться</span>
+              </button>
+            </div>
+
+            <!-- Главное фото блюда -->
+            <div class="mb-4">
+              <img src="images/карбонара.png" id="recipe-main-img" class="recipe-main-img shadow-sm" alt="Свежеприготовленная паста карбонара с сыром пармезан и хрустящим беконом">
+            </div>
+
+            <!-- Пошаговое приготовление -->
+            <section aria-labelledby="steps-heading" class="mb-4">
+              <h2 id="steps-heading" class="h4 fw-bold mb-3">Пошаговое приготовление</h2>
+
+              <div class="step-card">
+                <div class="d-flex align-items-center mb-2">
+                  <span class="step-number me-2">Шаг 1.</span>
+                  <h3 class="h6 fw-bold mb-0">Отвариваем пасту</h3>
+                </div>
+                <p class="text-secondary mb-0">
+                  Поставьте большую кастрюлю с водой на сильный огонь. Когда вода закипит, обильно посолите ее. Опустите спагетти и варите на 1 минуту меньше, чем указано на упаковке (состояние аль денте). Сохраните 1 половник крахмальной воды перед сливом!
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="d-flex align-items-center mb-2">
+                  <span class="step-number me-2">Шаг 2.</span>
+                  <h3 class="h6 fw-bold mb-0">Обжариваем бекон</h3>
+                </div>
+                <p class="text-secondary mb-0">
+                  Нарежьте сырокопченый бекон или гуанчиале тонкими брусочками. Разогрейте сухую сковороду на среднем огне и обжарьте бекон до румяной хрустящей корочки. Снимите сковороду с огня.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="d-flex align-items-center mb-2">
+                  <span class="step-number me-2">Шаг 3.</span>
+                  <h3 class="h6 fw-bold mb-0">Готовим нежный соус</h3>
+                </div>
+                <p class="text-secondary mb-0">
+                  В глубокой миске взбейте вилкой 3 желтка и 1 целое яйцо. Добавьте мелко натертый сыр пармезан и щедрую порцию свежемолотого черного перца. Перемешайте до состояния густой пасты.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="d-flex align-items-center mb-2">
+                  <span class="step-number me-2">Шаг 4.</span>
+                  <h3 class="h6 fw-bold mb-0">Соединяем пасту с соусом</h3>
+                </div>
+                <p class="text-secondary mb-0">
+                  Переложите горячие спагетти в сковороду с беконом. Влейте пару ложек горячей воды от пасты. Снимите сковороду с конфорки, подождите 30 секунд, затем влейте яично-сырную смесь, непрерывно и быстро перемешивая щипцами.
+                </p>
+              </div>
+            </section>
+
+            <!-- Блок комментариев -->
+            <section aria-labelledby="comments-heading" class="border-top pt-4 mt-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 id="comments-heading" class="h5 fw-bold mb-0">Комментарии кулинаров</h2>
+                <span class="badge bg-danger rounded-pill" id="comment-count">2</span>
+              </div>
+
+              <!-- Форма отправки комментария -->
+              <form id="comment-form" class="mb-4" aria-label="Форма отправки комментария">
+                <div class="mb-2">
+                  <label for="comment-text" class="form-label visually-hidden">Ваш комментарий</label>
+                  <textarea class="form-control" id="comment-text" rows="3" placeholder="Поделитесь своими впечатлениями или советом по приготовлению..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger btn-sm">Отправить комментарий</button>
+              </form>
+
+              <!-- Список комментариев -->
+              <div id="comments-list">
+                <div class="card mb-3 border-0 bg-light p-3 rounded-3">
+                  <div class="card-body p-0">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <h3 class="h6 card-subtitle fw-bold mb-0 d-flex align-items-center gap-1">
+                        <svg class="icon text-danger" aria-hidden="true"><use xlink:href="#person-circle"></use></svg>
+                        <span>Анна Кузнецова</span>
+                      </h3>
+                      <small class="text-muted">2 часа назад</small>
+                    </div>
+                    <p class="card-text mb-0 mt-2">
+                      Наконец-то нашла рецепт настоящей карбонары без тяжелых сливок! Получилось невероятно вкусно и шелковисто. Главное - вовремя снять сковороду с огня.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card mb-3 border-0 bg-light p-3 rounded-3">
+                  <div class="card-body p-0">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <h3 class="h6 card-subtitle fw-bold mb-0 d-flex align-items-center gap-1">
+                        <svg class="icon text-danger" aria-hidden="true"><use xlink:href="#person-circle"></use></svg>
+                        <span>Дмитрий Соловьёв</span>
+                      </h3>
+                      <small class="text-muted">вчера</small>
+                    </div>
+                    <p class="card-text mb-0 mt-2">
+                      Рецепт огонь! Добавил немного пекорино романо напополам с пармезаном, пикантность потрясающая. Спасибо автору за подробный гайд!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+
+        </div>
+
+        <!-- Правая колонка: Ингредиенты и КБЖУ -->
+        <aside class="col-lg-4" aria-label="Ингредиенты и пищевая ценность блюда">
+
+          <!-- Блок ингредиентов -->
+          <div class="bg-white p-4 rounded-3 shadow-sm mb-4 sticky-top" style="top: 80px;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h2 class="h5 fw-bold mb-0">Ингредиенты</h2>
+              <span class="badge bg-secondary-subtle border">4 порции</span>
+            </div>
+
+            <p class="small text-muted mb-3">Отмечайте чекбоксом купленные или подготовленные продукты:</p>
+
+            <div class="ingredient-list">
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Спагетти из твердых сортов - 400 г</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Бекон сырокопченый / панчетта - 150 г</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Яичные желтки - 3 шт.</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Целое куриное яйцо - 1 шт.</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Сыр Пармезан (или Грана Падано) - 60 г</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Черный свежемолотый перец - 1 ч. л.</span>
+              </label>
+
+              <label class="ingredient-item d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2">
+                <span>Морская соль - по вкусу</span>
+              </label>
+            </div>
+
+            <!-- Пищевая ценность -->
+            <div class="mt-4 pt-3 border-top">
+              <h3 class="h6 fw-bold mb-2">Энергетическая ценность (на 100 г):</h3>
+              <div class="row text-center g-2">
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Ккал</small>
+                    <span class="fw-bold">345</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Белки</small>
+                    <span class="fw-bold">14 г</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Жиры</small>
+                    <span class="fw-bold">16 г</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="p-2 bg-light rounded">
+                    <small class="text-muted d-block">Углев.</small>
+                    <span class="fw-bold">38 г</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Подвал сайта -->
+  <footer class="py-4 mt-auto" role="contentinfo">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <svg class="icon fs-4 text-danger me-2" aria-hidden="true"><use xlink:href="#egg-fried"></use></svg>
+        <span class="text-muted small">&copy; 2026 «Отравись-ка». Все права защищены.</span>
+      </div>
+      <ul class="nav">
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted small">Каталог</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted small">Профиль</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link px-2 text-muted small">Вход</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Главный скрипт -->
+  <script src="js/main.js"></script>
+</body>
+</html>
