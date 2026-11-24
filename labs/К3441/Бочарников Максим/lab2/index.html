@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VICE BITES — обмен рецептами</title>
+  <meta name="description" content="Платформа для обмена рецептами и кулинарных блогов.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Главная навигация">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          VICE BITES
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="index.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html">Кабинет</a></li>
+            <li class="nav-item d-none" data-nav="user"><a class="nav-link" href="profile.html"></a></li>
+            <li class="nav-item" data-nav="login"><a class="nav-link" href="login.html">Вход</a></li>
+            <li class="nav-item ms-lg-2" data-nav="register">
+              <a class="btn btn-vice btn-vice-primary" href="register.html">Регистрация</a>
+            </li>
+            <li class="nav-item ms-lg-2 d-none" data-nav="logout">
+              <a class="btn btn-vice btn-vice-teal" href="#" data-logout>Выйти</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-sun" aria-hidden="true"></div>
+      <svg class="hero-skyline" viewBox="0 0 1440 280" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <!-- дальние здания -->
+        <g fill="#16061f" opacity="0.55">
+          <path d="M0 280 V170 H40 V140 H70 V170 H110 V120 H150 V280 Z"/>
+          <path d="M180 280 V150 H210 V110 H250 V150 H280 V90 H320 V150 H350 V280 Z"/>
+          <rect x="380" y="130" width="55" height="150"/>
+          <path d="M460 280 V100 H500 L530 70 V100 H560 V280 Z"/>
+          <rect x="600" y="155" width="70" height="125"/>
+          <path d="M700 280 V95 H740 V60 H780 V95 H820 V280 Z"/>
+          <rect x="860" y="140" width="48" height="140"/>
+          <path d="M940 280 V110 H980 L1010 75 V110 H1050 V280 Z"/>
+          <rect x="1100" y="160" width="80" height="120"/>
+          <path d="M1220 280 V125 H1260 V85 H1300 V125 H1340 V280 Z"/>
+          <rect x="1360" y="150" width="80" height="130"/>
+        </g>
+        <!-- ближний ряд -->
+        <g fill="#0d0221">
+          <path d="M0 280 V200 H55 V165 H95 V200 H140 V280 Z"/>
+          <path d="M155 280 V175 H190 V145 H230 L250 120 V145 H275 V175 H310 V280 Z"/>
+          <rect x="330" y="185" width="42" height="95"/>
+          <path d="M390 280 V150 H430 V115 H470 V150 H510 V280 Z"/>
+          <path d="M530 280 V165 H580 V130 H620 L645 100 V130 H670 V165 H720 V280 Z"/>
+          <rect x="740" y="175" width="50" height="105"/>
+          <path d="M810 280 V140 H850 V105 H890 V140 H930 V280 Z"/>
+          <rect x="960" y="190" width="65" height="90"/>
+          <path d="M1050 280 V155 H1090 L1125 120 V155 H1165 V280 Z"/>
+          <rect x="1190" y="180" width="45" height="100"/>
+          <path d="M1255 280 V145 H1295 V110 H1335 V145 H1375 V280 Z"/>
+          <rect x="1390" y="195" width="50" height="85"/>
+          <!-- окна (еле видны) -->
+          <g fill="#ff8a65" opacity="0.35">
+            <rect x="410" y="165" width="6" height="8"/><rect x="425" y="165" width="6" height="8"/>
+            <rect x="410" y="185" width="6" height="8"/><rect x="425" y="185" width="6" height="8"/>
+            <rect x="410" y="205" width="6" height="8"/><rect x="425" y="205" width="6" height="8"/>
+            <rect x="550" y="180" width="5" height="7"/><rect x="565" y="180" width="5" height="7"/>
+            <rect x="550" y="200" width="5" height="7"/><rect x="565" y="200" width="5" height="7"/>
+            <rect x="830" y="160" width="6" height="8"/><rect x="845" y="160" width="6" height="8"/>
+            <rect x="830" y="180" width="6" height="8"/><rect x="845" y="180" width="6" height="8"/>
+            <rect x="830" y="200" width="6" height="8"/><rect x="845" y="200" width="6" height="8"/>
+            <rect x="1070" y="175" width="5" height="7"/><rect x="1085" y="175" width="5" height="7"/>
+            <rect x="1070" y="195" width="5" height="7"/><rect x="1085" y="195" width="5" height="7"/>
+            <rect x="1275" y="165" width="6" height="8"/><rect x="1290" y="165" width="6" height="8"/>
+            <rect x="1275" y="185" width="6" height="8"/><rect x="1290" y="185" width="6" height="8"/>
+          </g>
+        </g>
+        <!-- пальмы -->
+        <g fill="#0d0221">
+          <!-- левая -->
+          <rect x="74" y="175" width="8" height="105" rx="2"/>
+          <path d="M78 180 C40 165 22 145 18 128 C38 138 58 150 78 168 C70 145 55 125 38 112 C58 122 72 140 82 168 C95 142 118 122 145 112 C128 128 108 148 90 172 C112 158 138 148 168 145 C140 158 112 170 88 182 Z"/>
+          <!-- правая крупная -->
+          <rect x="1338" y="155" width="10" height="125" rx="2"/>
+          <path d="M1343 160 C1295 142 1270 118 1262 95 C1288 108 1312 125 1340 148 C1328 120 1308 95 1280 78 C1308 90 1330 115 1346 148 C1362 118 1390 95 1428 82 C1405 100 1375 125 1350 152 C1380 135 1415 122 1450 118 C1415 135 1375 152 1348 168 Z"/>
+          <!-- маленькая справа -->
+          <rect x="1188" y="200" width="6" height="80" rx="1"/>
+          <path d="M1191 205 C1160 195 1145 180 1140 165 C1155 172 1172 182 1190 198 C1184 180 1172 165 1155 155 C1172 162 1184 175 1193 196 C1205 175 1225 162 1250 155 C1232 168 1212 182 1198 200 C1218 188 1242 180 1265 178 C1242 190 1215 200 1196 210 Z"/>
+        </g>
+      </svg>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Рецепты · Блоги · Сообщество</p>
+        <h1 id="hero-title">Готовь под&nbsp;закат</h1>
+        <p class="hero-lead">
+          Обмен рецептами и кулинарные блоги: морепродукты, цитрусы, уличная еда и домашние десерты.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-vice btn-vice-primary" href="#catalog">Смотреть рецепты</a>
+          <button type="button" class="btn btn-vice btn-vice-outline" data-bs-toggle="modal" data-bs-target="#aboutModal">
+            Что это?
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section">
+      <div class="container">
+        <h2 class="section-title">Каталог рецептов</h2>
+        <p class="section-sub">Фильтруй по типу, сложности и ингредиентам — всё на клиенте, без бэкенда.</p>
+
+        <form class="filter-panel" id="filter-form" aria-label="Фильтры рецептов" onsubmit="return false;">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label for="filter-search">Поиск</label>
+              <input type="search" class="form-control" id="filter-search" placeholder="манго, тако, лайм…">
+            </div>
+            <div class="col-md-3">
+              <label for="filter-type">Тип блюда</label>
+              <select class="form-select" id="filter-type">
+                <option value="">Все типы</option>
+                <option value="закуска">Закуска</option>
+                <option value="основное">Основное</option>
+                <option value="гарнир">Гарнир</option>
+                <option value="десерт">Десерт</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="filter-difficulty">Сложность</label>
+              <select class="form-select" id="filter-difficulty">
+                <option value="">Любая</option>
+                <option value="лёгкая">Лёгкая</option>
+                <option value="средняя">Средняя</option>
+                <option value="сложная">Сложная</option>
+              </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+              <button type="button" class="btn btn-vice btn-vice-ghost w-100" id="filter-reset">Сброс</button>
+            </div>
+            <div class="col-12">
+              <label>Ингредиенты</label>
+              <div class="chip-group" id="ingredient-chips" role="group" aria-label="Выбор ингредиентов"></div>
+            </div>
+          </div>
+          <p class="mb-0 mt-3 small" id="results-count">Найдено: 0</p>
+        </form>
+
+        <div class="recipe-grid" id="recipe-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-3 align-items-center">
+        <div class="col-md-6">
+          <div class="brand">VICE BITES</div>
+          <p class="mb-1">Обмен рецептами · кулинарные блоги</p>
+          <p class="footer-neon mb-0">NEON KITCHEN</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <nav aria-label="Подвал">
+            <a href="index.html">Рецепты</a> ·
+            <a href="profile.html">Кабинет</a> ·
+            <a href="login.html">Вход</a>
+          </nav>
+          <p class="small mt-2 mb-0 opacity-75">ЛР2 · ИТМО ACS Frontend 2026</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: about -->
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="aboutModalLabel">Про VICE BITES</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p>Платформа для обмена рецептами и кулинарных блогов: каталог, фильтры, лайки, комментарии и личный кабинет.</p>
+          <p class="mb-0">ЛР2: данные и авторизация через JSON&nbsp;Server + json-server-auth (<code>fetch</code>).</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-vice btn-vice-primary" data-bs-dismiss="modal">Понятно</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
