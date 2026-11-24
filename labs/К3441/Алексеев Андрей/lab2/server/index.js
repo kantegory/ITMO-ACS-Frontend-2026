@@ -155,5 +155,5 @@ function protect(request, response, next) {
 }
 
 server.use('/api', protect, auth, router);
-const port = Number(process.env.PORT || 3000);
+const port = Number(process.env.PORT || 3102);
 server.listen(port, '127.0.0.1', () => console.log(`Вектор · http://127.0.0.1:${port}`));
