@@ -1,0 +1,14 @@
+{
+  "name": "vice-bites-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VICE BITES — ЛР2: JSON Server + json-server-auth",
+  "scripts": {
+    "api": "json-server db.json -m ./node_modules/json-server-auth --host 127.0.0.1 --port 3000",
+    "start": "npm run api"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}
