@@ -1,0 +1,161 @@
+/* ============================================
+   ДЗ3 — темы через CSS-переменные
+   sunset (светлая/закат) · night (тёмная)
+   ============================================ */
+
+:root,
+html[data-theme="sunset"] {
+  color-scheme: light;
+
+  --vice-orange: #ff6b2c;
+  --vice-pink: #ff2d95;
+  --vice-hot: #e91e8c;
+  --vice-peach: #ffb88c;
+  --vice-coral: #ff8a65;
+  --vice-teal: #00c8b8;
+  --vice-cyan: #2de2e6;
+  --vice-purple: #7b2cbf;
+  --vice-navy: #1a0a2e;
+  --vice-ink: #0d0221;
+  --vice-cream: #fff5eb;
+  --vice-sand: #ffe8d6;
+
+  --muted-text: #4a3058;
+  --input-bg: #ffffff;
+  --tag-bg: rgba(255, 107, 44, 0.15);
+  --footer-text: #ffe0c8;
+  --footer-link: #7ef0f3;
+  --footer-link-hover: #ff9ed0;
+  --footer-meta: #f0d2b8;
+  --footer-neon: #ff7eb8;
+
+  --grad-sunset: linear-gradient(
+    135deg,
+    var(--vice-orange) 0%,
+    var(--vice-pink) 45%,
+    var(--vice-purple) 100%
+  );
+  --grad-miami: linear-gradient(
+    180deg,
+    #5b6bb8 0%,
+    #9a6bb8 22%,
+    #e070a8 48%,
+    #f4a070 72%,
+    #f8c090 100%
+  );
+  --grad-neon: linear-gradient(90deg, var(--vice-teal), var(--vice-pink));
+  --grad-peach: linear-gradient(160deg, var(--vice-peach), var(--vice-coral));
+
+  --page-glow-1: rgba(255, 107, 44, 0.25);
+  --page-glow-2: rgba(255, 45, 149, 0.2);
+  --page-glow-3: rgba(0, 200, 184, 0.15);
+  --page-stripe: rgba(255, 107, 44, 0.03);
+
+  --stroke: 3px solid var(--vice-ink);
+  --stroke-thin: 2px solid var(--vice-ink);
+  --offset-shadow: 4px 4px 0 var(--vice-ink);
+  --glow-pink: 0 0 18px rgba(255, 45, 149, 0.45);
+  --glow-teal: 0 0 18px rgba(0, 200, 184, 0.4);
+
+  --theme-toggle-label: "Ночь";
+}
+
+html[data-theme="night"] {
+  color-scheme: dark;
+
+  --vice-orange: #ff8a4c;
+  --vice-pink: #ff4db8;
+  --vice-hot: #ff6ec7;
+  --vice-peach: #ffc4a0;
+  --vice-coral: #ff9b7a;
+  --vice-teal: #2ee6d6;
+  --vice-cyan: #5ef0f3;
+  --vice-purple: #a855f7;
+  --vice-navy: #07040f;
+  --vice-ink: #f3e8ff;
+  --vice-cream: #1a1028;
+  --vice-sand: #0c0614;
+
+  --muted-text: #c4b0d8;
+  --input-bg: #241536;
+  --tag-bg: rgba(255, 77, 184, 0.2);
+  --footer-text: #e8d5ff;
+  --footer-link: #7ef0f3;
+  --footer-link-hover: #ff9ed0;
+  --footer-meta: #cbb6e0;
+  --footer-neon: #ff7eb8;
+
+  --grad-sunset: linear-gradient(
+    135deg,
+    #ff8a4c 0%,
+    #ff4db8 45%,
+    #7c3aed 100%
+  );
+  --grad-miami: linear-gradient(
+    180deg,
+    #3b1d4a 0%,
+    #5b1d6b 30%,
+    #1a0a2e 65%,
+    #05020c 100%
+  );
+  --grad-neon: linear-gradient(90deg, var(--vice-teal), var(--vice-pink));
+  --grad-peach: linear-gradient(160deg, #4a2a55 0%, #2a1840 100%);
+
+  --page-glow-1: rgba(255, 77, 184, 0.18);
+  --page-glow-2: rgba(46, 230, 214, 0.12);
+  --page-glow-3: rgba(168, 85, 247, 0.16);
+  --page-stripe: rgba(255, 77, 184, 0.04);
+
+  --stroke: 3px solid #e9d5ff;
+  --stroke-thin: 2px solid #e9d5ff;
+  --offset-shadow: 4px 4px 0 #05020c;
+  --glow-pink: 0 0 22px rgba(255, 77, 184, 0.55);
+  --glow-teal: 0 0 22px rgba(46, 230, 214, 0.45);
+
+  --theme-toggle-label: "День";
+}
+
+/* Системная тема, если пользователь ещё не выбирал вручную */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    color-scheme: dark;
+
+    --vice-orange: #ff8a4c;
+    --vice-pink: #ff4db8;
+    --vice-hot: #ff6ec7;
+    --vice-peach: #ffc4a0;
+    --vice-coral: #ff9b7a;
+    --vice-teal: #2ee6d6;
+    --vice-cyan: #5ef0f3;
+    --vice-purple: #a855f7;
+    --vice-navy: #07040f;
+    --vice-ink: #f3e8ff;
+    --vice-cream: #1a1028;
+    --vice-sand: #0c0614;
+
+    --muted-text: #c4b0d8;
+    --input-bg: #241536;
+    --tag-bg: rgba(255, 77, 184, 0.2);
+    --footer-text: #e8d5ff;
+    --footer-link: #7ef0f3;
+    --footer-link-hover: #ff9ed0;
+    --footer-meta: #cbb6e0;
+    --footer-neon: #ff7eb8;
+
+    --grad-sunset: linear-gradient(135deg, #ff8a4c 0%, #ff4db8 45%, #7c3aed 100%);
+    --grad-miami: linear-gradient(180deg, #3b1d4a 0%, #5b1d6b 30%, #1a0a2e 65%, #05020c 100%);
+    --grad-neon: linear-gradient(90deg, var(--vice-teal), var(--vice-pink));
+    --grad-peach: linear-gradient(160deg, #4a2a55 0%, #2a1840 100%);
+
+    --page-glow-1: rgba(255, 77, 184, 0.18);
+    --page-glow-2: rgba(46, 230, 214, 0.12);
+    --page-glow-3: rgba(168, 85, 247, 0.16);
+    --page-stripe: rgba(255, 77, 184, 0.04);
+
+    --stroke: 3px solid #e9d5ff;
+    --stroke-thin: 2px solid #e9d5ff;
+    --offset-shadow: 4px 4px 0 #05020c;
+    --glow-pink: 0 0 22px rgba(255, 77, 184, 0.55);
+    --glow-teal: 0 0 22px rgba(46, 230, 214, 0.45);
+  }
+}
