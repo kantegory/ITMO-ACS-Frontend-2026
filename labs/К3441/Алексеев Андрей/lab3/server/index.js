@@ -1,4 +1,4 @@
-import { randomBytes } from 'node:crypto';
+import { randomBytes, randomUUID } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
@@ -77,6 +77,9 @@ function protect(request, response, next) {
     if (email.length > 150 || typeof password !== 'string' || !password.length || password.length > 64) {
       return fail(response, 400, 'Проверьте почту и пароль.');
     }
+    if (Buffer.byteLength(password, 'utf8') > 72) {
+      return fail(response, 400, 'Сократите пароль: в нём слишком много многобайтовых символов.');
+    }
     request.body = { email, password };
     if (path === '/register') {
       const fields = textFields(body, { name: 80 });
@@ -117,7 +120,7 @@ function protect(request, response, next) {
   }
   if (id && record?.userId !== user.id) return fail(response, 404, 'Запись не найдена.');
 
-  if (reading && (!id || jobs)) {
+  if (reading && !id) {
     request.query = { userId: String(user.id) };
     return next();
   }
@@ -125,7 +128,7 @@ function protect(request, response, next) {
   if (jobs && ((method === 'POST' && !id) || (method === 'PATCH' && id))) {
     const job = validJob(body);
     if (!job) return fail(response, 400, 'Проверьте поля вакансии и диапазон зарплаты.');
-    request.body = id ? job : { ...job, userId: user.id, createdAt: new Date().toISOString() };
+    request.body = id ? job : { ...job, id: randomUUID(), userId: user.id, createdAt: new Date().toISOString() };
     return next();
   }
 
