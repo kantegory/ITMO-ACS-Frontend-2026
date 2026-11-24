@@ -19,3 +19,5 @@ python3 -m http.server 8000
 
 [Фото рабочего пространства](https://images.unsplash.com/photo-1497366754035-f200968a6e72) ·
 [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/)
+
+[Отчёт к лабораторной работе (PDF)](Отчёт.pdf)
