@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Даниил Кутуков">
+  <title>Личный кабинет · Столик</title>
+  <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body data-page="account">
+  <header class="site-header">
+    <div class="container-xl header-inner">
+      <a class="wordmark" href="./index.html" aria-label="Столик — главная"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Столик<span class="brand-dot">.</span></a>
+      <nav aria-label="Основная навигация" class="top-nav">
+        <a href="./index.html">Рестораны</a>
+        <a href="./history.html">Мои брони</a>
+      </nav>
+      <div class="header-actions"><a class="btn btn-outline-primary header-account" id="account-link" href="./login.html"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle">♙</text></svg><span>Войти</span></a></div>
+    </div>
+  </header>
+  <main id="main" class="container-xl">
+    <a class="back-link" href="./index.html">К ресторанам</a>
+    <section class="account-panel panel">
+      <h1>Личный кабинет</h1>
+      <p id="account-status" class="muted"></p>
+      <dl class="profile-data" id="profile-data" hidden><div><dt>Имя</dt><dd id="profile-name"></dd></div><div><dt>Электронная почта</dt><dd id="profile-email"></dd></div></dl>
+      <div class="action-row" id="account-actions" hidden><a class="btn btn-primary" href="./history.html">Мои брони</a><button class="btn btn-outline-primary" type="button" id="logout">Выйти</button></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container-xl"><a class="wordmark" href="./index.html">Столик<span class="brand-dot">.</span></a><p>Бронирование ресторанов Санкт-Петербурга</p><small>Учебный проект · Даниил Кутуков</small></div></footer>
+</body>
+</html>

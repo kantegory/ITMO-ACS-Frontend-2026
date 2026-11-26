@@ -1,0 +1,30 @@
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #12201b;
+  --surface: #1a2b24;
+  --hero: #20382c;
+  --ink: #edfaf2;
+  --muted: #bbd1c4;
+  --brand: #a5e4be;
+  --brand-hover: #c0f4d4;
+  --on-brand: #15291d;
+  --accent: #ffb7a6;
+  --line: #638373;
+  --soft: #2d493b;
+  --focus: #ffb7a6;
+  --error: #ffb7aa;
+  --shadow: 0 12px 34px rgb(0 0 0 / 24%);
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--page);
+  --bs-heading-color: var(--ink);
+  --bs-border-color: var(--line);
+  --bs-link-color: var(--brand);
+  --bs-link-color-rgb: 165, 228, 190;
+  --bs-link-hover-color-rgb: 192, 244, 212;
+}
+
+[data-theme="dark"] .wordmark { color: var(--ink); }
+
+@media (max-width: 360px) {
+  .theme-button { font-size: .85rem; }
+}

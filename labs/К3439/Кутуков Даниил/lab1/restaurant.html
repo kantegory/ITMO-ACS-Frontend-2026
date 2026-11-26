@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Даниил Кутуков">
+  <title>Ресторан · Столик</title>
+  <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body data-page="restaurant">
+  <header class="site-header">
+    <div class="container-xl header-inner">
+      <a class="wordmark" href="./index.html" aria-label="Столик — главная"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Столик<span class="brand-dot">.</span></a>
+      <nav aria-label="Основная навигация" class="top-nav">
+        <a href="./index.html">Рестораны</a>
+        <a href="./history.html">Мои брони</a>
+      </nav>
+      <div class="header-actions"><a class="btn btn-outline-primary header-account" id="account-link" href="./login.html"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle">♙</text></svg><span>Войти</span></a></div>
+    </div>
+  </header>
+  <main id="main" class="container-xl">
+    <a class="back-link" href="./index.html">Все рестораны</a>
+    <p id="restaurant-status" class="muted">Загружаем ресторан…</p>
+    <article id="restaurant-detail"></article>
+    <dialog id="booking-dialog" class="booking-dialog" aria-labelledby="booking-heading">
+      <div class="section-heading"><h2 id="booking-heading">Забронировать столик</h2><button type="button" id="close-booking" class="btn btn-outline-primary">Закрыть</button></div>
+      <form id="booking-form" class="form-stack">
+        <label class="form-label" for="date">Дата</label><input class="form-control" id="date" name="date" type="date" required>
+        <label class="form-label" for="time">Время</label><select class="form-select" id="time" name="time" required></select>
+        <label class="form-label" for="guests">Гостей</label><input class="form-control" id="guests" name="guests" type="number" min="1" max="8" value="2" required>
+        <p id="booking-error" class="error-text mb-0" hidden></p>
+        <button class="btn btn-primary" type="submit">Подтвердить бронь</button>
+      </form>
+    </dialog>
+  </main>
+  <footer class="site-footer"><div class="container-xl"><a class="wordmark" href="./index.html">Столик<span class="brand-dot">.</span></a><p>Бронирование ресторанов Санкт-Петербурга</p><small>Учебный проект · Даниил Кутуков</small></div></footer>
+</body>
+</html>

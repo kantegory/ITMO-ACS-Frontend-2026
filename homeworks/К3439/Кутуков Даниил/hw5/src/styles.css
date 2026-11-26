@@ -1,0 +1,10 @@
+:root { --bs-body-bg: #f5f8f4; --bs-body-color: #182822; --bs-border-color: #ccd9cf; --bs-link-color-rgb: 38, 85, 64; }
+.notebook-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; min-height: 72px; gap: 1rem; }
+.notebook-brand { color: #182822; text-decoration: none; font-size: 1.6rem; font-weight: 800; letter-spacing: -.04em; }
+.notebook-brand span { color: #a33c25; }
+.notebook-intro h1 { font-size: clamp(2.5rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -.065em; }
+.notebook-intro p { color: #50645b; font-size: 1.1rem; margin-bottom: 2rem; }
+.note-editor, .note-card { background: #fff; border-radius: 1rem; border-color: #ccd9cf; }
+.note-card { border-top: 3px solid #779d7c; }
+.note-card h3 { font-size: 1.15rem; font-weight: 700; overflow-wrap: anywhere; }
+.note-card p { white-space: pre-wrap; overflow-wrap: anywhere; }

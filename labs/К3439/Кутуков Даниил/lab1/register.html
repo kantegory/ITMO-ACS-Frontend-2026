@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Даниил Кутуков">
+  <title>Регистрация · Столик</title>
+  <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body data-page="register">
+  <header class="site-header">
+    <div class="container-xl header-inner">
+      <a class="wordmark" href="./index.html" aria-label="Столик — главная"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Столик<span class="brand-dot">.</span></a>
+      <nav aria-label="Основная навигация" class="top-nav">
+        <a href="./index.html">Рестораны</a>
+        <a href="./history.html">Мои брони</a>
+      </nav>
+      <div class="header-actions"><a class="btn btn-outline-primary header-account" id="account-link" href="./login.html"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle">♙</text></svg><span>Войти</span></a></div>
+    </div>
+  </header>
+  <main id="main" class="container-xl">
+    <section class="auth-panel panel">
+      <a class="back-link" href="./index.html">К ресторанам</a>
+      <h1>Создать аккаунт</h1>
+      <p class="muted">Управляйте бронированиями в личном кабинете.</p>
+      <form id="auth-form" class="form-stack">
+        <label class="form-label" for="name">Ваше имя</label>
+        <input class="form-control" id="name" name="name" autocomplete="name" required maxlength="80">
+        <label class="form-label" for="email">Электронная почта</label>
+        <input class="form-control" id="email" name="email" type="email" autocomplete="email" required>
+        <label class="form-label" for="password">Пароль</label>
+        <input class="form-control" id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="64" aria-describedby="password-hint" required>
+        <small id="password-hint" class="muted">От 8 до 64 символов.</small>
+        <p id="form-error" class="error-text mb-0" hidden></p>
+        <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+      </form>
+      <p class="mt-4 mb-0">Уже есть аккаунт? <a href="./login.html" id="auth-alternate">Войти</a></p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container-xl"><a class="wordmark" href="./index.html">Столик<span class="brand-dot">.</span></a><p>Бронирование ресторанов Санкт-Петербурга</p><small>Учебный проект · Даниил Кутуков</small></div></footer>
+</body>
+</html>

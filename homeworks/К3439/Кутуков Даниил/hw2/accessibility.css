@@ -1,0 +1,27 @@
+.skip-link {
+  position: fixed;
+  inset: .5rem auto auto .5rem;
+  z-index: 1100;
+  padding: .7rem 1rem;
+  border-radius: .5rem;
+  transform: translateY(-160%);
+  color: var(--on-brand);
+  background: var(--brand);
+}
+
+.skip-link:focus {
+  transform: none;
+  color: var(--on-brand);
+}
+
+.restaurant-card:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+#main:focus { outline: none; }
+[role="alert"]:focus, #history-status:focus-visible { outline-offset: 5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

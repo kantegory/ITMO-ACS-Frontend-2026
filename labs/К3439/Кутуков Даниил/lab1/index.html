@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Даниил Кутуков">
+  <title>Рестораны Санкт-Петербурга · Столик</title>
+  <link rel="stylesheet" href="./assets/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body data-page="search">
+  <header class="site-header">
+    <div class="container-xl header-inner">
+      <a class="wordmark" href="./index.html" aria-label="Столик — главная"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Столик<span class="brand-dot">.</span></a>
+      <nav aria-label="Основная навигация" class="top-nav">
+        <a href="./index.html">Рестораны</a>
+        <a href="./history.html">Мои брони</a>
+      </nav>
+      <div class="header-actions"><a class="btn btn-outline-primary header-account" id="account-link" href="./login.html"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle">♙</text></svg><span>Войти</span></a></div>
+    </div>
+  </header>
+  <main id="main" class="container-xl">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="location"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle">⌖</text></svg> Санкт-Петербург</p>
+        <h1>Забронируйте<br>столик</h1>
+        <p class="hero-description">Найдите ресторан для ужина вдвоём, встречи с друзьями или семейного обеда.</p>
+        <a href="#filters" class="btn btn-primary">Найти ресторан</a>
+      </div>
+      <img class="hero-image" src="./assets/hero.jpg" alt="Столики в ресторане с деревянным интерьером и тёплым светом" width="1500" height="1000">
+    </section>
+    <section class="search-section" aria-labelledby="catalog-title">
+      <div class="section-heading"><h2 id="catalog-title">Рестораны города</h2><p id="catalog-status" class="muted"></p></div>
+      <form id="filters" class="filters panel">
+        <div class="query-field"><label class="form-label" for="query">Поиск</label><div class="input-with-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle">⌕</text></svg><input class="form-control" id="query" name="query" type="search" placeholder="Название или адрес"></div></div>
+        <div><label class="form-label" for="cuisine">Кухня</label><select class="form-select" id="cuisine" name="cuisine"><option value="">Любая кухня</option></select></div>
+        <div><label class="form-label" for="district">Район</label><select class="form-select" id="district" name="district"><option value="">Все районы</option></select></div>
+        <div><label class="form-label" for="price">Средний чек</label><select class="form-select" id="price" name="price"><option value="">Любой</option></select></div>
+        <button type="reset" class="btn btn-outline-primary">Сбросить</button>
+      </form>
+      <div id="restaurant-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container-xl"><a class="wordmark" href="./index.html">Столик<span class="brand-dot">.</span></a><p>Бронирование ресторанов Санкт-Петербурга</p><small>Учебный проект · Даниил Кутуков</small></div></footer>
+</body>
+</html>
