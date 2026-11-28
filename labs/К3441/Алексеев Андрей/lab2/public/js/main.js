@@ -30,7 +30,6 @@ function redirectIfUnauthorized(role) {
 function showMessage(id, message) {
   const element = byId(id);
   element.textContent = message;
-  element.hidden = !message;
 }
 
 function formData(form) {
@@ -54,8 +53,8 @@ function setupSelects() {
 function setupNav() {
   const accountNav = byId('account-nav');
   accountNav.innerHTML = user
-    ? `<a class="btn btn-outline-primary" href="${cabinet(user)}">Мой кабинет</a>
-       <button class="btn btn-outline-secondary" type="button" id="logout">Выйти</button>`
+    ? `<a class="btn btn-outline-primary" href="${cabinet(user)}"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#account"></use></svg> Мой кабинет</a>
+       <button class="btn btn-outline-secondary" type="button" id="logout"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#sign-out"></use></svg> Выйти</button>`
     : '<a class="btn btn-outline-primary" href="login.html">Войти</a><a class="btn btn-primary" href="register.html">Регистрация</a>';
   const currentPath = location.pathname.split('/').pop() || 'index.html';
   for (const link of document.querySelectorAll('nav a')) {
@@ -91,6 +90,7 @@ async function catalog() {
   const search = byId('search-form');
   const filters = byId('filters');
   const jobs = await api.listJobs();
+  byId('job-list').setAttribute('aria-busy', 'false');
 
   function render() {
     const minimum = filters.elements.minimum;
@@ -109,9 +109,11 @@ async function catalog() {
   search.addEventListener('submit', event => {
     event.preventDefault();
     render();
-    byId('results').scrollIntoView({ block: 'start' });
+    byId('result-title').focus();
   });
-  search.elements.query.addEventListener('search', render);
+  search.elements.query.addEventListener('input', () => {
+    if (!search.elements.query.value) render();
+  });
   filters.addEventListener('change', render);
   filters.addEventListener('submit', event => {
     event.preventDefault();
@@ -137,10 +139,11 @@ async function jobDetail() {
   }
 
   document.title = `${job.title} | Вектор`;
+  byId('job-placeholder').hidden = true;
   const detail = byId('job-detail');
   detail.innerHTML = `<header class="mb-4">
     <p class="muted mb-2">${escapeHtml(job.company)} · ${escapeHtml(job.city)}</p>
-    <h1 class="h2 mb-3">${escapeHtml(job.title)}</h1>
+    <h1 class="h2 mb-3" id="job-heading">${escapeHtml(job.title)}</h1>
     <p class="salary fs-5 mb-3">${escapeHtml(salary(job))} <span class="muted fw-normal">в месяц</span></p>
     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
       <label for="currency">Пересчитать в валюту</label>
@@ -148,7 +151,7 @@ async function jobDetail() {
         <option value="RUB">RUB</option><option value="USD">USD</option><option value="EUR">EUR</option>
       </select>
     </div>
-    <p id="exchange-status" class="muted mb-3" role="status" hidden></p>
+    <p id="exchange-status" class="muted mb-3" role="status" aria-atomic="true"></p>
     <p class="small muted mb-3">Источник курсов: <a href="https://www.exchangerate-api.com/">ExchangeRate-API</a></p>
     ${jobTags(job)}
   </header>
@@ -156,7 +159,7 @@ async function jobDetail() {
   <section aria-labelledby="requirements-heading"><h2 class="h5" id="requirements-heading">Требования</h2><p class="multiline">${escapeHtml(job.requirements)}</p></section>
   ${!user ? '<a class="btn btn-primary" href="login.html">Войти для отклика</a>' : ''}
   ${user?.role === 'applicant' ? '<button class="btn btn-primary" type="button" id="apply" disabled>Откликнуться</button>' : ''}
-  <p class="mt-3 mb-0" id="application-status" role="status" hidden></p>`;
+  <p class="mt-3 mb-0" id="application-status" role="status" aria-atomic="true"></p>`;
   detail.hidden = false;
   const currencyField = byId('currency');
   let requestNumber = 0;
@@ -277,8 +280,8 @@ async function employer() {
       ? `<ul class="list-group list-group-flush">${jobs.map(job => `<li class="list-group-item px-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
           <a href="${detailLink(job.id)}">${escapeHtml(job.title)}</a>
           <div class="d-flex flex-wrap gap-2">
-            <button class="btn btn-sm btn-outline-primary" type="button" data-edit="${escapeHtml(job.id)}">Изменить</button>
-            <button class="btn btn-sm btn-outline-danger" type="button" data-delete="${escapeHtml(job.id)}">Удалить</button>
+            <button class="btn btn-sm btn-outline-primary" type="button" data-edit="${escapeHtml(job.id)}" aria-label="Изменить вакансию ${escapeHtml(job.title)}">Изменить</button>
+            <button class="btn btn-sm btn-outline-danger" type="button" data-delete="${escapeHtml(job.id)}" aria-label="Удалить вакансию ${escapeHtml(job.title)}">Удалить</button>
           </div></li>`).join('')}</ul>`
       : '<p class="muted mb-0">Вы ещё не опубликовали вакансии.</p>';
   }
@@ -324,7 +327,10 @@ try {
   setupSelects();
   await pages[view]();
 } catch (error) {
-  if (view === 'catalog') showMessage('result-count', '');
+  if (view === 'catalog') {
+    byId('job-list').setAttribute('aria-busy', 'false');
+    showMessage('result-count', '');
+  }
   if (view === 'job') byId('loading').hidden = true;
   showMessage('error', error.message);
 }
