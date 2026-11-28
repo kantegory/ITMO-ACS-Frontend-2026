@@ -1,0 +1,166 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #202b23;
+  background: #f6f5ef;
+  line-height: 1.5;
+  font-synthesis: none;
+  --ink: #202b23;
+  --muted: #515f54;
+  --green: #244d36;
+  --lime: #e2efaa;
+  --line: #dce0d5;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+:focus-visible { outline: 3px solid #537246; outline-offset: 4px; }
+
+.container {
+  width: min(100% - 64px, 1200px);
+  margin-inline: auto;
+}
+
+.site-header { border-bottom: 1px solid var(--line); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  gap: 12px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 760;
+  letter-spacing: -.035em;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--green);
+  color: var(--lime);
+  font-weight: 850;
+}
+
+nav a { color: var(--green); font-size: .9rem; font-weight: 650; }
+nav a:hover { text-decoration: underline; }
+
+.hero {
+  margin-top: 28px;
+  border-radius: 24px;
+  overflow: hidden;
+  color: #fff;
+  background-color: #20392c;
+  background-image: linear-gradient(90deg, #14271eee 0%, #17291de0 28%, #17291d55 62%, #17291d10 100%), url('./assets/hero.webp');
+  background-position: center, center 22%;
+  background-size: cover;
+}
+
+.hero-content { padding: 46px clamp(26px, 5vw, 66px); }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(3.2rem, 6.5vw, 6rem); line-height: .97; letter-spacing: -.075em; }
+.hero p { max-width: 320px; margin-top: 21px; color: #f2f6eb; }
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 11px 17px;
+  border-radius: 9px;
+  background: var(--lime);
+  color: #25341f;
+  font-size: .92rem;
+  font-weight: 750;
+}
+.hero-link:hover { background: #eef8c8; }
+.hero-link:focus-visible { outline-color: #fff; }
+
+.catalog { padding-block: 36px 48px; scroll-margin-top: 10px; }
+.catalog-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 19px;
+}
+
+h2 { font-size: clamp(1.75rem, 3.6vw, 2.45rem); line-height: 1.14; letter-spacing: -.055em; }
+.result-count { margin-top: 5px; color: var(--muted); font-size: .88rem; }
+.filters { display: flex; flex-wrap: wrap; gap: 7px; }
+.filters button {
+  border: 1px solid #ccd4c8;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--green);
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 650;
+}
+.filters button:hover { background: #e7eee1; }
+.filters button[aria-pressed='true'] { border-color: var(--green); background: var(--green); color: #fff; }
+
+.workout-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.workout-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffefa;
+}
+.workout-image { position: relative; aspect-ratio: 1.7; background: #d4dbce; }
+.workout-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.workout-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 6px;
+  background: #fffefa;
+  color: var(--green);
+  padding: 4px 8px;
+  font-size: .75rem;
+  font-weight: 750;
+}
+.workout-body { display: flex; flex: 1; flex-direction: column; padding: 14px; }
+.workout-body h3 { font-size: 1.06rem; line-height: 1.25; letter-spacing: -.025em; }
+.workout-body p { margin-block: 8px 13px; color: var(--muted); font-size: .85rem; }
+.workout-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: auto 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--line);
+  color: var(--green);
+  list-style: none;
+  font-size: .76rem;
+  font-weight: 650;
+}
+
+@media (max-width: 940px) {
+  .workout-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 540px) {
+  .container { width: calc(100% - 32px); }
+  .header-inner { min-height: 64px; }
+  .brand { font-size: 1.1rem; }
+  nav a { font-size: .8rem; }
+  .hero { margin-top: 17px; border-radius: 18px; }
+  .hero-content { padding-block: 37px; }
+  .hero p { max-width: 220px; }
+  .catalog { padding-block: 27px 32px; }
+  .workout-grid { grid-template-columns: 1fr; }
+}
