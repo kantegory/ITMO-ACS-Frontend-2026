@@ -1,0 +1,16 @@
+/* ЛР3 — мелкие правки поверх themes/styles */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#main-content {
+  flex: 1;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+}

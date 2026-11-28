@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет — VICE BITES</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Главная навигация">
+      <div class="container">
+        <a class="navbar-brand brand" aria-label="VICE BITES — на главную" href="index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          VICE BITES
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="index.html">Рецепты</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html">Кабинет</a></li>
+            <li class="nav-item d-none" data-nav="user"><a class="nav-link" href="profile.html"></a></li>
+            <li class="nav-item" data-nav="login"><a class="nav-link" href="login.html">Вход</a></li>
+            <li class="nav-item ms-lg-2" data-nav="register">
+              <a class="btn btn-vice btn-vice-primary" href="register.html">Регистрация</a>
+            </li>
+            <li class="nav-item ms-lg-2 d-none" data-nav="logout">
+              <a class="btn btn-vice btn-vice-teal" href="#" data-logout aria-label="Выйти из аккаунта">Выйти</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="profile-page" data-page="profile">
+    <section class="profile-hero" aria-labelledby="profile-name">
+      <div class="container">
+        <div class="profile-head">
+          <img id="profile-avatar" class="profile-avatar" src="" alt="" width="96" height="96">
+          <div>
+            <h1 id="profile-name">Загрузка…</h1>
+            <p class="profile-handle mb-1" id="profile-handle"></p>
+            <p class="mb-0" id="profile-bio"></p>
+          </div>
+          <div class="ms-md-auto">
+            <button type="button" class="btn btn-vice btn-vice-outline" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+              Редактировать
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <ul class="nav profile-tabs mb-4" id="profileTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab-saved" data-bs-toggle="tab" data-bs-target="#pane-saved" type="button" role="tab" aria-controls="pane-saved" aria-selected="true">
+              Сохранённые
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-pub" data-bs-toggle="tab" data-bs-target="#pane-pub" type="button" role="tab" aria-controls="pane-pub" aria-selected="false">
+              Мои публикации
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-follow" data-bs-toggle="tab" data-bs-target="#pane-follow" type="button" role="tab" aria-controls="pane-follow" aria-selected="false">
+              Подписки
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="pane-saved" role="tabpanel" aria-labelledby="tab-saved" tabindex="0">
+            <h2 class="section-title h3">Сохранённые рецепты</h2>
+            <div class="recipe-grid" id="saved-grid"></div>
+          </div>
+          <div class="tab-pane fade" id="pane-pub" role="tabpanel" aria-labelledby="tab-pub" tabindex="0">
+            <h2 class="section-title h3">Мои публикации</h2>
+            <div class="recipe-grid" id="published-grid"></div>
+          </div>
+          <div class="tab-pane fade" id="pane-follow" role="tabpanel" aria-labelledby="tab-follow" tabindex="0">
+            <h2 class="section-title h3">Подписки на кулинаров</h2>
+            <div id="following-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-3 align-items-center">
+        <div class="col-md-6">
+          <div class="brand">VICE BITES</div>
+          <p class="footer-neon mb-0">NEON KITCHEN</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <nav aria-label="Подвал">
+            <a href="index.html">Рецепты</a> ·
+            <a href="profile.html">Кабинет</a> ·
+            <a href="login.html">Вход</a>
+          </nav>
+          <p class="small mt-2 mb-0 opacity-75">ДЗ2 · ИТМО ACS Frontend 2026</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="editProfileLabel">Профиль</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">Редактирование профиля — заглушка. Данные пользователя приходят из API при входе.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-vice btn-vice-primary" data-bs-dismiss="modal">Ок</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

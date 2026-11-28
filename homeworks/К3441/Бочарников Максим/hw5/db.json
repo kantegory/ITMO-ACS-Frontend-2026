@@ -1,0 +1,22 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "name": "Первая заметка",
+      "text": "Пример заметки из JSON Server. Можно создать свою через форму.",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "ДЗ5 · Vue + npm",
+      "text": "Проект поднят через create-vue, подключены axios, pinia, bootstrap.",
+      "userId": 1
+    },
+    {
+      "name": "Проверка POST",
+      "text": "Создано из теста",
+      "userId": 1,
+      "id": 3
+    }
+  ]
+}
