@@ -53,8 +53,8 @@ function setupSelects() {
 function setupNav() {
   const accountNav = byId('account-nav');
   accountNav.innerHTML = user
-    ? `<a class="btn btn-outline-primary" href="${cabinet(user)}">Мой кабинет</a>
-       <button class="btn btn-outline-secondary" type="button" id="logout">Выйти</button>`
+    ? `<a class="btn btn-outline-primary" href="${cabinet(user)}"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#account"></use></svg> Мой кабинет</a>
+       <button class="btn btn-outline-secondary" type="button" id="logout"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#sign-out"></use></svg> Выйти</button>`
     : '<a class="btn btn-outline-primary" href="login.html">Войти</a><a class="btn btn-primary" href="register.html">Регистрация</a>';
   const currentPath = location.pathname.split('/').pop() || 'index.html';
   for (const link of document.querySelectorAll('nav a')) {
