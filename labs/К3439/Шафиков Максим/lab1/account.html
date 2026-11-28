@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9f5">
+  <title>Личный кабинет — Качалочка</title>
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-page="account">
+  <a class="skip-link" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="container site-width header-inner">
+      <a class="wordmark" href="index.html" aria-label="Качалочка, главная"><img class="brand-logo" src="assets/images/logo.png" alt="" width="36" height="36">Качалочка</a>
+      <nav class="main-nav" aria-label="Основное меню">
+        <a href="index.html">Тренировки</a>
+        <a href="blog.html">Журнал</a>
+        <a href="account.html" aria-current="page">Личный кабинет</a>
+      </nav>
+      <div class="header-actions" id="header-actions"><a class="btn btn-outline-secondary" href="login.html">Войти</a></div>
+    </div>
+  </header>
+  <main id="main">
+<section class="container site-width page-content">
+  <div id="account"></div>
+</section>
+<dialog class="app-dialog" id="plan-dialog" aria-labelledby="plan-title">
+  <form id="plan-form">
+    <h2 id="plan-title">Добавить в план</h2>
+    <div class="mb-3"><label class="form-label" for="planned-workout">Тренировка</label><select class="form-select" id="planned-workout" name="workout" required></select></div>
+    <div class="mb-4"><label class="form-label" for="plan-date">Дата</label><input class="form-control" id="plan-date" name="date" type="date" required></div>
+    <div class="d-flex flex-wrap gap-2"><button type="submit" class="btn btn-primary">Добавить</button><button class="btn btn-outline-secondary" type="button" id="close-plan">Отмена</button></div>
+  </form>
+</dialog>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-width footer-inner"><a class="wordmark" href="index.html">Качалочка</a></div>
+  </footer>
+</body>
+</html>
