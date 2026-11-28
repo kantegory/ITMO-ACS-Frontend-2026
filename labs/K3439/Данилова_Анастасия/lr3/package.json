@@ -1,0 +1,24 @@
+{
+  "name": "snimu-lr3",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "json-server-auth db.json --host 127.0.0.1 --port 3000 -r routes.json"
+  },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "bootstrap": "^5.3.3",
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "json-server": "0.17.4",
+    "json-server-auth": "2.1.0",
+    "vite": "^7.0.0"
+  }
+}
