@@ -14,7 +14,7 @@ function apply() {
   document.documentElement.dataset.theme = theme
   document.documentElement.dataset.bsTheme = theme
   document.documentElement.style.colorScheme = theme
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#162019' : '#fcfaf6')
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#171717' : '#ffffff')
   syncThemeControl()
 }
 
