@@ -12,12 +12,3 @@
 npm ci
 npm run dev
 ```
-
-Команда `npm run build` проверяет типы и собирает приложение в `dist/`.
-
-## Скриншоты
-
-- [Каталог со всеми тренировками](screenshots/catalog.jpg)
-- [Каталог с фильтром «Силовые»](screenshots/strength-filter.jpg)
-
-Отчёт доступен в [DOCX](report.docx) и [Markdown](report.md).
