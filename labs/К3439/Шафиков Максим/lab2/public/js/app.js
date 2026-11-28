@@ -25,7 +25,7 @@ function showError(container, error) {
 function setupHeader(profile) {
   if (!profile) return;
   const actions = document.querySelector('#header-actions');
-  actions.innerHTML = '<button class="btn btn-outline-secondary" type="button" id="logout">Выйти</button>';
+  actions.innerHTML = '<button class="btn btn-outline-secondary" type="button" id="logout"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#exit"></use></svg>Выйти</button>';
   on('#logout', 'click', async event => {
     const button = event.currentTarget;
     button.disabled = true;
@@ -67,10 +67,10 @@ function renderCatalog(workouts) {
     results.innerHTML = matches.length ? matches.map(workout => `
       <div class="col-sm-6 col-lg-4">
         <article class="workout-card card">
-          <a href="${workoutUrl(workout.id)}" tabindex="-1" aria-hidden="true"><img data-photo="${escapeHtml(workout.image)}" src="${photoUrl(workout.image)}" alt="" width="512" height="512" loading="lazy"></a>
+          <img data-photo="${escapeHtml(workout.image)}" src="${photoUrl(workout.image)}" alt="" width="512" height="512" loading="lazy">
           <div class="card-body">
             <p class="category">${escapeHtml(workout.type)}</p>
-            <h3><a href="${workoutUrl(workout.id)}">${escapeHtml(workout.title)}</a></h3>
+            <h3><a class="stretched-link" href="${workoutUrl(workout.id)}">${escapeHtml(workout.title)}</a></h3>
             <p>${escapeHtml(workout.description)}</p>
             ${workoutMeta(workout)}
           </div>
@@ -99,7 +99,7 @@ function renderWorkout(workout, profile, activity) {
   const completed = profile && activity.completed.some(item => item.workout === workout.id && item.date === today());
   const activityActions = profile ? `
     <button type="button" id="complete" class="btn btn-primary mt-3"${completed ? ' disabled' : ''}>${completed ? 'Выполнено сегодня' : 'Отметить выполненной'}</button>
-    <a class="btn btn-outline-secondary mt-3" href="account.html?plan=${encodeURIComponent(workout.id)}">Добавить в план</a>
+    <a class="btn btn-outline-secondary mt-3" href="account.html?plan=${encodeURIComponent(workout.id)}"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calendar"></use></svg>Добавить в план</a>
     <p id="workout-feedback" class="muted mt-3" role="status"></p>` :
     `<a class="btn btn-outline-secondary mt-3" href="login.html?workout=${encodeURIComponent(workout.id)}">Войти, чтобы сохранить прогресс</a>`;
   root.innerHTML = `${back}
@@ -113,7 +113,7 @@ function renderWorkout(workout, profile, activity) {
       <section aria-label="Видео тренировки">
         <div class="video-panel" id="video-panel">
           <img data-photo="${escapeHtml(workout.image)}" src="${photoUrl(workout.image)}" alt="" width="512" height="512">
-          <button type="button" class="btn btn-primary" id="video-play">Смотреть тренировку</button>
+          <button type="button" class="btn btn-primary" id="video-play"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#play"></use></svg>Смотреть тренировку</button>
         </div>
         <p class="mt-2"><a href="${source}" target="_blank" rel="noopener">Открыть видео HASfit на YouTube</a></p>
       </section>
@@ -126,8 +126,8 @@ function renderWorkout(workout, profile, activity) {
     </div>`;
   on('#video-play', 'click', () => {
     const frame = document.createElement('iframe');
-    frame.title = workout.title;
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(workout.video) + '?autoplay=1';
+    frame.title = 'Видео тренировки: ' + workout.title;
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(workout.video) + '?autoplay=1&cc_load_policy=1';
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.allowFullscreen = true;
     document.querySelector('#video-panel').replaceChildren(frame);
@@ -137,14 +137,15 @@ function renderWorkout(workout, profile, activity) {
     on('#complete', 'click', async event => {
       const button = event.currentTarget;
       const feedback = document.querySelector('#workout-feedback');
-      button.disabled = true;
+      if (button.getAttribute('aria-disabled') === 'true') return;
+      button.setAttribute('aria-disabled', 'true');
       try {
         await completeWorkout(workout.id);
         button.textContent = 'Выполнено сегодня';
         feedback.textContent = 'Тренировка добавлена в историю.';
       } catch (error) {
         feedback.textContent = error.message;
-        button.disabled = false;
+        button.removeAttribute('aria-disabled');
       }
     });
   }
@@ -182,6 +183,10 @@ function setupAuth(profile, workout) {
   const destination = workout ? workoutUrl(workout.id) : 'account.html';
   const error = document.querySelector('#auth-error');
   const alternate = document.querySelector('#auth-alternate');
+  form.addEventListener('input', event => {
+    event.target.removeAttribute('aria-invalid');
+    error.textContent = '';
+  });
   if (workout) alternate.href += '?workout=' + encodeURIComponent(workout.id);
   if (profile) {
     location.replace(destination);
@@ -198,6 +203,7 @@ function setupAuth(profile, workout) {
     const button = form.querySelector('button[type="submit"]');
     if (signup && !name) {
       error.textContent = 'Укажите имя.';
+      form.elements.name.setAttribute('aria-invalid', 'true');
       form.elements.name.focus();
       return;
     }
@@ -209,6 +215,11 @@ function setupAuth(profile, workout) {
       location.assign(destination);
     } catch (failure) {
       error.textContent = failure.message;
+      if (failure.status === 401 || failure.status === 409) {
+        const invalid = failure.status === 409 ? form.elements.email : form.elements.password;
+        invalid.setAttribute('aria-invalid', 'true');
+        invalid.focus();
+      }
     } finally {
       button.disabled = false;
     }
@@ -250,8 +261,8 @@ function renderAccount(profile, workouts, initialActivity) {
     return `<ul class="activity-list">${sorted.map(item => {
       const workout = findWorkout(item.workout);
       const actions = isPlan ? `<div class="d-flex flex-wrap gap-2">
-        <button class="btn btn-outline-secondary" type="button" data-action="complete" data-id="${escapeHtml(item.id)}">Выполнено</button>
-        <button class="btn btn-outline-secondary" type="button" data-action="remove" data-id="${escapeHtml(item.id)}">Убрать</button></div>` : '';
+        <button class="btn btn-outline-secondary" type="button" data-action="complete" aria-label="Выполнено — ${escapeHtml(workout.title)}" data-id="${escapeHtml(item.id)}">Выполнено</button>
+        <button class="btn btn-outline-secondary" type="button" data-action="remove" aria-label="Убрать из плана — ${escapeHtml(workout.title)}" data-id="${escapeHtml(item.id)}">Убрать</button></div>` : '';
       return `<li><div><a href="${workoutUrl(workout.id)}">${escapeHtml(workout.title)}</a>
         <small><time datetime="${escapeHtml(item.date)}">${displayDate(item.date)}</time> · ${escapeHtml(workout.minutes)} мин</small></div>${actions}</li>`;
     }).join('')}</ul>`;
@@ -266,7 +277,7 @@ function renderAccount(profile, workouts, initialActivity) {
         <div><dt>В плане</dt><dd>${data.plan.length}</dd></div>
       </dl>
       <section class="mb-5" aria-labelledby="plan-heading">
-        <div class="section-bar"><h2 id="plan-heading">План тренировок</h2><button type="button" id="add-plan" class="btn btn-primary">Добавить в план</button></div>
+        <div class="section-bar"><h2 id="plan-heading">План тренировок</h2><button type="button" id="add-plan" class="btn btn-primary"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calendar"></use></svg>Добавить в план</button></div>
         ${data.plan.length ? list(data.plan, true) : '<p class="empty">В плане пока нет тренировок.</p>'}
       </section>
       <section aria-labelledby="history-heading">

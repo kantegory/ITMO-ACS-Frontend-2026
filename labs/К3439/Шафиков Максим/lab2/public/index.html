@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f9f5">
   <title>Тренировки — Качалочка</title>
+  <script src="js/theme.js"></script>
   <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" src="js/app.js"></script>
@@ -19,10 +20,20 @@
         <a href="blog.html">Журнал</a>
         <a href="account.html">Личный кабинет</a>
       </nav>
-      <div class="header-actions" id="header-actions"><a class="btn btn-outline-secondary" href="login.html">Войти</a></div>
+      <div class="header-tools">
+        <div class="theme-control">
+          <label for="theme-select"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#theme"></use></svg><span class="visually-hidden">Цветовая тема</span></label>
+          <select class="form-select" id="theme-select">
+            <option value="auto">Системная</option>
+            <option value="light">Светлая</option>
+            <option value="dark">Тёмная</option>
+          </select>
+        </div>
+        <div class="header-actions" id="header-actions"><a class="btn btn-outline-secondary" href="login.html">Войти</a></div>
+      </div>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
 <section class="hero" aria-labelledby="hero-title">
   <div class="container site-width hero-layout">
     <div class="hero-copy">
@@ -30,14 +41,14 @@
       <p>Спускайся вниз, подберем тебе упражнения</p>
       <a class="btn btn-primary" href="#catalog">Подобрать тренировку</a>
     </div>
-    <img class="hero-image" src="assets/images/hero.webp" alt="Бегунья на дорожке в парке" width="1279" height="720" fetchpriority="high">
+    <img class="hero-image" src="assets/images/hero.webp" alt="Двое мужчин бегут по дорожке в парке" width="1279" height="720" fetchpriority="high">
   </div>
 </section>
-<section id="catalog" class="container site-width catalog" aria-labelledby="catalog-title">
+<section id="catalog" tabindex="-1" class="container site-width catalog" aria-labelledby="catalog-title">
   <h2 id="catalog-title">Каталог тренировок</h2>
   <p class="muted mb-4">Найдите занятие по типу нагрузки, уровню и длительности.</p>
   <form id="filters" class="filter-bar row g-3" role="search" aria-label="Поиск тренировок">
-    <div class="col-12 col-md-4"><label class="form-label" for="search">Поиск</label><input type="search" class="form-control" id="search" name="search" placeholder="Название или упражнение"></div>
+    <div class="col-12 col-md-4"><label class="form-label" for="search"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#search"></use></svg>Поиск</label><input type="search" class="form-control" id="search" name="search" placeholder="Название или упражнение"></div>
     <div class="col-6 col-md"><label class="form-label" for="type">Тип</label><select class="form-select" id="type" name="type"><option value="">Все типы</option><option>Силовые</option><option>Кардио</option><option>Растяжка</option></select></div>
     <div class="col-6 col-md"><label class="form-label" for="level">Уровень</label><select class="form-select" id="level" name="level"><option value="">Любой</option><option>Начальный</option><option>Средний</option></select></div>
     <div class="col-6 col-md"><label class="form-label" for="duration">Длительность</label><select class="form-select" id="duration" name="duration"><option value="">Любая</option><option value="short">До 15 мин</option><option value="medium">16–25 мин</option><option value="long">От 26 мин</option></select></div>

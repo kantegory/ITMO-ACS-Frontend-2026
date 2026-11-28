@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f9f5">
   <title>Личный кабинет — Качалочка</title>
+  <script src="js/theme.js"></script>
   <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" src="js/app.js"></script>
@@ -19,17 +20,27 @@
         <a href="blog.html">Журнал</a>
         <a href="account.html" aria-current="page">Личный кабинет</a>
       </nav>
-      <div class="header-actions" id="header-actions"><a class="btn btn-outline-secondary" href="login.html">Войти</a></div>
+      <div class="header-tools">
+        <div class="theme-control">
+          <label for="theme-select"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#theme"></use></svg><span class="visually-hidden">Цветовая тема</span></label>
+          <select class="form-select" id="theme-select">
+            <option value="auto">Системная</option>
+            <option value="light">Светлая</option>
+            <option value="dark">Тёмная</option>
+          </select>
+        </div>
+        <div class="header-actions" id="header-actions"><a class="btn btn-outline-secondary" href="login.html">Войти</a></div>
+      </div>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
 <section class="container site-width page-content">
   <div id="account"></div>
 </section>
 <dialog class="app-dialog" id="plan-dialog" aria-labelledby="plan-title">
-  <form id="plan-form">
+  <form id="plan-form" aria-describedby="plan-error">
     <h2 id="plan-title">Добавить в план</h2>
-    <div class="mb-3"><label class="form-label" for="planned-workout">Тренировка</label><select class="form-select" id="planned-workout" name="workout" required></select></div>
+    <div class="mb-3"><label class="form-label" for="planned-workout">Тренировка</label><select autofocus class="form-select" id="planned-workout" name="workout" required></select></div>
     <div class="mb-4"><label class="form-label" for="plan-date">Дата</label><input class="form-control" id="plan-date" name="date" type="date" required></div>
     <p class="form-error" id="plan-error" role="alert"></p>
     <div class="d-flex flex-wrap gap-2"><button type="submit" class="btn btn-primary">Добавить</button><button class="btn btn-outline-secondary" type="button" id="close-plan">Отмена</button></div>
