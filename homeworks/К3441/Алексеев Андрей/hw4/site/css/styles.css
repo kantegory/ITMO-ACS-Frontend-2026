@@ -42,6 +42,9 @@
   --tag-text: #dde9e2;
   --control-border: #637b71;
   --focus-shadow: #93dabb45;
+  --danger: #f19aa5;
+  --bs-danger-rgb: 241, 154, 165;
+  --bs-success-rgb: 155, 217, 182;
   --bs-body-color: var(--ink);
   --bs-body-bg: var(--surface);
 }
@@ -89,6 +92,16 @@ a:hover { color: var(--accent-dark); }
   --bs-btn-hover-color: var(--action-text);
   --bs-btn-hover-bg: var(--action);
   --bs-btn-hover-border-color: var(--action);
+}
+:root[data-bs-theme="dark"] .btn-outline-danger {
+  --bs-btn-color: var(--danger);
+  --bs-btn-border-color: var(--danger);
+  --bs-btn-hover-color: var(--action-text);
+  --bs-btn-hover-bg: var(--danger);
+  --bs-btn-hover-border-color: var(--danger);
+  --bs-btn-active-color: var(--action-text);
+  --bs-btn-active-bg: var(--danger);
+  --bs-btn-active-border-color: var(--danger);
 }
 .btn { font-weight: 600; }
 .form-label { font-weight: 600; }
