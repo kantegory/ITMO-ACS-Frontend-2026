@@ -1,0 +1,26 @@
+:root {
+  --ink: #1b2724;
+  --muted: #4b5d55;
+  --accent: #1f654e;
+  --line: #d6e1dc;
+}
+
+body { background: #f5f8f6; color: var(--ink); }
+.container { max-width: 880px; }
+.site-header { border-bottom: 1px solid var(--line); background: #fff; }
+.wordmark { font-size: 1.3rem; font-weight: 800; text-decoration: none; }
+a { color: var(--accent); }
+a[aria-current="page"] { font-weight: 700; }
+.intro { padding: clamp(1.2rem, 3vw, 2rem); border-radius: 1rem; background: #e2eee6; }
+.muted { color: var(--muted); }
+.panel { border: 1px solid var(--line); background: #fff; border-radius: 1rem; }
+.vacancy-card {
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .85rem;
+}
+button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
