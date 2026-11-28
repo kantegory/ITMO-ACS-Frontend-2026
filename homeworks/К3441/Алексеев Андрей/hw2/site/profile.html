@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Вектор — каталог вакансий и личный кабинет для поиска работы.">
+  <title>Кабинет соискателя | Вектор</title>
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100" data-view="profile">
+  <a class="skip-link visually-hidden-focusable" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
+      <a class="wordmark" href="index.html" aria-label="Вектор — вакансии"><span aria-hidden="true">В</span> Вектор</a>
+      <nav class="site-nav d-flex align-items-center flex-wrap" aria-label="Главное меню">
+        <a href="index.html">Вакансии</a>
+        <span id="account-nav" class="d-flex align-items-center flex-wrap gap-2"></span>
+      </nav>
+    </div>
+  </header>
+  <main class="container flex-grow-1 py-4 py-md-5" id="main" tabindex="-1">
+    <div class="page-detail mx-auto">
+      <h1 class="h2 mb-2">Кабинет соискателя</h1>
+      <p class="muted" id="profile-user"></p>
+      <p class="text-danger" id="error" role="alert"></p>
+      <section class="panel p-4 mb-4" aria-labelledby="resume-heading">
+        <h2 class="h4 mb-3" id="resume-heading">Моё резюме</h2>
+        <form id="resume-form" aria-describedby="error">
+          <label class="form-label" for="resume-title">Желаемая должность</label>
+          <input class="form-control mb-3" id="resume-title" name="title" maxlength="100" required>
+          <label class="form-label" for="resume-city">Город</label>
+          <input class="form-control mb-3" id="resume-city" name="city" autocomplete="address-level2" maxlength="80" required>
+          <label class="form-label" for="resume-skills">Навыки</label>
+          <input class="form-control mb-3" id="resume-skills" name="skills" maxlength="250" required>
+          <label class="form-label" for="resume-about">Опыт работы и о себе</label>
+          <textarea class="form-control mb-3" id="resume-about" name="about" rows="4" maxlength="2500" required></textarea>
+          <button class="btn btn-primary" type="submit" disabled>Сохранить резюме</button>
+          <p class="text-success mt-3 mb-0" id="resume-status" role="status" aria-atomic="true"></p>
+        </form>
+      </section>
+      <section class="panel p-4" aria-labelledby="applications-heading">
+        <h2 class="h4 mb-3" id="applications-heading">Мои отклики</h2>
+        <div id="applications"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer mt-4">
+    <div class="container py-4">Вектор · Учебный сервис поиска работы</div>
+  </footer>
+</body>
+</html>

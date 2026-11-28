@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Вектор — каталог вакансий и личный кабинет для поиска работы.">
+  <title>Кабинет работодателя | Вектор</title>
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100" data-view="employer">
+  <a class="skip-link visually-hidden-focusable" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
+      <a class="wordmark" href="index.html" aria-label="Вектор — вакансии"><span aria-hidden="true">В</span> Вектор</a>
+      <nav class="site-nav d-flex align-items-center flex-wrap" aria-label="Главное меню">
+        <a href="index.html">Вакансии</a>
+        <span id="account-nav" class="d-flex align-items-center flex-wrap gap-2"></span>
+      </nav>
+    </div>
+  </header>
+  <main class="container flex-grow-1 py-4 py-md-5" id="main" tabindex="-1">
+    <div class="page-detail mx-auto">
+      <h1 class="h2 mb-2">Кабинет работодателя</h1>
+      <p class="muted" id="profile-user"></p>
+      <p class="text-danger" id="error" role="alert"></p>
+      <section class="panel p-4 mb-4" aria-labelledby="editor-heading">
+        <h2 class="h4 mb-3" id="editor-heading">Новая вакансия</h2>
+        <form class="row g-3" id="job-form" aria-describedby="editor-error">
+          <div class="col-md-6">
+            <label class="form-label" for="title">Должность</label>
+            <input class="form-control" id="title" name="title" maxlength="100" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="company">Компания</label>
+            <input class="form-control" id="company" name="company" autocomplete="organization" maxlength="80" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="city">Город</label>
+            <input class="form-control" id="city" name="city" autocomplete="address-level2" maxlength="80" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="industry">Отрасль</label>
+            <select class="form-select" id="industry" name="industry" required><option value="">Выберите отрасль</option></select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="experience">Опыт</label>
+            <select class="form-select" id="experience" name="experience" required><option value="">Выберите опыт</option></select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="format">Формат работы</label>
+            <select class="form-select" id="format" name="format" required><option value="">Выберите формат</option></select>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="salary-min">Зарплата от, ₽</label>
+            <input class="form-control" id="salary-min" name="salaryMin" type="number" min="0" max="100000000" required>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="salary-max">Зарплата до, ₽</label>
+            <input class="form-control" id="salary-max" name="salaryMax" type="number" min="0" max="100000000" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="description">Описание</label>
+            <textarea class="form-control" id="description" name="description" rows="3" maxlength="2500" required></textarea>
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="requirements">Требования</label>
+            <textarea class="form-control" id="requirements" name="requirements" rows="3" maxlength="2500" required></textarea>
+          </div>
+          <div class="col-12">
+            <p class="text-danger" id="editor-error" role="alert"></p>
+            <button class="btn btn-primary" type="submit" id="publish" disabled>Опубликовать</button>
+            <button class="btn btn-outline-secondary" type="button" id="cancel-edit" hidden>Отмена</button>
+          </div>
+        </form>
+      </section>
+      <section class="panel p-4" aria-labelledby="my-jobs-heading">
+        <h2 class="h4 mb-3" id="my-jobs-heading">Мои вакансии</h2>
+        <p class="text-success" id="job-status" role="status" aria-atomic="true"></p>
+        <div id="own-jobs"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer mt-4">
+    <div class="container py-4">Вектор · Учебный сервис поиска работы</div>
+  </footer>
+</body>
+</html>

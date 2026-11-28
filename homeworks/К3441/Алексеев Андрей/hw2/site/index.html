@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Вектор — каталог вакансий и личный кабинет для поиска работы.">
+  <title>Вакансии | Вектор</title>
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100" data-view="catalog">
+  <a class="skip-link visually-hidden-focusable" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
+      <a class="wordmark" href="index.html" aria-label="Вектор — вакансии"><span aria-hidden="true">В</span> Вектор</a>
+      <nav class="site-nav d-flex align-items-center flex-wrap" aria-label="Главное меню">
+        <a href="index.html">Вакансии</a>
+        <span id="account-nav" class="d-flex align-items-center flex-wrap gap-2"></span>
+      </nav>
+    </div>
+  </header>
+  <main class="container flex-grow-1 py-4 py-md-5" id="main" tabindex="-1">
+    <section class="hero row g-0 align-items-stretch mb-4 mb-md-5" aria-labelledby="hero-title">
+      <div class="col-md-7 hero-copy">
+        <h1 id="hero-title" class="fw-bold mb-3">Найди работу по себе</h1>
+        <p class="mb-4">Ищите вакансии по сфере, опыту и зарплате. Подходящие позиции можно открыть прямо из каталога.</p>
+        <form class="search-box d-flex gap-2" id="search-form" role="search" aria-label="Поиск вакансий">
+          <label class="visually-hidden" for="query">Должность, компания или город</label>
+          <input class="form-control" type="search" name="query" id="query" placeholder="Должность, компания или город">
+          <button class="btn btn-primary px-md-4" type="submit">Найти</button>
+        </form>
+      </div>
+      <div class="col-md-5">
+        <img class="hero-photo" src="assets/office.jpg" alt="" width="1050" height="701">
+      </div>
+    </section>
+    <div class="row g-4 align-items-start" id="results">
+      <aside class="col-lg-3">
+        <form class="panel p-3 p-md-4" id="filters" aria-labelledby="filters-title">
+          <h2 class="h5 mb-3" id="filters-title">Фильтры</h2>
+          <label class="form-label" for="industry">Отрасль</label>
+          <select class="form-select mb-3" id="industry" name="industry"><option value="">Все отрасли</option></select>
+          <label class="form-label" for="experience">Опыт</label>
+          <select class="form-select mb-3" id="experience" name="experience"><option value="">Любой опыт</option></select>
+          <label class="form-label" for="minimum">Зарплата от, ₽</label>
+          <input class="form-control" type="number" id="minimum" name="minimum" min="0" inputmode="numeric" aria-describedby="salary-hint">
+          <p class="form-text mb-3" id="salary-hint">Покажем варианты, где верхняя граница зарплаты не ниже этой суммы.</p>
+          <label class="form-label" for="format">Формат работы</label>
+          <select class="form-select mb-3" id="format" name="format"><option value="">Любой формат</option></select>
+          <button class="btn btn-outline-secondary w-100" type="reset">Сбросить</button>
+        </form>
+      </aside>
+      <section class="col-lg-9" aria-labelledby="result-title">
+        <div class="d-flex justify-content-between align-items-sm-center flex-column flex-sm-row gap-2 mb-3">
+          <div>
+            <h2 class="h3 mb-1" id="result-title" tabindex="-1">Вакансии</h2>
+            <p class="muted mb-0" id="result-count" role="status" aria-atomic="true">Загружаем вакансии…</p>
+          </div>
+          <div>
+            <label class="visually-hidden" for="sort">Сортировка вакансий</label>
+            <select class="form-select" id="sort">
+              <option value="new">Сначала новые</option>
+              <option value="salary">Сначала выше зарплата</option>
+            </select>
+          </div>
+        </div>
+        <p class="text-danger" id="error" role="alert"></p>
+        <div class="vstack gap-3" id="job-list" aria-busy="true"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer mt-4">
+    <div class="container py-4">Вектор · Учебный сервис поиска работы</div>
+  </footer>
+</body>
+</html>

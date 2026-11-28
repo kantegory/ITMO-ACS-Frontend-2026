@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Вектор — каталог вакансий и личный кабинет для поиска работы.">
+  <title>Регистрация | Вектор</title>
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100" data-view="register">
+  <a class="skip-link visually-hidden-focusable" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
+      <a class="wordmark" href="index.html" aria-label="Вектор — вакансии"><span aria-hidden="true">В</span> Вектор</a>
+      <nav class="site-nav d-flex align-items-center flex-wrap" aria-label="Главное меню">
+        <a href="index.html">Вакансии</a>
+        <span id="account-nav" class="d-flex align-items-center flex-wrap gap-2"></span>
+      </nav>
+    </div>
+  </header>
+  <main class="container flex-grow-1 py-4 py-md-5" id="main" tabindex="-1">
+    <section class="panel page-narrow mx-auto p-4 p-md-5">
+      <h1 class="h2 mb-4">Регистрация</h1>
+      <form id="auth-form" aria-describedby="error">
+          <label class="form-label" for="name">Имя</label>
+          <input class="form-control mb-3" id="name" name="name" autocomplete="name" maxlength="80" required>
+        <label class="form-label" for="email">Почта</label>
+        <input class="form-control mb-3" id="email" name="email" type="email" autocomplete="email" maxlength="150" required>
+        <label class="form-label" for="password">Пароль</label>
+        <input class="form-control mb-2" id="password" name="password" type="password" autocomplete="new-password" aria-describedby="password-hint" minlength="8" maxlength="64" required>
+        <p class="form-text mt-1" id="password-hint">Минимум 8 символов.</p>
+          <label class="form-label" for="role">Тип аккаунта</label>
+          <select class="form-select mb-4" id="role" name="role">
+            <option value="applicant">Соискатель</option>
+            <option value="employer">Работодатель</option>
+          </select>
+        <p class="text-danger" id="error" role="alert"></p>
+        <button class="btn btn-primary w-100 mt-2" type="submit">Создать аккаунт</button>
+      </form>
+      <p class="muted mt-4 mb-0">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+    </section>
+  </main>
+  <footer class="site-footer mt-4">
+    <div class="container py-4">Вектор · Учебный сервис поиска работы</div>
+  </footer>
+</body>
+</html>
