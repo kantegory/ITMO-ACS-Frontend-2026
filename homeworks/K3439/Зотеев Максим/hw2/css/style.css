@@ -1,0 +1,84 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.property-photo {
+  height: 420px;
+  object-fit: cover;
+}
+
+.chat {
+  height: 350px;
+  overflow-y: auto;
+}
+
+.chat .message {
+  max-width: 70%;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 1100;
+  top: 8px;
+  left: 8px;
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #0a58ca;
+  border-radius: 6px;
+}
+
+main:focus {
+  outline: none;
+}
+
+:root {
+  --bs-primary: #0a58ca;
+  --bs-primary-rgb: 10, 88, 202;
+  --bs-link-color: #0a58ca;
+  --bs-link-color-rgb: 10, 88, 202;
+  --bs-link-hover-color: #084298;
+  --bs-link-hover-color-rgb: 8, 66, 152;
+}
+
+.btn-primary {
+  --bs-btn-bg: #0a58ca;
+  --bs-btn-border-color: #0a58ca;
+  --bs-btn-hover-bg: #084298;
+  --bs-btn-hover-border-color: #084298;
+  --bs-btn-active-bg: #084298;
+  --bs-btn-active-border-color: #084298;
+  --bs-btn-disabled-bg: #0a58ca;
+  --bs-btn-disabled-border-color: #0a58ca;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #0a58ca;
+  --bs-btn-border-color: #0a58ca;
+  --bs-btn-hover-bg: #0a58ca;
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-active-bg: #0a58ca;
+  --bs-btn-active-border-color: #0a58ca;
+}
+
+.list-group {
+  --bs-list-group-active-bg: #0a58ca;
+  --bs-list-group-active-border-color: #0a58ca;
+}
+
+:focus-visible {
+  outline: 3px solid #0a58ca;
+  outline-offset: 2px;
+}

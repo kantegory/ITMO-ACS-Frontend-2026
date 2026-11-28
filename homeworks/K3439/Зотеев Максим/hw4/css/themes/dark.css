@@ -1,0 +1,39 @@
+/* Тёмная тема */
+:root {
+  color-scheme: dark;
+
+  --color-bg: #14181f;
+  --color-surface: #1e242d;
+  --color-surface-rgb: 30, 36, 45;
+  --color-surface-alt: #2a313c;
+  --color-text: #e6e9ef;
+  --color-text-rgb: 230, 233, 239;
+  --color-text-muted: #aab2bf;
+  --color-border: #3a4350;
+  --color-accent: #8ab4f8;
+  --color-accent-rgb: 138, 180, 248;
+  --color-accent-hover: #aecbfa;
+  --color-accent-hover-rgb: 174, 203, 250;
+  --color-on-accent: #10161f;
+
+  /* Цвета уведомлений Bootstrap: в тёмной теме фон тёмный, а текст светлый */
+  --bs-success-text-emphasis: #75b798;
+  --bs-success-bg-subtle: #051b11;
+  --bs-success-border-subtle: #0f5132;
+  --bs-danger-text-emphasis: #ea868f;
+  --bs-danger-bg-subtle: #2c0b0e;
+  --bs-danger-border-subtle: #842029;
+  --bs-warning-text-emphasis: #ffda6a;
+  --bs-warning-bg-subtle: #332701;
+  --bs-warning-border-subtle: #997404;
+}
+
+/* Значки Bootstrap нарисованы тёмным цветом внутри CSS, поэтому в тёмной теме их нужно заменить */
+.form-select {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e6e9ef' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.btn-close,
+.navbar-toggler-icon {
+  filter: invert(1);
+}

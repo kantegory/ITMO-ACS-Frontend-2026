@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сообщения и сделки — Аренда жилья</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Аренда жилья</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Поиск</a></li>
+          <li class="nav-item"><a class="nav-link active" href="messages.html">Сообщения</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Личный кабинет</a></li>
+        </ul>
+        <a class="btn btn-outline-secondary" href="login.html">Выйти</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h1 class="h2 mb-4">Сообщения</h1>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            <div class="fw-bold">Дмитрий Орлов</div>
+            <small>Студия, Василеостровский район</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <div class="fw-bold">Ольга Соколова</div>
+            <small class="text-muted">Двухкомнатная квартира, Петроградский район</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <div class="fw-bold">Мария Кузнецова</div>
+            <small class="text-muted">Однокомнатная квартира, Приморский район</small>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-white fw-bold">Дмитрий Орлов</div>
+          <div class="card-body chat d-flex flex-column gap-2" id="chat">
+            <div class="message align-self-start bg-light border rounded p-2">
+              Здравствуйте! Студия свободна с 1 сентября.
+            </div>
+            <div class="message align-self-end bg-primary text-white rounded p-2">
+              Добрый день! Можно посмотреть её в субботу?
+            </div>
+            <div class="message align-self-start bg-light border rounded p-2">
+              Да, давайте в 13:00.
+            </div>
+            <div class="message align-self-end bg-primary text-white rounded p-2">
+              Отлично, договорились. Спасибо!
+            </div>
+          </div>
+          <div class="card-footer bg-white">
+            <form class="d-flex gap-2" id="messageForm">
+              <input type="text" class="form-control" id="messageText" placeholder="Введите сообщение" required>
+              <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="h3 mb-3">История сделок</h2>
+    <div class="table-responsive">
+      <table class="table table-striped bg-white">
+        <thead>
+          <tr>
+            <th scope="col">Дата</th>
+            <th scope="col">Объект</th>
+            <th scope="col">Роль</th>
+            <th scope="col">Сумма в месяц</th>
+            <th scope="col">Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01.09.2026</td>
+            <td>Студия, Василеостровский район</td>
+            <td>Арендатор</td>
+            <td>38 000 ₽</td>
+            <td><span class="badge text-bg-success">Действует</span></td>
+          </tr>
+          <tr>
+            <td>15.08.2026</td>
+            <td>Однокомнатная квартира, Приморский район</td>
+            <td>Владелец</td>
+            <td>42 000 ₽</td>
+            <td><span class="badge text-bg-success">Действует</span></td>
+          </tr>
+          <tr>
+            <td>20.07.2026</td>
+            <td>Двухкомнатная квартира, Петроградский район</td>
+            <td>Арендатор</td>
+            <td>65 000 ₽</td>
+            <td><span class="badge text-bg-danger">Отменена</span></td>
+          </tr>
+          <tr>
+            <td>01.09.2025</td>
+            <td>Комната, Московский район</td>
+            <td>Арендатор</td>
+            <td>22 000 ₽</td>
+            <td><span class="badge text-bg-secondary">Завершена</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/messages.js"></script>
+</body>
+</html>
