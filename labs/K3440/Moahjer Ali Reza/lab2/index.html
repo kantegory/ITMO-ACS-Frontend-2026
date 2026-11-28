@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Каталог — CarpetShop</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav id="navbar"></nav>
+
+    <div class="container mt-4">
+      <h2 class="mb-4">Каталог ковров</h2>
+
+      <div id="message"></div>
+
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <form id="filter-form" class="border rounded p-3 bg-white">
+            <h5>Поиск и фильтры</h5>
+
+            <div class="mb-3">
+              <label for="f-text" class="form-label">Название</label>
+              <input type="text" id="f-text" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+              <label for="f-category" class="form-label">Категория</label>
+              <select id="f-category" class="form-select">
+                <option value="">Все</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="f-shape" class="form-label">Форма</label>
+              <select id="f-shape" class="form-select">
+                <option value="">Любая</option>
+                <option value="RECTANGLE">Прямоугольник</option>
+                <option value="SQUARE">Квадрат</option>
+                <option value="CIRCLE">Круг</option>
+                <option value="ELLIPSE">Овал</option>
+                <option value="RUNNER">Дорожка</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="f-material" class="form-label">Материал</label>
+              <input type="text" id="f-material" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+              <label for="f-color" class="form-label">Цвет</label>
+              <input type="text" id="f-color" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Цена, ₽</label>
+              <div class="input-group">
+                <input
+                  type="number"
+                  id="f-price-min"
+                  class="form-control"
+                  placeholder="от"
+                  min="0"
+                />
+                <input
+                  type="number"
+                  id="f-price-max"
+                  class="form-control"
+                  placeholder="до"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div class="form-check mb-3">
+              <input type="checkbox" id="f-handmade" class="form-check-input" />
+              <label for="f-handmade" class="form-check-label"
+                >Ручная работа</label
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="f-sort" class="form-label">Сортировка</label>
+              <select id="f-sort" class="form-select">
+                <option value="">По умолчанию</option>
+                <option value="price_asc">Сначала дешёвые</option>
+                <option value="price_desc">Сначала дорогие</option>
+                <option value="rating">По рейтингу</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-2">
+              Найти
+            </button>
+            <button
+              type="button"
+              id="reset-btn"
+              class="btn btn-outline-secondary w-100"
+            >
+              Сбросить
+            </button>
+          </form>
+        </div>
+
+        <div class="col-md-9">
+          <p id="total" class="text-muted"></p>
+          <div id="carpets" class="row"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/search.js"></script>
+  </body>
+</html>
