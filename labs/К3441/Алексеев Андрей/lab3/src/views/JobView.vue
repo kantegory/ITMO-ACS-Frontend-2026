@@ -42,12 +42,13 @@ function sendApplication() {
 <template>
   <div class="page-detail mx-auto">
     <RouterLink class="d-inline-block mb-3" :to="{ name: 'catalog' }">Все вакансии</RouterLink>
-    <p v-if="loadError" class="text-danger" role="alert">{{ loadError }}</p>
+    <h1 v-if="!job" class="h2">Вакансия</h1>
+    <p class="text-danger" role="alert">{{ loadError }}</p>
     <p v-if="loading && !job" role="status">Загружаем вакансию…</p>
-    <article v-if="job" class="panel p-4 p-md-5">
+    <article v-if="job" class="panel p-4 p-md-5" aria-labelledby="job-heading">
       <header class="mb-4">
         <p class="muted mb-2">{{ job.company }} · {{ job.city }}</p>
-        <h1 class="h2 mb-3">{{ job.title }}</h1>
+        <h1 class="h2 mb-3" id="job-heading">{{ job.title }}</h1>
         <p class="salary fs-5 mb-3">{{ salary(job) }} <span class="muted fw-normal">в месяц</span></p>
         <SalaryConverter :job="job" />
         <JobTags :job="job" />
@@ -64,8 +65,8 @@ function sendApplication() {
       <button v-else-if="canApply" class="btn btn-primary" type="button" :disabled="loading || applying || applied || Boolean(loadError)" @click="sendApplication">
         {{ applied ? 'Отклик отправлен' : 'Откликнуться' }}
       </button>
-      <p v-if="applyError" class="text-danger mt-3 mb-0" role="alert">{{ applyError }}</p>
-      <p v-if="sent" class="text-success mt-3 mb-0" role="status">Отклик сохранён в вашем кабинете.</p>
+      <p class="text-danger mt-3 mb-0" role="alert">{{ applyError }}</p>
+      <p class="text-success mt-3 mb-0" role="status" aria-atomic="true">{{ sent ? 'Отклик сохранён в вашем кабинете.' : '' }}</p>
     </article>
   </div>
 </template>

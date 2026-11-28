@@ -42,18 +42,18 @@ function submit() {
     <template v-if="!loading && !loadError">
       <section class="panel p-4 mb-4" aria-labelledby="resume-heading">
         <h2 class="h4 mb-3" id="resume-heading">Моё резюме</h2>
-        <form @submit.prevent="submit">
+        <form aria-describedby="resume-error" @submit.prevent="submit">
           <label class="form-label" for="resume-title">Желаемая должность</label>
           <input v-model="form.title" class="form-control mb-3" id="resume-title" maxlength="100" required>
           <label class="form-label" for="resume-city">Город</label>
-          <input v-model="form.city" class="form-control mb-3" id="resume-city" maxlength="80" required>
+          <input v-model="form.city" class="form-control mb-3" id="resume-city" autocomplete="address-level2" maxlength="80" required>
           <label class="form-label" for="resume-skills">Навыки</label>
           <input v-model="form.skills" class="form-control mb-3" id="resume-skills" maxlength="250" required>
           <label class="form-label" for="resume-about">Опыт работы и о себе</label>
           <textarea v-model="form.about" class="form-control mb-3" id="resume-about" rows="4" maxlength="2500" required></textarea>
-          <p v-if="saveError" class="text-danger" role="alert">{{ saveError }}</p>
+          <p class="text-danger" id="resume-error" role="alert">{{ saveError }}</p>
           <button class="btn btn-primary" type="submit" :disabled="saving">Сохранить резюме</button>
-          <p v-if="saved" class="text-success mt-3 mb-0" role="status">Резюме сохранено.</p>
+          <p class="text-success mt-3 mb-0" role="status" aria-atomic="true">{{ saved ? 'Резюме сохранено.' : '' }}</p>
         </form>
       </section>
       <section class="panel p-4" aria-labelledby="applications-heading">

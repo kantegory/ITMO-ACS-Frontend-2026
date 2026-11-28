@@ -40,18 +40,18 @@ defineExpose({ reset });
 <template>
   <section class="panel p-4 mb-4" aria-labelledby="editor-heading">
     <h2 class="h4 mb-3" id="editor-heading">{{ job ? 'Редактирование вакансии' : 'Новая вакансия' }}</h2>
-    <form class="row g-3" @submit.prevent="submit">
+    <form class="row g-3" aria-describedby="editor-error" @submit.prevent="submit">
       <div class="col-md-6">
         <label class="form-label" for="title">Должность</label>
         <input v-model="form.title" class="form-control" id="title" ref="titleField" name="title" maxlength="100" required>
       </div>
       <div class="col-md-6">
         <label class="form-label" for="company">Компания</label>
-        <input v-model="form.company" class="form-control" id="company" name="company" maxlength="80" required>
+        <input v-model="form.company" class="form-control" id="company" name="company" autocomplete="organization" maxlength="80" required>
       </div>
       <div class="col-md-6">
         <label class="form-label" for="city">Город</label>
-        <input v-model="form.city" class="form-control" id="city" name="city" maxlength="80" required>
+        <input v-model="form.city" class="form-control" id="city" name="city" autocomplete="address-level2" maxlength="80" required>
       </div>
       <div class="col-md-6">
         <label class="form-label" for="industry">Отрасль</label>
@@ -91,7 +91,7 @@ defineExpose({ reset });
         <textarea v-model="form.requirements" class="form-control" id="requirements" name="requirements" rows="3" maxlength="2500" required></textarea>
       </div>
       <div class="col-12">
-        <p v-if="error" class="text-danger" role="alert">{{ error }}</p>
+        <p class="text-danger" id="editor-error" role="alert">{{ error }}</p>
         <button class="btn btn-primary me-2" type="submit" :disabled="disabled">{{ job ? 'Сохранить' : 'Опубликовать' }}</button>
         <button v-if="job" class="btn btn-outline-secondary" type="button" :disabled="disabled" @click="emit('cancel')">Отмена</button>
       </div>

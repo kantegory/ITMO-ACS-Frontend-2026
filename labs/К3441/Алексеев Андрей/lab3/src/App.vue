@@ -1,9 +1,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
+import SiteIcon from './components/SiteIcon.vue';
+import { useTheme } from './composables/useTheme.js';
 import { cabinet, useSession } from './composables/useSession.js';
 
 const router = useRouter();
 const { user, logout, sessionError } = useSession();
+const { preference, setPreference } = useTheme();
 
 async function signOut() {
   logout();
@@ -19,22 +22,33 @@ function skipToContent() {
 
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <a class="visually-hidden-focusable position-absolute bg-white p-2" href="#main" @click.prevent="skipToContent">К содержимому</a>
+    <a class="skip-link visually-hidden-focusable" href="#main" @click.prevent="skipToContent">К содержимому</a>
     <header class="site-header">
       <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
-        <RouterLink class="wordmark" :to="{ name: 'catalog' }" aria-label="Вектор — вакансии">
-          <span aria-hidden="true">В</span> Вектор
+        <RouterLink class="wordmark" :to="{ name: 'catalog' }">
+          <span aria-hidden="true"><SiteIcon name="briefcase" /></span> Вектор
         </RouterLink>
         <nav class="site-nav d-flex align-items-center flex-wrap" aria-label="Главное меню">
           <RouterLink :to="{ name: 'catalog' }">Вакансии</RouterLink>
-          <template v-if="user">
-            <RouterLink class="btn btn-outline-primary" :to="cabinet(user.role)">Мой кабинет</RouterLink>
-            <button class="btn btn-outline-secondary" type="button" @click="signOut">Выйти</button>
-          </template>
-          <template v-else>
-            <RouterLink class="btn btn-outline-primary" :to="{ name: 'login' }">Войти</RouterLink>
-            <RouterLink class="btn btn-primary" :to="{ name: 'register' }">Регистрация</RouterLink>
-          </template>
+          <div class="d-flex align-items-center gap-2">
+            <label for="theme-choice">Тема</label>
+            <select id="theme-choice" class="form-select form-select-sm w-auto"
+              :value="preference" @change="setPreference($event.target.value)">
+              <option value="system">Системная</option>
+              <option value="light">Светлая</option>
+              <option value="dark">Тёмная</option>
+            </select>
+          </div>
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            <template v-if="user">
+              <RouterLink class="btn btn-outline-primary" :to="cabinet(user.role)"><SiteIcon name="account" /> Мой кабинет</RouterLink>
+              <button class="btn btn-outline-secondary" type="button" @click="signOut"><SiteIcon name="sign-out" /> Выйти</button>
+            </template>
+            <template v-else>
+              <RouterLink class="btn btn-outline-primary" :to="{ name: 'login' }">Войти</RouterLink>
+              <RouterLink class="btn btn-primary" :to="{ name: 'register' }">Регистрация</RouterLink>
+            </template>
+          </div>
         </nav>
       </div>
     </header>

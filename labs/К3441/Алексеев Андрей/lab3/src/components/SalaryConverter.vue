@@ -36,6 +36,6 @@ async function convert() {
       <option value="EUR">EUR</option>
     </select>
   </div>
-  <p v-if="status" class="muted mb-3" role="status">{{ status }}</p>
+  <p class="muted mb-3" role="status" aria-atomic="true">{{ status }}</p>
   <p class="small muted mb-3">Источник курсов: <a href="https://www.exchangerate-api.com/">ExchangeRate-API</a></p>
 </template>

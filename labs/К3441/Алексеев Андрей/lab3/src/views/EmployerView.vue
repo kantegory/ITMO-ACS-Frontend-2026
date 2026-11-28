@@ -66,14 +66,14 @@ function removeJob(job) {
       <JobEditor ref="editor" :job="editing" :disabled="busy" :error="saveError" @save="submit" @cancel="closeEditor" />
       <section class="panel p-4" aria-labelledby="my-jobs-heading">
         <h2 class="h4 mb-3" id="my-jobs-heading">Мои вакансии</h2>
-        <p v-if="message" class="text-success" role="status">{{ message }}</p>
-        <p v-if="deleteError" class="text-danger" role="alert">{{ deleteError }}</p>
+        <p class="text-success" role="status" aria-atomic="true">{{ message }}</p>
+        <p class="text-danger" role="alert">{{ deleteError }}</p>
         <ul v-if="ordered.length" class="list-group list-group-flush">
           <li v-for="job in ordered" :key="job.id" class="list-group-item px-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
             <RouterLink :to="{ name: 'job', params: { id: job.id } }">{{ job.title }}</RouterLink>
             <div class="d-flex flex-wrap gap-2">
-              <button class="btn btn-sm btn-outline-primary" type="button" :disabled="busy" @click="edit(job)">Изменить</button>
-              <button class="btn btn-sm btn-outline-danger" type="button" :disabled="busy" @click="removeJob(job)">Удалить</button>
+              <button class="btn btn-sm btn-outline-primary" type="button" :disabled="busy" :aria-label="`Изменить вакансию ${job.title}`" @click="edit(job)">Изменить</button>
+              <button class="btn btn-sm btn-outline-danger" type="button" :disabled="busy" :aria-label="`Удалить вакансию ${job.title}`" @click="removeJob(job)">Удалить</button>
             </div>
           </li>
         </ul>
