@@ -1,0 +1,13 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.carpet-img {
+    height: 160px;
+    background-color: #dee2e6;
+}
+
+.carpet-img-big {
+    height: 320px;
+    background-color: #dee2e6;
+}
