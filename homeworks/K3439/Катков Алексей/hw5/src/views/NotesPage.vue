@@ -28,23 +28,22 @@ export default {
 
 <template>
   <BaseLayout>
-    <p class="eyebrow">ИДЕИ ДЛЯ КУХНИ</p>
-    <h1>Всё вкусное начинается<br>с маленькой заметки.</h1>
-    <p class="intro mb-5">Сохраняйте удачные сочетания, планы на ужин и рецепты, которые хочется повторить.</p>
-    <div v-if="error" class="alert alert-danger d-flex flex-wrap align-items-center gap-3" role="alert">
-      <span>{{ error }}</span><button class="btn btn-outline-danger btn-sm" @click="loadNotes">Повторить загрузку</button>
+    <h1>Кулинарные заметки</h1>
+    <div v-if="error" class="alert alert-danger" role="alert">
+      <p class="mb-2">{{ error }}</p>
+      <button class="btn btn-sm btn-outline-secondary" @click="loadNotes">Повторить загрузку</button>
     </div>
-    <p class="visually-hidden" role="status" aria-live="polite">{{ notice }}</p>
-    <div class="row g-5 align-items-start">
-      <aside class="col-lg-4"><NoteForm ref="form" :saving="saving" @save="save" /></aside>
-      <section class="col-lg-8" aria-labelledby="notes-title" :aria-busy="loading">
-        <div class="d-flex justify-content-between align-items-center mb-4"><h2 id="notes-title" class="h4 m-0">Мои заметки</h2><span class="badge rounded-pill">{{ notes.length }}</span></div>
-        <p v-if="loading" role="status">Загружаем заметки…</p>
-        <p v-else-if="!notes.length && !error" class="empty-state">Здесь пока пусто. Добавьте первую идею в форме слева.</p>
-        <div v-else class="row g-4">
-          <div v-for="note in notes" :key="note.id" class="col-md-6"><NoteCard :name="note.name" :text="note.text" @remove="removeNote(note.id)" /></div>
-        </div>
-      </section>
-    </div>
+    <p class="visually-hidden" role="status">{{ notice }}</p>
+    <NoteForm ref="form" :saving="saving" @save="save" />
+    <section class="mt-4" aria-labelledby="notes-title" :aria-busy="loading">
+      <h2 id="notes-title">Мои заметки ({{ notes.length }})</h2>
+      <p v-if="loading" role="status">Загрузка...</p>
+      <p v-else-if="!notes.length && !error">Заметок нет.</p>
+      <ul v-else-if="notes.length" class="notes-list">
+        <li v-for="note in notes" :key="note.id">
+          <NoteCard :name="note.name" :text="note.text" @remove="removeNote(note.id)" />
+        </li>
+      </ul>
+    </section>
   </BaseLayout>
 </template>
