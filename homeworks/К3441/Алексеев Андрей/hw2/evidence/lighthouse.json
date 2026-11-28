@@ -1,0 +1,2780 @@
+[
+  {
+    "page": "index.html",
+    "lighthouseVersion": "13.6.0",
+    "score": 1,
+    "checks": [
+      {
+        "id": "accesskeys",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-command-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-conditional-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-deprecated-role",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-dialog-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-hidden-body",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-hidden-focus",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-input-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-meter-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-progressbar-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-prohibited-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-children",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-required-parent",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-roles",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-text",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-toggle-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-tooltip-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-treeitem-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-valid-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "button-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "bypass",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "color-contrast",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "definition-list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "dlitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "document-title",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "duplicate-id-aria",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "form-field-multiple-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "frame-title",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "heading-order",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-has-lang",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-lang-valid",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-xml-lang-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-alt",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "input-button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-in-text-block",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "link-name",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "list",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "listitem",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "meta-refresh",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-viewport",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "object-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "select-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "skip-link",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "tabindex",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "target-size",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "td-headers-attr",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "th-has-data-cells",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "valid-lang",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "video-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "landmark-one-main",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "autocomplete-valid",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "presentation-role-conflict",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "svg-img-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "focusable-controls",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "interactive-element-affordance",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "logical-tab-order",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "visual-order-follows-dom",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "focus-traps",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "managed-focus",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "use-landmarks",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "offscreen-content-hidden",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-roles",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "table-duplicate-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "empty-heading",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-role",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-redundant-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "identical-links-same-purpose",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "table-fake-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "td-has-header",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      }
+    ]
+  },
+  {
+    "page": "job.html?id=1",
+    "lighthouseVersion": "13.6.0",
+    "score": 1,
+    "checks": [
+      {
+        "id": "accesskeys",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-command-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-conditional-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-deprecated-role",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-dialog-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-hidden-body",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-hidden-focus",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-input-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-meter-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-progressbar-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-prohibited-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-children",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-required-parent",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-roles",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-text",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-toggle-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-tooltip-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-treeitem-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-valid-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "bypass",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "color-contrast",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "definition-list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "dlitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "document-title",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "duplicate-id-aria",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "form-field-multiple-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "frame-title",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "heading-order",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-has-lang",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-lang-valid",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-xml-lang-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "link-in-text-block",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "link-name",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "list",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "listitem",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "meta-refresh",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-viewport",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "object-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "select-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "skip-link",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "tabindex",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "target-size",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "td-headers-attr",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "th-has-data-cells",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "valid-lang",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "video-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "landmark-one-main",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "autocomplete-valid",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "presentation-role-conflict",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "svg-img-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "focusable-controls",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "interactive-element-affordance",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "logical-tab-order",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "visual-order-follows-dom",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "focus-traps",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "managed-focus",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "use-landmarks",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "offscreen-content-hidden",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-roles",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "table-duplicate-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "empty-heading",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-role",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-redundant-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "identical-links-same-purpose",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "table-fake-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "td-has-header",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      }
+    ]
+  },
+  {
+    "page": "login.html",
+    "lighthouseVersion": "13.6.0",
+    "score": 1,
+    "checks": [
+      {
+        "id": "accesskeys",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-command-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-conditional-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-deprecated-role",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-dialog-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-hidden-body",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-hidden-focus",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-input-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-meter-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-progressbar-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-prohibited-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-children",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-required-parent",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-roles",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-text",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-toggle-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-tooltip-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-treeitem-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-valid-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "button-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "bypass",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "color-contrast",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "definition-list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "dlitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "document-title",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "duplicate-id-aria",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "form-field-multiple-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "frame-title",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "heading-order",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-has-lang",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-lang-valid",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-xml-lang-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-in-text-block",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "link-name",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "listitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-refresh",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-viewport",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "object-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "select-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "skip-link",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "tabindex",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "target-size",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "td-headers-attr",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "th-has-data-cells",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "valid-lang",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "video-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "landmark-one-main",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "autocomplete-valid",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "presentation-role-conflict",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "svg-img-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "focusable-controls",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "interactive-element-affordance",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "logical-tab-order",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "visual-order-follows-dom",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "focus-traps",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "managed-focus",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "use-landmarks",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "offscreen-content-hidden",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-roles",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "table-duplicate-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "empty-heading",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-role",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-redundant-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "identical-links-same-purpose",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "table-fake-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "td-has-header",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      }
+    ]
+  },
+  {
+    "page": "register.html",
+    "lighthouseVersion": "13.6.0",
+    "score": 1,
+    "checks": [
+      {
+        "id": "accesskeys",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-command-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-conditional-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-deprecated-role",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-dialog-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-hidden-body",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-hidden-focus",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-input-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-meter-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-progressbar-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-prohibited-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-children",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-required-parent",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-roles",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-text",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-toggle-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-tooltip-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-treeitem-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-valid-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "button-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "bypass",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "color-contrast",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "definition-list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "dlitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "document-title",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "duplicate-id-aria",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "form-field-multiple-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "frame-title",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "heading-order",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-has-lang",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-lang-valid",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-xml-lang-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-in-text-block",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-name",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "listitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-refresh",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-viewport",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "object-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "select-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "skip-link",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "tabindex",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "target-size",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "td-headers-attr",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "th-has-data-cells",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "valid-lang",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "video-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "landmark-one-main",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "autocomplete-valid",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "presentation-role-conflict",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "svg-img-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "focusable-controls",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "interactive-element-affordance",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "logical-tab-order",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "visual-order-follows-dom",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "focus-traps",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "managed-focus",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "use-landmarks",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "offscreen-content-hidden",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-roles",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "table-duplicate-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "empty-heading",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-role",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-redundant-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "identical-links-same-purpose",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "table-fake-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "td-has-header",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      }
+    ]
+  },
+  {
+    "page": "profile.html",
+    "lighthouseVersion": "13.6.0",
+    "score": 1,
+    "checks": [
+      {
+        "id": "accesskeys",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-command-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-conditional-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-deprecated-role",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-dialog-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-hidden-body",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-hidden-focus",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-input-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-meter-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-progressbar-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-prohibited-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-children",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-required-parent",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-roles",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-text",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-toggle-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-tooltip-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-treeitem-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-valid-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "button-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "bypass",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "color-contrast",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "definition-list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "dlitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "document-title",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "duplicate-id-aria",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "form-field-multiple-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "frame-title",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "heading-order",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-has-lang",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-lang-valid",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-xml-lang-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-in-text-block",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-name",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "listitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-refresh",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-viewport",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "object-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "select-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "skip-link",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "tabindex",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "target-size",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "td-headers-attr",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "th-has-data-cells",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "valid-lang",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "video-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "landmark-one-main",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "autocomplete-valid",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "presentation-role-conflict",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "svg-img-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "focusable-controls",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "interactive-element-affordance",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "logical-tab-order",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "visual-order-follows-dom",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "focus-traps",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "managed-focus",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "use-landmarks",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "offscreen-content-hidden",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-roles",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "table-duplicate-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "empty-heading",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-role",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-redundant-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "identical-links-same-purpose",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "table-fake-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "td-has-header",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      }
+    ]
+  },
+  {
+    "page": "employer.html",
+    "lighthouseVersion": "13.6.0",
+    "score": 1,
+    "checks": [
+      {
+        "id": "accesskeys",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-command-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-conditional-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-deprecated-role",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-dialog-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-hidden-body",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-hidden-focus",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-input-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-meter-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-progressbar-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-prohibited-attr",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-required-children",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-required-parent",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-roles",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-text",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-toggle-field-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-tooltip-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-treeitem-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "aria-valid-attr",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "button-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "bypass",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "color-contrast",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "definition-list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "dlitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "document-title",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "duplicate-id-aria",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "form-field-multiple-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "frame-title",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "heading-order",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-has-lang",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-lang-valid",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "html-xml-lang-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-button-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "input-image-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "link-in-text-block",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "link-name",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "list",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "listitem",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-refresh",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "meta-viewport",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "object-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "select-name",
+        "weight": 10,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "skip-link",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "tabindex",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "target-size",
+        "weight": 7,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "td-headers-attr",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "th-has-data-cells",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "valid-lang",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "video-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "landmark-one-main",
+        "weight": 3,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "autocomplete-valid",
+        "weight": 1,
+        "score": 1,
+        "scoreDisplayMode": "binary"
+      },
+      {
+        "id": "presentation-role-conflict",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "svg-img-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "focusable-controls",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "interactive-element-affordance",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "logical-tab-order",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "visual-order-follows-dom",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "focus-traps",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "managed-focus",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "use-landmarks",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "offscreen-content-hidden",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-labels",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "custom-controls-roles",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "manual"
+      },
+      {
+        "id": "table-duplicate-name",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "empty-heading",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "aria-allowed-role",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "image-redundant-alt",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "identical-links-same-purpose",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "table-fake-caption",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      },
+      {
+        "id": "td-has-header",
+        "weight": 0,
+        "score": null,
+        "scoreDisplayMode": "notApplicable"
+      }
+    ]
+  }
+]

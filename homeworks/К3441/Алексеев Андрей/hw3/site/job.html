@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Вектор — каталог вакансий и личный кабинет для поиска работы.">
+  <title>Вакансия | Вектор</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100" data-view="job">
+  <a class="skip-link visually-hidden-focusable" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
+      <a class="wordmark" href="index.html"><span aria-hidden="true">В</span> Вектор</a>
+      <nav class="site-nav d-flex align-items-center flex-wrap" aria-label="Главное меню">
+        <a href="index.html">Вакансии</a>
+        <div class="d-flex align-items-center gap-2">
+          <label for="theme-choice">Тема</label>
+          <select class="form-select form-select-sm w-auto" id="theme-choice">
+            <option value="system">Системная</option>
+            <option value="light">Светлая</option>
+            <option value="dark">Тёмная</option>
+          </select>
+        </div>
+        <span id="account-nav" class="d-flex align-items-center flex-wrap gap-2"></span>
+      </nav>
+    </div>
+  </header>
+  <main class="container flex-grow-1 py-4 py-md-5" id="main" tabindex="-1">
+    <div class="page-detail mx-auto">
+      <a class="d-inline-block mb-3" href="index.html">Все вакансии</a>
+      <p class="text-danger" id="error" role="alert"></p>
+      <h1 class="h2" id="job-placeholder">Вакансия</h1>
+      <p id="loading" role="status">Загружаем вакансию…</p>
+      <article class="panel p-4 p-md-5" id="job-detail" aria-labelledby="job-heading" hidden></article>
+    </div>
+  </main>
+  <footer class="site-footer mt-4">
+    <div class="container py-4">Вектор · Учебный сервис поиска работы</div>
+  </footer>
+</body>
+</html>
